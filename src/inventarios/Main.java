@@ -5,7 +5,6 @@
  */
 package inventarios;
 
-import java.util.ArrayList;
 
 /**
  *
