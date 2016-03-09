@@ -5,6 +5,7 @@
  */
 package inventarios;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -21,6 +22,7 @@ public class InicioSecionVentana extends javax.swing.JFrame {
        //estamos llamando el objeto lista desde la clase cliente//
         this.lista =lista;
         initComponents();
+        this.getContentPane().setBackground(Color.black);
         this.setLocationRelativeTo(null);
     }
 
@@ -43,6 +45,7 @@ public class InicioSecionVentana extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio Seccion");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMinimumSize(new java.awt.Dimension(400, 300));
 

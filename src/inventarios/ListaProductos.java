@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package inventarios;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +26,7 @@ public class ListaProductos extends javax.swing.JFrame {
         MostrarInterfaz();
         MostrarLosDatos();
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(Color.GRAY);
     
             }
 //metodo para mostrar la interfaz vacia de la tabla//
