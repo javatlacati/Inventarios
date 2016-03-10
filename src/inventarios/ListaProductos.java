@@ -69,7 +69,7 @@ public class ListaProductos extends javax.swing.JFrame {
         btnsalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable2.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jTable2.setForeground(new java.awt.Color(153, 0, 0));
@@ -152,6 +152,7 @@ public class ListaProductos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed

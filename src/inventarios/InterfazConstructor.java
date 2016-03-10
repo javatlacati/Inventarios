@@ -173,9 +173,9 @@ public static LinkedList contenedor = new LinkedList();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       String Producto = jTextField1.getText();
- String Cantidad = jTextField2.getText();
- String Caracteristicas = jTextField3.getText();
- String Serial = jTextField4.getText();
+      String Cantidad = jTextField2.getText();
+      String Caracteristicas = jTextField3.getText();
+      String Serial = jTextField4.getText();
  
  Productos clase = new Productos (Producto,Cantidad,Caracteristicas,Serial);
  contenedor.add(clase);
