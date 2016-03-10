@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author david
  */
+
 public class ListaProductos extends javax.swing.JFrame {
     private DefaultTableModel model;
     int con = 0;
