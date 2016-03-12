@@ -41,10 +41,12 @@ public class Menu extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Menu Principal");
         setMaximumSize(new java.awt.Dimension(500, 250));
         setMinimumSize(new java.awt.Dimension(500, 250));
         setPreferredSize(new java.awt.Dimension(500, 250));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Inventarios");
