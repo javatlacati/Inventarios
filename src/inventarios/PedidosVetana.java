@@ -75,7 +75,7 @@ public class PedidosVetana extends javax.swing.JFrame {
 
         jLabel5.setText("RFC");
 
-        jLabel6.setText("Telefono");
+        jLabel6.setText("Teléfono");
 
         jLabel7.setText("Atendio por");
 

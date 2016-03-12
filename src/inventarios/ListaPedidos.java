@@ -28,7 +28,7 @@ private DefaultTableModel modelo;
      //para agregar los datos en un arreglo vacio//
         String data [][]={};
         
-        String col[]=  {"No. de Pedido", "Nombre", "Apellidos", "Producto", "RFC","Telefono","Atendio por"};
+        String col[]=  {"No. de Pedido", "Nombre", "Apellidos", "Producto", "RFC","Teléfono","Atendio por"};
         modelo = new DefaultTableModel(data, col);
         jTable1.setModel(modelo); 
         
@@ -147,7 +147,7 @@ private DefaultTableModel modelo;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))

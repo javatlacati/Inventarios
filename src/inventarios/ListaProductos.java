@@ -38,7 +38,7 @@ public class ListaProductos extends javax.swing.JFrame {
      //para agregar los datos en un arreglo vacio//
         String data [][]={};
         
-        String col[]=  {"Producto", "Cantidad", "Caracteristicas", "Serial"};
+        String col[]=  {"Producto", "Cantidad", "Características", "Serial"};
         model = new DefaultTableModel(data, col);
         jTable2.setModel(model); 
         

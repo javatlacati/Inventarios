@@ -29,7 +29,7 @@ public class ListaCompras extends javax.swing.JFrame {
      //para agregar los datos en un arreglo vacio//
         String data [][]={};
         
-        String col[]=  {"Fecha", "Proveedor", "Direccion", "Telefono", "RFC","E-mail","Producto"};
+        String col[]=  {"Fecha", "Proveedor", "Dirección", "Teléfono", "RFC","E-mail","Producto"};
         modelo = new DefaultTableModel(data, col);
         jTable1.setModel(modelo); 
         

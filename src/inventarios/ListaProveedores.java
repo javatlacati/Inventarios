@@ -28,7 +28,7 @@ private DefaultTableModel modelo;
      //para agregar los datos en un arreglo vacio//
         String data [][]={};
         
-        String col[]=  {"No. de Proveedor", "Nombre", "Apellidos", "Dirección", "Telefono","E-Mail","Codigo Postal"};
+        String col[]=  {"No. de Proveedor", "Nombre", "Apellidos", "Dirección", "Teléfono","E-Mail","Código Postal"};
         modelo = new DefaultTableModel(data, col);
         jTable1.setModel(modelo); 
         
