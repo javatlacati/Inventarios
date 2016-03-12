@@ -6,6 +6,7 @@
 package inventarios;
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -21,6 +22,9 @@ public class Menu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
          this.getContentPane().setBackground(Color.orange);
           this.setResizable(false);
+          this.setIconImage
+         (new ImageIcon(getClass().getResource
+        ("/ImgFondos/Icono.png")).getImage());
     }
 
     /**

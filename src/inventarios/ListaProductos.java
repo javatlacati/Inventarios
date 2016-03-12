@@ -6,6 +6,7 @@
 package inventarios;
 import com.sun.imageio.plugins.png.RowFilter;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -30,6 +31,9 @@ public class ListaProductos extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.GRAY);
         this.setResizable(false);
+        this.setIconImage
+         (new ImageIcon(getClass().getResource
+        ("/ImgFondos/Icono.png")).getImage());
        
             }
 //metodo para mostrar la interfaz vacia de la tabla//

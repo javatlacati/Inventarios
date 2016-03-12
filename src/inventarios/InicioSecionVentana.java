@@ -8,6 +8,7 @@ package inventarios;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +28,9 @@ public class InicioSecionVentana extends javax.swing.JFrame {
        
        this.setLocationRelativeTo(InicioSecionVentana.this);
        this.setResizable(false);
+       this.setIconImage
+         (new ImageIcon(getClass().getResource
+        ("/ImgFondos/Icono.png")).getImage());
     }
 
     /**

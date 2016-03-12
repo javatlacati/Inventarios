@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -43,6 +44,9 @@ public class ComprasVentana extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         this.getContentPane().setBackground(Color.cyan);
+        this.setIconImage
+         (new ImageIcon(getClass().getResource
+        ("/ImgFondos/Icono.png")).getImage());
         
     }
 

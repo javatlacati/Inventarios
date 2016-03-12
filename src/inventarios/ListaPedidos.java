@@ -5,6 +5,7 @@
  */
 package inventarios;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +23,9 @@ private DefaultTableModel modelo;
         initComponents();
          MostrarInterfaz();
         MostrarLosDatos();
+        this.setIconImage
+         (new ImageIcon(getClass().getResource
+        ("/ImgFondos/Icono.png")).getImage());
     }
      public void MostrarInterfaz()
     {

@@ -8,6 +8,7 @@ package inventarios;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,6 +24,9 @@ public static LinkedList contenedor = new LinkedList();
         initComponents();
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.cyan);
+        this.setIconImage
+         (new ImageIcon(getClass().getResource
+        ("/ImgFondos/Icono.png")).getImage());
     }
 
     /**

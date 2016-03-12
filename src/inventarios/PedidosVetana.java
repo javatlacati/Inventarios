@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 import java.util.LinkedList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -30,6 +31,9 @@ public class PedidosVetana extends javax.swing.JFrame {
        
         initComponents();
          this.getContentPane().setBackground(Color.cyan);
+         this.setIconImage
+         (new ImageIcon(getClass().getResource
+        ("/ImgFondos/Icono.png")).getImage());
         
     }
 
