@@ -82,9 +82,9 @@ public class ComprasVentana extends javax.swing.JFrame {
 
         jLabel2.setText("Proveedor");
 
-        jLabel3.setText("Direccion");
+        jLabel3.setText("Dirección");
 
-        jLabel4.setText("Telefono");
+        jLabel4.setText("Teléfono");
 
         jLabel5.setText("RFC");
 
