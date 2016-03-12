@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 package inventarios;
+import com.sun.imageio.plugins.png.RowFilter;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -17,18 +20,17 @@ public class ListaProductos extends javax.swing.JFrame {
     private DefaultTableModel model;
     int con = 0;
 
-    /**
-     * Creates new form ListaProductos
-     */
+   
     public ListaProductos() {
-       
+        
         initComponents();
        
         MostrarInterfaz();
         MostrarLosDatos();
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.GRAY);
-    
+        this.setResizable(false);
+       
             }
 //metodo para mostrar la interfaz vacia de la tabla//
     public void MostrarInterfaz()
@@ -69,8 +71,10 @@ public class ListaProductos extends javax.swing.JFrame {
         btneliminartodo = new javax.swing.JButton();
         btnsalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable2.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jTable2.setForeground(new java.awt.Color(153, 0, 0));
@@ -87,6 +91,8 @@ public class ListaProductos extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable2);
 
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 147, 924, 245));
+
         btneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
         btneliminar.setBorder(null);
         btneliminar.setContentAreaFilled(false);
@@ -96,6 +102,7 @@ public class ListaProductos extends javax.swing.JFrame {
                 btneliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(btneliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 412, -1, -1));
 
         btneliminartodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
         btneliminartodo.setBorder(null);
@@ -106,6 +113,7 @@ public class ListaProductos extends javax.swing.JFrame {
                 btneliminartodoActionPerformed(evt);
             }
         });
+        getContentPane().add(btneliminartodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 412, -1, -1));
 
         btnsalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/regresar.png"))); // NOI18N
         btnsalir.setBorder(null);
@@ -116,41 +124,13 @@ public class ListaProductos extends javax.swing.JFrame {
                 btnsalirActionPerformed(evt);
             }
         });
+        getContentPane().add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(761, 412, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/productos agregados.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 11, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(btneliminar)
-                .addGap(183, 183, 183)
-                .addComponent(btneliminartodo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
-                .addComponent(btnsalir)
-                .addGap(38, 38, 38))
-            .addComponent(jScrollPane3)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(194, 194, 194))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btneliminartodo)
-                    .addComponent(btnsalir)
-                    .addComponent(btneliminar))
-                .addContainerGap())
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 730, 90));
 
         pack();
         setLocationRelativeTo(null);
@@ -230,6 +210,7 @@ public class ListaProductos extends javax.swing.JFrame {
     private javax.swing.JButton btneliminartodo;
     private javax.swing.JButton btnsalir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables

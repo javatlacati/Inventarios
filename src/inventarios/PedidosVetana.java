@@ -84,6 +84,7 @@ public class PedidosVetana extends javax.swing.JFrame {
         jLabel7.setText("Atendio por");
 
         jButton1.setText("Agregar");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -91,6 +92,7 @@ public class PedidosVetana extends javax.swing.JFrame {
         });
 
         jButton2.setText("Limpiar");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -98,6 +100,7 @@ public class PedidosVetana extends javax.swing.JFrame {
         });
 
         jButton3.setText("Cerrar");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -105,6 +108,11 @@ public class PedidosVetana extends javax.swing.JFrame {
         });
 
         jTextField1.setPreferredSize(new java.awt.Dimension(70, 25));
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jTextField2.setPreferredSize(new java.awt.Dimension(70, 25));
 
@@ -331,6 +339,10 @@ public class PedidosVetana extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+   
+    }//GEN-LAST:event_jTextField1KeyTyped
 
     /**
      * @param args the command line arguments

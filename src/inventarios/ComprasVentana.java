@@ -8,9 +8,12 @@ package inventarios;
 Se importa la paqueteria a utilizar
 */
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -20,8 +23,9 @@ public class ComprasVentana extends javax.swing.JFrame {
     /*
     Se Realiza el llamado del ArrayList
     */    
+    DefaultTableModel model = new DefaultTableModel ();
     ArrayList<Compras> Lista;
-
+    TableRowSorter busqueda = new TableRowSorter(model);
     /**
      * Creates new form ComprasVentana
      */
@@ -30,10 +34,13 @@ public class ComprasVentana extends javax.swing.JFrame {
         Se inicializa la Lista
         */
         Lista = new ArrayList<>();
+       
         initComponents();
+        
         this.setLocationRelativeTo(null);
         
         this.getContentPane().setBackground(Color.cyan);
+        
     }
 
     /**
@@ -66,6 +73,9 @@ public class ComprasVentana extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jTextField8 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Compras");
@@ -85,18 +95,53 @@ public class ComprasVentana extends javax.swing.JFrame {
         jLabel7.setText("Producto");
 
         jTextField1.setPreferredSize(new java.awt.Dimension(70, 25));
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jTextField2.setPreferredSize(new java.awt.Dimension(70, 25));
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
 
         jTextField3.setPreferredSize(new java.awt.Dimension(70, 25));
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
 
         jTextField4.setPreferredSize(new java.awt.Dimension(70, 25));
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
         jTextField5.setPreferredSize(new java.awt.Dimension(70, 25));
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
 
         jTextField6.setPreferredSize(new java.awt.Dimension(70, 25));
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
 
         jTextField7.setPreferredSize(new java.awt.Dimension(70, 25));
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,6 +196,15 @@ public class ComprasVentana extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Producto a buscar");
+
+        jButton6.setText("Buscar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -176,8 +230,16 @@ public class ComprasVentana extends javax.swing.JFrame {
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(jButton6)
+                                .addGap(87, 87, 87))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
@@ -199,6 +261,11 @@ public class ComprasVentana extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jButton6)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(23, 23, 23)
@@ -327,6 +394,60 @@ public class ComprasVentana extends javax.swing.JFrame {
         jTextField1.setText("");jTextField2.setText("");jTextField3.setText("");jTextField4.setText("");jTextField5.setText("");jTextField6.setText("");jTextField7.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+         char cTeclaPresionada=evt.getKeyChar();
+        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+            jButton1.doClick();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+         char cTeclaPresionada=evt.getKeyChar();
+        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+            jButton1.doClick();
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+       char cTeclaPresionada=evt.getKeyChar();
+        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+            jButton1.doClick();
+        }  // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+ char cTeclaPresionada=evt.getKeyChar();
+        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+            jButton1.doClick();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+ char cTeclaPresionada=evt.getKeyChar();
+        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+            jButton1.doClick();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+ char cTeclaPresionada=evt.getKeyChar();
+        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+            jButton1.doClick();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+ char cTeclaPresionada=evt.getKeyChar();
+        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+            jButton1.doClick();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7KeyTyped
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+      RowFilter filtro = RowFilter.regexFilter(jTextField8.getText(),0);
+        busqueda.setRowFilter(filtro);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -368,6 +489,7 @@ public class ComprasVentana extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -375,6 +497,7 @@ public class ComprasVentana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
@@ -384,5 +507,6 @@ public class ComprasVentana extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

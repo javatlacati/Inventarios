@@ -81,7 +81,14 @@ ArrayList<Proveedor> Lista;
 
         jLabel7.setText("Codigo Postal");
 
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+
         jButton1.setText("Agregar");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -89,6 +96,7 @@ ArrayList<Proveedor> Lista;
         });
 
         jButton3.setText("Cerrar");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -96,6 +104,7 @@ ArrayList<Proveedor> Lista;
         });
 
         jButton4.setText("Limpiar");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -121,6 +130,7 @@ ArrayList<Proveedor> Lista;
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("Eliminar");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -128,6 +138,7 @@ ArrayList<Proveedor> Lista;
         });
 
         jButton5.setText("Eliminar Todo");
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -308,6 +319,10 @@ ArrayList<Proveedor> Lista;
             JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1KeyTyped
 
     /**
      * @param args the command line arguments

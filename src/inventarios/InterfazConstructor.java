@@ -6,6 +6,7 @@
 package inventarios;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 
 /**
@@ -64,6 +65,30 @@ public static LinkedList contenedor = new LinkedList();
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/serial.png"))); // NOI18N
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
         jButton1.setBorder(null);
@@ -207,6 +232,34 @@ public static LinkedList contenedor = new LinkedList();
        ListaProductos r = new ListaProductos();
        r.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        char cTeclaPresionada=evt.getKeyChar();
+        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+            jButton1.doClick();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        char cTeclaPresionada=evt.getKeyChar();
+        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+            jButton1.doClick();
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+         char cTeclaPresionada=evt.getKeyChar();
+        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+            jButton1.doClick();
+        }
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+         char cTeclaPresionada=evt.getKeyChar();
+        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+            jButton1.doClick();
+        }
+    }//GEN-LAST:event_jTextField4KeyTyped
 
     /**
      * @param args the command line arguments
