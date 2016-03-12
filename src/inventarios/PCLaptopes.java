@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package inventarios;
-
+import java.awt.Color;
 import java.util.LinkedList;
 
 /**
@@ -20,6 +20,9 @@ public static LinkedList contenedor = new LinkedList();
     public PCLaptopes() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(Color.cyan);
+        
+        
     }
 
     /**

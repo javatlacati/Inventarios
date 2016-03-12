@@ -6,6 +6,7 @@
 package inventarios;
 
 import java.util.LinkedList;
+import java.awt.Color;
 
 /**
  *
@@ -20,6 +21,7 @@ public static LinkedList contenedor = new LinkedList();
     public Impresora() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(Color.cyan);
     }
 
     /**
@@ -93,16 +95,6 @@ public static LinkedList contenedor = new LinkedList();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jButton3)
-                .addGap(73, 73, 73)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(63, 63, 63)
-                .addComponent(jButton2)
-                .addGap(36, 36, 36))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -130,6 +122,16 @@ public static LinkedList contenedor = new LinkedList();
                             .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                             .addComponent(jTextField1))))
                 .addContainerGap(180, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(73, 73, 73)
+                .addComponent(jButton4)
+                .addGap(63, 63, 63)
+                .addComponent(jButton2)
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,10 +160,10 @@ public static LinkedList contenedor = new LinkedList();
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jButton4)
+                    .addComponent(jButton1))
                 .addGap(22, 22, 22))
         );
 

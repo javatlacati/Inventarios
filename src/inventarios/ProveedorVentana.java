@@ -5,6 +5,7 @@
  */
 package inventarios;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +30,7 @@ ArrayList<Proveedor> Lista;
         */
         Lista = new ArrayList<>();
         initComponents();
+         this.getContentPane().setBackground(Color.cyan);
     }
 
     /**

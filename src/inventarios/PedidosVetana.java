@@ -10,6 +10,7 @@ Se importa la paqueteria a utilizar
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
 
 /**
  *
@@ -30,6 +31,8 @@ public class PedidosVetana extends javax.swing.JFrame {
         */
         Lista = new ArrayList<>();
         initComponents();
+         this.getContentPane().setBackground(Color.cyan);
+        
     }
 
     /**

@@ -7,6 +7,7 @@ package inventarios;
 /*
 Se importa la paqueteria a utilizar
 */
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +31,9 @@ public class ComprasVentana extends javax.swing.JFrame {
         */
         Lista = new ArrayList<>();
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+        this.getContentPane().setBackground(Color.cyan);
     }
 
     /**

@@ -1,4 +1,5 @@
 package inventarios;
+import java.awt.Color;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,6 +19,8 @@ public class IngresoAvanzado extends javax.swing.JFrame {
     public IngresoAvanzado() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(Color.cyan);
+        
     }
 
     /**

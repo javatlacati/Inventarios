@@ -5,6 +5,7 @@
  */
 package inventarios;
 
+import java.awt.Color;
 import java.util.LinkedList;
 
 
@@ -21,6 +22,7 @@ public static LinkedList contenedor1 = new LinkedList();
     public Registro() {
         initComponents();
          this.setLocationRelativeTo(null);   
+          this.getContentPane().setBackground(Color.cyan);
     }
 
     /**
