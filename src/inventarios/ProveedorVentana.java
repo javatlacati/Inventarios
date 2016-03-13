@@ -282,7 +282,7 @@ ArrayList<Proveedor> Lista;
         }
     //Confirmar salida//
         public void confirmarSalida(){
-            int valor= JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar la aplicación?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            int valor= JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (valor==JOptionPane.YES_OPTION){
             System.exit(0);
         }
