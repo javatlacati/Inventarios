@@ -7,6 +7,8 @@ package inventarios;
 
 import static inventarios.PedidosVetana.contenedor;
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
@@ -36,6 +38,7 @@ ArrayList<Proveedor> Lista;
          this.setIconImage
          (new ImageIcon(getClass().getResource
         ("/ImgFondos/Icono.png")).getImage());
+         cerrar();
     }
 
     /**
@@ -263,7 +266,27 @@ ArrayList<Proveedor> Lista;
         ListaProveedores LP = new ListaProveedores();
         LP.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
-
+ //Método para confirmar el cierre deJFrame//
+    public void cerrar(){
+        try {
+            this.setDefaultCloseOperation(ProveedorVentana.DO_NOTHING_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent e){
+                    confirmarSalida();
+                }
+                });
+            this.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        }
+    //Confirmar salida//
+        public void confirmarSalida(){
+            int valor= JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar la aplicación?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (valor==JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
+        }
     /**
      * @param args the command line arguments
      */

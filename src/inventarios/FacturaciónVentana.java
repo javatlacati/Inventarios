@@ -7,8 +7,12 @@
 package inventarios;
 
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -22,10 +26,13 @@ public class FacturaciónVentana extends javax.swing.JFrame {
      */
     public FacturaciónVentana() {
         initComponents();
+        cerrar();
         this.getContentPane().setBackground(Color.cyan);
         this.setIconImage
          (new ImageIcon(getClass().getResource
         ("/ImgFondos/Icono.png")).getImage());
+        
+       
     }
 
     /**
@@ -294,15 +301,36 @@ public class FacturaciónVentana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-ListaFacturación Lf = new ListaFacturación();
+        ListaFacturación Lf = new ListaFacturación();
         Lf.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
          //Código para cerrar la vetana//
-        dispose();        // TODO add your handling code here:
+        dispose();  
+    // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+    public void cerrar(){
+        try {
+            this.setDefaultCloseOperation(FacturaciónVentana.DO_NOTHING_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent e){
+                    confirmarSalida();
+                }
 
+            });
+            this.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+}
+    public void confirmarSalida(){
+        int valor= JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar la aplicación?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (valor==JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
+        
+    }
     /**
      * @param args the command line arguments
      */

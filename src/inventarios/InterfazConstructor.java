@@ -7,8 +7,11 @@ package inventarios;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,7 +30,29 @@ public static LinkedList contenedor = new LinkedList();
         this.setIconImage
          (new ImageIcon(getClass().getResource
         ("/ImgFondos/Icono.png")).getImage());
+        cerrar();
     }
+     //Método para confirmar el cierre deJFrame//
+    public void cerrar(){
+        try {
+            this.setDefaultCloseOperation(InterfazConstructor.DO_NOTHING_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent e){
+                    confirmarSalida();
+                }
+                });
+            this.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        }
+    //Confirmar salida//
+        public void confirmarSalida(){
+            int valor= JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar la aplicación?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (valor==JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.

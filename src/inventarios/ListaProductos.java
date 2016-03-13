@@ -6,6 +6,8 @@
 package inventarios;
 import com.sun.imageio.plugins.png.RowFilter;
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -34,6 +36,7 @@ public class ListaProductos extends javax.swing.JFrame {
         this.setIconImage
          (new ImageIcon(getClass().getResource
         ("/ImgFondos/Icono.png")).getImage());
+        cerrar();
        
             }
 //metodo para mostrar la interfaz vacia de la tabla//
@@ -62,6 +65,27 @@ public class ListaProductos extends javax.swing.JFrame {
                 
                 
             }
+        }
+      //Método para confirmar el cierre deJFrame//
+    public void cerrar(){
+        try {
+            this.setDefaultCloseOperation(ListaProductos.DO_NOTHING_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                public void windowClosing(WindowEvent e){
+                    confirmarSalida();
+                }
+                });
+            this.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        }
+    //Confirmar salida//
+        public void confirmarSalida(){
+            int valor= JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar la aplicación?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (valor==JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
         }
 
     
