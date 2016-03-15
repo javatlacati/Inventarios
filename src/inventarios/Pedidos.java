@@ -20,6 +20,23 @@ public class Pedidos {
     String NumPedido;
     String RFC;
     String Telefono;
+
+    public Pedidos(String Nombre, String Apellidos, String Producto, String Empleado, String NumPedido, String RFC, String Telefono, String numerolocal, String entidad, String lugares) {
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.Producto = Producto;
+        this.Empleado = Empleado;
+        this.NumPedido = NumPedido;
+        this.RFC = RFC;
+        this.Telefono = Telefono;
+        this.numerolocal = numerolocal;
+        this.entidad = entidad;
+        this.lugares = lugares;
+    }
+    String numerolocal;
+    String  entidad;
+    String  lugares;
+    
     /*
     Se crea el constructor de la clase
     */
