@@ -166,11 +166,11 @@ UsuariosParaInicioSecion torres = new UsuariosParaInicioSecion("torres", "torres
        lista_usuarios.add(torres);
        
        
-UsuariosParaInicioSecion moreno = new UsuariosParaInicioSecion("moreno", "moreno");
+UsuariosParaInicioSecion moreno = new UsuariosParaInicioSecion("negro", "blanco");
        lista_usuarios.add(moreno);
        
        
-UsuariosParaInicioSecion pedro = new UsuariosParaInicioSecion("pedro", "pedro");
+UsuariosParaInicioSecion pedro = new UsuariosParaInicioSecion("paco", "chato");
        lista_usuarios.add(pedro);
        
        
@@ -178,11 +178,11 @@ UsuariosParaInicioSecion sagrario = new UsuariosParaInicioSecion("sagrario", "sa
        lista_usuarios.add(sagrario);
        
        
-UsuariosParaInicioSecion heber = new UsuariosParaInicioSecion("heber", "heber");
+UsuariosParaInicioSecion heber = new UsuariosParaInicioSecion("perry", "rojo");
        lista_usuarios.add(heber);
        
        
-UsuariosParaInicioSecion olivera = new UsuariosParaInicioSecion("olivera", "olivera");
+UsuariosParaInicioSecion olivera = new UsuariosParaInicioSecion("phineas", "ferp");
        lista_usuarios.add(olivera);
 
        
