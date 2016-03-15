@@ -174,17 +174,37 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Facturas");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Provedor");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenu3.setText("Servicios");
 
         jMenuItem6.setText("Pedidos");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem6);
 
         jMenuItem7.setText("Compra  venta");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem7);
 
         jMenu1.add(jMenu3);
@@ -202,6 +222,11 @@ public class Menu extends javax.swing.JFrame {
         jMenu2.add(jMenuItem4);
 
         jMenuItem5.setText("Regresar");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuBar1.add(jMenu2);
@@ -251,7 +276,12 @@ F.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+      InterfazConstructor r = new InterfazConstructor();
+       r.setVisible(true);
+        
+
+
+// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -259,6 +289,40 @@ F.setVisible(true);        // TODO add your handling code here:
          F.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        FacturaciónVentana Fv = new FacturaciónVentana();
+        Fv.setVisible(true);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        ProveedorVentana r = new ProveedorVentana();
+       r.setVisible(true);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        PedidosVetana r = new PedidosVetana();
+       r.setVisible(true);
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+       ComprasVentana r = new ComprasVentana();
+       r.setVisible(true);
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+         dispose();
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
