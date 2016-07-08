@@ -184,7 +184,15 @@ UsuariosParaInicioSecion heber = new UsuariosParaInicioSecion("perry", "rojo");
        
 UsuariosParaInicioSecion olivera = new UsuariosParaInicioSecion("phineas", "ferp");
        lista_usuarios.add(olivera);
+       
+UsuariosParaInicioSecion javier = new UsuariosParaInicioSecion("javi", "javi");
+       lista_usuarios.add(javier);
+       
+UsuariosParaInicioSecion josua = new UsuariosParaInicioSecion("josua", "josua");
+       lista_usuarios.add(josua);
 
+UsuariosParaInicioSecion luis = new UsuariosParaInicioSecion("luis", "luis");
+       lista_usuarios.add(luis);
        
        
 

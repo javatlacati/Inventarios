@@ -45,7 +45,7 @@ public class ListaProductos extends javax.swing.JFrame {
      //para agregar los datos en un arreglo vacio//
         String data [][]={};
         
-        String col[]=  {"Producto", "Cantidad", "Características", "Serial"};
+        String col[]=  {"Producto", "Cantidad", "Características", "Serial", "Fecha de ingreso", "Fecha Egreso"};
         model = new DefaultTableModel(data, col);
         jTable2.setModel(model); 
         
@@ -62,8 +62,8 @@ public class ListaProductos extends javax.swing.JFrame {
                 model.setValueAt(p.getCantidad(),con , 1);
                 model.setValueAt(p.getCaracteristicas(),con , 2);
                 model.setValueAt(p.getSerial(),con , 3);
-                
-                
+                model.setValueAt(p.getFechai(),con , 4); 
+                model.setValueAt(p.getFechae(),con , 5);
             }
         }
       //Método para confirmar el cierre deJFrame//
@@ -100,6 +100,7 @@ public class ListaProductos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Lista de Productos Agregados");
@@ -143,7 +144,7 @@ public class ListaProductos extends javax.swing.JFrame {
                 btneliminartodoActionPerformed(evt);
             }
         });
-        getContentPane().add(btneliminartodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 412, -1, -1));
+        getContentPane().add(btneliminartodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/productos agregados.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 11, -1, -1));
@@ -159,7 +160,15 @@ public class ListaProductos extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 140, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 140, 40));
+
+        jButton2.setText("Cerrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -196,6 +205,12 @@ public class ListaProductos extends javax.swing.JFrame {
           Menu M= new Menu();
         M.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,6 +254,7 @@ public class ListaProductos extends javax.swing.JFrame {
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btneliminartodo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane3;

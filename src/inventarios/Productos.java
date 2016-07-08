@@ -11,6 +11,9 @@ package inventarios;
  */
 public class Productos {
     
+    String Fechai;
+    
+    String Fechae;
     
     String producto;
     
@@ -74,11 +77,13 @@ public class Productos {
     
    
     
-    public Productos(String producto,String cantidad,String caracteristicas,String serial){
+    public Productos(String producto,String cantidad,String caracteristicas,String serial, String fechai, String fechae){
         this.producto=producto;
         this.cantidad=cantidad;
         this.caracteristicas=caracteristicas;
         this.serial=serial;
+        this.Fechai=fechai;
+        this.Fechae=fechae;
     }
 
     public String getProducto() {
@@ -429,13 +434,27 @@ public String getTamaño() {
     
     public void setPueblo(String Pueblo) {
         this.Pueblo = Pueblo;
+        
     }
+    public String getFechai() {
+        return Fechai;
+    }
+     public void setFechai(String fechai) {
+        this.Fechai = fechai;
+     }
     
-    
-    
+     
+    public String getFechae() {
+        return Fechae;
+    }
+     public void setFechae(String fechae) {
+        this.Fechae = fechae;
+        
+     }
+}
         
         
     
-    }
+    
     
 
