@@ -289,6 +289,7 @@ ArrayList<Proveedor> Lista;
         // TODO add your handling code here:
          Menu M= new Menu();
         M.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
  //Método para confirmar el cierre deJFrame//
     public void cerrar(){

@@ -266,24 +266,28 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         InterfazConstructor r = new InterfazConstructor();
        r.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
          ComprasVentana r = new ComprasVentana();
        r.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
          PedidosVetana r = new PedidosVetana();
        r.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
          ProveedorVentana r = new ProveedorVentana();
        r.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -293,17 +297,22 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 FacturaciónVentana Fv = new FacturaciónVentana();
-Fv.setVisible(true);// TODO add your handling code here:
+Fv.setVisible(true);
+ dispose();
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 Información F = new Información();
-F.setVisible(true);        // TODO add your handling code here:
+F.setVisible(true);   
+ dispose();
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
       InterfazConstructor r = new InterfazConstructor();
        r.setVisible(true);
+        dispose();
         
 
 
@@ -313,12 +322,14 @@ F.setVisible(true);        // TODO add your handling code here:
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Información F = new Información();
          F.setVisible(true);
+          dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         FacturaciónVentana Fv = new FacturaciónVentana();
         Fv.setVisible(true);
+         dispose();
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -326,13 +337,15 @@ F.setVisible(true);        // TODO add your handling code here:
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         ProveedorVentana r = new ProveedorVentana();
        r.setVisible(true);
+        dispose();
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         PedidosVetana r = new PedidosVetana();
-       r.setVisible(true);
+       r.setVisible(true); 
+       dispose();
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem6ActionPerformed
@@ -340,6 +353,7 @@ F.setVisible(true);        // TODO add your handling code here:
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
        ComprasVentana r = new ComprasVentana();
        r.setVisible(true);
+        dispose();
         
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem7ActionPerformed
@@ -353,12 +367,14 @@ F.setVisible(true);        // TODO add your handling code here:
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 Empleados n = new Empleados();
         n.setVisible(true);
+         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 Creditos y=new Creditos();
         y.setVisible(true);
+         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 

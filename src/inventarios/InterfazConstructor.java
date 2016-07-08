@@ -408,6 +408,7 @@ public int Encontrado;
         // TODO add your handling code here:
           Menu M= new Menu();
         M.setVisible(true);
+         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed

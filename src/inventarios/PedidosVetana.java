@@ -343,6 +343,7 @@ public class PedidosVetana extends javax.swing.JFrame {
         // TODO add your handling code here:
          Menu M= new Menu();
         M.setVisible(true);
+         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

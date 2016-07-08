@@ -170,6 +170,7 @@ public class Información extends javax.swing.JFrame {
         // TODO add your handling code here:
           Menu M= new Menu();
         M.setVisible(true);
+         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
