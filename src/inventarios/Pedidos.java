@@ -20,8 +20,10 @@ public class Pedidos {
     String NumPedido;
     String RFC;
     String Telefono;
+    String Direccion;
+    String Fecha;
 
-    public Pedidos(String Nombre, String Apellidos, String Producto, String Empleado, String NumPedido, String RFC, String Telefono, String numerolocal, String entidad, String lugares) {
+    public Pedidos(String Nombre, String Apellidos, String Producto, String Empleado, String NumPedido, String RFC, String Telefono, String numerolocal, String entidad, String lugares,String Direccion,String Fecha) {
         this.Nombre = Nombre;
         this.Apellidos = Apellidos;
         this.Producto = Producto;
@@ -32,6 +34,8 @@ public class Pedidos {
         this.numerolocal = numerolocal;
         this.entidad = entidad;
         this.lugares = lugares;
+        this.Direccion = Direccion;
+        this.Fecha = Fecha;
     }
     String numerolocal;
     String  entidad;
@@ -40,7 +44,7 @@ public class Pedidos {
     /*
     Se crea el constructor de la clase
     */
-    public Pedidos(String Nombre, String Apellidos, String Producto, String Empleado, String NumPedido, String RFC, String Telefono) {
+    public Pedidos(String Nombre, String Apellidos, String Producto, String Empleado, String NumPedido, String RFC, String Telefono,String Direccion,String Fecha) {
         this.Nombre = Nombre;
         this.Apellidos = Apellidos;
         this.Producto = Producto;
@@ -48,6 +52,8 @@ public class Pedidos {
         this.NumPedido = NumPedido;
         this.RFC = RFC;
         this.Telefono = Telefono;
+        this.Direccion = Direccion;
+        this.Fecha = Fecha;
     }
     
     /*
@@ -107,6 +113,23 @@ public class Pedidos {
 
     public void setRFC(String RFC) {
         this.RFC = RFC;
+    }
+    
+    public String  getDireccion() {
+        return Direccion;
+    }
+    
+    public void setDireccion(String Direccion) {
+        this.Direccion = Direccion;
+        
+    }
+    
+    public String getFecha() {
+        return Fecha;
+    }
+    
+    public void setFecha(String Fecha){
+        this.Fecha = Fecha;
     }
     
 }

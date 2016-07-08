@@ -34,7 +34,7 @@ public class TablaClientes extends javax.swing.JFrame {
     }
 public void cargarinterfaz(){
     String x [][]= {};
-    String columnas [] = {"matricula","nombre","primera apellido","segundo apellido","domicilio","puesto"};
+    String columnas [] = {"matricula","nombre","primera apellido","segundo apellido","domicilio","puesto","Hora de entrada", "Hora de salida"};
     modelo = new DefaultTableModel(x,columnas);
     tabla.setModel(modelo);
     
@@ -50,6 +50,8 @@ public void mostrardatos(ClaseEmlpleados c){
     modelo.setValueAt(c.getApellido2(), cont, 3);
     modelo.setValueAt(c.getDomicilio(), cont, 4);
     modelo.setValueAt(c.getPuesto(), cont, 5);
+    modelo.setValueAt(c.getHorae(), cont, 6);
+    modelo.setValueAt(c.getHoras(), cont, 7);
   
     
   cont++;

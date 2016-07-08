@@ -37,7 +37,7 @@ private DefaultTableModel modelo;
      //para agregar los datos en un arreglo vacio//
         String data [][]={};
         
-        String col[]=  {"No. de Pedido", "Nombre", "Apellidos", "Producto", "RFC","Teléfono","Atendio por"};
+        String col[]=  {"No. de Pedido", "Nombre", "Apellidos", "Producto", "RFC","Teléfono","Atendio por", "Direccion", "Fecha"};
         modelo = new DefaultTableModel(data, col);
         jTable1.setModel(modelo); 
         
@@ -58,6 +58,8 @@ private DefaultTableModel modelo;
                 modelo.setValueAt(p.getTelefono(),con , 4);
                 modelo.setValueAt(p.getEmpleado(),con , 5);
                 modelo.setValueAt(p.getNumPedido(),con , 6);
+                modelo.setValueAt(p.getDireccion(),con , 7);
+                modelo.setValueAt(p.getFecha(),con , 8);
                 
                 
             }

@@ -17,6 +17,8 @@ public class ClaseEmlpleados {
     private String apellido2;
     private String domicilio;
     private String puesto;
+    private String Horae;
+    private String Horas;
 
     public String getMatricula() {
         return matricula;
@@ -65,14 +67,36 @@ public class ClaseEmlpleados {
     public void setPuesto(String puesto) {
         this.puesto = puesto;
     }
+    
+    public String getHorae() {
+        return Horae;
+    }
+    
+    public void setHorae (String Horae) {
+        this.Horae = Horae;
+    }
+    
+    public String getHoras() {
+        return Horas;
+    }
+    
+    public void setHoras (String Horas) {
+        this.Horae = Horas;
+    }
+    
+    
+    
+    
 
-    public ClaseEmlpleados(String matricula, String nombre, String apellido1, String apellido2, String domicilio, String puesto) {
+    public ClaseEmlpleados(String matricula, String nombre, String apellido1, String apellido2, String domicilio, String puesto,String Horae,String Horas) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         this.domicilio = domicilio;
         this.puesto = puesto;
+        this.Horae = Horae;
+        this.Horas = Horas;
     }
             
 }
