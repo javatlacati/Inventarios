@@ -5,11 +5,10 @@
  */
 package inventarios;
 
-
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -20,44 +19,31 @@ import javax.swing.JOptionPane;
 public class InicioSecionVentana extends javax.swing.JFrame {
 
 //llamamos a la lista de clientes que se creo anteriormente//
-    private ArrayList<UsuariosParaInicioSecion>lista;
-    
-    public InicioSecionVentana(ArrayList<UsuariosParaInicioSecion>lista){
-       //estamos llamando el objeto lista desde la clase cliente//
-        this.lista =lista;
+    final private List<UsuariosParaInicioSecion> listaUsuarios;
+
+    public InicioSecionVentana(List<UsuariosParaInicioSecion> listaUsuarios) {
+        //estamos llamando el objeto lista desde la clase cliente//
+        this.listaUsuarios = listaUsuarios;
         initComponents();
-      
-      
-        
-       this.setLocationRelativeTo(InicioSecionVentana.this);
-       this.setResizable(false);
-       this.setIconImage
-         (new ImageIcon(getClass().getResource
-        ("/ImgFondos/Icono.png")).getImage());
-       cerrar();
+
+        this.setLocationRelativeTo(InicioSecionVentana.this);
+        cerrar();
     }
+
     //Método para confirmar el cierre deJFrame//
-    public void cerrar(){
+    public void cerrar() {
         try {
             this.setDefaultCloseOperation(InicioSecionVentana.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
-                public void windowClosing(WindowEvent e){
-                    confirmarSalida();
+                public void windowClosing(WindowEvent e) {
+                    confirmExit();
                 }
-                });
+            });
             this.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        }
-    //Confirmar salida//
-        public void confirmarSalida(){
-            int valor= JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar la aplicación?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor==JOptionPane.YES_OPTION){
-            System.exit(0);
-        }
-        }
-    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,96 +67,80 @@ public class InicioSecionVentana extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio Seccion");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setMinimumSize(new java.awt.Dimension(500, 400));
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setIconImage(new ImageIcon(getClass().getResource
+            ("/ImgFondos/Icono.png")).getImage());
+    setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
+    setMinimumSize(new java.awt.Dimension(500, 400));
+    setResizable(false);
+    getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAccept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/aceptar.png"))); // NOI18N
-        btnAccept.setBorder(null);
-        btnAccept.setContentAreaFilled(false);
-        btnAccept.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnAccept.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAcceptActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnAccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 115, 49));
+    btnAccept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/aceptar.png"))); // NOI18N
+    btnAccept.setBorder(null);
+    btnAccept.setContentAreaFilled(false);
+    btnAccept.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    btnAccept.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnAcceptActionPerformed(evt);
+        }
+    });
+    getContentPane().add(btnAccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 115, 49));
 
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/limpiar.png"))); // NOI18N
-        btnClean.setBorder(null);
-        btnClean.setContentAreaFilled(false);
-        btnClean.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnClean.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCleanActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnClean, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, 51));
+    btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/limpiar.png"))); // NOI18N
+    btnClean.setBorder(null);
+    btnClean.setContentAreaFilled(false);
+    btnClean.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    btnClean.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnCleanActionPerformed(evt);
+        }
+    });
+    getContentPane().add(btnClean, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, 51));
 
-        lblUser.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-        lblUser.setForeground(new java.awt.Color(0, 0, 153));
-        lblUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/usuario.png"))); // NOI18N
-        getContentPane().add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 107, -1, -1));
+    lblUser.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+    lblUser.setForeground(new java.awt.Color(0, 0, 153));
+    lblUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/usuario.png"))); // NOI18N
+    getContentPane().add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 107, -1, -1));
 
-        lblPassword.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-        lblPassword.setForeground(new java.awt.Color(0, 0, 153));
-        lblPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/contraseña.png"))); // NOI18N
-        getContentPane().add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 163, -1, -1));
+    lblPassword.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+    lblPassword.setForeground(new java.awt.Color(0, 0, 153));
+    lblPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/contraseña.png"))); // NOI18N
+    getContentPane().add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 163, -1, -1));
 
-        txtPsswd.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPsswdKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txtPsswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 134, -1));
+    txtPsswd.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            txtPsswdKeyTyped(evt);
+        }
+    });
+    getContentPane().add(txtPsswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 134, -1));
 
-        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtUserKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 134, -1));
+    txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            txtUserKeyTyped(evt);
+        }
+    });
+    getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 134, -1));
 
-        lblTitle.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(204, 0, 0));
-        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/login.png"))); // NOI18N
-        getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 24, -1, -1));
+    lblTitle.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
+    lblTitle.setForeground(new java.awt.Color(204, 0, 0));
+    lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/login.png"))); // NOI18N
+    getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 24, -1, -1));
 
-        lblCorporativeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/Imagen2.png"))); // NOI18N
-        getContentPane().add(lblCorporativeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 150, 180));
+    lblCorporativeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/Imagen2.png"))); // NOI18N
+    getContentPane().add(lblCorporativeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 150, 180));
 
-        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
-        getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -6, 500, 390));
+    lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
+    getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -6, 500, 390));
 
-        pack();
-        setLocationRelativeTo(null);
+    pack();
+    setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
-        // TODO add your handling code here:
-               String user = txtUser.getText ();
-        String password = txtPsswd.getText();
-         boolean encontrado = false;
-        
-        for (int i = 0; i < lista.size()-1; i++) {
-            if (user.equals(lista.get(i).getUsuario())) {
-                if (password.equals(lista.get(i).getContraseña())) {
-                    Menu CdP = new Menu();
-                    CdP.setVisible(true);
-                    encontrado = true;
-                }
-            }
-        }
-        if (encontrado==false){
-        JOptionPane.showMessageDialog(null, "Usuario " +user+ " no encontrado");   
-    }  
-        
-        
-    }                                          
+        loginAttempt();
+    }
 
-    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {
+        loginAttempt();
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
@@ -180,15 +150,15 @@ public class InicioSecionVentana extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void txtUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyTyped
-        char cTeclaPresionada=evt.getKeyChar();
-        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+        char cTeclaPresionada = evt.getKeyChar();
+        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
             btnAccept.doClick();
         }
     }//GEN-LAST:event_txtUserKeyTyped
 
     private void txtPsswdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPsswdKeyTyped
-           char cTeclaPresionada=evt.getKeyChar();
-        if (cTeclaPresionada==KeyEvent.VK_ENTER){
+        char cTeclaPresionada = evt.getKeyChar();
+        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
             btnAccept.doClick();
         }
     }//GEN-LAST:event_txtPsswdKeyTyped
@@ -204,4 +174,27 @@ public class InicioSecionVentana extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPsswd;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
+
+    private void loginAttempt() {
+        String user = txtUser.getText();
+        String password = txtPsswd.getText();
+
+        for (UsuariosParaInicioSecion usuarioParaInicioSecion : listaUsuarios) {
+            if (usuarioParaInicioSecion.getUsuario().equals(user)
+                    && usuarioParaInicioSecion.getContraseña().equals(password)) {
+                Menu CdP = new Menu();
+                CdP.setVisible(true);
+                return;
+            }
+        }
+
+        JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado");
+    }
+
+    public void confirmExit() {
+        int valor = JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar la aplicación?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (valor == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
 }
