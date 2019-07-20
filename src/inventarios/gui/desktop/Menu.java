@@ -11,7 +11,7 @@ import inventarios.gui.desktop.ComprasVentana;
 import inventarios.gui.desktop.FacturaciónVentana;
 import inventarios.gui.desktop.ProveedorVentana;
 import inventarios.gui.desktop.InterfazConstructor;
-import inventarios.gui.desktop.Empleados;
+import inventarios.gui.desktop.Employees;
 import inventarios.gui.desktop.Información;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
@@ -371,7 +371,7 @@ F.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-Empleados n = new Empleados();
+Employees n = new Employees();
         n.setVisible(true);
          dispose();
         // TODO add your handling code here:
