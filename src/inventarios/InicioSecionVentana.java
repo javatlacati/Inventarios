@@ -35,6 +35,7 @@ public class InicioSecionVentana extends javax.swing.JFrame {
         try {
             this.setDefaultCloseOperation(InicioSecionVentana.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
+                @Override
                 public void windowClosing(WindowEvent e) {
                     confirmExit();
                 }
@@ -152,14 +153,14 @@ public class InicioSecionVentana extends javax.swing.JFrame {
     private void txtUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyTyped
         char cTeclaPresionada = evt.getKeyChar();
         if (cTeclaPresionada == KeyEvent.VK_ENTER) {
-            btnAccept.doClick();
+            loginAttempt();
         }
     }//GEN-LAST:event_txtUserKeyTyped
 
     private void txtPsswdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPsswdKeyTyped
         char cTeclaPresionada = evt.getKeyChar();
         if (cTeclaPresionada == KeyEvent.VK_ENTER) {
-            btnAccept.doClick();
+            loginAttempt();
         }
     }//GEN-LAST:event_txtPsswdKeyTyped
 
