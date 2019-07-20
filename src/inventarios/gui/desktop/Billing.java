@@ -271,7 +271,7 @@ public class Billing extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        ListaFacturación Lf = new ListaFacturación();
+        BillingList Lf = new BillingList();
         Lf.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_btnViewActionPerformed
 
