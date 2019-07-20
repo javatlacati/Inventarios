@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package inventarios;
+package inventarios.gui.desktop;
 
+import inventarios.UsuariosParaInicioSecion;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -16,24 +17,24 @@ import javax.swing.JOptionPane;
  *
  * @author EfraJiJim
  */
-public class InicioSecionVentana extends javax.swing.JFrame {
+public class LoginWindow extends javax.swing.JFrame {
 
 //llamamos a la lista de clientes que se creo anteriormente//
     final private List<UsuariosParaInicioSecion> listaUsuarios;
 
-    public InicioSecionVentana(List<UsuariosParaInicioSecion> listaUsuarios) {
+    public LoginWindow(List<UsuariosParaInicioSecion> listaUsuarios) {
         //estamos llamando el objeto lista desde la clase cliente//
         this.listaUsuarios = listaUsuarios;
         initComponents();
 
-        this.setLocationRelativeTo(InicioSecionVentana.this);
+        this.setLocationRelativeTo(LoginWindow.this);
         cerrar();
     }
 
     //Método para confirmar el cierre deJFrame//
     public void cerrar() {
         try {
-            this.setDefaultCloseOperation(InicioSecionVentana.DO_NOTHING_ON_CLOSE);
+            this.setDefaultCloseOperation(LoginWindow.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {

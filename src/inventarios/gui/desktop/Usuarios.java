@@ -6,7 +6,7 @@
 package inventarios.gui.desktop;
 
 import inventarios.UsuariosParaInicioSecion;
-import inventarios.gui.desktop.InicioSecionVentana;
+import inventarios.gui.desktop.LoginWindow;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class Usuarios {
         List<UsuariosParaInicioSecion> aceptedUserList = new ArrayList<>();
         fillInUserList(aceptedUserList);
 
-        InicioSecionVentana login = new InicioSecionVentana(aceptedUserList);
+        LoginWindow login = new LoginWindow(aceptedUserList);
         login.setVisible(true);
     }
 
