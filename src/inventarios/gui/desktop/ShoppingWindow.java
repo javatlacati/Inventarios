@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -20,9 +21,9 @@ import javax.swing.table.TableRowSorter;
  *
  * @author EfraJiJim
  */
-public class ComprasVentana extends javax.swing.JFrame {
+public class ShoppingWindow extends javax.swing.JFrame {
 
-    public static LinkedList contenedor = new LinkedList();
+    public static List<Compras> shoppingList = new LinkedList<>();
     /*
     Se Realiza el llamado del ArrayList
      */
@@ -33,7 +34,7 @@ public class ComprasVentana extends javax.swing.JFrame {
     /**
      * Creates new form ComprasVentana
      */
-    public ComprasVentana() {
+    public ShoppingWindow() {
         /*
         Se inicializa la Lista
          */
@@ -50,7 +51,7 @@ public class ComprasVentana extends javax.swing.JFrame {
 
     public void cerrar() {
         try {
-            this.setDefaultCloseOperation(ComprasVentana.DO_NOTHING_ON_CLOSE);
+            this.setDefaultCloseOperation(ShoppingWindow.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
                     confirmarSalida();
@@ -392,20 +393,21 @@ public class ComprasVentana extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ComprasVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShoppingWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ComprasVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShoppingWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ComprasVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShoppingWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ComprasVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ShoppingWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ComprasVentana().setVisible(true);
+                new ShoppingWindow().setVisible(true);
             }
         });
     }
@@ -447,7 +449,7 @@ public class ComprasVentana extends javax.swing.JFrame {
         Se hace la instancia para guardar los datos en el ArrayList
          */
         Compras clase = new Compras(date, provider, adress, telephone, mail, product, RFC);
-        contenedor.add(clase);
+        shoppingList.add(clase);
         clearFields();
         /*
        * Agregar el contendio al jTable

@@ -52,9 +52,9 @@ public class ListaFacturación extends javax.swing.JFrame {
     public void MostrarLosDatos()
         {
             Facturación f;
-            for(int i=0; i<FacturaciónVentana.contenedor.size(); i++)
+            for(int i=0; i<Billing.contenedor.size(); i++)
             {
-                f = (Facturación) FacturaciónVentana.contenedor.get(i);
+                f = (Facturación) Billing.contenedor.get(i);
                 modelo.insertRow(con, new Object[]{});
                 modelo.setValueAt(f.getRFC(),con , 0);
                 modelo.setValueAt(f.getRS(),con , 1);
@@ -227,7 +227,7 @@ try {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        FacturaciónVentana r = new FacturaciónVentana();
+        Billing r = new Billing();
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed

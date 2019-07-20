@@ -38,14 +38,14 @@ public class ListaCompras extends javax.swing.JFrame {
 
         String col[] = {"Fecha", "Proveedor", "Dirección", "Teléfono", "RFC", "E-mail", "Producto"};
         modelo = new DefaultTableModel(data, col);
-        jTable1.setModel(modelo);
+        shoppingTable.setModel(modelo);
 
     }
 
     public void MostrarLosDatos() {
         Compras c;
-        for (int i = 0; i < ComprasVentana.contenedor.size(); i++) {
-            c = (Compras) ComprasVentana.contenedor.get(i);
+        for (int i = 0; i < ShoppingWindow.shoppingList.size(); i++) {
+            c = (Compras) ShoppingWindow.shoppingList.get(i);
             modelo.insertRow(con, new Object[]{});
             modelo.setValueAt(c.getFecha(), con, 0);
             modelo.setValueAt(c.getProveedor(), con, 1);
@@ -90,11 +90,11 @@ public class ListaCompras extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        shoppingScroll = new javax.swing.JScrollPane();
+        shoppingTable = new javax.swing.JTable();
         btnDeleteRow = new javax.swing.JButton();
         btnDeleteAll = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         btnMenu = new javax.swing.JButton();
         btnGetBack = new javax.swing.JButton();
 
@@ -102,7 +102,7 @@ public class ListaCompras extends javax.swing.JFrame {
         setTitle("Lista de Compras Agregadas");
         setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        shoppingTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -113,7 +113,7 @@ public class ListaCompras extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        shoppingScroll.setViewportView(shoppingTable);
 
         btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
@@ -133,8 +133,8 @@ public class ListaCompras extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Lista de Compras");
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setText("Lista de Compras");
 
         btnMenu.setBackground(new java.awt.Color(255, 0, 51));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -156,7 +156,7 @@ public class ListaCompras extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(shoppingScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(70, 70, 70)
                                 .addComponent(btnDeleteRow, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,16 +168,16 @@ public class ListaCompras extends javax.swing.JFrame {
                                 .addComponent(btnGetBack))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(276, 276, 276)
-                        .addComponent(jLabel1)))
+                        .addComponent(lblTitle)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblTitle)
                 .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(shoppingScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnDeleteAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -194,9 +194,9 @@ public class ListaCompras extends javax.swing.JFrame {
 
     private void btnDeleteRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowActionPerformed
         try {
-            modelo = (DefaultTableModel) jTable1.getModel();
-            modelo.removeRow(jTable1.getSelectedRow());
-            jTable1.addRowSelectionInterval(0, 0);
+            modelo = (DefaultTableModel) shoppingTable.getModel();
+            modelo.removeRow(shoppingTable.getSelectedRow());
+            shoppingTable.addRowSelectionInterval(0, 0);
             modelo = null;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Seleccione la fila que desea quitar.");
@@ -205,10 +205,10 @@ public class ListaCompras extends javax.swing.JFrame {
 
     private void btnDeleteAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAllActionPerformed
         try {
-            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-            int filas = jTable1.getRowCount();
-            for (int i = 0; filas > i; i++) {
-                modelo.removeRow(0);
+            DefaultTableModel model = (DefaultTableModel) shoppingTable.getModel();
+            int rows = shoppingTable.getRowCount();
+            for (int i = 0; rows > i; i++) {
+                model.removeRow(0);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
@@ -216,9 +216,8 @@ public class ListaCompras extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteAllActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        // TODO add your handling code here:
-        Menu M = new Menu();
-        M.setVisible(true);
+        Menu menu = new Menu();
+        menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
 
@@ -227,8 +226,8 @@ public class ListaCompras extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteRow;
     private javax.swing.JButton btnGetBack;
     private javax.swing.JButton btnMenu;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JScrollPane shoppingScroll;
+    private javax.swing.JTable shoppingTable;
     // End of variables declaration//GEN-END:variables
 }

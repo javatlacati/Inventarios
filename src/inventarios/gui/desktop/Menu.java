@@ -7,12 +7,12 @@ package inventarios.gui.desktop;
 
 import inventarios.gui.desktop.PedidosVetana;
 import inventarios.gui.desktop.Creditos;
-import inventarios.gui.desktop.ComprasVentana;
-import inventarios.gui.desktop.FacturaciónVentana;
+import inventarios.gui.desktop.ShoppingWindow;
+import inventarios.gui.desktop.Billing;
 import inventarios.gui.desktop.ProveedorVentana;
 import inventarios.gui.desktop.InterfazConstructor;
 import inventarios.gui.desktop.Employees;
-import inventarios.gui.desktop.Información;
+import inventarios.gui.desktop.Information;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -277,7 +277,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         ComprasVentana r = new ComprasVentana();
+         ShoppingWindow r = new ShoppingWindow();
        r.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -302,14 +302,14 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGetBackActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-FacturaciónVentana Fv = new FacturaciónVentana();
+Billing Fv = new Billing();
 Fv.setVisible(true);
  dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-Información F = new Información();
+Information F = new Information();
 F.setVisible(true);   
  dispose();
 // TODO add your handling code here:
@@ -326,14 +326,14 @@ F.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        Información F = new Información();
+        Information F = new Information();
          F.setVisible(true);
           dispose();
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        FacturaciónVentana Fv = new FacturaciónVentana();
+        Billing Fv = new Billing();
         Fv.setVisible(true);
          dispose();
 
@@ -357,7 +357,7 @@ F.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-       ComprasVentana r = new ComprasVentana();
+       ShoppingWindow r = new ShoppingWindow();
        r.setVisible(true);
         dispose();
         
