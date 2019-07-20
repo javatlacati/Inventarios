@@ -4,19 +4,14 @@
  * and open the template in the editor.
  */
 package inventarios;
-/*
-Se importa la paqueteria a utilizar
-*/
-import static inventarios.InterfazConstructor.contenedor;
+
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -25,54 +20,54 @@ import javax.swing.table.TableRowSorter;
  * @author EfraJiJim
  */
 public class ComprasVentana extends javax.swing.JFrame {
-   public static LinkedList contenedor = new LinkedList();
+
+    public static LinkedList contenedor = new LinkedList();
     /*
     Se Realiza el llamado del ArrayList
-    */    
-    DefaultTableModel model = new DefaultTableModel ();
-  
+     */
+    DefaultTableModel model = new DefaultTableModel();
+
     TableRowSorter busqueda = new TableRowSorter(model);
+
     /**
      * Creates new form ComprasVentana
      */
     public ComprasVentana() {
-         /*
+        /*
         Se inicializa la Lista
-        */
- 
-       
+         */
+
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
-        
+
         this.getContentPane().setBackground(Color.cyan);
-        this.setIconImage
-         (new ImageIcon(getClass().getResource
-        ("/ImgFondos/Icono.png")).getImage());
         cerrar();
-        
+
     }
-     //Método para confirmar el cierre deJFrame//
-    public void cerrar(){
+    //Método para confirmar el cierre deJFrame//
+
+    public void cerrar() {
         try {
             this.setDefaultCloseOperation(ComprasVentana.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
-                public void windowClosing(WindowEvent e){
+                public void windowClosing(WindowEvent e) {
                     confirmarSalida();
                 }
-                });
+            });
             this.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        }
+    }
+
     //Confirmar salida//
-        public void confirmarSalida(){
-            int valor= JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas la ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor==JOptionPane.YES_OPTION){
+    public void confirmarSalida() {
+        int valor = JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas la ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (valor == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
-        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,147 +78,139 @@ public class ComprasVentana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        lblDate = new javax.swing.JLabel();
+        lblProvider = new javax.swing.JLabel();
+        lblAddress = new javax.swing.JLabel();
+        lblTelephone = new javax.swing.JLabel();
+        lblContributor = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        lblProduct = new javax.swing.JLabel();
+        txtDate = new javax.swing.JTextField();
+        txtProvider = new javax.swing.JTextField();
+        txtAdress = new javax.swing.JTextField();
+        txtTelephone = new javax.swing.JTextField();
+        txtContributor = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtProduct = new javax.swing.JTextField();
+        btnAdd = new javax.swing.JButton();
+        btnClean = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Compras");
+        setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setResizable(false);
 
-        jLabel1.setText("Fecha");
+        lblDate.setText("Fecha");
 
-        jLabel2.setText("Proveedor");
+        lblProvider.setText("Proveedor");
 
-        jLabel3.setText("Dirección");
+        lblAddress.setText("Dirección");
 
-        jLabel4.setText("Teléfono");
+        lblTelephone.setText("Teléfono");
 
-        jLabel5.setText("RFC");
+        lblContributor.setText("RFC");
 
-        jLabel6.setText("E-Mail");
+        lblEmail.setText("E-Mail");
 
-        jLabel7.setText("Producto");
+        lblProduct.setText("Producto");
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(70, 25));
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtDate.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtDate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField1KeyTyped(evt);
+                txtDateKeyTyped(evt);
             }
         });
 
-        jTextField2.setPreferredSize(new java.awt.Dimension(70, 25));
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtProvider.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtProvider.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField2KeyTyped(evt);
+                txtProviderKeyTyped(evt);
             }
         });
 
-        jTextField3.setPreferredSize(new java.awt.Dimension(70, 25));
-        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtAdress.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtAdress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField3KeyTyped(evt);
+                txtAdressKeyTyped(evt);
             }
         });
 
-        jTextField4.setPreferredSize(new java.awt.Dimension(70, 25));
-        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtTelephone.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtTelephone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField4KeyTyped(evt);
+                txtTelephoneKeyTyped(evt);
             }
         });
 
-        jTextField5.setPreferredSize(new java.awt.Dimension(70, 25));
-        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtContributor.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtContributor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField5KeyTyped(evt);
+                txtContributorKeyTyped(evt);
             }
         });
 
-        jTextField6.setPreferredSize(new java.awt.Dimension(70, 25));
-        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtEmail.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField6KeyTyped(evt);
+                txtEmailKeyTyped(evt);
             }
         });
 
-        jTextField7.setPreferredSize(new java.awt.Dimension(70, 25));
-        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtProduct.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtProduct.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField7KeyTyped(evt);
+                txtProductKeyTyped(evt);
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
+        btnAdd.setBorder(null);
+        btnAdd.setContentAreaFilled(false);
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setContentAreaFilled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setBorder(null);
+        btnClean.setContentAreaFilled(false);
+        btnClean.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCleanActionPerformed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
-        jButton3.setBorder(null);
-        jButton3.setContentAreaFilled(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setBorder(null);
+        btnClose.setContentAreaFilled(false);
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnCloseActionPerformed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
-        jButton4.setBorder(null);
-        jButton4.setContentAreaFilled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
+        btnSearch.setBorder(null);
+        btnSearch.setContentAreaFilled(false);
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
-        jButton6.setBorder(null);
-        jButton6.setContentAreaFilled(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnMenu.setBackground(new java.awt.Color(51, 51, 255));
+        btnMenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnMenu.setText("Menu");
+        btnMenu.setAutoscrolls(true);
+        btnMenu.setBorder(null);
+        btnMenu.setBorderPainted(false);
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setBackground(new java.awt.Color(51, 51, 255));
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton5.setText("Menu");
-        jButton5.setAutoscrolls(true);
-        jButton5.setBorder(null);
-        jButton5.setBorderPainted(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnMenuActionPerformed(evt);
             }
         });
 
@@ -234,30 +221,29 @@ public class ComprasVentana extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(lblDate)
+                    .addComponent(lblProvider)
+                    .addComponent(lblAddress)
+                    .addComponent(lblTelephone)
+                    .addComponent(lblContributor)
+                    .addComponent(lblEmail)
+                    .addComponent(lblProduct))
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(txtProvider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtAdress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtContributor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton6)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAdd)
+                    .addComponent(btnSearch)
+                    .addComponent(btnClean)
+                    .addComponent(btnClose)
+                    .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -267,158 +253,126 @@ public class ComprasVentana extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblDate)
+                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton1))
+                            .addComponent(lblProvider)
+                            .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnAdd))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblAddress)
+                            .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblTelephone)
+                            .addComponent(txtTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblContributor)
+                            .addComponent(txtContributor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(btnSearch)
                         .addGap(20, 20, 20)
-                        .addComponent(jButton2)))
+                        .addComponent(btnClean)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton3))
+                        .addComponent(lblEmail)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnClose))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblProduct)
+                            .addComponent(txtProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)
-                        .addContainerGap())))
+                        .addComponent(btnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*
-        Aplicamos estos codigos para eliminar el contenido de los TexField's
-        */
-       jTextField1.setText("");
-       jTextField2.setText("");
-       jTextField3.setText("");
-       jTextField4.setText("");
-       jTextField5.setText("");
-       jTextField6.setText("");
-       jTextField7.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    /**
+     * Clears the Text Field's contents when clicked
+     */
+    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
+        clearFields();
+    }//GEN-LAST:event_btnCleanActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     /*
-        Declaramos las variables donde se guardara el contenido para los TextFiel
-        */
-        String Fecha = jTextField1.getText();
-        String Proveedor = jTextField2.getText();
-        String Direccion = jTextField3.getText();
-        String Telefono = jTextField4.getText();
-        String RFC = jTextField5.getText();
-        String Mail = jTextField6.getText();
-        String Producto = jTextField7.getText();
-        /*
-        Se hace la instancia para guardar los datos en el ArrayList
-        */
-        Compras clase = new Compras(Fecha, Proveedor, Direccion, Telefono, Mail, Producto, RFC);
-        contenedor.add(clase);
-    jTextField1.setText("");jTextField2.setText("");jTextField3.setText("");jTextField4.setText("");jTextField5.setText("");jTextField6.setText("");jTextField7.setText("");
-        /*
-       * Agregar el contendio al jTable
-       */
-     
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        add();
+    }//GEN-LAST:event_btnAddActionPerformed
 
-    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-         char cTeclaPresionada=evt.getKeyChar();
-        if (cTeclaPresionada==KeyEvent.VK_ENTER){
-            jButton1.doClick();
+    private void txtDateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDateKeyTyped
+        char cTeclaPresionada = evt.getKeyChar();
+        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
+            add();
         }
-    }//GEN-LAST:event_jTextField1KeyTyped
+    }//GEN-LAST:event_txtDateKeyTyped
 
-    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
-         char cTeclaPresionada=evt.getKeyChar();
-        if (cTeclaPresionada==KeyEvent.VK_ENTER){
-            jButton1.doClick();
+    private void txtProviderKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProviderKeyTyped
+        char cTeclaPresionada = evt.getKeyChar();
+        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
+            add();
         }
-    }//GEN-LAST:event_jTextField2KeyTyped
+    }//GEN-LAST:event_txtProviderKeyTyped
 
-    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
-       char cTeclaPresionada=evt.getKeyChar();
-        if (cTeclaPresionada==KeyEvent.VK_ENTER){
-            jButton1.doClick();
-        }  // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3KeyTyped
+    private void txtAdressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAdressKeyTyped
+        char cTeclaPresionada = evt.getKeyChar();
+        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
+            add();
+        }
+    }//GEN-LAST:event_txtAdressKeyTyped
 
-    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
- char cTeclaPresionada=evt.getKeyChar();
-        if (cTeclaPresionada==KeyEvent.VK_ENTER){
-            jButton1.doClick();
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4KeyTyped
+    private void txtTelephoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelephoneKeyTyped
+        char cTeclaPresionada = evt.getKeyChar();
+        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
+            add();
+        }
+    }//GEN-LAST:event_txtTelephoneKeyTyped
 
-    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
- char cTeclaPresionada=evt.getKeyChar();
-        if (cTeclaPresionada==KeyEvent.VK_ENTER){
-            jButton1.doClick();
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5KeyTyped
+    private void txtContributorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContributorKeyTyped
+        char cTeclaPresionada = evt.getKeyChar();
+        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
+            add();
+        }
+    }//GEN-LAST:event_txtContributorKeyTyped
 
-    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
- char cTeclaPresionada=evt.getKeyChar();
-        if (cTeclaPresionada==KeyEvent.VK_ENTER){
-            jButton1.doClick();
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6KeyTyped
+    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+        char cTeclaPresionada = evt.getKeyChar();
+        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
+            add();
+        }
+    }//GEN-LAST:event_txtEmailKeyTyped
 
-    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
- char cTeclaPresionada=evt.getKeyChar();
-        if (cTeclaPresionada==KeyEvent.VK_ENTER){
-            jButton1.doClick();
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7KeyTyped
+    private void txtProductKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductKeyTyped
+        char cTeclaPresionada = evt.getKeyChar();
+        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
+            add();
+        }
+    }//GEN-LAST:event_txtProductKeyTyped
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       ListaCompras LC = new ListaCompras();
-       LC.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        ListaCompras LC = new ListaCompras();
+        LC.setVisible(true);
+    }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        Menu M= new Menu();
-        M.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -456,25 +410,56 @@ public class ComprasVentana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnClean;
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblContributor;
+    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblProduct;
+    private javax.swing.JLabel lblProvider;
+    private javax.swing.JLabel lblTelephone;
+    private javax.swing.JTextField txtAdress;
+    private javax.swing.JTextField txtContributor;
+    private javax.swing.JTextField txtDate;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtProduct;
+    private javax.swing.JTextField txtProvider;
+    private javax.swing.JTextField txtTelephone;
     // End of variables declaration//GEN-END:variables
+
+    private void add() {
+        /*
+        Declaramos las variables donde se guardara el contenido para los TextFiel
+         */
+        String date = txtDate.getText();
+        String provider = txtProvider.getText();
+        String adress = txtAdress.getText();
+        String telephone = txtTelephone.getText();
+        String RFC = txtContributor.getText();
+        String mail = txtEmail.getText();
+        String product = txtProduct.getText();
+        /*
+        Se hace la instancia para guardar los datos en el ArrayList
+         */
+        Compras clase = new Compras(date, provider, adress, telephone, mail, product, RFC);
+        contenedor.add(clase);
+        clearFields();
+        /*
+       * Agregar el contendio al jTable
+         */
+    }
+
+    private void clearFields() {
+        txtDate.setText("");
+        txtProvider.setText("");
+        txtAdress.setText("");
+        txtTelephone.setText("");
+        txtContributor.setText("");
+        txtEmail.setText("");
+        txtProduct.setText("");
+    }
 }
