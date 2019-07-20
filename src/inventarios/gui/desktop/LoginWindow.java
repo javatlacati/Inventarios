@@ -6,6 +6,11 @@
 package inventarios.gui.desktop;
 
 import inventarios.UsuariosParaInicioSecion;
+import java.awt.Component;
+import java.awt.Image;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -19,6 +24,8 @@ import javax.swing.JOptionPane;
  */
 public class LoginWindow extends javax.swing.JFrame {
 
+    
+
 //llamamos a la lista de clientes que se creo anteriormente//
     final private List<UsuariosParaInicioSecion> listaUsuarios;
 
@@ -26,9 +33,20 @@ public class LoginWindow extends javax.swing.JFrame {
         //estamos llamando el objeto lista desde la clase cliente//
         this.listaUsuarios = listaUsuarios;
         initComponents();
-
         this.setLocationRelativeTo(LoginWindow.this);
-        cerrar();
+//        ComponentListener cl = new ComponentAdapter() {
+//            @Override
+//            public void componentResized(ComponentEvent ce) {
+//                Component c = ce.getComponent();
+//                int w = c.getWidth();
+//                int h = c.getHeight();
+//                System.out.println("new dimensions: ( " + w + ", " + h + " )");
+//                backgroundImage = new ImageIcon(
+//                        backgroundImageIcon.getImage().getScaledInstance(w, h, Image.SCALE_FAST)
+//                ).getImage();
+//            }
+//        };
+//        backgroundedPanel.addComponentListener(cl);
     }
 
     //Método para confirmar el cierre deJFrame//
@@ -56,15 +74,33 @@ public class LoginWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnAccept = new javax.swing.JButton();
-        btnClean = new javax.swing.JButton();
+        backgroundedPanel = new javax.swing.JPanel(){
+            @Override
+            public void paintComponent(java.awt.Graphics g) {
+                javax.swing.ImageIcon backgroundImageIcon = new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"));
+                Image backgroundImage = 
+                new ImageIcon(
+                    backgroundImageIcon.getImage()
+                    .getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH)
+                ).getImage();
+                g.drawImage(backgroundImage,0,0,null); // draw the background image
+            }
+        };
+        ;
+        titlePanel = new javax.swing.JPanel();
+        lblTitle = new javax.swing.JLabel();
+        fieldsAndLogoPanel = new javax.swing.JPanel();
+        fieldsPanel = new javax.swing.JPanel();
+        userPanel = new javax.swing.JPanel();
         lblUser = new javax.swing.JLabel();
+        txtUser = new javax.swing.JTextField();
+        psswPanel = new javax.swing.JPanel();
         lblPassword = new javax.swing.JLabel();
         txtPsswd = new javax.swing.JPasswordField();
-        txtUser = new javax.swing.JTextField();
-        lblTitle = new javax.swing.JLabel();
         lblCorporativeIcon = new javax.swing.JLabel();
-        lblBackground = new javax.swing.JLabel();
+        btnPanel = new javax.swing.JPanel();
+        btnAccept = new javax.swing.JButton();
+        btnClean = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio Seccion");
@@ -73,8 +109,66 @@ public class LoginWindow extends javax.swing.JFrame {
             ("/ImgFondos/Icono.png")).getImage());
     setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
     setMinimumSize(new java.awt.Dimension(500, 400));
-    setResizable(false);
-    getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+    backgroundedPanel.setOpaque(false);
+    backgroundedPanel.setLayout(new java.awt.BorderLayout());
+
+    titlePanel.setOpaque(false);
+
+    lblTitle.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
+    lblTitle.setForeground(new java.awt.Color(204, 0, 0));
+    lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/login.png"))); // NOI18N
+    titlePanel.add(lblTitle);
+
+    backgroundedPanel.add(titlePanel, java.awt.BorderLayout.PAGE_START);
+
+    fieldsAndLogoPanel.setOpaque(false);
+
+    fieldsPanel.setOpaque(false);
+    fieldsPanel.setLayout(new java.awt.GridLayout(2, 2, 0, 15));
+
+    userPanel.setOpaque(false);
+    userPanel.setLayout(new java.awt.GridLayout(1, 0));
+
+    lblUser.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+    lblUser.setForeground(new java.awt.Color(0, 0, 153));
+    lblUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/usuario.png"))); // NOI18N
+    userPanel.add(lblUser);
+
+    txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            txtUserKeyTyped(evt);
+        }
+    });
+    userPanel.add(txtUser);
+
+    fieldsPanel.add(userPanel);
+
+    psswPanel.setOpaque(false);
+    psswPanel.setLayout(new java.awt.GridLayout(1, 0));
+
+    lblPassword.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+    lblPassword.setForeground(new java.awt.Color(0, 0, 153));
+    lblPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/contraseña.png"))); // NOI18N
+    psswPanel.add(lblPassword);
+
+    txtPsswd.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            txtPsswdKeyTyped(evt);
+        }
+    });
+    psswPanel.add(txtPsswd);
+
+    fieldsPanel.add(psswPanel);
+
+    fieldsAndLogoPanel.add(fieldsPanel);
+
+    lblCorporativeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/Imagen2.png"))); // NOI18N
+    fieldsAndLogoPanel.add(lblCorporativeIcon);
+
+    backgroundedPanel.add(fieldsAndLogoPanel, java.awt.BorderLayout.CENTER);
+
+    btnPanel.setOpaque(false);
 
     btnAccept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/aceptar.png"))); // NOI18N
     btnAccept.setBorder(null);
@@ -85,7 +179,7 @@ public class LoginWindow extends javax.swing.JFrame {
             btnAcceptActionPerformed(evt);
         }
     });
-    getContentPane().add(btnAccept, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 115, 49));
+    btnPanel.add(btnAccept);
 
     btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/limpiar.png"))); // NOI18N
     btnClean.setBorder(null);
@@ -96,42 +190,11 @@ public class LoginWindow extends javax.swing.JFrame {
             btnCleanActionPerformed(evt);
         }
     });
-    getContentPane().add(btnClean, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, 51));
+    btnPanel.add(btnClean);
 
-    lblUser.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-    lblUser.setForeground(new java.awt.Color(0, 0, 153));
-    lblUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/usuario.png"))); // NOI18N
-    getContentPane().add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 107, -1, -1));
+    backgroundedPanel.add(btnPanel, java.awt.BorderLayout.PAGE_END);
 
-    lblPassword.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-    lblPassword.setForeground(new java.awt.Color(0, 0, 153));
-    lblPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/contraseña.png"))); // NOI18N
-    getContentPane().add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 163, -1, -1));
-
-    txtPsswd.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            txtPsswdKeyTyped(evt);
-        }
-    });
-    getContentPane().add(txtPsswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 134, -1));
-
-    txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            txtUserKeyTyped(evt);
-        }
-    });
-    getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 134, -1));
-
-    lblTitle.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
-    lblTitle.setForeground(new java.awt.Color(204, 0, 0));
-    lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/login.png"))); // NOI18N
-    getContentPane().add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 24, -1, -1));
-
-    lblCorporativeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/Imagen2.png"))); // NOI18N
-    getContentPane().add(lblCorporativeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 150, 180));
-
-    lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
-    getContentPane().add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -6, 500, 390));
+    getContentPane().add(backgroundedPanel, java.awt.BorderLayout.CENTER);
 
     pack();
     setLocationRelativeTo(null);
@@ -166,15 +229,21 @@ public class LoginWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPsswdKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel backgroundedPanel;
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnClean;
-    private javax.swing.JLabel lblBackground;
+    private javax.swing.JPanel btnPanel;
+    private javax.swing.JPanel fieldsAndLogoPanel;
+    private javax.swing.JPanel fieldsPanel;
     private javax.swing.JLabel lblCorporativeIcon;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUser;
+    private javax.swing.JPanel psswPanel;
+    private javax.swing.JPanel titlePanel;
     private javax.swing.JPasswordField txtPsswd;
     private javax.swing.JTextField txtUser;
+    private javax.swing.JPanel userPanel;
     // End of variables declaration//GEN-END:variables
 
     private void loginAttempt() {

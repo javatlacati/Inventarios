@@ -6,7 +6,6 @@
 package inventarios.gui.desktop;
 
 import inventarios.UsuariosParaInicioSecion;
-import inventarios.gui.desktop.LoginWindow;
 import java.util.ArrayList;
 import java.util.List;
 
