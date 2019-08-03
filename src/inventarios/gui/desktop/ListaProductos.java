@@ -35,11 +35,6 @@ public class ListaProductos extends javax.swing.JFrame {
         MostrarLosDatos();
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.GRAY);
-        this.setResizable(false);
-        this.setIconImage
-         (new ImageIcon(getClass().getResource
-        ("/ImgFondos/Icono.png")).getImage());
-        cerrar();
        
             }
 //metodo para mostrar la interfaz vacia de la tabla//
@@ -50,7 +45,7 @@ public class ListaProductos extends javax.swing.JFrame {
         
         String col[]=  {"Producto", "Cantidad", "Características", "Serial", "Fecha de ingreso", "Fecha Egreso"};
         model = new DefaultTableModel(data, col);
-        jTable2.setModel(model); 
+        productsTable.setModel(model); 
         
        
     }
@@ -96,102 +91,139 @@ public class ListaProductos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        pnlTitle = new javax.swing.JPanel();
+        lblTitle = new javax.swing.JLabel();
+        lblBackgroundTitle = new javax.swing.JLabel();
+        pnlTable = new javax.swing.JPanel();
+        tableScroll = new javax.swing.JScrollPane();
+        productsTable = new javax.swing.JTable();
+        optionsMenu = new javax.swing.JPanel();
+        tableOptionsPanel = new javax.swing.JPanel();
         btneliminar = new javax.swing.JButton();
         btneliminartodo = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        navigationPanel = new javax.swing.JPanel();
+        btnMenu = new javax.swing.JButton();
+        btnGoBack = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Lista de Productos Agregados");
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setIconImage(new ImageIcon(getClass().getResource
+            ("/ImgFondos/Icono.png")).getImage());
+    setResizable(false);
 
-        jTable2.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
-        jTable2.setForeground(new java.awt.Color(153, 0, 0));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable2);
+    pnlTitle.setOpaque(false);
+    pnlTitle.setLayout(new javax.swing.OverlayLayout(pnlTitle));
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 147, 924, 245));
+    lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/productos agregados.png"))); // NOI18N
+    pnlTitle.add(lblTitle);
 
-        btneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
-        btneliminar.setBorder(null);
-        btneliminar.setContentAreaFilled(false);
-        btneliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btneliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btneliminarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btneliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, -1));
+    lblBackgroundTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
+    lblBackgroundTitle.setOpaque(true);
+    lblBackgroundTitle.setPreferredSize(lblTitle.size());
+    pnlTitle.add(lblBackgroundTitle);
 
-        btneliminartodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
-        btneliminartodo.setBorder(null);
-        btneliminartodo.setContentAreaFilled(false);
-        btneliminartodo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btneliminartodo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btneliminartodoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btneliminartodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, -1, -1));
+    getContentPane().add(pnlTitle, java.awt.BorderLayout.PAGE_START);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/productos agregados.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 11, -1, -1));
+    pnlTable.setOpaque(false);
+    pnlTable.setLayout(new java.awt.BorderLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 730, 90));
+    tableScroll.setOpaque(false);
 
-        jButton1.setBackground(new java.awt.Color(255, 0, 51));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setText("Menu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 140, 40));
+    productsTable.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+    productsTable.setForeground(new java.awt.Color(153, 0, 0));
+    productsTable.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null}
+        },
+        new String [] {
+            "Title 1", "Title 2", "Title 3", "Title 4"
+        }
+    ));
+    productsTable.setOpaque(false);
+    tableScroll.setViewportView(productsTable);
 
-        jButton2.setText("Cerrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 420, 90, 30));
+    pnlTable.add(tableScroll, java.awt.BorderLayout.CENTER);
 
-        jButton4.setText("REGRESAR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, -1, -1));
+    getContentPane().add(pnlTable, java.awt.BorderLayout.CENTER);
 
-        pack();
-        setLocationRelativeTo(null);
+    optionsMenu.setOpaque(false);
+    optionsMenu.setLayout(new java.awt.GridLayout(1, 3));
+
+    tableOptionsPanel.setOpaque(false);
+    tableOptionsPanel.setLayout(new java.awt.GridLayout());
+
+    btneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
+    btneliminar.setBorder(null);
+    btneliminar.setContentAreaFilled(false);
+    btneliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    btneliminar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btneliminarActionPerformed(evt);
+        }
+    });
+    tableOptionsPanel.add(btneliminar);
+
+    btneliminartodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
+    btneliminartodo.setBorder(null);
+    btneliminartodo.setContentAreaFilled(false);
+    btneliminartodo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    btneliminartodo.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btneliminartodoActionPerformed(evt);
+        }
+    });
+    tableOptionsPanel.add(btneliminartodo);
+
+    optionsMenu.add(tableOptionsPanel);
+
+    navigationPanel.setOpaque(false);
+
+    btnMenu.setBackground(new java.awt.Color(255, 0, 51));
+    btnMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+    btnMenu.setText("Menu");
+    btnMenu.setOpaque(false);
+    btnMenu.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnMenuActionPerformed(evt);
+        }
+    });
+    navigationPanel.add(btnMenu);
+
+    btnGoBack.setText("REGRESAR");
+    btnGoBack.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnGoBackActionPerformed(evt);
+        }
+    });
+    navigationPanel.add(btnGoBack);
+
+    btnClose.setText("Cerrar");
+    btnClose.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnCloseActionPerformed(evt);
+        }
+    });
+    navigationPanel.add(btnClose);
+
+    optionsMenu.add(navigationPanel);
+
+    getContentPane().add(optionsMenu, java.awt.BorderLayout.SOUTH);
+
+    pack();
+    setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         // TODO add your handling code here:
             try {
-            model=(DefaultTableModel) jTable2.getModel();
-            model.removeRow(jTable2.getSelectedRow());
-            jTable2.addRowSelectionInterval(0,0);
+            model=(DefaultTableModel) productsTable.getModel();
+            model.removeRow(productsTable.getSelectedRow());
+            productsTable.addRowSelectionInterval(0,0);
             model=null;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Seleccione la fila que desea quitar.");
@@ -201,8 +233,8 @@ public class ListaProductos extends javax.swing.JFrame {
     private void btneliminartodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminartodoActionPerformed
         // TODO add your handling code here:
         try {
-            DefaultTableModel model=(DefaultTableModel) jTable2.getModel();
-          int filas=jTable2.getRowCount();
+            DefaultTableModel model=(DefaultTableModel) productsTable.getModel();
+          int filas=productsTable.getRowCount();
             for (int i = 0;filas>i; i++) {
                 model.removeRow(0);
             }
@@ -212,25 +244,25 @@ public class ListaProductos extends javax.swing.JFrame {
     
     }//GEN-LAST:event_btneliminartodoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         // TODO add your handling code here:
           Menu M= new Menu();
         M.setVisible(true);
          dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnMenuActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
         dispose();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         // TODO add your handling code here:
         PedidosVetana r = new PedidosVetana();
         r.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnGoBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,14 +303,19 @@ public class ListaProductos extends javax.swing.JFrame {
     private javax.swing.JTable datos;
     private javax.swing.JScrollPane jScrollPane1;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnGoBack;
+    private javax.swing.JButton btnMenu;
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btneliminartodo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JLabel lblBackgroundTitle;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JPanel navigationPanel;
+    private javax.swing.JPanel optionsMenu;
+    private javax.swing.JPanel pnlTable;
+    private javax.swing.JPanel pnlTitle;
+    private javax.swing.JTable productsTable;
+    private javax.swing.JPanel tableOptionsPanel;
+    private javax.swing.JScrollPane tableScroll;
     // End of variables declaration//GEN-END:variables
 }
