@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 package inventarios.gui.desktop;
-import inventarios.gui.desktop.PedidosVetana;
-import inventarios.gui.desktop.InterfazConstructor;
+import inventarios.gui.desktop.OrderManagement;
+import inventarios.gui.desktop.InventoryManagement;
 import com.sun.imageio.plugins.png.RowFilter;
-import inventarios.Productos;
+import inventarios.to.Product;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -51,10 +51,10 @@ public class ListaProductos extends javax.swing.JFrame {
     }
      public void MostrarLosDatos()
         {
-            Productos p;
-            for(int i=0; i<InterfazConstructor.contenedor.size(); i++)
+            Product p;
+            for(int i=0; i<InventoryManagement.contenedor.size(); i++)
             {
-                p = (Productos) InterfazConstructor.contenedor.get(i);
+                p = (Product) InventoryManagement.contenedor.get(i);
                 model.insertRow(con, new Object[]{});
                 model.setValueAt(p.getProducto(),con , 0);
                 model.setValueAt(p.getCantidad(),con , 1);
@@ -107,7 +107,8 @@ public class ListaProductos extends javax.swing.JFrame {
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Lista de Productos Agregados");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("ListaProductos.title")); // NOI18N
         setIconImage(new ImageIcon(getClass().getResource
             ("/ImgFondos/Icono.png")).getImage());
     setResizable(false);
@@ -155,7 +156,7 @@ public class ListaProductos extends javax.swing.JFrame {
     optionsMenu.setLayout(new java.awt.GridLayout(1, 3));
 
     tableOptionsPanel.setOpaque(false);
-    tableOptionsPanel.setLayout(new java.awt.GridLayout());
+    tableOptionsPanel.setLayout(new java.awt.GridLayout(1, 0));
 
     btneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
     btneliminar.setBorder(null);
@@ -185,7 +186,7 @@ public class ListaProductos extends javax.swing.JFrame {
 
     btnMenu.setBackground(new java.awt.Color(255, 0, 51));
     btnMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-    btnMenu.setText("Menu");
+    btnMenu.setText(bundle.getString("ListaProductos.btnMenu.text")); // NOI18N
     btnMenu.setOpaque(false);
     btnMenu.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +195,7 @@ public class ListaProductos extends javax.swing.JFrame {
     });
     navigationPanel.add(btnMenu);
 
-    btnGoBack.setText("REGRESAR");
+    btnGoBack.setText(bundle.getString("ListaProductos.btnGoBack.text")); // NOI18N
     btnGoBack.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             btnGoBackActionPerformed(evt);
@@ -202,7 +203,7 @@ public class ListaProductos extends javax.swing.JFrame {
     });
     navigationPanel.add(btnGoBack);
 
-    btnClose.setText("Cerrar");
+    btnClose.setText(bundle.getString("ListaProductos.btnClose.text")); // NOI18N
     btnClose.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             btnCloseActionPerformed(evt);
@@ -259,7 +260,7 @@ public class ListaProductos extends javax.swing.JFrame {
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         // TODO add your handling code here:
-        PedidosVetana r = new PedidosVetana();
+        OrderManagement r = new OrderManagement();
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnGoBackActionPerformed

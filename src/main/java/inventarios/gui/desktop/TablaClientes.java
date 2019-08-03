@@ -5,7 +5,7 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.ClaseEmlpleados;
+import inventarios.to.EmployeeDetails;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -20,47 +20,45 @@ public class TablaClientes extends javax.swing.JFrame {
 
     private DefaultTableModel modelo;
     int cont = 0;
+
     /**
      * Creates new form TablaClientes
      */
     public TablaClientes() {
         initComponents();
-        ((JPanel)getContentPane()).setOpaque(false); 
+        ((JPanel) getContentPane()).setOpaque(false);
         ImageIcon uno;
         uno = new ImageIcon(this.getClass().getResource("/ImgFondos/tabla.jpg"));
-        JLabel fondo= new JLabel();
+        JLabel fondo = new JLabel();
         fondo.setIcon(uno);
-        getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER);
-        fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
+        getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
+        fondo.setBounds(0, 0, uno.getIconWidth(), uno.getIconHeight());
     }
-public void cargarinterfaz(){
-    String x [][]= {};
-    String columnas [] = {"matricula","nombre","primera apellido","segundo apellido","domicilio","puesto","Hora de entrada", "Hora de salida"};
-    modelo = new DefaultTableModel(x,columnas);
-    tabla.setModel(modelo);
-    
-    
-            }
-public void mostrardatos(ClaseEmlpleados c){
-    
-    modelo.insertRow(cont, new Object[]{});
-    
-    modelo.setValueAt(c.getMatricula(), cont, 0);
-    modelo.setValueAt(c.getNombre(), cont, 1);
-    modelo.setValueAt(c.getApellido1(), cont, 2);
-    modelo.setValueAt(c.getApellido2(), cont, 3);
-    modelo.setValueAt(c.getDomicilio(), cont, 4);
-    modelo.setValueAt(c.getPuesto(), cont, 5);
-    modelo.setValueAt(c.getHorae(), cont, 6);
-    modelo.setValueAt(c.getHoras(), cont, 7);
-  
-    
-  cont++;
-    
-    
-    
-}
-        
+
+    public void cargarinterfaz() {
+        String x[][] = {};
+        String columnas[] = {"matricula", "nombre", "primera apellido", "segundo apellido", "domicilio", "puesto", "Hora de entrada", "Hora de salida"};
+        modelo = new DefaultTableModel(x, columnas);
+        tblEmployees.setModel(modelo);
+    }
+
+    public void mostrardatos(EmployeeDetails c) {
+
+        modelo.insertRow(cont, new Object[]{});
+
+        modelo.setValueAt(c.getMatricula(), cont, 0);
+        modelo.setValueAt(c.getName(), cont, 1);
+        modelo.setValueAt(c.getApellido1(), cont, 2);
+        modelo.setValueAt(c.getApellido2(), cont, 3);
+        modelo.setValueAt(c.getDomicilio(), cont, 4);
+        modelo.setValueAt(c.getPuesto(), cont, 5);
+        modelo.setValueAt(c.getHorae(), cont, 6);
+        modelo.setValueAt(c.getHoras(), cont, 7);
+
+        cont++;
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,15 +69,16 @@ public void mostrardatos(ClaseEmlpleados c){
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        scrlEmployees = new javax.swing.JScrollPane();
+        tblEmployees = new javax.swing.JTable();
         btnGetBack = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        lblTitle.setText("Tabla de Registro de Empleados");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        lblTitle.setText(bundle.getString("TablaClientes.lblTitle.text")); // NOI18N
 
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmployees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -90,17 +89,17 @@ public void mostrardatos(ClaseEmlpleados c){
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tabla);
+        scrlEmployees.setViewportView(tblEmployees);
 
         btnGetBack.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        btnGetBack.setText("Regresar");
+        btnGetBack.setText(bundle.getString("TablaClientes.btnGetBack.text")); // NOI18N
         btnGetBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGetBackActionPerformed(evt);
             }
         });
 
-        btnClose.setText("Cerrar");
+        btnClose.setText(bundle.getString("TablaClientes.btnClose.text")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -114,7 +113,7 @@ public void mostrardatos(ClaseEmlpleados c){
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrlEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -132,7 +131,7 @@ public void mostrardatos(ClaseEmlpleados c){
                     .addComponent(btnGetBack)
                     .addComponent(btnClose))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrlEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
@@ -140,62 +139,18 @@ public void mostrardatos(ClaseEmlpleados c){
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
-    dispose();
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnGetBackActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
-        dispose ();
+        dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TablaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TablaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TablaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TablaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TablaClientes().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnGetBack;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tabla;
+    private javax.swing.JScrollPane scrlEmployees;
+    private javax.swing.JTable tblEmployees;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package inventarios.gui.desktop;
 
 import java.awt.Color;
@@ -13,26 +12,23 @@ import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Personal
  */
-public class Billing extends javax.swing.JFrame {
+public class BillingManagement extends javax.swing.JFrame {
+
     public static LinkedList contenedor = new LinkedList();
 
     /**
      * Creates new form FacturaciónVentana
      */
-    public Billing() {
+    public BillingManagement() {
         initComponents();
         cerrar();
         this.getContentPane().setBackground(Color.cyan);
-        this.setIconImage
-         (new ImageIcon(getClass().getResource
-        ("/ImgFondos/Icono.png")).getImage());
-        
-       
+        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
+
     }
 
     /**
@@ -44,7 +40,7 @@ public class Billing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblRfc = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblStreet = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -56,9 +52,9 @@ public class Billing extends javax.swing.JFrame {
         lblCountry = new javax.swing.JLabel();
         lblPOBox = new javax.swing.JLabel();
         lblEMail = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtRfc = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtStreet = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
@@ -74,32 +70,33 @@ public class Billing extends javax.swing.JFrame {
         btnMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Registrar factura");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("BillingManagement.title")); // NOI18N
         setResizable(false);
 
-        jLabel1.setText("RCF");
+        lblRfc.setText(bundle.getString("BillingManagement.lblRfc.text")); // NOI18N
 
-        jLabel2.setText("Razón Social");
+        jLabel2.setText(bundle.getString("BillingManagement.jLabel2.text")); // NOI18N
 
-        lblStreet.setText("Calle");
+        lblStreet.setText(bundle.getString("BillingManagement.lblStreet.text")); // NOI18N
 
-        jLabel4.setText("No. Ext.");
+        jLabel4.setText(bundle.getString("BillingManagement.jLabel4.text")); // NOI18N
 
-        jLabel5.setText("No. Int.");
+        jLabel5.setText(bundle.getString("BillingManagement.jLabel5.text")); // NOI18N
 
-        jLabel6.setText("Colonia");
+        jLabel6.setText(bundle.getString("BillingManagement.jLabel6.text")); // NOI18N
 
-        jLabel7.setText("Localidad");
+        jLabel7.setText(bundle.getString("BillingManagement.jLabel7.text")); // NOI18N
 
-        jLabel8.setText("Delegación/Municipio");
+        jLabel8.setText(bundle.getString("BillingManagement.jLabel8.text")); // NOI18N
 
-        lblState.setText("Estado");
+        lblState.setText(bundle.getString("BillingManagement.lblState.text")); // NOI18N
 
-        lblCountry.setText("País");
+        lblCountry.setText(bundle.getString("BillingManagement.lblCountry.text")); // NOI18N
 
-        lblPOBox.setText("Código Postal");
+        lblPOBox.setText(bundle.getString("BillingManagement.lblPOBox.text")); // NOI18N
 
-        lblEMail.setText("E-Mail");
+        lblEMail.setText(bundle.getString("BillingManagement.lblEMail.text")); // NOI18N
 
         btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
         btnClean.setBorder(null);
@@ -130,8 +127,8 @@ public class Billing extends javax.swing.JFrame {
 
         btnMenu.setBackground(new java.awt.Color(255, 0, 255));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnMenu.setText("Menu");
-        btnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnMenu.setText(bundle.getString("BillingManagement.btnMenu.text")); // NOI18N
+        btnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
@@ -145,7 +142,7 @@ public class Billing extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(lblRfc)
                     .addComponent(jLabel2)
                     .addComponent(lblStreet)
                     .addComponent(jLabel4)
@@ -159,9 +156,9 @@ public class Billing extends javax.swing.JFrame {
                     .addComponent(lblEMail))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                    .addComponent(txtRfc, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                     .addComponent(jTextField2)
-                    .addComponent(jTextField3)
+                    .addComponent(txtStreet)
                     .addComponent(jTextField4)
                     .addComponent(jTextField5)
                     .addComponent(jTextField6)
@@ -186,8 +183,8 @@ public class Billing extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblRfc)
+                            .addComponent(txtRfc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -200,7 +197,7 @@ public class Billing extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblStreet)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtStreet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -255,19 +252,19 @@ public class Billing extends javax.swing.JFrame {
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
 //Código para limpiar el contenido de todos los TextField//      
-        jTextField1.setText("");
-       jTextField2.setText("");
-       jTextField3.setText("");
-       jTextField4.setText("");
-       jTextField5.setText("");
-       jTextField6.setText("");
-       jTextField7.setText(""); 
-       jTextField8.setText("");
-       txtState.setText("");
-       txtCountry.setText("");
-       txtPOBox.setText("");
-       txtEmail.setText("");
-       // TODO add your handling code here:
+        txtRfc.setText("");
+        jTextField2.setText("");
+        txtStreet.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jTextField8.setText("");
+        txtState.setText("");
+        txtCountry.setText("");
+        txtPOBox.setText("");
+        txtEmail.setText("");
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
@@ -276,21 +273,21 @@ public class Billing extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-         //Código para cerrar la vetana//
-        dispose();  
-    // TODO add your handling code here:
+        //Código para cerrar la vetana//
+        dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         // TODO add your handling code here:
-          Menu M= new Menu();
+        Menu M = new Menu();
         M.setVisible(true);
     }//GEN-LAST:event_btnMenuActionPerformed
-    public void cerrar(){
+    public void cerrar() {
         try {
-            this.setDefaultCloseOperation(Billing.DO_NOTHING_ON_CLOSE);
+            this.setDefaultCloseOperation(BillingManagement.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
-                public void windowClosing(WindowEvent e){
+                public void windowClosing(WindowEvent e) {
                     confirmarSalida();
                 }
 
@@ -299,14 +296,16 @@ public class Billing extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-}
-    public void confirmarSalida(){
-        int valor= JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor==JOptionPane.YES_OPTION){
+    }
+
+    public void confirmarSalida() {
+        int valor = JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (valor == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
-        
+
     }
+
     /**
      * @param args the command line arguments
      */
@@ -324,21 +323,23 @@ public class Billing extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Billing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BillingManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Billing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BillingManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Billing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BillingManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Billing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BillingManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Billing().setVisible(true);
+                new BillingManagement().setVisible(true);
             }
         });
     }
@@ -348,16 +349,13 @@ public class Billing extends javax.swing.JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnView;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
@@ -366,11 +364,14 @@ public class Billing extends javax.swing.JFrame {
     private javax.swing.JLabel lblCountry;
     private javax.swing.JLabel lblEMail;
     private javax.swing.JLabel lblPOBox;
+    private javax.swing.JLabel lblRfc;
     private javax.swing.JLabel lblState;
     private javax.swing.JLabel lblStreet;
     private javax.swing.JTextField txtCountry;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtPOBox;
+    private javax.swing.JTextField txtRfc;
     private javax.swing.JTextField txtState;
+    private javax.swing.JTextField txtStreet;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,7 +5,7 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.ClaseEmlpleados;
+import inventarios.to.EmployeeDetails;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -18,14 +18,14 @@ import javax.swing.JPanel;
  *
  * @author IDELFONSO
  */
-public class Employees extends javax.swing.JFrame {
+public class EmployeeRegistration extends javax.swing.JFrame {
 
-    public static List<ClaseEmlpleados> clientList = new LinkedList<>();
+    public static List<EmployeeDetails> clientList = new LinkedList<>();
 
     /**
      * Creates new form Empleados
      */
-    public Employees() {
+    public EmployeeRegistration() {
         initComponents();
         ((JPanel) getContentPane()).setOpaque(false);
         ImageIcon uno;
@@ -69,25 +69,26 @@ public class Employees extends javax.swing.JFrame {
         txtLeavingTime = new javax.swing.JTextField();
 
         lblFirstName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblFirstName.setText("Nombre");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        lblFirstName.setText(bundle.getString("EmployeeRegistration.lblFirstName.text")); // NOI18N
 
         lblFirstLastName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblFirstLastName.setText("Primer Apellido");
+        lblFirstLastName.setText(bundle.getString("EmployeeRegistration.lblFirstLastName.text")); // NOI18N
 
         lblLastLastName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblLastLastName.setText("Segundo Apellido");
+        lblLastLastName.setText(bundle.getString("EmployeeRegistration.lblLastLastName.text")); // NOI18N
 
         lblAdress.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblAdress.setText("Domicilio");
+        lblAdress.setText(bundle.getString("EmployeeRegistration.lblAdress.text")); // NOI18N
 
         lblPosition.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblPosition.setText("Puesto");
+        lblPosition.setText(bundle.getString("EmployeeRegistration.lblPosition.text")); // NOI18N
 
         lblId.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblId.setText("matricula");
+        lblId.setText(bundle.getString("EmployeeRegistration.lblId.text")); // NOI18N
 
         btnSave.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        btnSave.setText("Guardar");
+        btnSave.setText(bundle.getString("EmployeeRegistration.btnSave.text")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -95,7 +96,7 @@ public class Employees extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jButton2.setText("Registro");
+        jButton2.setText(bundle.getString("EmployeeRegistration.jButton2.text")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -103,28 +104,28 @@ public class Employees extends javax.swing.JFrame {
         });
 
         windowTitle.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        windowTitle.setText("\"REGISTRO DE EMPLEADOS\"");
+        windowTitle.setText(bundle.getString("EmployeeRegistration.windowTitle.text")); // NOI18N
 
         btnMenu.setBackground(new java.awt.Color(255, 255, 255));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnMenu.setText("Menu");
-        btnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnMenu.setText(bundle.getString("EmployeeRegistration.btnMenu.text")); // NOI18N
+        btnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
 
-        btnClose.setText("Cerrar");
+        btnClose.setText(bundle.getString("EmployeeRegistration.btnClose.text")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        lblArrivingTime.setText("Hora de entrada");
+        lblArrivingTime.setText(bundle.getString("EmployeeRegistration.lblArrivingTime.text")); // NOI18N
 
-        lblLeavingTime.setText("Hora de salida");
+        lblLeavingTime.setText(bundle.getString("EmployeeRegistration.lblLeavingTime.text")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,7 +247,7 @@ public class Employees extends javax.swing.JFrame {
         String timeIn = txtArrivingTime.getText();
         String timeOut = txtLeavingTime.getText();
 
-        ClaseEmlpleados b = new ClaseEmlpleados(registrationNumber, name, lastName1, lastName2, domicilios, position, timeIn, timeOut);
+        EmployeeDetails b = new EmployeeDetails(registrationNumber, name, lastName1, lastName2, domicilios, position, timeIn, timeOut);
 
         clientList.add(b);
 
@@ -261,10 +262,10 @@ public class Employees extends javax.swing.JFrame {
         TablaClientes x = new TablaClientes();
         x.setVisible(true);
         x.cargarinterfaz();
-        ClaseEmlpleados c;
+        EmployeeDetails c;
 
         for (int i = 0; i < clientList.size(); i++) {
-            c = (ClaseEmlpleados) clientList.get(i);
+            c = (EmployeeDetails) clientList.get(i);
             x.mostrardatos(c);
         }
 
@@ -297,14 +298,30 @@ public class Employees extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Employees.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Employees.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Employees.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Employees.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -325,7 +342,7 @@ public class Employees extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Employees().setVisible(true);
+                new EmployeeRegistration().setVisible(true);
             }
         });
     }

@@ -77,7 +77,8 @@ public class Information extends javax.swing.JFrame {
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Créditos");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("Information.title")); // NOI18N
         setResizable(false);
 
         txtCredits.setEditable(false);
@@ -85,7 +86,7 @@ public class Information extends javax.swing.JFrame {
         txtCredits.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         txtCredits.setLineWrap(true);
         txtCredits.setRows(5);
-        txtCredits.setText("Ésta aplicación fue creada y modificada por los alumnos de la carrera de Ingeniería en Sistemas Computacionales, en coordinación con el Ing. Francisco Salvador Ballina Sánchez.\n\nInstituto Tecnológico Superior de Escárcega.\n\tGRUPO: ISMA-4\n\n\t\"Fundamentos de Base de Datos\".\n\n\t\t      15 de Marzo de 2016.");
+        txtCredits.setText(bundle.getString("Information.txtCredits.text")); // NOI18N
         txtCredits.setWrapStyleWord(true);
         txtCredits.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         scrollCredits.setViewportView(txtCredits);
@@ -103,7 +104,7 @@ public class Information extends javax.swing.JFrame {
         btnMenu.setBackground(new java.awt.Color(0, 0, 204));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
-        btnMenu.setText("Menu");
+        btnMenu.setText(bundle.getString("Information.btnMenu.text")); // NOI18N
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
@@ -113,7 +114,7 @@ public class Information extends javax.swing.JFrame {
         btnClose.setBackground(new java.awt.Color(255, 0, 0));
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnClose.setForeground(new java.awt.Color(255, 255, 255));
-        btnClose.setText("Cerrar");
+        btnClose.setText(bundle.getString("Information.btnClose.text")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);

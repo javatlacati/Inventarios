@@ -6,7 +6,7 @@
 
 package inventarios.gui.desktop;
 
-import inventarios.Facturación;
+import inventarios.to.BillingDetails;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -51,21 +51,21 @@ public class BillingList extends javax.swing.JFrame {
     
     public void MostrarLosDatos()
         {
-            Facturación f;
-            for(int i=0; i<Billing.contenedor.size(); i++)
+            BillingDetails f;
+            for(int i=0; i<BillingManagement.contenedor.size(); i++)
             {
-                f = (Facturación) Billing.contenedor.get(i);
+                f = (BillingDetails) BillingManagement.contenedor.get(i);
                 modelo.insertRow(con, new Object[]{});
                 modelo.setValueAt(f.getRFC(),con , 0);
                 modelo.setValueAt(f.getRS(),con , 1);
-                modelo.setValueAt(f.getCalle(),con , 2);
+                modelo.setValueAt(f.getStreetName(),con , 2);
                 modelo.setValueAt(f.getNE(),con , 3);
                 modelo.setValueAt(f.getNI(),con , 4);
                 modelo.setValueAt(f.getColonia(),con , 5);
                 modelo.setValueAt(f.getLocalidad(),con , 6);
                 modelo.setValueAt(f.getDM(),con , 7);
-                modelo.setValueAt(f.getEstado(),con , 8);
-                modelo.setValueAt(f.getPais(),con , 9);
+                modelo.setValueAt(f.getState(),con , 8);
+                modelo.setValueAt(f.getCountry(),con , 9);
                 modelo.setValueAt(f.getCP(),con , 10);
                 modelo.setValueAt(f.getEM(),con , 11);
                 
@@ -227,7 +227,7 @@ try {
 
     private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
         // TODO add your handling code here:
-        Billing r = new Billing();
+        BillingManagement r = new BillingManagement();
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnGetBackActionPerformed

@@ -93,13 +93,14 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Menu Principal");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("Menu.title")); // NOI18N
         setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setMinimumSize(new java.awt.Dimension(500, 250));
 
         lblTitle.setFont(new java.awt.Font("Tw Cen MT", 3, 24)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(51, 0, 255));
-        lblTitle.setText("MENU INVENTARIO");
+        lblTitle.setText(bundle.getString("Menu.lblTitle.text")); // NOI18N
         titlePanel.add(lblTitle);
 
         getContentPane().add(titlePanel, java.awt.BorderLayout.PAGE_START);
@@ -108,7 +109,7 @@ public class Menu extends javax.swing.JFrame {
 
         optionsPanel.setLayout(new java.awt.GridLayout(4, 2));
 
-        btnInventory.setText("Inventarios");
+        btnInventory.setText(bundle.getString("Menu.btnInventory.text")); // NOI18N
         btnInventory.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +118,7 @@ public class Menu extends javax.swing.JFrame {
         });
         optionsPanel.add(btnInventory);
 
-        btnTransaction.setText("Compra/Venta");
+        btnTransaction.setText(bundle.getString("Menu.btnTransaction.text")); // NOI18N
         btnTransaction.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnTransaction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +127,7 @@ public class Menu extends javax.swing.JFrame {
         });
         optionsPanel.add(btnTransaction);
 
-        btnOrders.setText("Pedidos");
+        btnOrders.setText(bundle.getString("Menu.btnOrders.text")); // NOI18N
         btnOrders.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +136,7 @@ public class Menu extends javax.swing.JFrame {
         });
         optionsPanel.add(btnOrders);
 
-        btnBilling.setText("Facturación");
+        btnBilling.setText(bundle.getString("Menu.btnBilling.text")); // NOI18N
         btnBilling.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBillingActionPerformed(evt);
@@ -143,7 +144,7 @@ public class Menu extends javax.swing.JFrame {
         });
         optionsPanel.add(btnBilling);
 
-        btnProvider.setText("Proveedor");
+        btnProvider.setText(bundle.getString("Menu.btnProvider.text")); // NOI18N
         btnProvider.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnProvider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +153,7 @@ public class Menu extends javax.swing.JFrame {
         });
         optionsPanel.add(btnProvider);
 
-        btnAbout.setText("A cerca de...");
+        btnAbout.setText(bundle.getString("Menu.btnAbout.text")); // NOI18N
         btnAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAboutActionPerformed(evt);
@@ -160,7 +161,7 @@ public class Menu extends javax.swing.JFrame {
         });
         optionsPanel.add(btnAbout);
 
-        btnEmployeeRecords.setText("Registro Empleados");
+        btnEmployeeRecords.setText(bundle.getString("Menu.btnEmployeeRecords.text")); // NOI18N
         btnEmployeeRecords.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmployeeRecordsActionPerformed(evt);
@@ -168,7 +169,7 @@ public class Menu extends javax.swing.JFrame {
         });
         optionsPanel.add(btnEmployeeRecords);
 
-        btnCredits.setText("Creditos");
+        btnCredits.setText(bundle.getString("Menu.btnCredits.text")); // NOI18N
         btnCredits.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreditsActionPerformed(evt);
@@ -185,7 +186,7 @@ public class Menu extends javax.swing.JFrame {
 
         imageAndNavigationPanel.add(imagePanel);
 
-        btnClose.setText("Cerrar");
+        btnClose.setText(bundle.getString("Menu.btnClose.text")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -193,7 +194,7 @@ public class Menu extends javax.swing.JFrame {
         });
         navivgationPanel.add(btnClose);
 
-        btnGetBack.setText("Regresar");
+        btnGetBack.setText(bundle.getString("Menu.btnGetBack.text")); // NOI18N
         btnGetBack.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGetBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,9 +209,9 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(contentPanel, java.awt.BorderLayout.CENTER);
 
-        mnuInventory.setText("SISTEMA DE INVENTARIO");
+        mnuInventory.setText(bundle.getString("Menu.mnuInventory.text")); // NOI18N
 
-        mnuInventories.setText("Inventarios");
+        mnuInventories.setText(bundle.getString("Menu.mnuInventories.text")); // NOI18N
         mnuInventories.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuInventoriesActionPerformed(evt);
@@ -218,7 +219,7 @@ public class Menu extends javax.swing.JFrame {
         });
         mnuInventory.add(mnuInventories);
 
-        mnuBills.setText("Facturas");
+        mnuBills.setText(bundle.getString("Menu.mnuBills.text")); // NOI18N
         mnuBills.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuBillsActionPerformed(evt);
@@ -226,7 +227,7 @@ public class Menu extends javax.swing.JFrame {
         });
         mnuInventory.add(mnuBills);
 
-        mnuProvider.setText("Provedor");
+        mnuProvider.setText(bundle.getString("Menu.mnuProvider.text")); // NOI18N
         mnuProvider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuProviderActionPerformed(evt);
@@ -234,9 +235,9 @@ public class Menu extends javax.swing.JFrame {
         });
         mnuInventory.add(mnuProvider);
 
-        mnuServices.setText("Servicios");
+        mnuServices.setText(bundle.getString("Menu.mnuServices.text")); // NOI18N
 
-        mnuOrders.setText("Pedidos");
+        mnuOrders.setText(bundle.getString("Menu.mnuOrders.text")); // NOI18N
         mnuOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuOrdersActionPerformed(evt);
@@ -244,7 +245,7 @@ public class Menu extends javax.swing.JFrame {
         });
         mnuServices.add(mnuOrders);
 
-        mnuTransactions.setText("Compra  venta");
+        mnuTransactions.setText(bundle.getString("Menu.mnuTransactions.text")); // NOI18N
         mnuTransactions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuTransactionsActionPerformed(evt);
@@ -256,9 +257,9 @@ public class Menu extends javax.swing.JFrame {
 
         menuBar.add(mnuInventory);
 
-        mnuAbout.setText("ACERCA DE");
+        mnuAbout.setText(bundle.getString("Menu.mnuAbout.text")); // NOI18N
 
-        mnuAboutItem.setText("Acerca de");
+        mnuAboutItem.setText(bundle.getString("Menu.mnuAboutItem.text")); // NOI18N
         mnuAboutItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuAboutItemActionPerformed(evt);
@@ -266,7 +267,7 @@ public class Menu extends javax.swing.JFrame {
         });
         mnuAbout.add(mnuAboutItem);
 
-        mnuGetBack.setText("Regresar");
+        mnuGetBack.setText(bundle.getString("Menu.mnuGetBack.text")); // NOI18N
         mnuGetBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuGetBackActionPerformed(evt);
@@ -282,7 +283,7 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
-        InterfazConstructor r = new InterfazConstructor();
+        InventoryManagement r = new InventoryManagement();
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnInventoryActionPerformed
@@ -294,13 +295,13 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTransactionActionPerformed
 
     private void btnOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdersActionPerformed
-        PedidosVetana r = new PedidosVetana();
+        OrderManagement r = new OrderManagement();
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnOrdersActionPerformed
 
     private void btnProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProviderActionPerformed
-        ProveedorVentana r = new ProveedorVentana();
+        ProviderManagement r = new ProviderManagement();
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnProviderActionPerformed
@@ -310,7 +311,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGetBackActionPerformed
 
     private void btnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillingActionPerformed
-        Billing Fv = new Billing();
+        BillingManagement Fv = new BillingManagement();
         Fv.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnBillingActionPerformed
@@ -322,7 +323,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAboutActionPerformed
 
     private void mnuInventoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuInventoriesActionPerformed
-        InterfazConstructor r = new InterfazConstructor();
+        InventoryManagement r = new InventoryManagement();
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_mnuInventoriesActionPerformed
@@ -334,19 +335,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuAboutItemActionPerformed
 
     private void mnuBillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuBillsActionPerformed
-        Billing Fv = new Billing();
+        BillingManagement Fv = new BillingManagement();
         Fv.setVisible(true);
         dispose();
     }//GEN-LAST:event_mnuBillsActionPerformed
 
     private void mnuProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProviderActionPerformed
-        ProveedorVentana r = new ProveedorVentana();
+        ProviderManagement r = new ProviderManagement();
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_mnuProviderActionPerformed
 
     private void mnuOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOrdersActionPerformed
-        PedidosVetana r = new PedidosVetana();
+        OrderManagement r = new OrderManagement();
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_mnuOrdersActionPerformed
@@ -362,13 +363,13 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_mnuGetBackActionPerformed
 
     private void btnEmployeeRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeRecordsActionPerformed
-        Employees n = new Employees();
+        EmployeeRegistration n = new EmployeeRegistration();
         n.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnEmployeeRecordsActionPerformed
 
     private void btnCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditsActionPerformed
-        Creditos y = new Creditos();
+        Credits y = new Credits();
         y.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCreditsActionPerformed

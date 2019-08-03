@@ -8,7 +8,7 @@ package inventarios.gui.desktop;
 /*
 Se importa la paqueteria a utilizar
  */
-import inventarios.Pedidos;
+import inventarios.to.Orders;
 import inventarios.gui.desktop.ListaPedidos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -24,14 +24,14 @@ import javax.swing.ImageIcon;
  *
  * @author EfraJiJim
  */
-public class PedidosVetana extends javax.swing.JFrame {
+public class OrderManagement extends javax.swing.JFrame {
 
-    public static List<Pedidos> contenedor = new LinkedList<>();
+    public static List<Orders> contenedor = new LinkedList<>();
 
     /**
      * Creates new form PedidosVetana
      */
-    public PedidosVetana() {
+    public OrderManagement() {
         /*
         Se inicializa la Lista
          */
@@ -78,22 +78,23 @@ public class PedidosVetana extends javax.swing.JFrame {
         txtOrderDate = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Registro de Pedidos");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("OrderManagement.title")); // NOI18N
         setResizable(false);
 
-        jLabel1.setText("No. de Pedido");
+        jLabel1.setText(bundle.getString("OrderManagement.jLabel1.text")); // NOI18N
 
-        lblName.setText("Nombre");
+        lblName.setText(bundle.getString("OrderManagement.lblName.text")); // NOI18N
 
-        blLastName.setText("Apellidos");
+        blLastName.setText(bundle.getString("OrderManagement.blLastName.text")); // NOI18N
 
-        lblProduct.setText("Producto");
+        lblProduct.setText(bundle.getString("OrderManagement.lblProduct.text")); // NOI18N
 
-        jLabel5.setText("RFC");
+        jLabel5.setText(bundle.getString("OrderManagement.jLabel5.text")); // NOI18N
 
-        lblTelephone.setText("Teléfono");
+        lblTelephone.setText(bundle.getString("OrderManagement.lblTelephone.text")); // NOI18N
 
-        jLabel7.setText("Atendio por");
+        jLabel7.setText(bundle.getString("OrderManagement.jLabel7.text")); // NOI18N
 
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
         btnAdd.setBorder(null);
@@ -156,8 +157,7 @@ public class PedidosVetana extends javax.swing.JFrame {
 
         btnMenu.setBackground(new java.awt.Color(0, 0, 255));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnMenu.setText("MENU");
-        btnMenu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnMenu.setText(bundle.getString("OrderManagement.btnMenu.text")); // NOI18N
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
@@ -166,8 +166,8 @@ public class PedidosVetana extends javax.swing.JFrame {
 
         btnGetBack.setBackground(new java.awt.Color(255, 51, 204));
         btnGetBack.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
-        btnGetBack.setText("Regresar");
-        btnGetBack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnGetBack.setText(bundle.getString("OrderManagement.btnGetBack.text")); // NOI18N
+        btnGetBack.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         btnGetBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnGetBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,9 +175,9 @@ public class PedidosVetana extends javax.swing.JFrame {
             }
         });
 
-        lblAddress.setText("Direccion");
+        lblAddress.setText(bundle.getString("OrderManagement.lblAddress.text")); // NOI18N
 
-        lblOrderDate.setText("Fecha de pedido");
+        lblOrderDate.setText(bundle.getString("OrderManagement.lblOrderDate.text")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -323,7 +323,7 @@ public class PedidosVetana extends javax.swing.JFrame {
         /*
         Se hace la instancia para guardar los datos en el ArrayList
          */
-        Pedidos Ped = new Pedidos(name, lastName, Producto, Empleado, NumPedido, RFC, Telefono, Direccion, Fecha);
+        Orders Ped = new Orders(name, lastName, Producto, Empleado, NumPedido, RFC, Telefono, Direccion, Fecha);
         contenedor.add(Ped);
 
         jTextField1.setText("");
@@ -360,7 +360,7 @@ public class PedidosVetana extends javax.swing.JFrame {
 
     public void cerrar() {
         try {
-            this.setDefaultCloseOperation(PedidosVetana.DO_NOTHING_ON_CLOSE);
+            this.setDefaultCloseOperation(OrderManagement.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
                     confirmarSalida();
@@ -397,21 +397,23 @@ public class PedidosVetana extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PedidosVetana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrderManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PedidosVetana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrderManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PedidosVetana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrderManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PedidosVetana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrderManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PedidosVetana().setVisible(true);
+                new OrderManagement().setVisible(true);
             }
         });
     }

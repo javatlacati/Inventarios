@@ -5,7 +5,7 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.UsuariosParaInicioSecion;
+import inventarios.to.LoginUsers;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ComponentAdapter;
@@ -27,11 +27,10 @@ public class LoginWindow extends javax.swing.JFrame {
     
 
 //llamamos a la lista de clientes que se creo anteriormente//
-    final private List<UsuariosParaInicioSecion> listaUsuarios;
+    final private List<LoginUsers> userList;
 
-    public LoginWindow(List<UsuariosParaInicioSecion> listaUsuarios) {
-        //estamos llamando el objeto lista desde la clase cliente//
-        this.listaUsuarios = listaUsuarios;
+    public LoginWindow(List<LoginUsers> userList) {
+        this.userList = userList;
         initComponents();
         this.setLocationRelativeTo(LoginWindow.this);
 //        ComponentListener cl = new ComponentAdapter() {
@@ -209,7 +208,6 @@ public class LoginWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
-        // limpiar ventana
         txtUser.setText(null);
         txtPsswd.setText(null);
     }//GEN-LAST:event_btnCleanActionPerformed
@@ -250,9 +248,9 @@ public class LoginWindow extends javax.swing.JFrame {
         String user = txtUser.getText();
         String password = txtPsswd.getText();
 
-        for (UsuariosParaInicioSecion usuarioParaInicioSecion : listaUsuarios) {
-            if (usuarioParaInicioSecion.getUsuario().equals(user)
-                    && usuarioParaInicioSecion.getContraseña().equals(password)) {
+        for (LoginUsers usuarioParaInicioSecion : userList) {
+            if (usuarioParaInicioSecion.getUser().equals(user)
+                    && usuarioParaInicioSecion.getPassword().equals(password)) {
                 Menu CdP = new Menu();
                 CdP.setVisible(true);
                 return;

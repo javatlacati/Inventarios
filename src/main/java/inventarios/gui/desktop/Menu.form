@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -13,12 +13,16 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="mnuInventory">
           <Properties>
-            <Property name="text" type="java.lang.String" value="SISTEMA DE INVENTARIO"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.mnuInventory.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnuInventories">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inventarios"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.mnuInventories.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuInventoriesActionPerformed"/>
@@ -26,7 +30,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuBills">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Facturas"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.mnuBills.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuBillsActionPerformed"/>
@@ -34,7 +40,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuProvider">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Provedor"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.mnuProvider.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuProviderActionPerformed"/>
@@ -42,12 +50,16 @@
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="mnuServices">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Servicios"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.mnuServices.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="mnuOrders">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Pedidos"/>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                      <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.mnuOrders.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuOrdersActionPerformed"/>
@@ -55,7 +67,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="mnuTransactions">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Compra  venta"/>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                      <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.mnuTransactions.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuTransactionsActionPerformed"/>
@@ -67,12 +81,16 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuAbout">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ACERCA DE"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.mnuAbout.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnuAboutItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Acerca de"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.mnuAboutItem.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuAboutItemActionPerformed"/>
@@ -80,7 +98,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuGetBack">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Regresar"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.mnuGetBack.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuGetBackActionPerformed"/>
@@ -93,7 +113,9 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Menu Principal"/>
+    <Property name="title" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+      <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.title" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+    </Property>
     <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
       <Connection code="new ImageIcon(getClass().getResource(&quot;/ImgFondos/Icono.png&quot;)).getImage()" type="code"/>
     </Property>
@@ -107,11 +129,11 @@
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
-    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="1"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
@@ -138,7 +160,9 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="0" red="33" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="MENU INVENTARIO"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.lblTitle.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -163,7 +187,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btnInventory">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inventarios"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.btnInventory.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor Por defecto"/>
                 </Property>
@@ -174,7 +200,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnTransaction">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Compra/Venta"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.btnTransaction.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor Por defecto"/>
                 </Property>
@@ -185,7 +213,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnOrders">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pedidos"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.btnOrders.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor Por defecto"/>
                 </Property>
@@ -196,7 +226,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnBilling">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Facturaci&#xf3;n"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.btnBilling.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBillingActionPerformed"/>
@@ -204,7 +236,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnProvider">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Proveedor"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.btnProvider.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor Por defecto"/>
                 </Property>
@@ -215,7 +249,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnAbout">
               <Properties>
-                <Property name="text" type="java.lang.String" value="A cerca de..."/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.btnAbout.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAboutActionPerformed"/>
@@ -223,7 +259,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnEmployeeRecords">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registro Empleados"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.btnEmployeeRecords.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEmployeeRecordsActionPerformed"/>
@@ -231,7 +269,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnCredits">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Creditos"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.btnCredits.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreditsActionPerformed"/>
@@ -264,7 +304,9 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="btnClose">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Cerrar"/>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                      <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.btnClose.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCloseActionPerformed"/>
@@ -272,7 +314,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnGetBack">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Regresar"/>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                      <ResourceString bundle="inventarios/gui/desktop/Bundle.properties" key="Menu.btnGetBack.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                    </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Cursor Por defecto"/>
                     </Property>

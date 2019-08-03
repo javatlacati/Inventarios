@@ -5,8 +5,8 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.Proveedor;
-import static inventarios.gui.desktop.PedidosVetana.contenedor;
+import inventarios.to.Proveedor;
+import static inventarios.gui.desktop.OrderManagement.contenedor;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -21,16 +21,16 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author EfraJiJim
  */
-public class ProveedorVentana extends javax.swing.JFrame {
+public class ProviderManagement extends javax.swing.JFrame {
 
-    public static List contenedor = new LinkedList<>();
+    public static List<Proveedor> contenedor = new LinkedList<>();
 
     ArrayList<Proveedor> Lista;
 
     /**
      * Creates new form ProveedorVentana
      */
-    public ProveedorVentana() {
+    public ProviderManagement() {
         /*
         Se inicializa la Lista
          */
@@ -69,23 +69,24 @@ public class ProveedorVentana extends javax.swing.JFrame {
         btnMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Registro Proveedor");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("ProviderManagement.title")); // NOI18N
         setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setResizable(false);
 
-        lblName.setText("Nombre");
+        lblName.setText(bundle.getString("ProviderManagement.lblName.text")); // NOI18N
 
-        lblLastName.setText("Apellidos");
+        lblLastName.setText(bundle.getString("ProviderManagement.lblLastName.text")); // NOI18N
 
-        lblAddress.setText("Dirección");
+        lblAddress.setText(bundle.getString("ProviderManagement.lblAddress.text")); // NOI18N
 
-        lblProvider.setText("No. de Proveedor");
+        lblProvider.setText(bundle.getString("ProviderManagement.lblProvider.text")); // NOI18N
 
-        lblTelephone.setText("Teléfono");
+        lblTelephone.setText(bundle.getString("ProviderManagement.lblTelephone.text")); // NOI18N
 
-        lblEmail.setText("E-Mail");
+        lblEmail.setText(bundle.getString("ProviderManagement.lblEmail.text")); // NOI18N
 
-        lblPOBox.setText("Código Postal");
+        lblPOBox.setText(bundle.getString("ProviderManagement.lblPOBox.text")); // NOI18N
 
         txtProvider.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -135,8 +136,7 @@ public class ProveedorVentana extends javax.swing.JFrame {
 
         btnMenu.setBackground(new java.awt.Color(0, 0, 255));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnMenu.setText("Menu");
-        btnMenu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnMenu.setText(bundle.getString("ProviderManagement.btnMenu.text")); // NOI18N
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
@@ -301,8 +301,9 @@ public class ProveedorVentana extends javax.swing.JFrame {
 
     public void cerrar() {
         try {
-            this.setDefaultCloseOperation(ProveedorVentana.DO_NOTHING_ON_CLOSE);
+            this.setDefaultCloseOperation(ProviderManagement.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
+                @Override
                 public void windowClosing(WindowEvent e) {
                     confirmarSalida();
                 }
@@ -338,20 +339,22 @@ public class ProveedorVentana extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProveedorVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProviderManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProveedorVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProviderManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProveedorVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProviderManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProveedorVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProviderManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new ProveedorVentana().setVisible(true);
+                new ProviderManagement().setVisible(true);
             }
         });
     }

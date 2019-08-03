@@ -5,7 +5,7 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.UsuariosParaInicioSecion;
+import inventarios.to.LoginUsers;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,144 +17,144 @@ public class Usuarios {
 
     public static void main(String[] args) {
 
-        List<UsuariosParaInicioSecion> aceptedUserList = new ArrayList<>();
+        List<LoginUsers> aceptedUserList = new ArrayList<>();
         fillInUserList(aceptedUserList);
 
         LoginWindow login = new LoginWindow(aceptedUserList);
         login.setVisible(true);
     }
 
-    private static void fillInUserList(List<UsuariosParaInicioSecion> userList) {
-        UsuariosParaInicioSecion francisco = new UsuariosParaInicioSecion("francisco", "francisco");
+    private static void fillInUserList(List<LoginUsers> userList) {
+        LoginUsers francisco = new LoginUsers("francisco", "francisco");
         userList.add(francisco);
 
-        UsuariosParaInicioSecion oscar = new UsuariosParaInicioSecion("oscar", "oscar");
+        LoginUsers oscar = new LoginUsers("oscar", "oscar");
         userList.add(oscar);
 
-        UsuariosParaInicioSecion ignacio = new UsuariosParaInicioSecion("ignacio", "ignacio");
+        LoginUsers ignacio = new LoginUsers("ignacio", "ignacio");
         userList.add(ignacio);
 
-        UsuariosParaInicioSecion marroquin = new UsuariosParaInicioSecion("marroquin", "marroquin");
+        LoginUsers marroquin = new LoginUsers("marroquin", "marroquin");
         userList.add(marroquin);
 
-        UsuariosParaInicioSecion morales = new UsuariosParaInicioSecion("morales", "morales");
+        LoginUsers morales = new LoginUsers("morales", "morales");
         userList.add(morales);
 
-        UsuariosParaInicioSecion ballina = new UsuariosParaInicioSecion("ballina", "ballina");
+        LoginUsers ballina = new LoginUsers("ballina", "ballina");
         userList.add(ballina);
 
-        UsuariosParaInicioSecion erik = new UsuariosParaInicioSecion("erik", "erik");
+        LoginUsers erik = new LoginUsers("erik", "erik");
         userList.add(erik);
 
-        UsuariosParaInicioSecion david = new UsuariosParaInicioSecion("david", "david");
+        LoginUsers david = new LoginUsers("david", "david");
         userList.add(david);
 
-        UsuariosParaInicioSecion avila = new UsuariosParaInicioSecion("avila", "avila");
+        LoginUsers avila = new LoginUsers("avila", "avila");
         userList.add(avila);
 
-        UsuariosParaInicioSecion cruz = new UsuariosParaInicioSecion("cruz", "cruz");
+        LoginUsers cruz = new LoginUsers("cruz", "cruz");
         userList.add(cruz);
 
-        UsuariosParaInicioSecion rosa = new UsuariosParaInicioSecion("rosa", "rosa");
+        LoginUsers rosa = new LoginUsers("rosa", "rosa");
         userList.add(rosa);
 
-        UsuariosParaInicioSecion arcos = new UsuariosParaInicioSecion("arcos", "arcos");
+        LoginUsers arcos = new LoginUsers("arcos", "arcos");
         userList.add(arcos);
 
-        UsuariosParaInicioSecion vazquez = new UsuariosParaInicioSecion("vazquez", "vazquez");
+        LoginUsers vazquez = new LoginUsers("vazquez", "vazquez");
         userList.add(vazquez);
 
-        UsuariosParaInicioSecion edgar = new UsuariosParaInicioSecion("edgar", "edgar");
+        LoginUsers edgar = new LoginUsers("edgar", "edgar");
         userList.add(edgar);
 
-        UsuariosParaInicioSecion gomez = new UsuariosParaInicioSecion("gomez", "gomez");
+        LoginUsers gomez = new LoginUsers("gomez", "gomez");
         userList.add(gomez);
 
-        UsuariosParaInicioSecion fernando = new UsuariosParaInicioSecion("fernando", "fernando");
+        LoginUsers fernando = new LoginUsers("fernando", "fernando");
         userList.add(fernando);
 
-        UsuariosParaInicioSecion jimenez = new UsuariosParaInicioSecion("jimenez", "jimenez");
+        LoginUsers jimenez = new LoginUsers("jimenez", "jimenez");
         userList.add(jimenez);
 
-        UsuariosParaInicioSecion yesica = new UsuariosParaInicioSecion("yesica", "yesica");
+        LoginUsers yesica = new LoginUsers("yesica", "yesica");
         userList.add(yesica);
 
-        UsuariosParaInicioSecion irene = new UsuariosParaInicioSecion("irene", "irene");
+        LoginUsers irene = new LoginUsers("irene", "irene");
         userList.add(irene);
 
-        UsuariosParaInicioSecion guadalupe = new UsuariosParaInicioSecion("guadalupe", "guadalupe");
+        LoginUsers guadalupe = new LoginUsers("guadalupe", "guadalupe");
         userList.add(guadalupe);
 
-        UsuariosParaInicioSecion felix = new UsuariosParaInicioSecion("felix", "felix");
+        LoginUsers felix = new LoginUsers("felix", "felix");
         userList.add(felix);
 
-        UsuariosParaInicioSecion hernandez = new UsuariosParaInicioSecion("hernandez", "hernandez");
+        LoginUsers hernandez = new LoginUsers("hernandez", "hernandez");
         userList.add(hernandez);
 
-        UsuariosParaInicioSecion xander = new UsuariosParaInicioSecion("xander", "xander");
+        LoginUsers xander = new LoginUsers("xander", "xander");
         userList.add(xander);
 
-        UsuariosParaInicioSecion xero = new UsuariosParaInicioSecion("xero", "xero");
+        LoginUsers xero = new LoginUsers("xero", "xero");
         userList.add(xero);
 
-        UsuariosParaInicioSecion trinidad = new UsuariosParaInicioSecion("trinidad", "trinidad");
+        LoginUsers trinidad = new LoginUsers("trinidad", "trinidad");
         userList.add(trinidad);
 
-        UsuariosParaInicioSecion montero = new UsuariosParaInicioSecion("montero", "montero");
+        LoginUsers montero = new LoginUsers("montero", "montero");
         userList.add(montero);
 
-        UsuariosParaInicioSecion aquino = new UsuariosParaInicioSecion("aquino", "aquino");
+        LoginUsers aquino = new LoginUsers("aquino", "aquino");
         userList.add(aquino);
 
-        UsuariosParaInicioSecion lopez = new UsuariosParaInicioSecion("lopez", "lopez");
+        LoginUsers lopez = new LoginUsers("lopez", "lopez");
         userList.add(lopez);
 
-        UsuariosParaInicioSecion marriano = new UsuariosParaInicioSecion("marriano", "marriano");
+        LoginUsers marriano = new LoginUsers("marriano", "marriano");
         userList.add(marriano);
 
-        UsuariosParaInicioSecion miguel = new UsuariosParaInicioSecion("miguel", "miguel");
+        LoginUsers miguel = new LoginUsers("miguel", "miguel");
         userList.add(miguel);
 
-        UsuariosParaInicioSecion lupita = new UsuariosParaInicioSecion("lupita", "lupita");
+        LoginUsers lupita = new LoginUsers("lupita", "lupita");
         userList.add(lupita);
 
-        UsuariosParaInicioSecion carlos = new UsuariosParaInicioSecion("carlos", "carlos");
+        LoginUsers carlos = new LoginUsers("carlos", "carlos");
         userList.add(carlos);
 
-        UsuariosParaInicioSecion alberto = new UsuariosParaInicioSecion("alberto", "alberto");
+        LoginUsers alberto = new LoginUsers("alberto", "alberto");
         userList.add(alberto);
 
-        UsuariosParaInicioSecion tiburcio = new UsuariosParaInicioSecion("tiburcio", "tiburcio");
+        LoginUsers tiburcio = new LoginUsers("tiburcio", "tiburcio");
         userList.add(tiburcio);
 
-        UsuariosParaInicioSecion dominga = new UsuariosParaInicioSecion("dominga", "dominga");
+        LoginUsers dominga = new LoginUsers("dominga", "dominga");
         userList.add(dominga);
 
-        UsuariosParaInicioSecion torres = new UsuariosParaInicioSecion("torres", "torres");
+        LoginUsers torres = new LoginUsers("torres", "torres");
         userList.add(torres);
 
-        UsuariosParaInicioSecion moreno = new UsuariosParaInicioSecion("negro", "blanco");
+        LoginUsers moreno = new LoginUsers("negro", "blanco");
         userList.add(moreno);
 
-        UsuariosParaInicioSecion pedro = new UsuariosParaInicioSecion("paco", "chato");
+        LoginUsers pedro = new LoginUsers("paco", "chato");
         userList.add(pedro);
 
-        UsuariosParaInicioSecion sagrario = new UsuariosParaInicioSecion("sagrario", "sagrario");
+        LoginUsers sagrario = new LoginUsers("sagrario", "sagrario");
         userList.add(sagrario);
 
-        UsuariosParaInicioSecion heber = new UsuariosParaInicioSecion("perry", "rojo");
+        LoginUsers heber = new LoginUsers("perry", "rojo");
         userList.add(heber);
 
-        UsuariosParaInicioSecion olivera = new UsuariosParaInicioSecion("phineas", "ferp");
+        LoginUsers olivera = new LoginUsers("phineas", "ferp");
         userList.add(olivera);
 
-        UsuariosParaInicioSecion javier = new UsuariosParaInicioSecion("javi", "javi");
+        LoginUsers javier = new LoginUsers("javi", "javi");
         userList.add(javier);
 
-        UsuariosParaInicioSecion josua = new UsuariosParaInicioSecion("josua", "josua");
+        LoginUsers josua = new LoginUsers("josua", "josua");
         userList.add(josua);
 
-        UsuariosParaInicioSecion luis = new UsuariosParaInicioSecion("luis", "luis");
+        LoginUsers luis = new LoginUsers("luis", "luis");
         userList.add(luis);
     }
 

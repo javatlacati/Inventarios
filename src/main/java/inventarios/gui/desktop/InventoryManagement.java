@@ -5,7 +5,7 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.Productos;
+import inventarios.to.Product;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -19,15 +19,15 @@ import javax.swing.JOptionPane;
  *
  * @author david
  */
-public class InterfazConstructor extends javax.swing.JFrame {
+public class InventoryManagement extends javax.swing.JFrame {
 
-    public static List<Productos> contenedor = new LinkedList<>();
+    public static List<Product> contenedor = new LinkedList<>();
     public int Encontrado;
 
     /**
      * Creates new form InterfazConstructor
      */
-    public InterfazConstructor() {
+    public InventoryManagement() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.cyan);
@@ -38,7 +38,7 @@ public class InterfazConstructor extends javax.swing.JFrame {
 
     public void cerrar() {
         try {
-            this.setDefaultCloseOperation(InterfazConstructor.DO_NOTHING_ON_CLOSE);
+            this.setDefaultCloseOperation(InventoryManagement.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
                     confirmarSalida();
@@ -89,7 +89,8 @@ public class InterfazConstructor extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Agregar Inventario");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("InventoryManagement.title")); // NOI18N
         setResizable(false);
 
         lblProduct.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
@@ -181,11 +182,11 @@ public class InterfazConstructor extends javax.swing.JFrame {
         });
 
         lblName.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        lblName.setText("Buscar por nombre");
+        lblName.setText(bundle.getString("InventoryManagement.lblName.text")); // NOI18N
 
         btnMenu.setBackground(new java.awt.Color(255, 0, 204));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnMenu.setText("Menu");
+        btnMenu.setText(bundle.getString("InventoryManagement.btnMenu.text")); // NOI18N
         btnMenu.setBorder(null);
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,9 +194,9 @@ public class InterfazConstructor extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("FECHA DE INGRESO");
+        jLabel7.setText(bundle.getString("InventoryManagement.jLabel7.text")); // NOI18N
 
-        jLabel8.setText("FECHA DE EGRESO");
+        jLabel8.setText(bundle.getString("InventoryManagement.jLabel8.text")); // NOI18N
 
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -319,14 +320,14 @@ public class InterfazConstructor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        String Producto = txtProduct.getText();
-        String Cantidad = txtQuantity.getText();
+        String productName = txtProduct.getText();
+        String productQuantity = txtQuantity.getText();
         String Caracteristicas = jTextField3.getText();
         String Serial = jTextField4.getText();
         String Fechai = jTextField5.getText();
         String Fechae = jTextField6.getText();
 
-        Productos clase = new Productos(Producto, Cantidad, Caracteristicas, Serial, Fechai, Fechae);
+        Product clase = new Product(productName, productQuantity, Caracteristicas, Serial, Fechai, Fechae);
         contenedor.add(clase);
         txtProduct.setText("");
         txtQuantity.setText("");
@@ -389,7 +390,7 @@ public class InterfazConstructor extends javax.swing.JFrame {
         int tecla = evt.getKeyChar();
         if (tecla == 10) {
             String codigoCopiado = c1.getText().trim();
-            Productos p;
+            Product p;
             for (int i = 0; i < contenedor.size(); i++) {
                 p = contenedor.get(i);
                 if (codigoCopiado.equalsIgnoreCase(p.getProducto())) {

@@ -5,7 +5,7 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.Pedidos;
+import inventarios.to.Orders;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -47,10 +47,10 @@ private DefaultTableModel modelo;
     
     public void MostrarLosDatos()
         {
-            Pedidos p;
-            for(int i=0; i<PedidosVetana.contenedor.size(); i++)
+            Orders p;
+            for(int i=0; i<OrderManagement.contenedor.size(); i++)
             {
-                p = (Pedidos) PedidosVetana.contenedor.get(i);
+                p = (Orders) OrderManagement.contenedor.get(i);
                 modelo.insertRow(con, new Object[]{});
                 modelo.setValueAt(p.getNombre(),con , 0);
                 modelo.setValueAt(p.getApellidos(),con , 1);
@@ -106,7 +106,8 @@ private DefaultTableModel modelo;
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Lista de Pedidos Agregados");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("ListaPedidos.title")); // NOI18N
         setResizable(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -123,7 +124,7 @@ private DefaultTableModel modelo;
         jScrollPane1.setViewportView(jTable1);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblTitle.setText("Lista de Pedidos");
+        lblTitle.setText(bundle.getString("ListaPedidos.lblTitle.text")); // NOI18N
 
         btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
@@ -145,21 +146,21 @@ private DefaultTableModel modelo;
 
         btnMenu.setBackground(new java.awt.Color(255, 0, 51));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnMenu.setText("Menu");
+        btnMenu.setText(bundle.getString("ListaPedidos.btnMenu.text")); // NOI18N
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
 
-        btnClose.setText("Cerrar");
+        btnClose.setText(bundle.getString("ListaPedidos.btnClose.text")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        jButton5.setText("REGRESAR");
+        jButton5.setText(bundle.getString("ListaPedidos.jButton5.text")); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -258,7 +259,7 @@ try {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        PedidosVetana r = new PedidosVetana();
+        OrderManagement r = new OrderManagement();
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed

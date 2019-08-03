@@ -5,8 +5,8 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.Proveedor;
-import inventarios.gui.desktop.ProveedorVentana;
+import inventarios.to.Proveedor;
+import inventarios.gui.desktop.ProviderManagement;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
@@ -47,9 +47,9 @@ private DefaultTableModel modelo;
     public void MostrarLosDatos()
         {
             Proveedor P;
-            for(int i=0; i<ProveedorVentana.contenedor.size(); i++)
+            for(int i=0; i<ProviderManagement.contenedor.size(); i++)
             {
-                P = (Proveedor) ProveedorVentana.contenedor.get(i);
+                P = (Proveedor) ProviderManagement.contenedor.get(i);
                 modelo.insertRow(con, new Object[]{});
                 modelo.setValueAt(P.getNombre(),con , 0);
                 modelo.setValueAt(P.getApellidos(),con , 1);
@@ -102,7 +102,8 @@ private DefaultTableModel modelo;
         btnGetBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Lista de Proveedores Agregados");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("ListaProveedores.title")); // NOI18N
         setResizable(false);
 
         btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
@@ -137,18 +138,18 @@ private DefaultTableModel modelo;
         providersScroll.setViewportView(providersTable);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblTitle.setText("Lista de Proveedores");
+        lblTitle.setText(bundle.getString("ListaProveedores.lblTitle.text")); // NOI18N
 
         btnMenu.setBackground(new java.awt.Color(255, 0, 51));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnMenu.setText("Menu");
+        btnMenu.setText(bundle.getString("ListaProveedores.btnMenu.text")); // NOI18N
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
 
-        btnGetBack.setText("REGRESAR");
+        btnGetBack.setText(bundle.getString("ListaProveedores.btnGetBack.text")); // NOI18N
         btnGetBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGetBackActionPerformed(evt);
@@ -223,7 +224,7 @@ try {
 
     private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
         // TODO add your handling code here:
-        ProveedorVentana r  = new ProveedorVentana();
+        ProviderManagement r  = new ProviderManagement();
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnGetBackActionPerformed

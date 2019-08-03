@@ -14,12 +14,12 @@ import javax.swing.JPanel;
  *
  * @author IDELFONSO
  */
-public class Creditos extends javax.swing.JFrame {
+public class Credits extends javax.swing.JFrame {
 
     /**
      * Creates new form Creditos
      */
-    public Creditos() {
+    public Credits() {
         initComponents();
 
         ((JPanel) getContentPane()).setOpaque(false);

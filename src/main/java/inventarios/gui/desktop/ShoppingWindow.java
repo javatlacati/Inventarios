@@ -5,7 +5,7 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.Compras;
+import inventarios.to.Compras;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -101,23 +101,24 @@ public class ShoppingWindow extends javax.swing.JFrame {
         btnMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Registro de Compras");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("ShoppingWindow.title")); // NOI18N
         setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setResizable(false);
 
-        lblDate.setText("Fecha");
+        lblDate.setText(bundle.getString("ShoppingWindow.lblDate.text")); // NOI18N
 
-        lblProvider.setText("Proveedor");
+        lblProvider.setText(bundle.getString("ShoppingWindow.lblProvider.text")); // NOI18N
 
-        lblAddress.setText("Dirección");
+        lblAddress.setText(bundle.getString("ShoppingWindow.lblAddress.text")); // NOI18N
 
-        lblTelephone.setText("Teléfono");
+        lblTelephone.setText(bundle.getString("ShoppingWindow.lblTelephone.text")); // NOI18N
 
-        lblContributor.setText("RFC");
+        lblContributor.setText(bundle.getString("ShoppingWindow.lblContributor.text")); // NOI18N
 
-        lblEmail.setText("E-Mail");
+        lblEmail.setText(bundle.getString("ShoppingWindow.lblEmail.text")); // NOI18N
 
-        lblProduct.setText("Producto");
+        lblProduct.setText(bundle.getString("ShoppingWindow.lblProduct.text")); // NOI18N
 
         txtDate.setPreferredSize(new java.awt.Dimension(70, 25));
         txtDate.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -206,7 +207,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
         btnMenu.setBackground(new java.awt.Color(51, 51, 255));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnMenu.setText("Menu");
+        btnMenu.setText(bundle.getString("ShoppingWindow.btnMenu.text")); // NOI18N
         btnMenu.setAutoscrolls(true);
         btnMenu.setBorder(null);
         btnMenu.setBorderPainted(false);

@@ -5,7 +5,7 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.Compras;
+import inventarios.to.Compras;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
@@ -99,7 +99,8 @@ public class ListaCompras extends javax.swing.JFrame {
         btnGetBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Lista de Compras Agregadas");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("ListaCompras.title")); // NOI18N
         setResizable(false);
 
         shoppingTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -134,18 +135,18 @@ public class ListaCompras extends javax.swing.JFrame {
         });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblTitle.setText("Lista de Compras");
+        lblTitle.setText(bundle.getString("ListaCompras.lblTitle.text")); // NOI18N
 
         btnMenu.setBackground(new java.awt.Color(255, 0, 51));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnMenu.setText("Menu");
+        btnMenu.setText(bundle.getString("ListaCompras.btnMenu.text")); // NOI18N
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
 
-        btnGetBack.setText("REGRESAR");
+        btnGetBack.setText(bundle.getString("ListaCompras.btnGetBack.text")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
