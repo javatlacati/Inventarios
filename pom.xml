@@ -19,5 +19,13 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             </plugin>
         </plugins>
     </build>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+        </dependency>
+    </dependencies>
 
 </project>
