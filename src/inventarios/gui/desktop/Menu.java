@@ -5,14 +5,6 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.gui.desktop.PedidosVetana;
-import inventarios.gui.desktop.Creditos;
-import inventarios.gui.desktop.ShoppingWindow;
-import inventarios.gui.desktop.Billing;
-import inventarios.gui.desktop.ProveedorVentana;
-import inventarios.gui.desktop.InterfazConstructor;
-import inventarios.gui.desktop.Employees;
-import inventarios.gui.desktop.Information;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -31,34 +23,32 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
-         this.getContentPane().setBackground(Color.orange);
-          this.setResizable(false);
-          this.setIconImage
-         (new ImageIcon(getClass().getResource
-        ("/ImgFondos/Icono.png")).getImage());
-          cerrar();
+        this.getContentPane().setBackground(Color.orange);
+        cerrar();
     }
-     //Método para confirmar el cierre deJFrame//
-    public void cerrar(){
+    //Método para confirmar el cierre deJFrame//
+
+    public void cerrar() {
         try {
             this.setDefaultCloseOperation(Menu.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
-                public void windowClosing(WindowEvent e){
+                public void windowClosing(WindowEvent e) {
                     confirmarSalida();
                 }
-                });
+            });
             this.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        }
+    }
+
     //Confirmar salida//
-        public void confirmarSalida(){
-            int valor= JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor==JOptionPane.YES_OPTION){
+    public void confirmarSalida() {
+        int valor = JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (valor == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
-        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,94 +60,138 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        btnGetBack = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        titlePanel = new javax.swing.JPanel();
+        lblTitle = new javax.swing.JLabel();
+        contentPanel = new javax.swing.JPanel();
+        optionsPanel = new javax.swing.JPanel();
+        btnInventory = new javax.swing.JButton();
+        btnTransaction = new javax.swing.JButton();
+        btnOrders = new javax.swing.JButton();
+        btnBilling = new javax.swing.JButton();
+        btnProvider = new javax.swing.JButton();
+        btnAbout = new javax.swing.JButton();
+        btnEmployeeRecords = new javax.swing.JButton();
         btnCredits = new javax.swing.JButton();
+        imageAndNavigationPanel = new javax.swing.JPanel();
+        imagePanel = new javax.swing.JPanel();
+        lblImage = new javax.swing.JLabel();
+        navivgationPanel = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        btnGetBack = new javax.swing.JButton();
+        menuBar = new javax.swing.JMenuBar();
+        mnuInventory = new javax.swing.JMenu();
+        mnuInventories = new javax.swing.JMenuItem();
+        mnuBills = new javax.swing.JMenuItem();
+        mnuProvider = new javax.swing.JMenuItem();
+        mnuServices = new javax.swing.JMenu();
+        mnuOrders = new javax.swing.JMenuItem();
+        mnuTransactions = new javax.swing.JMenuItem();
+        mnuAbout = new javax.swing.JMenu();
+        mnuAboutItem = new javax.swing.JMenuItem();
+        mnuGetBack = new javax.swing.JMenuItem();
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Menu Principal");
+        setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setMinimumSize(new java.awt.Dimension(500, 250));
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Inventarios");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        lblTitle.setFont(new java.awt.Font("Tw Cen MT", 3, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(51, 0, 255));
+        lblTitle.setText("MENU INVENTARIO");
+        titlePanel.add(lblTitle);
+
+        getContentPane().add(titlePanel, java.awt.BorderLayout.PAGE_START);
+
+        contentPanel.setLayout(new javax.swing.BoxLayout(contentPanel, javax.swing.BoxLayout.X_AXIS));
+
+        optionsPanel.setLayout(new java.awt.GridLayout(4, 2));
+
+        btnInventory.setText("Inventarios");
+        btnInventory.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnInventoryActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 110, 30));
+        optionsPanel.add(btnInventory);
 
-        jButton4.setText("A cerca de...");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnTransaction.setText("Compra/Venta");
+        btnTransaction.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnTransaction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnTransactionActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 120, 30));
+        optionsPanel.add(btnTransaction);
 
-        jButton2.setText("Compra/Venta");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnOrders.setText("Pedidos");
+        btnOrders.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnOrdersActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 120, 30));
+        optionsPanel.add(btnOrders);
 
-        jButton3.setText("Facturación");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnBilling.setText("Facturación");
+        btnBilling.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnBillingActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 120, 30));
+        optionsPanel.add(btnBilling);
 
-        jButton5.setText("Pedidos");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnProvider.setText("Proveedor");
+        btnProvider.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnProvider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnProviderActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 110, 30));
+        optionsPanel.add(btnProvider);
 
-        jButton6.setText("Proveedor");
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnAbout.setText("A cerca de...");
+        btnAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnAboutActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 110, 30));
+        optionsPanel.add(btnAbout);
 
-        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 3, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 0, 255));
-        jLabel1.setText("MENU INVENTARIO");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, 26));
+        btnEmployeeRecords.setText("Registro Empleados");
+        btnEmployeeRecords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmployeeRecordsActionPerformed(evt);
+            }
+        });
+        optionsPanel.add(btnEmployeeRecords);
+
+        btnCredits.setText("Creditos");
+        btnCredits.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreditsActionPerformed(evt);
+            }
+        });
+        optionsPanel.add(btnCredits);
+
+        contentPanel.add(optionsPanel);
+
+        imageAndNavigationPanel.setLayout(new javax.swing.BoxLayout(imageAndNavigationPanel, javax.swing.BoxLayout.Y_AXIS));
+
+        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/Imagen7.png"))); // NOI18N
+        imagePanel.add(lblImage);
+
+        imageAndNavigationPanel.add(imagePanel);
+
+        btnClose.setText("Cerrar");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+        navivgationPanel.add(btnClose);
 
         btnGetBack.setText("Regresar");
         btnGetBack.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -166,227 +200,181 @@ public class Menu extends javax.swing.JFrame {
                 btnGetBackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGetBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 100, 30));
+        navivgationPanel.add(btnGetBack);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/Imagen7.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 190, 140));
+        imageAndNavigationPanel.add(navivgationPanel);
 
-        jButton7.setText("Registr Empleados");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        contentPanel.add(imageAndNavigationPanel);
+
+        getContentPane().add(contentPanel, java.awt.BorderLayout.CENTER);
+
+        mnuInventory.setText("SISTEMA DE INVENTARIO");
+
+        mnuInventories.setText("Inventarios");
+        mnuInventories.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                mnuInventoriesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 110, 30));
+        mnuInventory.add(mnuInventories);
 
-        btnCredits.setText("Creditos");
-        btnCredits.addActionListener(new java.awt.event.ActionListener() {
+        mnuBills.setText("Facturas");
+        mnuBills.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreditsActionPerformed(evt);
+                mnuBillsActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCredits, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 120, 30));
+        mnuInventory.add(mnuBills);
 
-        btnClose.setText("Cerrar");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
+        mnuProvider.setText("Provedor");
+        mnuProvider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
+                mnuProviderActionPerformed(evt);
             }
         });
-        getContentPane().add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
+        mnuInventory.add(mnuProvider);
 
-        jMenu1.setText("SISTEMA DE INVENTARIO");
+        mnuServices.setText("Servicios");
 
-        jMenuItem1.setText("Inventarios");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mnuOrders.setText("Pedidos");
+        mnuOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mnuOrdersActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        mnuServices.add(mnuOrders);
 
-        jMenuItem2.setText("Facturas");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        mnuTransactions.setText("Compra  venta");
+        mnuTransactions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                mnuTransactionsActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        mnuServices.add(mnuTransactions);
 
-        jMenuItem3.setText("Provedor");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        mnuInventory.add(mnuServices);
+
+        menuBar.add(mnuInventory);
+
+        mnuAbout.setText("ACERCA DE");
+
+        mnuAboutItem.setText("Acerca de");
+        mnuAboutItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                mnuAboutItemActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        mnuAbout.add(mnuAboutItem);
 
-        jMenu3.setText("Servicios");
-
-        jMenuItem6.setText("Pedidos");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        mnuGetBack.setText("Regresar");
+        mnuGetBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                mnuGetBackActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem6);
+        mnuAbout.add(mnuGetBack);
 
-        jMenuItem7.setText("Compra  venta");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem7);
+        menuBar.add(mnuAbout);
 
-        jMenu1.add(jMenu3);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("ACERCA DE");
-
-        jMenuItem4.setText("Acerca de");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem4);
-
-        jMenuItem5.setText("Regresar");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem5);
-
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
         InterfazConstructor r = new InterfazConstructor();
-       r.setVisible(true);
+        r.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnInventoryActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-         ShoppingWindow r = new ShoppingWindow();
-       r.setVisible(true);
+    private void btnTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransactionActionPerformed
+        ShoppingWindow r = new ShoppingWindow();
+        r.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnTransactionActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-         PedidosVetana r = new PedidosVetana();
-       r.setVisible(true);
+    private void btnOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdersActionPerformed
+        PedidosVetana r = new PedidosVetana();
+        r.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnOrdersActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-         ProveedorVentana r = new ProveedorVentana();
-       r.setVisible(true);
+    private void btnProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProviderActionPerformed
+        ProveedorVentana r = new ProveedorVentana();
+        r.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnProviderActionPerformed
 
     private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
-        // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnGetBackActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-Billing Fv = new Billing();
-Fv.setVisible(true);
- dispose();
-// TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-Information F = new Information();
-F.setVisible(true);   
- dispose();
-// TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-      InterfazConstructor r = new InterfazConstructor();
-       r.setVisible(true);
-        dispose();
-        
-
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        Information F = new Information();
-         F.setVisible(true);
-          dispose();
-// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void btnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillingActionPerformed
         Billing Fv = new Billing();
         Fv.setVisible(true);
-         dispose();
+        dispose();
+    }//GEN-LAST:event_btnBillingActionPerformed
 
-// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
+        Information F = new Information();
+        F.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnAboutActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void mnuInventoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuInventoriesActionPerformed
+        InterfazConstructor r = new InterfazConstructor();
+        r.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_mnuInventoriesActionPerformed
+
+    private void mnuAboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAboutItemActionPerformed
+        Information F = new Information();
+        F.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_mnuAboutItemActionPerformed
+
+    private void mnuBillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuBillsActionPerformed
+        Billing Fv = new Billing();
+        Fv.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_mnuBillsActionPerformed
+
+    private void mnuProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProviderActionPerformed
         ProveedorVentana r = new ProveedorVentana();
-       r.setVisible(true);
+        r.setVisible(true);
         dispose();
+    }//GEN-LAST:event_mnuProviderActionPerformed
 
-// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void mnuOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOrdersActionPerformed
         PedidosVetana r = new PedidosVetana();
-       r.setVisible(true); 
-       dispose();
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-       ShoppingWindow r = new ShoppingWindow();
-       r.setVisible(true);
+        r.setVisible(true);
         dispose();
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_mnuOrdersActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-         dispose();
+    private void mnuTransactionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuTransactionsActionPerformed
+        ShoppingWindow r = new ShoppingWindow();
+        r.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_mnuTransactionsActionPerformed
 
-// TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    private void mnuGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuGetBackActionPerformed
+        dispose();
+    }//GEN-LAST:event_mnuGetBackActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-Employees n = new Employees();
+    private void btnEmployeeRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeRecordsActionPerformed
+        Employees n = new Employees();
         n.setVisible(true);
-         dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnEmployeeRecordsActionPerformed
 
     private void btnCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditsActionPerformed
-Creditos y=new Creditos();
+        Creditos y = new Creditos();
         y.setVisible(true);
-         dispose();
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnCreditsActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
-        dispose ();
+        dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     /**
@@ -425,29 +413,35 @@ Creditos y=new Creditos();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAbout;
+    private javax.swing.JButton btnBilling;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnCredits;
+    private javax.swing.JButton btnEmployeeRecords;
     private javax.swing.JButton btnGetBack;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnInventory;
+    private javax.swing.JButton btnOrders;
+    private javax.swing.JButton btnProvider;
+    private javax.swing.JButton btnTransaction;
+    private javax.swing.JPanel contentPanel;
+    private javax.swing.JPanel imageAndNavigationPanel;
+    private javax.swing.JPanel imagePanel;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JLabel lblImage;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu mnuAbout;
+    private javax.swing.JMenuItem mnuAboutItem;
+    private javax.swing.JMenuItem mnuBills;
+    private javax.swing.JMenuItem mnuGetBack;
+    private javax.swing.JMenuItem mnuInventories;
+    private javax.swing.JMenu mnuInventory;
+    private javax.swing.JMenuItem mnuOrders;
+    private javax.swing.JMenuItem mnuProvider;
+    private javax.swing.JMenu mnuServices;
+    private javax.swing.JMenuItem mnuTransactions;
+    private javax.swing.JPanel navivgationPanel;
+    private javax.swing.JPanel optionsPanel;
+    private javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables
 }
