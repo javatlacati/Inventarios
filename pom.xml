@@ -7,16 +7,32 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <groupId>com.github.javatlacati</groupId>
     <artifactId>inventarios</artifactId>
     <version>1.0</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <build>
+<!--        resources to be included-->
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
+            <!--            compilation config-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>7</source>
-                    <target>7</target>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
+            <!--            jar creation config-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -30,6 +46,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     </archive>
                 </configuration>
             </plugin>
+            <!--            unit test config-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -52,13 +69,15 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             </plugin>
         </plugins>
     </build>
-    
+
     <dependencies>
+        <!--        boilerplate reducing-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.8</version>
         </dependency>
+        <!--        unit tests-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -66,24 +85,12 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <scope>test</scope>
         </dependency>
 
+        <!--        automated GUI testing-->
         <dependency>
             <groupId>org.netbeans.external</groupId>
             <artifactId>jemmy-2.3.1.1</artifactId>
             <version>RELEASE110</version>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter-api</artifactId>-->
-<!--            <version>5.4.2</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter-engine</artifactId>-->
-<!--            <version>5.4.2</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
     </dependencies>
 
 </project>
