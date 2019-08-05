@@ -5,7 +5,7 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.to.Compras;
+import inventarios.to.Purchase;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
@@ -28,7 +28,7 @@ public class ListaCompras extends javax.swing.JFrame {
         initComponents();
         MostrarInterfaz();
         MostrarLosDatos();
-        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/Icono.png")).getImage());
         cerrar();
     }
 
@@ -43,16 +43,16 @@ public class ListaCompras extends javax.swing.JFrame {
     }
 
     public void MostrarLosDatos() {
-        Compras c;
+        Purchase c;
         for (int i = 0; i < ShoppingWindow.shoppingList.size(); i++) {
-            c = (Compras) ShoppingWindow.shoppingList.get(i);
+            c = (Purchase) ShoppingWindow.shoppingList.get(i);
             modelo.insertRow(con, new Object[]{});
-            modelo.setValueAt(c.getFecha(), con, 0);
+            modelo.setValueAt(c.getDate(), con, 0);
             modelo.setValueAt(c.getProveedor(), con, 1);
-            modelo.setValueAt(c.getDireccion(), con, 2);
-            modelo.setValueAt(c.getTelefono(), con, 3);
-            modelo.setValueAt(c.getRFC(), con, 4);
-            modelo.setValueAt(c.getMail(), con, 5);
+            modelo.setValueAt(c.getAddress(), con, 2);
+            modelo.setValueAt(c.getTelephone(), con, 3);
+            modelo.setValueAt(c.getRfc(), con, 4);
+            modelo.setValueAt(c.getEmail(), con, 5);
             modelo.setValueAt(c.getProducto(), con, 6);
 
         }
@@ -116,7 +116,7 @@ public class ListaCompras extends javax.swing.JFrame {
         ));
         shoppingScroll.setViewportView(shoppingTable);
 
-        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
+        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
         btnDeleteRow.setContentAreaFilled(false);
         btnDeleteRow.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +125,7 @@ public class ListaCompras extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
+        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar todo.png"))); // NOI18N
         btnDeleteAll.setBorder(null);
         btnDeleteAll.setContentAreaFilled(false);
         btnDeleteAll.addActionListener(new java.awt.event.ActionListener() {

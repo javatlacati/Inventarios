@@ -20,7 +20,7 @@ public class ConstructorRegistro {
     String producto;
     String fecharegistro;
     String lugarresgistro;
-    String valormonetario;
+    String monetaryValue;
     String encargadoregistro;
 
 }

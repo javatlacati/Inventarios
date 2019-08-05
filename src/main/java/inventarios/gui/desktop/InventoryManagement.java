@@ -31,7 +31,7 @@ public class InventoryManagement extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.cyan);
-        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/Icono.png")).getImage());
         cerrar();
     }
     //Método para confirmar el cierre deJFrame//
@@ -95,19 +95,19 @@ public class InventoryManagement extends javax.swing.JFrame {
 
         lblProduct.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblProduct.setForeground(new java.awt.Color(255, 0, 0));
-        lblProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Producto.png"))); // NOI18N
+        lblProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/Producto.png"))); // NOI18N
 
         lblQuantity.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblQuantity.setForeground(new java.awt.Color(255, 0, 0));
-        lblQuantity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cantidad.png"))); // NOI18N
+        lblQuantity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/cantidad.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/caracteristica.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/caracteristica.png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/serial.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/serial.png"))); // NOI18N
 
         txtProduct.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -133,7 +133,7 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/agregar1.png"))); // NOI18N
         btnAdd.setBorder(null);
         btnAdd.setContentAreaFilled(false);
         btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -143,7 +143,7 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/Limpiar_1.png"))); // NOI18N
         btnClean.setBorder(null);
         btnClean.setContentAreaFilled(false);
         btnClean.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -153,7 +153,7 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/cerrar.png"))); // NOI18N
         btnClose.setBorder(null);
         btnClose.setContentAreaFilled(false);
         btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -163,7 +163,7 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
-        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/consulta.png"))); // NOI18N
         btnView.setBorder(null);
         btnView.setContentAreaFilled(false);
         btnView.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -173,7 +173,7 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
-        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/inventario.png"))); // NOI18N
+        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/inventario.png"))); // NOI18N
 
         c1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {

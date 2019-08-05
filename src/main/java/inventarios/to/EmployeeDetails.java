@@ -18,13 +18,13 @@ import lombok.Setter;
 @Getter
 public class EmployeeDetails {
     
-    private String matricula;
+    private String id;
     private String name;
-    private String apellido1;
-    private String apellido2;
-    private String domicilio;
-    private String puesto;
-    private String Horae;
-    private String Horas;
+    private String middleName;
+    private String lastName;
+    private String homeAdress;
+    private String position;
+    private String startTime;
+    private String hours;
             
 }

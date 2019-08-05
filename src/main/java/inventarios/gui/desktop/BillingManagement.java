@@ -27,7 +27,7 @@ public class BillingManagement extends javax.swing.JFrame {
         initComponents();
         cerrar();
         this.getContentPane().setBackground(Color.cyan);
-        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/Icono.png")).getImage());
 
     }
 
@@ -98,7 +98,7 @@ public class BillingManagement extends javax.swing.JFrame {
 
         lblEMail.setText(bundle.getString("BillingManagement.lblEMail.text")); // NOI18N
 
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/Limpiar_1.png"))); // NOI18N
         btnClean.setBorder(null);
         btnClean.setContentAreaFilled(false);
         btnClean.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +107,7 @@ public class BillingManagement extends javax.swing.JFrame {
             }
         });
 
-        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/consulta.png"))); // NOI18N
         btnView.setBorder(null);
         btnView.setContentAreaFilled(false);
         btnView.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +116,7 @@ public class BillingManagement extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/cerrar.png"))); // NOI18N
         btnClose.setBorder(null);
         btnClose.setContentAreaFilled(false);
         btnClose.addActionListener(new java.awt.event.ActionListener() {

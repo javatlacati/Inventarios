@@ -5,8 +5,8 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.to.Proveedor;
-import inventarios.gui.desktop.ProviderManagement;
+import inventarios.to.Provider;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
@@ -29,7 +29,7 @@ private DefaultTableModel modelo;
         MostrarLosDatos();
         this.setIconImage
          (new ImageIcon(getClass().getResource
-        ("/ImgFondos/Icono.png")).getImage());
+        ("/src/main/resources/ImgFondos/Icono.png")).getImage());
         cerrar();
     }
     public void MostrarInterfaz()
@@ -46,16 +46,16 @@ private DefaultTableModel modelo;
     
     public void MostrarLosDatos()
         {
-            Proveedor P;
+            Provider P;
             for(int i=0; i<ProviderManagement.contenedor.size(); i++)
             {
-                P = (Proveedor) ProviderManagement.contenedor.get(i);
+                P = (Provider) ProviderManagement.contenedor.get(i);
                 modelo.insertRow(con, new Object[]{});
-                modelo.setValueAt(P.getNombre(),con , 0);
+                modelo.setValueAt(P.getName(),con , 0);
                 modelo.setValueAt(P.getApellidos(),con , 1);
                 modelo.setValueAt(P.getDireccion(),con , 2);
-                modelo.setValueAt(P.getTelefono(),con , 3);
-                modelo.setValueAt(P.getMail(),con , 4);
+                modelo.setValueAt(P.getTelephoneNumber(),con , 3);
+                modelo.setValueAt(P.getEmail(),con , 4);
                 modelo.setValueAt(P.getCodPost(),con , 5);
                 modelo.setValueAt(P.getNum(),con , 6);
                 
@@ -106,7 +106,7 @@ private DefaultTableModel modelo;
         setTitle(bundle.getString("ListaProveedores.title")); // NOI18N
         setResizable(false);
 
-        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
+        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
         btnDeleteRow.setContentAreaFilled(false);
         btnDeleteRow.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +115,7 @@ private DefaultTableModel modelo;
             }
         });
 
-        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
+        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar todo.png"))); // NOI18N
         btnDeleteAll.setBorder(null);
         btnDeleteAll.setContentAreaFilled(false);
         btnDeleteAll.addActionListener(new java.awt.event.ActionListener() {

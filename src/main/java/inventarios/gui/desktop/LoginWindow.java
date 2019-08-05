@@ -6,17 +6,13 @@
 package inventarios.gui.desktop;
 
 import inventarios.to.LoginUsers;
-import java.awt.Component;
-import java.awt.Image;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -102,7 +98,8 @@ public class LoginWindow extends javax.swing.JFrame {
         btnClean = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Inicio Seccion");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("LoginWindow.title")); // NOI18N
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(new ImageIcon(getClass().getResource
             ("/ImgFondos/Icono.png")).getImage());

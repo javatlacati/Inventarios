@@ -29,7 +29,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         initComponents();
         ((JPanel) getContentPane()).setOpaque(false);
         ImageIcon uno;
-        uno = new ImageIcon(this.getClass().getResource("/ImgFondos/abstract.jpg"));
+        uno = new ImageIcon(this.getClass().getResource("/src/main/resources/ImgFondos/abstract.jpg"));
         JLabel fondo = new JLabel();
         fondo.setIcon(uno);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);

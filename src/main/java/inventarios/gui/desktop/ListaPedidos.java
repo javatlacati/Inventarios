@@ -5,7 +5,7 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.to.Orders;
+import inventarios.to.Order;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -29,7 +29,7 @@ private DefaultTableModel modelo;
         MostrarLosDatos();
         this.setIconImage
          (new ImageIcon(getClass().getResource
-        ("/ImgFondos/Icono.png")).getImage());
+        ("/src/main/resources/ImgFondos/Icono.png")).getImage());
         cerrar();
         this.getContentPane().setBackground(Color.GRAY);
     }
@@ -47,20 +47,20 @@ private DefaultTableModel modelo;
     
     public void MostrarLosDatos()
         {
-            Orders p;
+            Order p;
             for(int i=0; i<OrderManagement.contenedor.size(); i++)
             {
-                p = (Orders) OrderManagement.contenedor.get(i);
+                p = (Order) OrderManagement.contenedor.get(i);
                 modelo.insertRow(con, new Object[]{});
-                modelo.setValueAt(p.getNombre(),con , 0);
-                modelo.setValueAt(p.getApellidos(),con , 1);
+                modelo.setValueAt(p.getName(),con , 0);
+                modelo.setValueAt(p.getLastName(),con , 1);
                 modelo.setValueAt(p.getProducto(),con , 2);
                 modelo.setValueAt(p.getRFC(),con , 3);
-                modelo.setValueAt(p.getTelefono(),con , 4);
+                modelo.setValueAt(p.getTelephone(),con , 4);
                 modelo.setValueAt(p.getEmpleado(),con , 5);
-                modelo.setValueAt(p.getNumPedido(),con , 6);
+                modelo.setValueAt(p.getId(),con , 6);
                 modelo.setValueAt(p.getDireccion(),con , 7);
-                modelo.setValueAt(p.getFecha(),con , 8);
+                modelo.setValueAt(p.getOrderDate(),con , 8);
                 
                 
             }
@@ -126,7 +126,7 @@ private DefaultTableModel modelo;
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText(bundle.getString("ListaPedidos.lblTitle.text")); // NOI18N
 
-        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
+        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
         btnDeleteRow.setContentAreaFilled(false);
         btnDeleteRow.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +135,7 @@ private DefaultTableModel modelo;
             }
         });
 
-        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
+        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar todo.png"))); // NOI18N
         btnDeleteAll.setBorder(null);
         btnDeleteAll.setContentAreaFilled(false);
         btnDeleteAll.addActionListener(new java.awt.event.ActionListener() {

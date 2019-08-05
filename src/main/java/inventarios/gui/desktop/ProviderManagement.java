@@ -5,8 +5,8 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.to.Proveedor;
-import static inventarios.gui.desktop.OrderManagement.contenedor;
+import inventarios.to.Provider;
+
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -15,7 +15,6 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,9 +22,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ProviderManagement extends javax.swing.JFrame {
 
-    public static List<Proveedor> contenedor = new LinkedList<>();
+    public static List<Provider> contenedor = new LinkedList<>();
 
-    ArrayList<Proveedor> Lista;
+    ArrayList<Provider> Lista;
 
     /**
      * Creates new form ProveedorVentana
@@ -71,7 +70,7 @@ public class ProviderManagement extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("ProviderManagement.title")); // NOI18N
-        setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/Icono.png")).getImage());
         setResizable(false);
 
         lblName.setText(bundle.getString("ProviderManagement.lblName.text")); // NOI18N
@@ -94,7 +93,7 @@ public class ProviderManagement extends javax.swing.JFrame {
             }
         });
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/agregar1.png"))); // NOI18N
         btnAdd.setBorder(null);
         btnAdd.setContentAreaFilled(false);
         btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -104,7 +103,7 @@ public class ProviderManagement extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/cerrar.png"))); // NOI18N
         btnClose.setBorder(null);
         btnClose.setContentAreaFilled(false);
         btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -114,7 +113,7 @@ public class ProviderManagement extends javax.swing.JFrame {
             }
         });
 
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/Limpiar_1.png"))); // NOI18N
         btnClean.setBorder(null);
         btnClean.setContentAreaFilled(false);
         btnClean.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -124,7 +123,7 @@ public class ProviderManagement extends javax.swing.JFrame {
             }
         });
 
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/consulta.png"))); // NOI18N
         btnSearch.setBorder(null);
         btnSearch.setContentAreaFilled(false);
         btnSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -271,7 +270,7 @@ public class ProviderManagement extends javax.swing.JFrame {
         String Mail = txtEmail.getText();
         String CodPost = txtPOBox.getText();
 
-        Proveedor provider = new Proveedor(Nombre, Direccion, Apellidos, Num, Telefono, Mail, CodPost);
+        Provider provider = new Provider(Nombre, Direccion, Apellidos, Num, Telefono, Mail, CodPost);
         contenedor.add(provider);
 
         txtProvider.setText("");

@@ -24,7 +24,7 @@ public class Credits extends javax.swing.JFrame {
 
         ((JPanel) getContentPane()).setOpaque(false);
         ImageIcon uno;
-        uno = new ImageIcon(this.getClass().getResource("/ImgFondos/Creditos_1.png"));
+        uno = new ImageIcon(this.getClass().getResource("/src/main/resources/ImgFondos/Creditos_1.png"));
         JLabel fondo = new JLabel();
         fondo.setIcon(uno);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);

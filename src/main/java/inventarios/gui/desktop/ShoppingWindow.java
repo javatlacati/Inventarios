@@ -5,7 +5,7 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.to.Compras;
+import inventarios.to.Purchase;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -23,7 +23,7 @@ import javax.swing.table.TableRowSorter;
  */
 public class ShoppingWindow extends javax.swing.JFrame {
 
-    public static List<Compras> shoppingList = new LinkedList<>();
+    public static List<Purchase> shoppingList = new LinkedList<>();
     /*
     Se Realiza el llamado del ArrayList
      */
@@ -103,7 +103,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("ShoppingWindow.title")); // NOI18N
-        setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/Icono.png")).getImage());
         setResizable(false);
 
         lblDate.setText(bundle.getString("ShoppingWindow.lblDate.text")); // NOI18N
@@ -169,7 +169,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
             }
         });
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/agregar1.png"))); // NOI18N
         btnAdd.setBorder(null);
         btnAdd.setContentAreaFilled(false);
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +178,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
             }
         });
 
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/Limpiar_1.png"))); // NOI18N
         btnClean.setBorder(null);
         btnClean.setContentAreaFilled(false);
         btnClean.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +187,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/cerrar.png"))); // NOI18N
         btnClose.setBorder(null);
         btnClose.setContentAreaFilled(false);
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +196,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
             }
         });
 
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/consulta.png"))); // NOI18N
         btnSearch.setBorder(null);
         btnSearch.setContentAreaFilled(false);
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -449,7 +449,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
         /*
         Se hace la instancia para guardar los datos en el ArrayList
          */
-        Compras clase = new Compras(date, provider, adress, telephone, mail, product, RFC);
+        Purchase clase = new Purchase(date, provider, adress, telephone, mail, product, RFC);
         shoppingList.add(clase);
         clearFields();
         /*

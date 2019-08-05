@@ -32,7 +32,7 @@ public class BillingList extends javax.swing.JFrame {
         MostrarLosDatos();
         this.setIconImage
          (new ImageIcon(getClass().getResource
-        ("/ImgFondos/Icono.png")).getImage());
+        ("/src/main/resources/ImgFondos/Icono.png")).getImage());
         cerrar();
         this.getContentPane().setBackground(Color.GRAY);
         
@@ -123,7 +123,7 @@ public class BillingList extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
+        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
         btnDeleteRow.setContentAreaFilled(false);
         btnDeleteRow.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +132,7 @@ public class BillingList extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
+        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar todo.png"))); // NOI18N
         btnDeleteAll.setBorder(null);
         btnDeleteAll.setContentAreaFilled(false);
         btnDeleteAll.addActionListener(new java.awt.event.ActionListener() {

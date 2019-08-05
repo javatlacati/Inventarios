@@ -4,18 +4,13 @@
  * and open the template in the editor.
  */
 package inventarios.gui.desktop;
-import inventarios.gui.desktop.OrderManagement;
-import inventarios.gui.desktop.InventoryManagement;
-import com.sun.imageio.plugins.png.RowFilter;
 import inventarios.to.Product;
-import java.awt.Color;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -54,7 +49,7 @@ public class ListaProductos extends javax.swing.JFrame {
             Product p;
             for(int i=0; i<InventoryManagement.contenedor.size(); i++)
             {
-                p = (Product) InventoryManagement.contenedor.get(i);
+                p = InventoryManagement.contenedor.get(i);
                 model.insertRow(con, new Object[]{});
                 model.setValueAt(p.getProducto(),con , 0);
                 model.setValueAt(p.getCantidad(),con , 1);
@@ -110,17 +105,17 @@ public class ListaProductos extends javax.swing.JFrame {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("ListaProductos.title")); // NOI18N
         setIconImage(new ImageIcon(getClass().getResource
-            ("/ImgFondos/Icono.png")).getImage());
+            ("/src/main/resources/ImgFondos/Icono.png")).getImage());
     setResizable(false);
 
     pnlTitle.setOpaque(false);
     pnlTitle.setLayout(new javax.swing.OverlayLayout(pnlTitle));
 
     lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/productos agregados.png"))); // NOI18N
+    lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/productos agregados.png"))); // NOI18N
     pnlTitle.add(lblTitle);
 
-    lblBackgroundTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
+    lblBackgroundTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/fondo 1.png"))); // NOI18N
     lblBackgroundTitle.setOpaque(true);
     lblBackgroundTitle.setPreferredSize(lblTitle.size());
     pnlTitle.add(lblBackgroundTitle);
@@ -158,7 +153,7 @@ public class ListaProductos extends javax.swing.JFrame {
     tableOptionsPanel.setOpaque(false);
     tableOptionsPanel.setLayout(new java.awt.GridLayout(1, 0));
 
-    btneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
+    btneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar fila.png"))); // NOI18N
     btneliminar.setBorder(null);
     btneliminar.setContentAreaFilled(false);
     btneliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -169,7 +164,7 @@ public class ListaProductos extends javax.swing.JFrame {
     });
     tableOptionsPanel.add(btneliminar);
 
-    btneliminartodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
+    btneliminartodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar todo.png"))); // NOI18N
     btneliminartodo.setBorder(null);
     btneliminartodo.setContentAreaFilled(false);
     btneliminartodo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

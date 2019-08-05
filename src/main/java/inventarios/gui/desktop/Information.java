@@ -32,7 +32,7 @@ public class Information extends javax.swing.JFrame {
         Icon icono = new ImageIcon(imagen2.getImage().getScaledInstance(lblBigLogo.getWidth(), lblBigLogo.getHeight(), Image.SCALE_DEFAULT));
         lblBigLogo.setIcon(icono);
         this.repaint();
-        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/Icono.png")).getImage());
         this.getContentPane().setBackground(Color.cyan);
         cerrar();
     }

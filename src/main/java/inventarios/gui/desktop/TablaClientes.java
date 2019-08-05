@@ -28,7 +28,7 @@ public class TablaClientes extends javax.swing.JFrame {
         initComponents();
         ((JPanel) getContentPane()).setOpaque(false);
         ImageIcon uno;
-        uno = new ImageIcon(this.getClass().getResource("/ImgFondos/tabla.jpg"));
+        uno = new ImageIcon(this.getClass().getResource("/src/main/resources/ImgFondos/tabla.jpg"));
         JLabel fondo = new JLabel();
         fondo.setIcon(uno);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
@@ -46,14 +46,14 @@ public class TablaClientes extends javax.swing.JFrame {
 
         modelo.insertRow(cont, new Object[]{});
 
-        modelo.setValueAt(c.getMatricula(), cont, 0);
+        modelo.setValueAt(c.getId(), cont, 0);
         modelo.setValueAt(c.getName(), cont, 1);
-        modelo.setValueAt(c.getApellido1(), cont, 2);
-        modelo.setValueAt(c.getApellido2(), cont, 3);
-        modelo.setValueAt(c.getDomicilio(), cont, 4);
-        modelo.setValueAt(c.getPuesto(), cont, 5);
-        modelo.setValueAt(c.getHorae(), cont, 6);
-        modelo.setValueAt(c.getHoras(), cont, 7);
+        modelo.setValueAt(c.getMiddleName(), cont, 2);
+        modelo.setValueAt(c.getLastName(), cont, 3);
+        modelo.setValueAt(c.getHomeAdress(), cont, 4);
+        modelo.setValueAt(c.getPosition(), cont, 5);
+        modelo.setValueAt(c.getStartTime(), cont, 6);
+        modelo.setValueAt(c.getHours(), cont, 7);
 
         cont++;
 
