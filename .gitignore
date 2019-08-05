@@ -1,5 +1,3 @@
-/Inventarios/nbproject/private/
-/dist/
-/build/
-/nbproject/private/
 /target
+.idea
+nbactions.xml
