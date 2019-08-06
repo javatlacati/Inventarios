@@ -5,28 +5,28 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.to.LoginUsers;
+import inventarios.service.LoginUsersService;
+import inventarios.to.LoginUser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.List;
 
 /**
  *
  * @author EfraJiJim
  */
+@Component
 public class LoginWindow extends javax.swing.JFrame {
 
-    
+    @Autowired
+    private LoginUsersService usersService;
 
-//llamamos a la lista de clientes que se creo anteriormente//
-    final private List<LoginUsers> userList;
-
-    public LoginWindow(List<LoginUsers> userList) {
-        this.userList = userList;
+    public LoginWindow() {
         initComponents();
         this.setLocationRelativeTo(LoginWindow.this);
 //        ComponentListener cl = new ComponentAdapter() {
@@ -245,7 +245,7 @@ public class LoginWindow extends javax.swing.JFrame {
         String user = txtUser.getText();
         String password = txtPsswd.getText();
 
-        for (LoginUsers usuarioParaInicioSecion : userList) {
+        for (LoginUser usuarioParaInicioSecion : usersService.findAll()) {
             if (usuarioParaInicioSecion.getUser().equals(user)
                     && usuarioParaInicioSecion.getPassword().equals(password)) {
                 Menu CdP = new Menu();
