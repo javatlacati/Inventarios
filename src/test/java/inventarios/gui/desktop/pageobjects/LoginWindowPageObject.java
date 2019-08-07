@@ -52,7 +52,7 @@ public class LoginWindowPageObject {
     }
 
     public void userNotFoundIsShown() {
-        userNotFoundMessage = new JDialogOperator("Mensaje");
+        userNotFoundMessage = new JDialogOperator("Credenciales incorrectas");
         Assert.assertNotNull(userNotFoundMessage);
         JLabelOperator dialogMessage = new JLabelOperator(userNotFoundMessage);
         Assert.assertEquals("Usuario " + userField.getText() + " no encontrado", dialogMessage.getText());

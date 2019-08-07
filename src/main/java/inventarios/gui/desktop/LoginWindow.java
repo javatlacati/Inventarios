@@ -254,7 +254,7 @@ public class LoginWindow extends javax.swing.JFrame {
             }
         }
 
-        JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado");
+        JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado", "Credenciales incorrectas", JOptionPane.WARNING_MESSAGE);
     }
 
     public void confirmExit() {
