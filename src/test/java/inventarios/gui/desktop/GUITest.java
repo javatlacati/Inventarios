@@ -2,6 +2,9 @@ package inventarios.gui.desktop;
 
 import inventarios.HeadlessSpringBootContextLoader;
 import inventarios.gui.desktop.pageobjects.LoginWindowPageObject;
+import inventarios.gui.desktop.pageobjects.MainMenuPageObject;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +23,32 @@ public class GUITest {
     @Autowired
     private LoginWindow loginWindow;
 
-    @Test
-    public void main() {
-        loginWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    @Before
+    public void setUp() throws Exception {
+        loginWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         loginWindow.setVisible(true);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        loginWindow.setVisible(false);
+    }
+
+    @Test
+    public void failedLogin() {
+        LoginWindowPageObject loginWindowPageObject = new LoginWindowPageObject();
+        loginWindowPageObject.setUserFieldContent("wrong");
+        loginWindowPageObject.setPasswordFieldContent("wrong");
+        loginWindowPageObject.clickAccept();
+        loginWindowPageObject.userNotFoundIsShown();
+    }
+
+    @Test
+    public void successFulLogin() {
         LoginWindowPageObject loginWindowPageObject = new LoginWindowPageObject();
         loginWindowPageObject.setUserFieldContent("oscar");
         loginWindowPageObject.setPasswordFieldContent("oscar");
-        loginWindowPageObject.clickAccept();
+        loginWindowPageObject.clickAcceptAndWait();
+        MainMenuPageObject menuPageObject = new MainMenuPageObject();
     }
 }

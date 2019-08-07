@@ -5,6 +5,8 @@
  */
 package inventarios.gui.desktop;
 
+import org.springframework.stereotype.Component;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -14,6 +16,7 @@ import java.awt.event.WindowEvent;
  *
  * @author Oscar Marroquin
  */
+@Component
 public class Menu extends javax.swing.JFrame {
 
     /**
@@ -35,7 +38,7 @@ public class Menu extends javax.swing.JFrame {
                     confirmarSalida();
                 }
             });
-            this.setVisible(true);
+//            this.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
