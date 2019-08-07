@@ -56,7 +56,7 @@ public class LoginWindowPageObject {
         Assert.assertNotNull(userNotFoundMessage);
         JLabelOperator dialogMessage = new JLabelOperator(userNotFoundMessage);
         Assert.assertEquals("Usuario " + userField.getText() + " no encontrado", dialogMessage.getText());
-        JButtonOperator jbo = new JButtonOperator(userNotFoundMessage, "Aceptar");
+        JButtonOperator jbo = new JButtonOperator(userNotFoundMessage);
         jbo.push();
         userNotFoundMessage = null;
     }
