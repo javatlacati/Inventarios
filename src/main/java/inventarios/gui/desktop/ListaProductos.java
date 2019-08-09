@@ -29,7 +29,7 @@ public class ListaProductos extends javax.swing.JFrame {
 
     @Autowired
     Menu menu;
-    
+
     @Autowired
     OrderManagement orderManagement;
 
@@ -42,8 +42,7 @@ public class ListaProductos extends javax.swing.JFrame {
 
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.GRAY);
-////        mostrarInterfaz();
-////        mostrarLosDatos();
+        mostrarInterfaz();
     }
 //metodo para mostrar la interfaz vacia de la tabla//
 

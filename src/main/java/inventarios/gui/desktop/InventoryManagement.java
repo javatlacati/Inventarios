@@ -25,13 +25,13 @@ public class InventoryManagement extends javax.swing.JFrame {
 
     @Autowired
     Menu menu;
-    
+
     @Autowired
     ProductService productService;
-    
+
     @Autowired
     ListaProductos listaProductos;
-    
+
     public Optional<Product> found;
 
     /**
@@ -352,6 +352,7 @@ public class InventoryManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        listaProductos.mostrarLosDatos();
         listaProductos.setVisible(true);
     }//GEN-LAST:event_btnViewActionPerformed
 
