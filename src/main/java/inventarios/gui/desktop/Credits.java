@@ -5,6 +5,8 @@
  */
 package inventarios.gui.desktop;
 
+import org.springframework.stereotype.Component;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -14,6 +16,7 @@ import javax.swing.JPanel;
  *
  * @author IDELFONSO
  */
+@Component
 public class Credits extends javax.swing.JFrame {
 
     /**
@@ -23,8 +26,7 @@ public class Credits extends javax.swing.JFrame {
         initComponents();
 
         ((JPanel) getContentPane()).setOpaque(false);
-        ImageIcon uno;
-        uno = new ImageIcon(this.getClass().getResource("/src/main/resources/ImgFondos/Creditos_1.png"));
+        ImageIcon uno = new ImageIcon(this.getClass().getResource("/ImgFondos/Creditos_1.png"));
         JLabel fondo = new JLabel();
         fondo.setIcon(uno);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);

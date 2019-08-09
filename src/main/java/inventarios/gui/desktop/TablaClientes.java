@@ -11,11 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author IDELFONSO
  */
+@Component
 public class TablaClientes extends javax.swing.JFrame {
 
     private DefaultTableModel modelo;
@@ -28,7 +30,7 @@ public class TablaClientes extends javax.swing.JFrame {
         initComponents();
         ((JPanel) getContentPane()).setOpaque(false);
         ImageIcon uno;
-        uno = new ImageIcon(this.getClass().getResource("/src/main/resources/ImgFondos/tabla.jpg"));
+        uno = new ImageIcon(this.getClass().getResource("/ImgFondos/tabla.jpg"));
         JLabel fondo = new JLabel();
         fondo.setIcon(uno);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);

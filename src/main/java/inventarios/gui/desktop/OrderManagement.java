@@ -10,19 +10,27 @@ Se importa la paqueteria a utilizar
  */
 import inventarios.to.Order;
 
-import javax.swing.JOptionPane;
-import java.awt.Color;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 import java.util.List;
-import javax.swing.ImageIcon;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author EfraJiJim
  */
+@Component
 public class OrderManagement extends javax.swing.JFrame {
+
+    @Autowired
+    Menu menu;
+
+    @Autowired
+    ListaPedidos listaPedidos;
 
     public static List<Order> contenedor = new LinkedList<>();
 
@@ -36,7 +44,7 @@ public class OrderManagement extends javax.swing.JFrame {
 
         initComponents();
         this.getContentPane().setBackground(Color.cyan);
-        this.setIconImage(new ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/Icono.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
 
     }
@@ -94,7 +102,7 @@ public class OrderManagement extends javax.swing.JFrame {
 
         jLabel7.setText(bundle.getString("OrderManagement.jLabel7.text")); // NOI18N
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/agregar1.png"))); // NOI18N
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
         btnAdd.setBorder(null);
         btnAdd.setContentAreaFilled(false);
         btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -104,7 +112,7 @@ public class OrderManagement extends javax.swing.JFrame {
             }
         });
 
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
         btnClean.setBorder(null);
         btnClean.setContentAreaFilled(false);
         btnClean.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -114,7 +122,7 @@ public class OrderManagement extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
         btnClose.setBorder(null);
         btnClose.setContentAreaFilled(false);
         btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -143,7 +151,7 @@ public class OrderManagement extends javax.swing.JFrame {
 
         jTextField7.setPreferredSize(new java.awt.Dimension(70, 25));
 
-        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/consulta.png"))); // NOI18N
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
         btnView.setBorder(null);
         btnView.setContentAreaFilled(false);
         btnView.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -156,6 +164,7 @@ public class OrderManagement extends javax.swing.JFrame {
         btnMenu.setBackground(new java.awt.Color(0, 0, 255));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnMenu.setText(bundle.getString("OrderManagement.btnMenu.text")); // NOI18N
+        btnMenu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
@@ -165,7 +174,7 @@ public class OrderManagement extends javax.swing.JFrame {
         btnGetBack.setBackground(new java.awt.Color(255, 51, 204));
         btnGetBack.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
         btnGetBack.setText(bundle.getString("OrderManagement.btnGetBack.text")); // NOI18N
-        btnGetBack.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        btnGetBack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnGetBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnGetBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -340,14 +349,11 @@ public class OrderManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        ListaPedidos LP = new ListaPedidos();
-        LP.setVisible(true);
+        listaPedidos.setVisible(true);
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        // TODO add your handling code here:
-        Menu M = new Menu();
-        M.setVisible(true);
+        menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
 
@@ -364,7 +370,6 @@ public class OrderManagement extends javax.swing.JFrame {
                     confirmarSalida();
                 }
             });
-            this.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }

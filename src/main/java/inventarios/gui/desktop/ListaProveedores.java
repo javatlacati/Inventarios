@@ -12,77 +12,80 @@ import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author heberdavid
  */
+@Component
 public class ListaProveedores extends javax.swing.JFrame {
-private DefaultTableModel modelo;
+
+    @Autowired
+    ProviderManagement providerManagement;
+
+    private DefaultTableModel modelo;
     int con = 0;
+
     /**
      * Creates new form ListaProveedores
      */
     public ListaProveedores() {
         initComponents();
-         MostrarInterfaz();
+        MostrarInterfaz();
         MostrarLosDatos();
-        this.setIconImage
-         (new ImageIcon(getClass().getResource
-        ("/src/main/resources/ImgFondos/Icono.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
     }
-    public void MostrarInterfaz()
-    {
-     //para agregar los datos en un arreglo vacio//
-        String data [][]={};
-        
-        String col[]=  {"No. de Proveedor", "Nombre", "Apellidos", "Dirección", "Teléfono","E-Mail","Código Postal"};
+
+    public void MostrarInterfaz() {
+        //para agregar los datos en un arreglo vacio//
+        String data[][] = {};
+
+        String col[] = {"No. de Proveedor", "Nombre", "Apellidos", "Dirección", "Teléfono", "E-Mail", "Código Postal"};
         modelo = new DefaultTableModel(data, col);
-        providersTable.setModel(modelo); 
-        
-       
+        providersTable.setModel(modelo);
+
     }
-    
-    public void MostrarLosDatos()
-        {
-            Provider P;
-            for(int i=0; i<ProviderManagement.contenedor.size(); i++)
-            {
-                P = (Provider) ProviderManagement.contenedor.get(i);
-                modelo.insertRow(con, new Object[]{});
-                modelo.setValueAt(P.getName(),con , 0);
-                modelo.setValueAt(P.getApellidos(),con , 1);
-                modelo.setValueAt(P.getDireccion(),con , 2);
-                modelo.setValueAt(P.getTelephoneNumber(),con , 3);
-                modelo.setValueAt(P.getEmail(),con , 4);
-                modelo.setValueAt(P.getCodPost(),con , 5);
-                modelo.setValueAt(P.getNum(),con , 6);
-                
-                
-            }
+
+    public void MostrarLosDatos() {
+        Provider P;
+        for (int i = 0; i < ProviderManagement.contenedor.size(); i++) {
+            P = (Provider) ProviderManagement.contenedor.get(i);
+            modelo.insertRow(con, new Object[]{});
+            modelo.setValueAt(P.getName(), con, 0);
+            modelo.setValueAt(P.getApellidos(), con, 1);
+            modelo.setValueAt(P.getDireccion(), con, 2);
+            modelo.setValueAt(P.getTelephoneNumber(), con, 3);
+            modelo.setValueAt(P.getEmail(), con, 4);
+            modelo.setValueAt(P.getCodPost(), con, 5);
+            modelo.setValueAt(P.getNum(), con, 6);
+
         }
-     //Método para confirmar el cierre deJFrame//
-    public void cerrar(){
+    }
+    //Método para confirmar el cierre deJFrame//
+
+    public void cerrar() {
         try {
             this.setDefaultCloseOperation(ListaProveedores.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
-                public void windowClosing(WindowEvent e){
+                public void windowClosing(WindowEvent e) {
                     confirmarSalida();
                 }
-                });
-            this.setVisible(true);
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
-        }
+    }
+
     //Confirmar salida//
-        public void confirmarSalida(){
-            int valor= JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor==JOptionPane.YES_OPTION){
+    public void confirmarSalida() {
+        int valor = JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (valor == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
-        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,7 +109,7 @@ private DefaultTableModel modelo;
         setTitle(bundle.getString("ListaProveedores.title")); // NOI18N
         setResizable(false);
 
-        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar fila.png"))); // NOI18N
+        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
         btnDeleteRow.setContentAreaFilled(false);
         btnDeleteRow.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +118,7 @@ private DefaultTableModel modelo;
             }
         });
 
-        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar todo.png"))); // NOI18N
+        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
         btnDeleteAll.setBorder(null);
         btnDeleteAll.setContentAreaFilled(false);
         btnDeleteAll.addActionListener(new java.awt.event.ActionListener() {
@@ -200,11 +203,11 @@ private DefaultTableModel modelo;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowActionPerformed
-try {
-            modelo=(DefaultTableModel) providersTable.getModel();
+        try {
+            modelo = (DefaultTableModel) providersTable.getModel();
             modelo.removeRow(providersTable.getSelectedRow());
-            providersTable.addRowSelectionInterval(0,0);
-            modelo=null;
+            providersTable.addRowSelectionInterval(0, 0);
+            modelo = null;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Seleccione la fila que desea quitar.");
         }           // TODO add your handling code here:
@@ -212,9 +215,9 @@ try {
 
     private void btnDeleteAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAllActionPerformed
         try {
-            DefaultTableModel modelo=(DefaultTableModel) providersTable.getModel();
-          int filas=providersTable.getRowCount();
-            for (int i = 0;filas>i; i++) {
+            DefaultTableModel modelo = (DefaultTableModel) providersTable.getModel();
+            int filas = providersTable.getRowCount();
+            for (int i = 0; filas > i; i++) {
                 modelo.removeRow(0);
             }
         } catch (Exception e) {
@@ -223,9 +226,7 @@ try {
     }//GEN-LAST:event_btnDeleteAllActionPerformed
 
     private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
-        // TODO add your handling code here:
-        ProviderManagement r  = new ProviderManagement();
-        r.setVisible(true);
+        providerManagement.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnGetBackActionPerformed
 

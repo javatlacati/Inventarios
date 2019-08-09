@@ -5,6 +5,7 @@
  */
 package inventarios.gui.desktop;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
@@ -18,6 +19,33 @@ import java.awt.event.WindowEvent;
  */
 @Component
 public class Menu extends javax.swing.JFrame {
+
+    @Autowired
+    LoginWindow loginWindow;
+
+    @Autowired
+    InventoryManagement inventoryManagement;
+
+    @Autowired
+    ShoppingWindow shoppingWindow;
+
+    @Autowired
+    OrderManagement orderManagement;
+    
+    @Autowired
+    ProviderManagement providerManagement;
+    
+    @Autowired
+    BillingManagement billingManagement;
+    
+    @Autowired
+    Information information;
+    
+    @Autowired
+    EmployeeRegistration employeeRegistration;
+    
+    @Autowired
+    Credits credits;
 
     /**
      * Creates new form Menu
@@ -38,7 +66,6 @@ public class Menu extends javax.swing.JFrame {
                     confirmarSalida();
                 }
             });
-//            this.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -285,94 +312,82 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
-        InventoryManagement r = new InventoryManagement();
-        r.setVisible(true);
+        inventoryManagement.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnInventoryActionPerformed
 
     private void btnTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransactionActionPerformed
-        ShoppingWindow r = new ShoppingWindow();
-        r.setVisible(true);
+        shoppingWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnTransactionActionPerformed
 
     private void btnOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdersActionPerformed
-        OrderManagement r = new OrderManagement();
-        r.setVisible(true);
+        orderManagement.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnOrdersActionPerformed
 
     private void btnProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProviderActionPerformed
-        ProviderManagement r = new ProviderManagement();
-        r.setVisible(true);
+        providerManagement.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnProviderActionPerformed
 
     private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
         dispose();
+        loginWindow.setVisible(true);
     }//GEN-LAST:event_btnGetBackActionPerformed
 
     private void btnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillingActionPerformed
-        BillingManagement Fv = new BillingManagement();
-        Fv.setVisible(true);
+        billingManagement.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnBillingActionPerformed
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
-        Information F = new Information();
-        F.setVisible(true);
+        information.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnAboutActionPerformed
 
     private void mnuInventoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuInventoriesActionPerformed
-        InventoryManagement r = new InventoryManagement();
-        r.setVisible(true);
+        inventoryManagement.setVisible(true);
         dispose();
     }//GEN-LAST:event_mnuInventoriesActionPerformed
 
     private void mnuAboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAboutItemActionPerformed
-        Information F = new Information();
-        F.setVisible(true);
+        information.setVisible(true);
         dispose();
     }//GEN-LAST:event_mnuAboutItemActionPerformed
 
     private void mnuBillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuBillsActionPerformed
-        BillingManagement Fv = new BillingManagement();
-        Fv.setVisible(true);
+        billingManagement.setVisible(true);
         dispose();
     }//GEN-LAST:event_mnuBillsActionPerformed
 
     private void mnuProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProviderActionPerformed
-        ProviderManagement r = new ProviderManagement();
-        r.setVisible(true);
+        providerManagement.setVisible(true);
         dispose();
     }//GEN-LAST:event_mnuProviderActionPerformed
 
     private void mnuOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOrdersActionPerformed
-        OrderManagement r = new OrderManagement();
-        r.setVisible(true);
+        orderManagement.setVisible(true);
         dispose();
     }//GEN-LAST:event_mnuOrdersActionPerformed
 
     private void mnuTransactionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuTransactionsActionPerformed
-        ShoppingWindow r = new ShoppingWindow();
-        r.setVisible(true);
+        shoppingWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_mnuTransactionsActionPerformed
 
     private void mnuGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuGetBackActionPerformed
         dispose();
+        loginWindow.setVisible(true);
     }//GEN-LAST:event_mnuGetBackActionPerformed
 
     private void btnEmployeeRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeRecordsActionPerformed
-        EmployeeRegistration n = new EmployeeRegistration();
-        n.setVisible(true);
+        employeeRegistration.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnEmployeeRecordsActionPerformed
 
     private void btnCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditsActionPerformed
-        Credits y = new Credits();
-        y.setVisible(true);
+        credits.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCreditsActionPerformed
 

@@ -12,27 +12,32 @@ import java.awt.event.WindowEvent;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Personal
  */
+@Component
 public class Information extends javax.swing.JFrame {
 
+    @Autowired
+    Menu menu;
     /**
      * Creates new form Información
      */
     public Information() {
         initComponents();
-        ImageIcon imagen = new ImageIcon("src/ImgFondos/isc.png");
+        ImageIcon imagen = new ImageIcon("/ImgFondos/isc.png");
         Icon icono2 = new ImageIcon(imagen.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
         lblLogo.setIcon(icono2);
         this.repaint();
-        ImageIcon imagen2 = new ImageIcon("src/ImgFondos/istes.png");
+        ImageIcon imagen2 = new ImageIcon("/ImgFondos/istes.png");
         Icon icono = new ImageIcon(imagen2.getImage().getScaledInstance(lblBigLogo.getWidth(), lblBigLogo.getHeight(), Image.SCALE_DEFAULT));
         lblBigLogo.setIcon(icono);
         this.repaint();
-        this.setIconImage(new ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/Icono.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         this.getContentPane().setBackground(Color.cyan);
         cerrar();
     }
@@ -46,7 +51,6 @@ public class Information extends javax.swing.JFrame {
                     confirmarSalida();
                 }
             });
-            this.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -167,7 +171,6 @@ public class Information extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        Menu menu = new Menu();
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMenuActionPerformed

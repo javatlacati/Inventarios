@@ -11,12 +11,21 @@ import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Personal
  */
+@Component
 public class BillingManagement extends javax.swing.JFrame {
+
+    @Autowired
+    BillingList billingList;
+
+    @Autowired
+    Menu menu;
 
     public static LinkedList contenedor = new LinkedList();
 
@@ -27,7 +36,7 @@ public class BillingManagement extends javax.swing.JFrame {
         initComponents();
         cerrar();
         this.getContentPane().setBackground(Color.cyan);
-        this.setIconImage(new ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/Icono.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
 
     }
 
@@ -98,7 +107,7 @@ public class BillingManagement extends javax.swing.JFrame {
 
         lblEMail.setText(bundle.getString("BillingManagement.lblEMail.text")); // NOI18N
 
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
         btnClean.setBorder(null);
         btnClean.setContentAreaFilled(false);
         btnClean.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +116,7 @@ public class BillingManagement extends javax.swing.JFrame {
             }
         });
 
-        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/consulta.png"))); // NOI18N
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
         btnView.setBorder(null);
         btnView.setContentAreaFilled(false);
         btnView.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +125,7 @@ public class BillingManagement extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
         btnClose.setBorder(null);
         btnClose.setContentAreaFilled(false);
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +137,7 @@ public class BillingManagement extends javax.swing.JFrame {
         btnMenu.setBackground(new java.awt.Color(255, 0, 255));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnMenu.setText(bundle.getString("BillingManagement.btnMenu.text")); // NOI18N
-        btnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        btnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
@@ -264,24 +273,19 @@ public class BillingManagement extends javax.swing.JFrame {
         txtCountry.setText("");
         txtPOBox.setText("");
         txtEmail.setText("");
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        BillingList Lf = new BillingList();
-        Lf.setVisible(true);        // TODO add your handling code here:
+        billingList.setVisible(true);
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         //Código para cerrar la vetana//
         dispose();
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        // TODO add your handling code here:
-        Menu M = new Menu();
-        M.setVisible(true);
+        menu.setVisible(true);
     }//GEN-LAST:event_btnMenuActionPerformed
     public void cerrar() {
         try {
@@ -292,7 +296,6 @@ public class BillingManagement extends javax.swing.JFrame {
                 }
 
             });
-            this.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }

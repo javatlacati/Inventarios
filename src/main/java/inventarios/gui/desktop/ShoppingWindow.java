@@ -6,22 +6,31 @@
 package inventarios.gui.desktop;
 
 import inventarios.to.Purchase;
-import java.awt.Color;
+import org.springframework.stereotype.Component;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author EfraJiJim
  */
+@Component
 public class ShoppingWindow extends javax.swing.JFrame {
+    
+    @Autowired
+    ListaCompras listaCompras;
+    
+    @Autowired
+    Menu menu;
 
     public static List<Purchase> shoppingList = new LinkedList<>();
     /*
@@ -57,7 +66,6 @@ public class ShoppingWindow extends javax.swing.JFrame {
                     confirmarSalida();
                 }
             });
-            this.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -103,7 +111,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("ShoppingWindow.title")); // NOI18N
-        setIconImage(new ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/Icono.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setResizable(false);
 
         lblDate.setText(bundle.getString("ShoppingWindow.lblDate.text")); // NOI18N
@@ -169,7 +177,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
             }
         });
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/agregar1.png"))); // NOI18N
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
         btnAdd.setBorder(null);
         btnAdd.setContentAreaFilled(false);
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +186,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
             }
         });
 
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
         btnClean.setBorder(null);
         btnClean.setContentAreaFilled(false);
         btnClean.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +195,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
         btnClose.setBorder(null);
         btnClose.setContentAreaFilled(false);
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +204,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
             }
         });
 
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/consulta.png"))); // NOI18N
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
         btnSearch.setBorder(null);
         btnSearch.setContentAreaFilled(false);
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -364,8 +372,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_txtProductKeyTyped
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        ListaCompras LC = new ListaCompras();
-        LC.setVisible(true);
+        listaCompras.setVisible(true);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -373,7 +380,6 @@ public class ShoppingWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        Menu menu = new Menu();
         menu.setVisible(true);
     }//GEN-LAST:event_btnMenuActionPerformed
 

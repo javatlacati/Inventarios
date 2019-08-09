@@ -12,80 +12,86 @@ import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author heberdavid
  */
+@Component
 public class ListaPedidos extends javax.swing.JFrame {
-private DefaultTableModel modelo;
+
+    @Autowired
+    Menu menu;
+
+    @Autowired
+    OrderManagement orderManagement;
+
+    private DefaultTableModel modelo;
     int con = 0;
+
     /**
      * Creates new form ListaPedidos
      */
     public ListaPedidos() {
         initComponents();
-         MostrarInterfaz();
+        MostrarInterfaz();
         MostrarLosDatos();
-        this.setIconImage
-         (new ImageIcon(getClass().getResource
-        ("/src/main/resources/ImgFondos/Icono.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
         this.getContentPane().setBackground(Color.GRAY);
     }
-     public void MostrarInterfaz()
-    {
-     //para agregar los datos en un arreglo vacio//
-        String data [][]={};
-        
-        String col[]=  {"No. de Pedido", "Nombre", "Apellidos", "Producto", "RFC","Teléfono","Atendio por", "Direccion", "Fecha"};
+
+    public void MostrarInterfaz() {
+        //para agregar los datos en un arreglo vacio//
+        String data[][] = {};
+
+        String col[] = {"No. de Pedido", "Nombre", "Apellidos", "Producto", "RFC", "Teléfono", "Atendio por", "Direccion", "Fecha"};
         modelo = new DefaultTableModel(data, col);
-        jTable1.setModel(modelo); 
-        
-       
+        jTable1.setModel(modelo);
+
     }
-    
-    public void MostrarLosDatos()
-        {
-            Order p;
-            for(int i=0; i<OrderManagement.contenedor.size(); i++)
-            {
-                p = (Order) OrderManagement.contenedor.get(i);
-                modelo.insertRow(con, new Object[]{});
-                modelo.setValueAt(p.getName(),con , 0);
-                modelo.setValueAt(p.getLastName(),con , 1);
-                modelo.setValueAt(p.getProducto(),con , 2);
-                modelo.setValueAt(p.getRFC(),con , 3);
-                modelo.setValueAt(p.getTelephone(),con , 4);
-                modelo.setValueAt(p.getEmpleado(),con , 5);
-                modelo.setValueAt(p.getId(),con , 6);
-                modelo.setValueAt(p.getDireccion(),con , 7);
-                modelo.setValueAt(p.getOrderDate(),con , 8);
-                
-                
-            }
+
+    public void MostrarLosDatos() {
+        Order p;
+        for (int i = 0; i < OrderManagement.contenedor.size(); i++) {
+            p = (Order) OrderManagement.contenedor.get(i);
+            modelo.insertRow(con, new Object[]{});
+            modelo.setValueAt(p.getName(), con, 0);
+            modelo.setValueAt(p.getLastName(), con, 1);
+            modelo.setValueAt(p.getProducto(), con, 2);
+            modelo.setValueAt(p.getRFC(), con, 3);
+            modelo.setValueAt(p.getTelephone(), con, 4);
+            modelo.setValueAt(p.getEmpleado(), con, 5);
+            modelo.setValueAt(p.getId(), con, 6);
+            modelo.setValueAt(p.getDireccion(), con, 7);
+            modelo.setValueAt(p.getOrderDate(), con, 8);
+
         }
-     //Método para confirmar el cierre deJFrame//
-    public void cerrar(){
+    }
+    //Método para confirmar el cierre deJFrame//
+
+    public void cerrar() {
         try {
             this.setDefaultCloseOperation(ListaPedidos.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
-                public void windowClosing(WindowEvent e){
+                public void windowClosing(WindowEvent e) {
                     confirmarSalida();
                 }
-                });
-            this.setVisible(true);
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
-        }
+    }
+
     //Confirmar salida//
-        public void confirmarSalida(){
-            int valor= JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor==JOptionPane.YES_OPTION){
+    public void confirmarSalida() {
+        int valor = JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (valor == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
-        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -126,7 +132,7 @@ private DefaultTableModel modelo;
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText(bundle.getString("ListaPedidos.lblTitle.text")); // NOI18N
 
-        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar fila.png"))); // NOI18N
+        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
         btnDeleteRow.setContentAreaFilled(false);
         btnDeleteRow.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +141,7 @@ private DefaultTableModel modelo;
             }
         });
 
-        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar todo.png"))); // NOI18N
+        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
         btnDeleteAll.setBorder(null);
         btnDeleteAll.setContentAreaFilled(false);
         btnDeleteAll.addActionListener(new java.awt.event.ActionListener() {
@@ -224,21 +230,21 @@ private DefaultTableModel modelo;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowActionPerformed
-try {
-            modelo=(DefaultTableModel) jTable1.getModel();
+        try {
+            modelo = (DefaultTableModel) jTable1.getModel();
             modelo.removeRow(jTable1.getSelectedRow());
-            jTable1.addRowSelectionInterval(0,0);
-            modelo=null;
+            jTable1.addRowSelectionInterval(0, 0);
+            modelo = null;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Seleccione la fila que desea quitar.");
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteRowActionPerformed
 
     private void btnDeleteAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAllActionPerformed
-try {
-            DefaultTableModel modelo=(DefaultTableModel) jTable1.getModel();
-          int filas=jTable1.getRowCount();
-            for (int i = 0;filas>i; i++) {
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            int filas = jTable1.getRowCount();
+            for (int i = 0; filas > i; i++) {
                 modelo.removeRow(0);
             }
         } catch (Exception e) {
@@ -247,20 +253,15 @@ try {
     }//GEN-LAST:event_btnDeleteAllActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        // TODO add your handling code here:
-          Menu M= new Menu();
-        M.setVisible(true);
+        menu.setVisible(true);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
-        dispose ();
+        dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        OrderManagement r = new OrderManagement();
-        r.setVisible(true);
+        orderManagement.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 

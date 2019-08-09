@@ -6,19 +6,25 @@
 package inventarios.gui.desktop;
 
 import inventarios.to.EmployeeDetails;
+import org.springframework.stereotype.Component;
+
+import javax.swing.*;
 import java.util.LinkedList;
 import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author IDELFONSO
  */
+@Component
 public class EmployeeRegistration extends javax.swing.JFrame {
+
+    @Autowired
+    Menu menu;
+    
+    @Autowired
+    TablaClientes tablaClientes;
 
     public static List<EmployeeDetails> clientList = new LinkedList<>();
 
@@ -29,7 +35,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         initComponents();
         ((JPanel) getContentPane()).setOpaque(false);
         ImageIcon uno;
-        uno = new ImageIcon(this.getClass().getResource("/src/main/resources/ImgFondos/abstract.jpg"));
+        uno = new ImageIcon(this.getClass().getResource("/ImgFondos/abstract.jpg"));
         JLabel fondo = new JLabel();
         fondo.setIcon(uno);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
@@ -258,22 +264,19 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        TablaClientes x = new TablaClientes();
-        x.setVisible(true);
-        x.cargarinterfaz();
+        tablaClientes.setVisible(true);
+        tablaClientes.cargarinterfaz();
         EmployeeDetails c;
 
         for (int i = 0; i < clientList.size(); i++) {
             c = (EmployeeDetails) clientList.get(i);
-            x.mostrardatos(c);
+            tablaClientes.mostrardatos(c);
         }
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        Menu menu = new Menu();
         menu.setVisible(true);
     }//GEN-LAST:event_btnMenuActionPerformed
 

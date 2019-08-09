@@ -23,6 +23,9 @@ public class LoginWindow extends javax.swing.JFrame {
 
     @Autowired
     private LoginUsersService usersService;
+    
+    @Autowired
+    Menu menu;
 
     public LoginWindow() {
         initComponents();
@@ -207,8 +210,7 @@ public class LoginWindow extends javax.swing.JFrame {
         for (LoginUser usuarioParaInicioSecion : usersService.findAll()) {
             if (usuarioParaInicioSecion.getUserName().equals(user)
                     && usuarioParaInicioSecion.getPassword().equals(password)) {
-                Menu CdP = new Menu();
-                CdP.setVisible(true);
+                menu.setVisible(true);
                 this.setVisible(false);
                 return;
             }

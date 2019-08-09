@@ -11,12 +11,18 @@ import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Oscar Marroquin
  */
+@Component
 public class ListaCompras extends javax.swing.JFrame {
+
+    @Autowired
+    Menu menu;
 
     private DefaultTableModel modelo;
     int con = 0;
@@ -28,7 +34,7 @@ public class ListaCompras extends javax.swing.JFrame {
         initComponents();
         MostrarInterfaz();
         MostrarLosDatos();
-        this.setIconImage(new ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/Icono.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
     }
 
@@ -67,7 +73,6 @@ public class ListaCompras extends javax.swing.JFrame {
                     confirmarSalida();
                 }
             });
-            this.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -116,7 +121,7 @@ public class ListaCompras extends javax.swing.JFrame {
         ));
         shoppingScroll.setViewportView(shoppingTable);
 
-        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar fila.png"))); // NOI18N
+        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
         btnDeleteRow.setContentAreaFilled(false);
         btnDeleteRow.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +130,7 @@ public class ListaCompras extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/eliminar todo.png"))); // NOI18N
+        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
         btnDeleteAll.setBorder(null);
         btnDeleteAll.setContentAreaFilled(false);
         btnDeleteAll.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +222,6 @@ public class ListaCompras extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteAllActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        Menu menu = new Menu();
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMenuActionPerformed

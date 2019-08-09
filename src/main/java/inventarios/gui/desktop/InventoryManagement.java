@@ -5,49 +5,41 @@
  */
 package inventarios.gui.desktop;
 
+import inventarios.service.ProductService;
 import inventarios.to.Product;
-import java.awt.Color;
+import org.springframework.stereotype.Component;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.LinkedList;
-import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 
 /**
  *
  * @author david
  */
+@Component
 public class InventoryManagement extends javax.swing.JFrame {
 
-    public static List<Product> contenedor = new LinkedList<>();
-    public int Encontrado;
+    @Autowired
+    Menu menu;
+    
+    @Autowired
+    ProductService productService;
+    
+    @Autowired
+    ListaProductos listaProductos;
+    
+    public Optional<Product> found;
 
     /**
      * Creates new form InterfazConstructor
      */
     public InventoryManagement() {
         initComponents();
-        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.cyan);
-        this.setIconImage(new ImageIcon(getClass().getResource("/src/main/resources/ImgFondos/Icono.png")).getImage());
-        cerrar();
-    }
-    //Método para confirmar el cierre deJFrame//
-
-    public void cerrar() {
-        try {
-            this.setDefaultCloseOperation(InventoryManagement.DO_NOTHING_ON_CLOSE);
-            addWindowListener(new WindowAdapter() {
-                public void windowClosing(WindowEvent e) {
-                    confirmarSalida();
-                }
-            });
-            this.setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     //Confirmar salida//
@@ -70,17 +62,17 @@ public class InventoryManagement extends javax.swing.JFrame {
         lblProduct = new javax.swing.JLabel();
         lblQuantity = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblSerialNo = new javax.swing.JLabel();
         txtProduct = new javax.swing.JTextField();
         txtQuantity = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtSerialNo = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnClean = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        c1 = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
         lblName = new javax.swing.JLabel();
         btnMenu = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -91,23 +83,29 @@ public class InventoryManagement extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("InventoryManagement.title")); // NOI18N
+        setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                closeHandler(evt);
+            }
+        });
 
         lblProduct.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblProduct.setForeground(new java.awt.Color(255, 0, 0));
-        lblProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/Producto.png"))); // NOI18N
+        lblProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Producto.png"))); // NOI18N
 
         lblQuantity.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblQuantity.setForeground(new java.awt.Color(255, 0, 0));
-        lblQuantity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/cantidad.png"))); // NOI18N
+        lblQuantity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cantidad.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/caracteristica.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/caracteristica.png"))); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/serial.png"))); // NOI18N
+        lblSerialNo.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        lblSerialNo.setForeground(new java.awt.Color(255, 0, 0));
+        lblSerialNo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/serial.png"))); // NOI18N
 
         txtProduct.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -127,13 +125,13 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
-        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSerialNo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField4KeyTyped(evt);
+                txtSerialNoKeyTyped(evt);
             }
         });
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/agregar1.png"))); // NOI18N
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
         btnAdd.setBorder(null);
         btnAdd.setContentAreaFilled(false);
         btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -143,7 +141,7 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
         btnClean.setBorder(null);
         btnClean.setContentAreaFilled(false);
         btnClean.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -153,7 +151,7 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
         btnClose.setBorder(null);
         btnClose.setContentAreaFilled(false);
         btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -163,7 +161,7 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
-        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/consulta.png"))); // NOI18N
+        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
         btnView.setBorder(null);
         btnView.setContentAreaFilled(false);
         btnView.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -173,11 +171,11 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
-        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/main/resources/ImgLetras/inventario.png"))); // NOI18N
+        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/inventario.png"))); // NOI18N
 
-        c1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                c1KeyTyped(evt);
+                txtNameKeyTyped(evt);
             }
         });
 
@@ -230,7 +228,7 @@ public class InventoryManagement extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
+                    .addComponent(lblSerialNo)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -246,13 +244,13 @@ public class InventoryManagement extends javax.swing.JFrame {
                                     .addComponent(jTextField6)
                                     .addComponent(jTextField5)
                                     .addComponent(txtQuantity, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField4)
+                                    .addComponent(txtSerialNo)
                                     .addComponent(jTextField3)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnView, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -269,7 +267,7 @@ public class InventoryManagement extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblName))
                         .addGap(29, 29, 29))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -290,7 +288,7 @@ public class InventoryManagement extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(49, 49, 49)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtSerialNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -301,7 +299,7 @@ public class InventoryManagement extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)))
+                        .addComponent(lblSerialNo)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -323,16 +321,16 @@ public class InventoryManagement extends javax.swing.JFrame {
         String productName = txtProduct.getText();
         String productQuantity = txtQuantity.getText();
         String Caracteristicas = jTextField3.getText();
-        String Serial = jTextField4.getText();
+        String Serial = txtSerialNo.getText();
         String Fechai = jTextField5.getText();
         String Fechae = jTextField6.getText();
 
         Product clase = new Product(productName, productQuantity, Caracteristicas, Serial, Fechai, Fechae);
-        contenedor.add(clase);
+        productService.save(clase);
         txtProduct.setText("");
         txtQuantity.setText("");
         jTextField3.setText("");
-        jTextField4.setText("");
+        txtSerialNo.setText("");
         jTextField5.setText("");
         jTextField6.setText("");
 
@@ -340,12 +338,12 @@ public class InventoryManagement extends javax.swing.JFrame {
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
         //limpiar las cajas de texto
-        txtProduct.setText(null);
-        txtQuantity.setText(null);
-        jTextField3.setText(null);
-        jTextField4.setText(null);
-        jTextField5.setText(null);
-        jTextField6.setText(null);
+        txtProduct.setText("");
+        txtQuantity.setText("");
+        jTextField3.setText("");
+        txtSerialNo.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -354,8 +352,7 @@ public class InventoryManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        ListaProductos r = new ListaProductos();
-        r.setVisible(true);
+        listaProductos.setVisible(true);
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void txtProductKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductKeyTyped
@@ -379,37 +376,47 @@ public class InventoryManagement extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField3KeyTyped
 
-    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+    private void txtSerialNoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSerialNoKeyTyped
         char cTeclaPresionada = evt.getKeyChar();
         if (cTeclaPresionada == KeyEvent.VK_ENTER) {
             btnAdd.doClick();
         }
-    }//GEN-LAST:event_jTextField4KeyTyped
+    }//GEN-LAST:event_txtSerialNoKeyTyped
 
-    private void c1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_c1KeyTyped
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
         int tecla = evt.getKeyChar();
         if (tecla == 10) {
-            String codigoCopiado = c1.getText().trim();
-            Product p;
-            for (int i = 0; i < contenedor.size(); i++) {
-                p = contenedor.get(i);
-                if (codigoCopiado.equalsIgnoreCase(p.getProducto())) {
-                    txtQuantity.setText(p.getCantidad());
-                    jTextField3.setText(p.getCaracteristicas());
-                    jTextField4.setText(p.getSerial());
-                    Encontrado = i;
-                    break;
-                } else {
-                    JOptionPane.showMessageDialog(null, "No Existe");
-                    break;
-                }
+            String codigoCopiado = txtName.getText().trim();
+            Product sampleProduct = new Product();
+            sampleProduct.setProducto(codigoCopiado);
+            found = productService.findOne(Example.of(sampleProduct));
+
+            if (found.isPresent()) {
+                Product p = found.get();
+                txtQuantity.setText(String.valueOf(p.getCantidad()));
+                jTextField3.setText(p.getCaracteristicas());
+                txtSerialNo.setText(p.getSerial());
+            } else {
+                JOptionPane.showMessageDialog(null, "No Existe");
             }
 
+//            for (int i = 0; i < contenedor.size(); i++) {
+//                p = contenedor.get(i);
+//                if (codigoCopiado.equalsIgnoreCase(p.getProducto())) {
+//                    txtQuantity.setText(p.getCantidad());
+//                    jTextField3.setText(p.getCaracteristicas());
+//                    txtSerialNo.setText(p.getSerial());
+//                    Encontrado = i;
+//                    break;
+//                } else {
+//                    
+//                    break;
+//                }
+//            }
         }
-    }//GEN-LAST:event_c1KeyTyped
+    }//GEN-LAST:event_txtNameKeyTyped
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        Menu menu = new Menu();
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
@@ -422,26 +429,30 @@ public class InventoryManagement extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
+    private void closeHandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeHandler
+        confirmarSalida();
+    }//GEN-LAST:event_closeHandler
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClean;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnView;
-    private javax.swing.JTextField c1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblProduct;
     private javax.swing.JLabel lblQuantity;
+    private javax.swing.JLabel lblSerialNo;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtProduct;
     private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextField txtSerialNo;
     // End of variables declaration//GEN-END:variables
 }
