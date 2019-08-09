@@ -181,8 +181,7 @@ public class LoginWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
-        txtUser.setText("");
-        txtPsswd.setText("");
+        clearFields();
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void txtUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyTyped
@@ -212,11 +211,17 @@ public class LoginWindow extends javax.swing.JFrame {
                     && usuarioParaInicioSecion.getPassword().equals(password)) {
                 menu.setVisible(true);
                 this.setVisible(false);
+                clearFields();
                 return;
             }
         }
 
         JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado", "Credenciales incorrectas", JOptionPane.WARNING_MESSAGE);
+    }
+    
+    private void clearFields() {
+        txtUser.setText("");
+        txtPsswd.setText("");
     }
 
     public void confirmExit() {
