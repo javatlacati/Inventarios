@@ -6,7 +6,10 @@
 package inventarios.util;
 
 import inventarios.repository.LoginUsersRepository;
+import inventarios.repository.ProductRepository;
 import inventarios.to.LoginUser;
+import inventarios.to.Product;
+import java.time.Instant;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,6 +28,9 @@ public class DataProvider implements CommandLineRunner {
 
     @Autowired
     LoginUsersRepository usersRepository;
+    
+    @Autowired
+    ProductRepository productRepository;
 
     @Override
     @Transactional
@@ -53,6 +59,8 @@ public class DataProvider implements CommandLineRunner {
         usersRepository.save(new LoginUser(null, "marriano", "marriano"));
         usersRepository.save(new LoginUser(null, "miguel", "miguel"));
         usersRepository.save(new LoginUser(null, "lupita", "lupita"));
+        
+        productRepository.save(new Product("mesa", "2", "nueva", "1242552", Instant.now().toString(), Instant.now().plusMillis(2983).toString()));
     }
 
     private static void fillInUserList(List<LoginUser> userList) {
