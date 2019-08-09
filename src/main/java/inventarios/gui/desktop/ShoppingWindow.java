@@ -6,6 +6,7 @@
 package inventarios.gui.desktop;
 
 import inventarios.to.Purchase;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
@@ -17,7 +18,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -25,10 +25,10 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @Component
 public class ShoppingWindow extends javax.swing.JFrame {
-    
+
     @Autowired
     ListaCompras listaCompras;
-    
+
     @Autowired
     Menu menu;
 
@@ -54,10 +54,9 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
         this.getContentPane().setBackground(Color.cyan);
         cerrar();
-
     }
+    
     //Método para confirmar el cierre deJFrame//
-
     public void cerrar() {
         try {
             this.setDefaultCloseOperation(ShoppingWindow.DO_NOTHING_ON_CLOSE);
@@ -377,10 +376,13 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
+        menu.setVisible(true);
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        menu.add(this);
         menu.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -419,7 +421,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
         /*
         Se hace la instancia para guardar los datos en el ArrayList
          */
-        Purchase clase = new Purchase(date, provider, adress, telephone, mail, product, RFC);
+        Purchase clase = new Purchase(null,date, provider, adress, telephone, mail, product, RFC);
         shoppingList.add(clase);
         clearFields();
         /*

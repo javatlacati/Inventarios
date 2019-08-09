@@ -23,7 +23,7 @@ public class LoginWindow extends javax.swing.JFrame {
 
     @Autowired
     private LoginUsersService usersService;
-    
+
     @Autowired
     Menu menu;
 
@@ -210,6 +210,7 @@ public class LoginWindow extends javax.swing.JFrame {
             if (usuarioParaInicioSecion.getUserName().equals(user)
                     && usuarioParaInicioSecion.getPassword().equals(password)) {
                 menu.setVisible(true);
+                menu.add(this);
                 this.setVisible(false);
                 clearFields();
                 return;
@@ -218,7 +219,7 @@ public class LoginWindow extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado", "Credenciales incorrectas", JOptionPane.WARNING_MESSAGE);
     }
-    
+
     private void clearFields() {
         txtUser.setText("");
         txtPsswd.setText("");

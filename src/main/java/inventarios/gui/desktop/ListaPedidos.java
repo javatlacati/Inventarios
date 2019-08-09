@@ -61,11 +61,11 @@ public class ListaPedidos extends javax.swing.JFrame {
             modelo.setValueAt(p.getName(), con, 0);
             modelo.setValueAt(p.getLastName(), con, 1);
             modelo.setValueAt(p.getProducto(), con, 2);
-            modelo.setValueAt(p.getRFC(), con, 3);
+            modelo.setValueAt(p.getRfc(), con, 3);
             modelo.setValueAt(p.getTelephone(), con, 4);
             modelo.setValueAt(p.getEmpleado(), con, 5);
-            modelo.setValueAt(p.getId(), con, 6);
-            modelo.setValueAt(p.getDireccion(), con, 7);
+            modelo.setValueAt(p.getNumber(), con, 6);
+            modelo.setValueAt(p.getAddress(), con, 7);
             modelo.setValueAt(p.getOrderDate(), con, 8);
 
         }

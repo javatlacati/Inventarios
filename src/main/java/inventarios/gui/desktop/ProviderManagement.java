@@ -6,6 +6,7 @@
 package inventarios.gui.desktop;
 
 import inventarios.to.Provider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
@@ -15,7 +16,6 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -279,7 +279,7 @@ public class ProviderManagement extends javax.swing.JFrame {
         String Mail = txtEmail.getText();
         String CodPost = txtPOBox.getText();
 
-        Provider provider = new Provider(Nombre, Direccion, Apellidos, Num, Telefono, Mail, CodPost);
+        Provider provider = new Provider(null,Nombre, Direccion, Apellidos, Num, Telefono, Mail, CodPost);
         contenedor.add(provider);
 
         txtProvider.setText("");

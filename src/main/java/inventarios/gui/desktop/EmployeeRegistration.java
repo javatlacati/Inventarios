@@ -5,13 +5,13 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.to.EmployeeDetails;
+import inventarios.to.EmployeeDetail;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.util.LinkedList;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -26,7 +26,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     @Autowired
     TablaClientes tablaClientes;
 
-    public static List<EmployeeDetails> clientList = new LinkedList<>();
+    public static List<EmployeeDetail> employeeDetails = new LinkedList<>();
 
     /**
      * Creates new form Empleados
@@ -253,9 +253,9 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         String timeIn = txtArrivingTime.getText();
         String timeOut = txtLeavingTime.getText();
 
-        EmployeeDetails b = new EmployeeDetails(registrationNumber, name, lastName1, lastName2, domicilios, position, timeIn, timeOut);
+        EmployeeDetail b = new EmployeeDetail(null, registrationNumber, name, lastName1, lastName2, domicilios, position, timeIn, timeOut);
 
-        clientList.add(b);
+        employeeDetails.add(b);
 
         JOptionPane.showMessageDialog(null, "se han guardado los datos");
         clearFields();
@@ -266,10 +266,10 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         tablaClientes.setVisible(true);
         tablaClientes.cargarinterfaz();
-        EmployeeDetails c;
+        EmployeeDetail c;
 
-        for (int i = 0; i < clientList.size(); i++) {
-            c = (EmployeeDetails) clientList.get(i);
+        for (int i = 0; i < employeeDetails.size(); i++) {
+            c = (EmployeeDetail) employeeDetails.get(i);
             tablaClientes.mostrardatos(c);
         }
 

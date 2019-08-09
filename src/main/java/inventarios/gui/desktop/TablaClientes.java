@@ -5,13 +5,11 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.to.EmployeeDetails;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
+import inventarios.to.EmployeeDetail;
 import org.springframework.stereotype.Component;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -44,18 +42,18 @@ public class TablaClientes extends javax.swing.JFrame {
         tblEmployees.setModel(modelo);
     }
 
-    public void mostrardatos(EmployeeDetails c) {
+    public void mostrardatos(EmployeeDetail c) {
 
         modelo.insertRow(cont, new Object[]{});
 
-        modelo.setValueAt(c.getId(), cont, 0);
+        modelo.setValueAt(c.getNumber(), cont, 0);
         modelo.setValueAt(c.getName(), cont, 1);
         modelo.setValueAt(c.getMiddleName(), cont, 2);
         modelo.setValueAt(c.getLastName(), cont, 3);
         modelo.setValueAt(c.getHomeAdress(), cont, 4);
         modelo.setValueAt(c.getPosition(), cont, 5);
         modelo.setValueAt(c.getStartTime(), cont, 6);
-        modelo.setValueAt(c.getHours(), cont, 7);
+        modelo.setValueAt(c.getEndTime(), cont, 7);
 
         cont++;
 

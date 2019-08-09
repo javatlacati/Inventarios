@@ -28,7 +28,7 @@ public class BillingDetails {
     String DM;
     String state;
     String country;
-    String CP;
+    String poBox;
     String EM;
     
 }

@@ -6,14 +6,14 @@
 package inventarios.gui.desktop;
 
 import inventarios.to.BillingDetails;
-import java.awt.Color;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -69,7 +69,7 @@ public class BillingList extends javax.swing.JFrame {
             modelo.setValueAt(f.getDM(), con, 7);
             modelo.setValueAt(f.getState(), con, 8);
             modelo.setValueAt(f.getCountry(), con, 9);
-            modelo.setValueAt(f.getCP(), con, 10);
+            modelo.setValueAt(f.getPoBox(), con, 10);
             modelo.setValueAt(f.getEM(), con, 11);
 
         }

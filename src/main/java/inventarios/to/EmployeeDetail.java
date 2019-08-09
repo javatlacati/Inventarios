@@ -7,24 +7,35 @@ package inventarios.to;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
- *
  * @author IDELFONSO
  */
 @AllArgsConstructor
 @Setter
 @Getter
-public class EmployeeDetails {
-    
-    private String id;
+@Entity
+@NoArgsConstructor
+public class EmployeeDetail {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    /**
+     * Enrollment number
+     */
+    private String number;
     private String name;
     private String middleName;
     private String lastName;
     private String homeAdress;
     private String position;
     private String startTime;
-    private String hours;
-            
+    private String endTime;
 }

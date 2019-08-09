@@ -7,7 +7,14 @@ package inventarios.to;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  *
@@ -16,7 +23,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class Purchase {
+@Entity
+@NoArgsConstructor
+public class Purchase implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     String date;
     String Proveedor;
     String address;

@@ -9,17 +9,16 @@ import inventarios.repository.LoginUsersRepository;
 import inventarios.repository.ProductRepository;
 import inventarios.to.LoginUser;
 import inventarios.to.Product;
-import java.time.Instant;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.util.List;
 
 /**
- *
  * @author Oscar
  */
 @Component
@@ -28,38 +27,38 @@ public class DataProvider implements CommandLineRunner {
 
     @Autowired
     LoginUsersRepository usersRepository;
-    
+
     @Autowired
     ProductRepository productRepository;
 
     @Override
     @Transactional
     public void run(String... args) {
-        usersRepository.save(new LoginUser(null,"francisco", "francisco"));
-        usersRepository.save(new LoginUser(null, "oscar", "oscar"));
-        usersRepository.save( new LoginUser(null, "ignacio", "ignacio"));
-        usersRepository.save( new LoginUser(null, "marroquin", "marroquin"));
-        usersRepository.save(new LoginUser(null, "morales", "morales"));
-        usersRepository.save(new LoginUser(null, "ballina", "ballina"));
-        usersRepository.save(new LoginUser(null, "erik", "erik"));
-        usersRepository.save(new LoginUser(null,"david", "david"));
-        usersRepository.save(new LoginUser(null,"avila", "avila"));
-        usersRepository.save(new LoginUser(null,"cruz", "cruz"));
-        usersRepository.save(new LoginUser(null,"rosa", "rosa"));
-        usersRepository.save(new LoginUser(null, "arcos", "arcos"));
-        usersRepository.save(new LoginUser(null, "vazquez", "vazquez"));
-        usersRepository.save(new LoginUser(null, "edgar", "edgar"));
-        usersRepository.save(new LoginUser(null, "gomez", "gomez"));
-        usersRepository.save(new LoginUser(null, "xander", "xander"));
-        usersRepository.save(new LoginUser(null, "xero", "xero"));
-        usersRepository.save(new LoginUser(null, "trinidad", "trinidad"));
-        usersRepository.save(new LoginUser(null, "montero", "montero"));
-        usersRepository.save(new LoginUser(null, "aquino", "aquino"));
-        usersRepository.save(new LoginUser(null, "lopez", "lopez"));
-        usersRepository.save(new LoginUser(null, "marriano", "marriano"));
-        usersRepository.save(new LoginUser(null, "miguel", "miguel"));
-        usersRepository.save(new LoginUser(null, "lupita", "lupita"));
-        
+        usersRepository.save(new LoginUser("francisco", "francisco"));
+        usersRepository.save(new LoginUser("oscar", "oscar"));
+        usersRepository.save(new LoginUser("ignacio", "ignacio"));
+        usersRepository.save(new LoginUser("marroquin", "marroquin"));
+        usersRepository.save(new LoginUser("morales", "morales"));
+        usersRepository.save(new LoginUser("ballina", "ballina"));
+        usersRepository.save(new LoginUser("erik", "erik"));
+        usersRepository.save(new LoginUser("david", "david"));
+        usersRepository.save(new LoginUser("avila", "avila"));
+        usersRepository.save(new LoginUser("cruz", "cruz"));
+        usersRepository.save(new LoginUser("rosa", "rosa"));
+        usersRepository.save(new LoginUser("arcos", "arcos"));
+        usersRepository.save(new LoginUser("vazquez", "vazquez"));
+        usersRepository.save(new LoginUser("edgar", "edgar"));
+        usersRepository.save(new LoginUser("gomez", "gomez"));
+        usersRepository.save(new LoginUser("xander", "xander"));
+        usersRepository.save(new LoginUser("xero", "xero"));
+        usersRepository.save(new LoginUser("trinidad", "trinidad"));
+        usersRepository.save(new LoginUser("montero", "montero"));
+        usersRepository.save(new LoginUser("aquino", "aquino"));
+        usersRepository.save(new LoginUser("lopez", "lopez"));
+        usersRepository.save(new LoginUser("marriano", "marriano"));
+        usersRepository.save(new LoginUser("miguel", "miguel"));
+        usersRepository.save(new LoginUser("lupita", "lupita"));
+
         productRepository.save(new Product("mesa", "2", "nueva", "1242552", Instant.now().toString(), Instant.now().plusMillis(2983).toString()));
     }
 

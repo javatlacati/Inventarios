@@ -7,7 +7,13 @@ package inventarios.to;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
@@ -16,33 +22,23 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
+@Entity
+@NoArgsConstructor
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     String name;
     String lastName;
     String Producto;
     String Empleado;
-    String id;
-    String RFC;
+    String number;
+    String rfc;
     String telephone;
-    String Direccion;
+    String address;
     String orderDate;
-    String localNumber;
-    String entity;
-    String places;
-    
-    /*
-    Se crea el constructor de la clase
-    */
-    public Order(String name, String lastName, String Producto, String Empleado, String id, String RFC, String telephone, String Direccion, String orderDate) {
-        this.name = name;
-        this.lastName = lastName;
-        this.Producto = Producto;
-        this.Empleado = Empleado;
-        this.id = id;
-        this.RFC = RFC;
-        this.telephone = telephone;
-        this.Direccion = Direccion;
-        this.orderDate = orderDate;
-    }
+//    String localNumber;
+//    String entity;
+//    String places;
     
 }

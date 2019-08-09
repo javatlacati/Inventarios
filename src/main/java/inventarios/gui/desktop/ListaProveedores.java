@@ -55,12 +55,12 @@ public class ListaProveedores extends javax.swing.JFrame {
             P = (Provider) ProviderManagement.contenedor.get(i);
             modelo.insertRow(con, new Object[]{});
             modelo.setValueAt(P.getName(), con, 0);
-            modelo.setValueAt(P.getApellidos(), con, 1);
-            modelo.setValueAt(P.getDireccion(), con, 2);
+            modelo.setValueAt(P.getLastName(), con, 1);
+            modelo.setValueAt(P.getAddress(), con, 2);
             modelo.setValueAt(P.getTelephoneNumber(), con, 3);
             modelo.setValueAt(P.getEmail(), con, 4);
-            modelo.setValueAt(P.getCodPost(), con, 5);
-            modelo.setValueAt(P.getNum(), con, 6);
+            modelo.setValueAt(P.getPoBox(), con, 5);
+            modelo.setValueAt(P.getNumber(), con, 6);
 
         }
     }

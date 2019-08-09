@@ -330,7 +330,7 @@ public class OrderManagement extends javax.swing.JFrame {
         /*
         Se hace la instancia para guardar los datos en el ArrayList
          */
-        Order Ped = new Order(name, lastName, Producto, Empleado, NumPedido, RFC, Telefono, Direccion, Fecha);
+        Order Ped = new Order(null,name, lastName, Producto, Empleado, NumPedido, RFC, Telefono, Direccion, Fecha);
         contenedor.add(Ped);
 
         jTextField1.setText("");

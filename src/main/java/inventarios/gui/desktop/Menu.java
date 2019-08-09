@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Stack;
 
 /**
  *
@@ -31,21 +32,23 @@ public class Menu extends javax.swing.JFrame {
 
     @Autowired
     OrderManagement orderManagement;
-    
+
     @Autowired
     ProviderManagement providerManagement;
-    
+
     @Autowired
     BillingManagement billingManagement;
-    
+
     @Autowired
     Information information;
-    
+
     @Autowired
     EmployeeRegistration employeeRegistration;
-    
+
     @Autowired
     Credits credits;
+
+    private final Stack<JFrame> previouses;
 
     /**
      * Creates new form Menu
@@ -55,9 +58,18 @@ public class Menu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.orange);
         cerrar();
+        previouses = new Stack<>();
     }
-    //Método para confirmar el cierre deJFrame//
 
+    public void add(JFrame e) {
+        previouses.push(e);
+    }
+
+    public void removeLast() {
+        previouses.pop();
+    }
+
+    //Método para confirmar el cierre deJFrame//
     public void cerrar() {
         try {
             this.setDefaultCloseOperation(Menu.DO_NOTHING_ON_CLOSE);
@@ -317,6 +329,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInventoryActionPerformed
 
     private void btnTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransactionActionPerformed
+        shoppingWindow.add(this);
         shoppingWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnTransactionActionPerformed
@@ -333,7 +346,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
         dispose();
-        loginWindow.setVisible(true);
+        previouses.pop().setVisible(true);
     }//GEN-LAST:event_btnGetBackActionPerformed
 
     private void btnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillingActionPerformed

@@ -1,6 +1,5 @@
 package inventarios.to;
 
-import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  *
@@ -30,4 +30,12 @@ public class LoginUser implements Serializable {
 //   @GraphQLQuery(name = "name", description = "El nombre de usuario")
     private String userName;
     private String password;
+    private boolean active;
+
+
+    public LoginUser(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+        active = true;
+    }
 }

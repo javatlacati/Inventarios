@@ -347,7 +347,6 @@ public class InventoryManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // cerrar la ventana 
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
