@@ -1,6 +1,7 @@
 package inventarios.gui.desktop;
 
 import inventarios.HeadlessSpringBootContextLoader;
+import inventarios.gui.desktop.pageobjects.InventoryManagementPageObject;
 import inventarios.gui.desktop.pageobjects.LoginWindowPageObject;
 import inventarios.gui.desktop.pageobjects.MainMenuPageObject;
 import org.junit.After;
@@ -50,5 +51,7 @@ public class GUITest {
         loginWindowPageObject.setPasswordFieldContent("oscar");
         loginWindowPageObject.clickAcceptAndWait();
         MainMenuPageObject menuPageObject = new MainMenuPageObject();
+        menuPageObject.openInvenory();
+        InventoryManagementPageObject inventoryPageObject = new InventoryManagementPageObject();
     }
 }
