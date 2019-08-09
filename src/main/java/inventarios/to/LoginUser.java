@@ -1,6 +1,6 @@
-
 package inventarios.to;
 
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,14 +20,14 @@ import javax.persistence.Id;
 @Getter
 @Entity
 @NoArgsConstructor
+public class LoginUser implements Serializable {
 
-public class LoginUser {
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 //   @GraphQLQuery(name = "id", description = "El identificador de usuario")
-   private Long id;
+    private Long id;
 
 //   @GraphQLQuery(name = "name", description = "El nombre de usuario")
-   private String user;
-   private String password;
+    private String userName;
+    private String password;
 }

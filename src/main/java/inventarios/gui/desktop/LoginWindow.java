@@ -13,8 +13,6 @@ import org.springframework.stereotype.Component;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 /**
  *
@@ -28,36 +26,6 @@ public class LoginWindow extends javax.swing.JFrame {
 
     public LoginWindow() {
         initComponents();
-        this.setLocationRelativeTo(LoginWindow.this);
-//        ComponentListener cl = new ComponentAdapter() {
-//            @Override
-//            public void componentResized(ComponentEvent ce) {
-//                Component c = ce.getComponent();
-//                int w = c.getWidth();
-//                int h = c.getHeight();
-//                System.out.println("new dimensions: ( " + w + ", " + h + " )");
-//                backgroundImage = new ImageIcon(
-//                        backgroundImageIcon.getImage().getScaledInstance(w, h, Image.SCALE_FAST)
-//                ).getImage();
-//            }
-//        };
-//        backgroundedPanel.addComponentListener(cl);
-    }
-
-    //Método para confirmar el cierre deJFrame//
-    public void cerrar() {
-        try {
-            this.setDefaultCloseOperation(LoginWindow.DO_NOTHING_ON_CLOSE);
-            addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    confirmExit();
-                }
-            });
-            this.setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -105,6 +73,11 @@ public class LoginWindow extends javax.swing.JFrame {
             ("/ImgFondos/Icono.png")).getImage());
     setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
     setMinimumSize(new java.awt.Dimension(500, 400));
+    addWindowListener(new java.awt.event.WindowAdapter() {
+        public void windowClosing(java.awt.event.WindowEvent evt) {
+            windowCloseHandler(evt);
+        }
+    });
 
     backgroundedPanel.setOpaque(false);
     backgroundedPanel.setLayout(new java.awt.BorderLayout());
@@ -205,8 +178,8 @@ public class LoginWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
-        txtUser.setText(null);
-        txtPsswd.setText(null);
+        txtUser.setText("");
+        txtPsswd.setText("");
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void txtUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyTyped
@@ -223,6 +196,33 @@ public class LoginWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPsswdKeyTyped
 
+    private void windowCloseHandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowCloseHandler
+        confirmExit();
+    }//GEN-LAST:event_windowCloseHandler
+
+    private void loginAttempt() {
+        String user = txtUser.getText();
+        String password = txtPsswd.getText();
+
+        for (LoginUser usuarioParaInicioSecion : usersService.findAll()) {
+            if (usuarioParaInicioSecion.getUserName().equals(user)
+                    && usuarioParaInicioSecion.getPassword().equals(password)) {
+                Menu CdP = new Menu();
+                CdP.setVisible(true);
+                this.setVisible(false);
+                return;
+            }
+        }
+
+        JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado", "Credenciales incorrectas", JOptionPane.WARNING_MESSAGE);
+    }
+
+    public void confirmExit() {
+        int valor = JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar la aplicación?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (valor == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundedPanel;
     private javax.swing.JButton btnAccept;
@@ -241,26 +241,4 @@ public class LoginWindow extends javax.swing.JFrame {
     private javax.swing.JPanel userPanel;
     // End of variables declaration//GEN-END:variables
 
-    private void loginAttempt() {
-        String user = txtUser.getText();
-        String password = txtPsswd.getText();
-
-        for (LoginUser usuarioParaInicioSecion : usersService.findAll()) {
-            if (usuarioParaInicioSecion.getUser().equals(user)
-                    && usuarioParaInicioSecion.getPassword().equals(password)) {
-                Menu CdP = new Menu();
-                CdP.setVisible(true);
-                return;
-            }
-        }
-
-        JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado", "Credenciales incorrectas", JOptionPane.WARNING_MESSAGE);
-    }
-
-    public void confirmExit() {
-        int valor = JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar la aplicación?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
-    }
 }
