@@ -5,6 +5,8 @@
  */
 package inventarios.gui.desktop;
 
+import inventarios.service.ProviderService;
+import inventarios.to.Provider;
 import inventarios.to.Purchase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,6 +33,9 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
     @Autowired
     Menu menu;
+    
+    @Autowired
+    ProviderService providerService;
 
     public static List<Purchase> shoppingList = new LinkedList<>();
     /*
@@ -87,6 +92,14 @@ public class ShoppingWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pntlButtons = new javax.swing.JPanel();
+        btnAdd = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        btnClean = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
+        centerPanel = new javax.swing.JPanel();
+        pnlLabels = new javax.swing.JPanel();
         lblDate = new javax.swing.JLabel();
         lblProvider = new javax.swing.JLabel();
         lblAddress = new javax.swing.JLabel();
@@ -94,87 +107,23 @@ public class ShoppingWindow extends javax.swing.JFrame {
         lblContributor = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         lblProduct = new javax.swing.JLabel();
+        pnlFields = new javax.swing.JPanel();
         txtDate = new javax.swing.JTextField();
-        txtProvider = new javax.swing.JTextField();
+        cmbPRovider = new javax.swing.JComboBox<>();
         txtAdress = new javax.swing.JTextField();
         txtTelephone = new javax.swing.JTextField();
         txtContributor = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtProduct = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
-        btnClean = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
-        btnMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("ShoppingWindow.title")); // NOI18N
         setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setResizable(false);
+        getContentPane().setLayout(new java.awt.BorderLayout(30, 10));
 
-        lblDate.setText(bundle.getString("ShoppingWindow.lblDate.text")); // NOI18N
-
-        lblProvider.setText(bundle.getString("ShoppingWindow.lblProvider.text")); // NOI18N
-
-        lblAddress.setText(bundle.getString("ShoppingWindow.lblAddress.text")); // NOI18N
-
-        lblTelephone.setText(bundle.getString("ShoppingWindow.lblTelephone.text")); // NOI18N
-
-        lblContributor.setText(bundle.getString("ShoppingWindow.lblContributor.text")); // NOI18N
-
-        lblEmail.setText(bundle.getString("ShoppingWindow.lblEmail.text")); // NOI18N
-
-        lblProduct.setText(bundle.getString("ShoppingWindow.lblProduct.text")); // NOI18N
-
-        txtDate.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtDate.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDateKeyTyped(evt);
-            }
-        });
-
-        txtProvider.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtProvider.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtProviderKeyTyped(evt);
-            }
-        });
-
-        txtAdress.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtAdress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAdressKeyTyped(evt);
-            }
-        });
-
-        txtTelephone.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtTelephone.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelephoneKeyTyped(evt);
-            }
-        });
-
-        txtContributor.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtContributor.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtContributorKeyTyped(evt);
-            }
-        });
-
-        txtEmail.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtEmailKeyTyped(evt);
-            }
-        });
-
-        txtProduct.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtProduct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtProductKeyTyped(evt);
-            }
-        });
+        pntlButtons.setLayout(new java.awt.GridLayout(0, 1));
 
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
         btnAdd.setBorder(null);
@@ -184,24 +133,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
                 btnAddActionPerformed(evt);
             }
         });
-
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
-        btnClean.setBorder(null);
-        btnClean.setContentAreaFilled(false);
-        btnClean.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCleanActionPerformed(evt);
-            }
-        });
-
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
-        btnClose.setBorder(null);
-        btnClose.setContentAreaFilled(false);
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
+        pntlButtons.add(btnAdd);
 
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
         btnSearch.setBorder(null);
@@ -211,6 +143,27 @@ public class ShoppingWindow extends javax.swing.JFrame {
                 btnSearchActionPerformed(evt);
             }
         });
+        pntlButtons.add(btnSearch);
+
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setBorder(null);
+        btnClean.setContentAreaFilled(false);
+        btnClean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCleanActionPerformed(evt);
+            }
+        });
+        pntlButtons.add(btnClean);
+
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setBorder(null);
+        btnClose.setContentAreaFilled(false);
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+        pntlButtons.add(btnClose);
 
         btnMenu.setBackground(new java.awt.Color(51, 51, 255));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -223,89 +176,91 @@ public class ShoppingWindow extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
+        pntlButtons.add(btnMenu);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDate)
-                    .addComponent(lblProvider)
-                    .addComponent(lblAddress)
-                    .addComponent(lblTelephone)
-                    .addComponent(lblContributor)
-                    .addComponent(lblEmail)
-                    .addComponent(lblProduct))
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(txtProvider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtAdress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtContributor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAdd)
-                    .addComponent(btnSearch)
-                    .addComponent(btnClean)
-                    .addComponent(btnClose)
-                    .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDate)
-                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblProvider)
-                            .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnAdd))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAddress)
-                            .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTelephone)
-                            .addComponent(txtTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblContributor)
-                            .addComponent(txtContributor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSearch)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnClean)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblEmail)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnClose))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblProduct)
-                            .addComponent(txtProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))))
-        );
+        getContentPane().add(pntlButtons, java.awt.BorderLayout.EAST);
+
+        centerPanel.setLayout(new java.awt.GridLayout());
+
+        pnlLabels.setLayout(new java.awt.GridLayout(0, 1));
+
+        lblDate.setText(bundle.getString("ShoppingWindow.lblDate.text")); // NOI18N
+        pnlLabels.add(lblDate);
+
+        lblProvider.setText(bundle.getString("ShoppingWindow.lblProvider.text")); // NOI18N
+        pnlLabels.add(lblProvider);
+
+        lblAddress.setText(bundle.getString("ShoppingWindow.lblAddress.text")); // NOI18N
+        pnlLabels.add(lblAddress);
+
+        lblTelephone.setText(bundle.getString("ShoppingWindow.lblTelephone.text")); // NOI18N
+        pnlLabels.add(lblTelephone);
+
+        lblContributor.setText(bundle.getString("ShoppingWindow.lblContributor.text")); // NOI18N
+        pnlLabels.add(lblContributor);
+
+        lblEmail.setText(bundle.getString("ShoppingWindow.lblEmail.text")); // NOI18N
+        pnlLabels.add(lblEmail);
+
+        lblProduct.setText(bundle.getString("ShoppingWindow.lblProduct.text")); // NOI18N
+        pnlLabels.add(lblProduct);
+
+        centerPanel.add(pnlLabels);
+
+        pnlFields.setLayout(new java.awt.GridLayout(0, 1));
+
+        txtDate.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtDate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDateKeyTyped(evt);
+            }
+        });
+        pnlFields.add(txtDate);
+        pnlFields.add(cmbPRovider);
+
+        txtAdress.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtAdress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAdressKeyTyped(evt);
+            }
+        });
+        pnlFields.add(txtAdress);
+
+        txtTelephone.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtTelephone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelephoneKeyTyped(evt);
+            }
+        });
+        pnlFields.add(txtTelephone);
+
+        txtContributor.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtContributor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContributorKeyTyped(evt);
+            }
+        });
+        pnlFields.add(txtContributor);
+
+        txtEmail.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailKeyTyped(evt);
+            }
+        });
+        pnlFields.add(txtEmail);
+
+        txtProduct.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtProduct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtProductKeyTyped(evt);
+            }
+        });
+        pnlFields.add(txtProduct);
+
+        centerPanel.add(pnlFields);
+
+        getContentPane().add(centerPanel, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -327,13 +282,6 @@ public class ShoppingWindow extends javax.swing.JFrame {
             add();
         }
     }//GEN-LAST:event_txtDateKeyTyped
-
-    private void txtProviderKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProviderKeyTyped
-        char cTeclaPresionada = evt.getKeyChar();
-        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
-            add();
-        }
-    }//GEN-LAST:event_txtProviderKeyTyped
 
     private void txtAdressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAdressKeyTyped
         char cTeclaPresionada = evt.getKeyChar();
@@ -371,6 +319,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_txtProductKeyTyped
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        listaCompras.mostrarLosDatos();
         listaCompras.setVisible(true);
     }//GEN-LAST:event_btnSearchActionPerformed
 
@@ -391,6 +340,8 @@ public class ShoppingWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JPanel centerPanel;
+    private javax.swing.JComboBox<String> cmbPRovider;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblContributor;
     private javax.swing.JLabel lblDate;
@@ -398,12 +349,14 @@ public class ShoppingWindow extends javax.swing.JFrame {
     private javax.swing.JLabel lblProduct;
     private javax.swing.JLabel lblProvider;
     private javax.swing.JLabel lblTelephone;
+    private javax.swing.JPanel pnlFields;
+    private javax.swing.JPanel pnlLabels;
+    private javax.swing.JPanel pntlButtons;
     private javax.swing.JTextField txtAdress;
     private javax.swing.JTextField txtContributor;
     private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtProduct;
-    private javax.swing.JTextField txtProvider;
     private javax.swing.JTextField txtTelephone;
     // End of variables declaration//GEN-END:variables
 
@@ -412,7 +365,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
         Declaramos las variables donde se guardara el contenido para los TextFiel
          */
         String date = txtDate.getText();
-        String provider = txtProvider.getText();
+        Provider provider = (Provider)cmbPRovider.getSelectedItem();
         String adress = txtAdress.getText();
         String telephone = txtTelephone.getText();
         String RFC = txtContributor.getText();
@@ -431,7 +384,9 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
     private void clearFields() {
         txtDate.setText("");
-        txtProvider.setText("");
+        List<Provider> providers = providerService.findAll();
+        cmbPRovider.setModel(new ProviderComboBoxModel(providers));
+//        txtProvider.setText("");
         txtAdress.setText("");
         txtTelephone.setText("");
         txtContributor.setText("");

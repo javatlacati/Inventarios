@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -30,7 +31,8 @@ public class Purchase implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     String date;
-    String Proveedor;
+    @OneToOne
+    Provider provider;
     String address;
     String telephone;
     String email;

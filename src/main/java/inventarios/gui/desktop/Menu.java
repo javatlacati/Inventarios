@@ -329,7 +329,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInventoryActionPerformed
 
     private void btnTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransactionActionPerformed
-        shoppingWindow.add(this);
+        //shoppingWindow.add(this);
         shoppingWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnTransactionActionPerformed

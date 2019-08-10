@@ -7,8 +7,12 @@ package inventarios.util;
 
 import inventarios.repository.LoginUsersRepository;
 import inventarios.repository.ProductRepository;
+import inventarios.repository.ProviderRepository;
+import inventarios.repository.PurchaseRepository;
 import inventarios.to.LoginUser;
 import inventarios.to.Product;
+import inventarios.to.Provider;
+import inventarios.to.Purchase;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,6 +20,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -30,6 +35,12 @@ public class DataProvider implements CommandLineRunner {
 
     @Autowired
     ProductRepository productRepository;
+    
+    @Autowired
+    ProviderRepository providerRepository;
+    
+    @Autowired
+    PurchaseRepository purchaseRepository;
 
     @Override
     @Transactional
@@ -60,6 +71,11 @@ public class DataProvider implements CommandLineRunner {
         usersRepository.save(new LoginUser("lupita", "lupita"));
 
         productRepository.save(new Product("mesa", "2", "nueva", "1242552", Instant.now().toString(), Instant.now().plusMillis(2983).toString()));
+        
+        Provider provider1 = new Provider(null, "cervecería moctezuma", "puebla", "", "415646", "246522161", "moctezuma@moctezuma.com", "90153");
+        providerRepository.save(provider1);
+        
+        purchaseRepository.save(new Purchase(null, LocalDateTime.now().toString(), provider1, "some address", "246255156", "some@email.com", "a product", "asdioh85416"));
     }
 
     private static void fillInUserList(List<LoginUser> userList) {

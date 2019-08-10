@@ -5,10 +5,12 @@
  */
 package inventarios.gui.desktop;
 
+import inventarios.service.ProviderService;
 import inventarios.to.Provider;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +26,9 @@ public class ListaProveedores extends javax.swing.JFrame {
 
     @Autowired
     ProviderManagement providerManagement;
+    
+    @Autowired
+    ProviderService providerService;
 
     private DefaultTableModel modelo;
     int con = 0;
@@ -33,13 +38,12 @@ public class ListaProveedores extends javax.swing.JFrame {
      */
     public ListaProveedores() {
         initComponents();
-        MostrarInterfaz();
-        MostrarLosDatos();
+        mostrarInterfaz();
         this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
     }
 
-    public void MostrarInterfaz() {
+    public void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//
         String data[][] = {};
 
@@ -49,10 +53,11 @@ public class ListaProveedores extends javax.swing.JFrame {
 
     }
 
-    public void MostrarLosDatos() {
+    public void mostrarLosDatos() {
+        List<Provider> providers = providerService.findAll();
         Provider P;
-        for (int i = 0; i < ProviderManagement.contenedor.size(); i++) {
-            P = (Provider) ProviderManagement.contenedor.get(i);
+        for (int i = 0; i < providers.size(); i++) {
+            P = (Provider) providers.get(i);
             modelo.insertRow(con, new Object[]{});
             modelo.setValueAt(P.getName(), con, 0);
             modelo.setValueAt(P.getLastName(), con, 1);

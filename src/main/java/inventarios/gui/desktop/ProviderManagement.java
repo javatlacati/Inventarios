@@ -5,6 +5,7 @@
  */
 package inventarios.gui.desktop;
 
+import inventarios.service.ProviderService;
 import inventarios.to.Provider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,8 +30,11 @@ public class ProviderManagement extends javax.swing.JFrame {
     
     @Autowired
     Menu menu;
+    
+    @Autowired
+    ProviderService providerService;
 
-    public static List<Provider> contenedor = new LinkedList<>();
+    
 
     ArrayList<Provider> Lista;
 
@@ -280,7 +284,7 @@ public class ProviderManagement extends javax.swing.JFrame {
         String CodPost = txtPOBox.getText();
 
         Provider provider = new Provider(null,Nombre, Direccion, Apellidos, Num, Telefono, Mail, CodPost);
-        contenedor.add(provider);
+        providerService.save(provider);
 
         txtProvider.setText("");
         txtName.setText("");
@@ -296,6 +300,7 @@ public class ProviderManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_txtProviderKeyTyped
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        listaProveedores.mostrarLosDatos();
         listaProveedores.setVisible(true);
     }//GEN-LAST:event_btnSearchActionPerformed
 

@@ -5,9 +5,11 @@
  */
 package inventarios.gui.desktop;
 
+import inventarios.service.PurchaseService;
 import inventarios.to.Purchase;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +25,9 @@ public class ListaCompras extends javax.swing.JFrame {
 
     @Autowired
     Menu menu;
+    
+    @Autowired
+    PurchaseService purchaseService;
 
     private DefaultTableModel modelo;
     int con = 0;
@@ -32,13 +37,12 @@ public class ListaCompras extends javax.swing.JFrame {
      */
     public ListaCompras() {
         initComponents();
-        MostrarInterfaz();
-        MostrarLosDatos();
+        mostrarInterfaz();
         this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
     }
 
-    public void MostrarInterfaz() {
+    public void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//
         String data[][] = {};
 
@@ -48,13 +52,14 @@ public class ListaCompras extends javax.swing.JFrame {
 
     }
 
-    public void MostrarLosDatos() {
+    public void mostrarLosDatos() {
+        List<Purchase> purchases = purchaseService.findAll();
         Purchase c;
-        for (int i = 0; i < ShoppingWindow.shoppingList.size(); i++) {
-            c = (Purchase) ShoppingWindow.shoppingList.get(i);
+        for (int i = 0; i < purchases.size(); i++) {
+            c = (Purchase) purchases.get(i);
             modelo.insertRow(con, new Object[]{});
             modelo.setValueAt(c.getDate(), con, 0);
-            modelo.setValueAt(c.getProveedor(), con, 1);
+            modelo.setValueAt(c.getProvider().getName(), con, 1);
             modelo.setValueAt(c.getAddress(), con, 2);
             modelo.setValueAt(c.getTelephone(), con, 3);
             modelo.setValueAt(c.getRfc(), con, 4);
