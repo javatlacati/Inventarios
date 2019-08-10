@@ -31,73 +31,73 @@ public class Product implements Serializable {
 //   @GraphQLQuery(name = "id", description = "El identificador de producto")
     private Long id;
 
-    String Fechai;
+    String dateIn;
 
-    String Fechae;
+    String dateOut;
 
-    String producto;
+    String name;
 
-    String cantidad;
+    String quantity;
 
-    String caracteristicas;
+    String characteristics;
 
     String serial;
-    String size;
+//    String size;
+//
+//    String color;
+//
+//    String figura;
+//
+//    String variedad;
+//
+//    String cosas;
+//
+//    String descripcion;
+//
+//    String precio;
+//
+//    String moneda;
+//
+//    String calidad;
 
-    String color;
+//    String vistobueno;
+//
+//    String cosa;
+//
+//    String bueno;
+//
+//    String malo;
+//
+//    String regular;
+//
+//    String sabor;
+//
+//    String creado;
+//
+//    String ensamblado;
+//
+//    String facturado;
+//
+//    String compra;
 
-    String figura;
+//    String venta;
+//
+//    String domicilio;
+//
+//    String estado;
+//
+//    String Ciudad;
+//
+//    String Municipio;
+//
+//    String Pueblo;
 
-    String variedad;
-
-    String cosas;
-
-    String descripcion;
-
-    String precio;
-
-    String moneda;
-
-    String calidad;
-
-    String vistobueno;
-
-    String cosa;
-
-    String bueno;
-
-    String malo;
-
-    String regular;
-
-    String sabor;
-
-    String creado;
-
-    String ensamblado;
-
-    String facturado;
-
-    String compra;
-
-    String venta;
-
-    String domicilio;
-
-    String estado;
-
-    String Ciudad;
-
-    String Municipio;
-
-    String Pueblo;
-
-    public Product(String producto, String cantidad, String caracteristicas, String serial, String fechai, String fechae) {
-        this.producto = producto;
-        this.cantidad = cantidad;
-        this.caracteristicas = caracteristicas;
+    public Product(String name, String quantity, String characteristics, String serial, String dateIn, String dateOut) {
+        this.name = name;
+        this.quantity = quantity;
+        this.characteristics = characteristics;
         this.serial = serial;
-        this.Fechai = fechai;
-        this.Fechae = fechae;
+        this.dateIn = dateIn;
+        this.dateOut = dateOut;
     }
 }

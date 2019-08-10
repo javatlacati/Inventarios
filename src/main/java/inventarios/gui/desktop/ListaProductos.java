@@ -62,12 +62,12 @@ public class ListaProductos extends javax.swing.JFrame {
         for (int i = 0; i < products.size(); i++) {
             p = products.get(i);
             model.insertRow(con, new Object[]{});
-            model.setValueAt(p.getProducto(), con, 0);
-            model.setValueAt(p.getCantidad(), con, 1);
-            model.setValueAt(p.getCaracteristicas(), con, 2);
+            model.setValueAt(p.getName(), con, 0);
+            model.setValueAt(p.getQuantity(), con, 1);
+            model.setValueAt(p.getCharacteristics(), con, 2);
             model.setValueAt(p.getSerial(), con, 3);
-            model.setValueAt(p.getFechai(), con, 4);
-            model.setValueAt(p.getFechae(), con, 5);
+            model.setValueAt(p.getDateIn(), con, 4);
+            model.setValueAt(p.getDateOut(), con, 5);
         }
     }
     //Método para confirmar el cierre deJFrame//

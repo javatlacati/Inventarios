@@ -61,11 +61,11 @@ public class InventoryManagement extends javax.swing.JFrame {
 
         lblProduct = new javax.swing.JLabel();
         lblQuantity = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblCharacteristics = new javax.swing.JLabel();
         lblSerialNo = new javax.swing.JLabel();
         txtProduct = new javax.swing.JTextField();
         txtQuantity = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtCharacteristics = new javax.swing.JTextField();
         txtSerialNo = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnClean = new javax.swing.JButton();
@@ -75,10 +75,10 @@ public class InventoryManagement extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         lblName = new javax.swing.JLabel();
         btnMenu = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        lblDateIn = new javax.swing.JLabel();
+        lblDateOut = new javax.swing.JLabel();
+        txtDateIn = new javax.swing.JTextField();
+        txtDateOut = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
@@ -99,9 +99,9 @@ public class InventoryManagement extends javax.swing.JFrame {
         lblQuantity.setForeground(new java.awt.Color(255, 0, 0));
         lblQuantity.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cantidad.png"))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/caracteristica.png"))); // NOI18N
+        lblCharacteristics.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        lblCharacteristics.setForeground(new java.awt.Color(255, 0, 0));
+        lblCharacteristics.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/caracteristica.png"))); // NOI18N
 
         lblSerialNo.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         lblSerialNo.setForeground(new java.awt.Color(255, 0, 0));
@@ -119,9 +119,9 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
-        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtCharacteristics.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField3KeyTyped(evt);
+                txtCharacteristicsKeyTyped(evt);
             }
         });
 
@@ -192,19 +192,19 @@ public class InventoryManagement extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText(bundle.getString("InventoryManagement.jLabel7.text")); // NOI18N
+        lblDateIn.setText(bundle.getString("InventoryManagement.lblDateIn.text")); // NOI18N
 
-        jLabel8.setText(bundle.getString("InventoryManagement.jLabel8.text")); // NOI18N
+        lblDateOut.setText(bundle.getString("InventoryManagement.lblDateOut.text")); // NOI18N
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtDateIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtDateInActionPerformed(evt);
             }
         });
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtDateOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtDateOutActionPerformed(evt);
             }
         });
 
@@ -220,10 +220,10 @@ public class InventoryManagement extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(lblDateOut)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel7))
+                    .addComponent(lblDateIn))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
@@ -231,7 +231,7 @@ public class InventoryManagement extends javax.swing.JFrame {
                     .addComponent(lblSerialNo)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addComponent(lblCharacteristics)
                             .addComponent(lblProduct)
                             .addComponent(lblQuantity))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -241,11 +241,11 @@ public class InventoryManagement extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField6)
-                                    .addComponent(jTextField5)
+                                    .addComponent(txtDateOut)
+                                    .addComponent(txtDateIn)
                                     .addComponent(txtQuantity, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtSerialNo)
-                                    .addComponent(jTextField3)))))
+                                    .addComponent(txtCharacteristics)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -286,7 +286,7 @@ public class InventoryManagement extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCharacteristics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(49, 49, 49)
                                 .addComponent(txtSerialNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
@@ -297,18 +297,18 @@ public class InventoryManagement extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lblQuantity)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
+                        .addComponent(lblCharacteristics)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblSerialNo)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDateIn)
+                    .addComponent(txtDateIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblDateOut)
+                        .addComponent(txtDateOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39))
         );
@@ -320,19 +320,19 @@ public class InventoryManagement extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         String productName = txtProduct.getText();
         String productQuantity = txtQuantity.getText();
-        String Caracteristicas = jTextField3.getText();
+        String Caracteristicas = txtCharacteristics.getText();
         String Serial = txtSerialNo.getText();
-        String Fechai = jTextField5.getText();
-        String Fechae = jTextField6.getText();
+        String Fechai = txtDateIn.getText();
+        String Fechae = txtDateOut.getText();
 
         Product clase = new Product(productName, productQuantity, Caracteristicas, Serial, Fechai, Fechae);
         productService.save(clase);
         txtProduct.setText("");
         txtQuantity.setText("");
-        jTextField3.setText("");
+        txtCharacteristics.setText("");
         txtSerialNo.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
+        txtDateIn.setText("");
+        txtDateOut.setText("");
 
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -340,10 +340,10 @@ public class InventoryManagement extends javax.swing.JFrame {
         //limpiar las cajas de texto
         txtProduct.setText("");
         txtQuantity.setText("");
-        jTextField3.setText("");
+        txtCharacteristics.setText("");
         txtSerialNo.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
+        txtDateIn.setText("");
+        txtDateOut.setText("");
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -369,12 +369,12 @@ public class InventoryManagement extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtQuantityKeyTyped
 
-    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+    private void txtCharacteristicsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCharacteristicsKeyTyped
         char cTeclaPresionada = evt.getKeyChar();
         if (cTeclaPresionada == KeyEvent.VK_ENTER) {
             btnAdd.doClick();
         }
-    }//GEN-LAST:event_jTextField3KeyTyped
+    }//GEN-LAST:event_txtCharacteristicsKeyTyped
 
     private void txtSerialNoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSerialNoKeyTyped
         char cTeclaPresionada = evt.getKeyChar();
@@ -388,13 +388,13 @@ public class InventoryManagement extends javax.swing.JFrame {
         if (tecla == 10) {
             String codigoCopiado = txtName.getText().trim();
             Product sampleProduct = new Product();
-            sampleProduct.setProducto(codigoCopiado);
+            sampleProduct.setName(codigoCopiado);
             found = productService.findOne(Example.of(sampleProduct));
 
             if (found.isPresent()) {
                 Product p = found.get();
-                txtQuantity.setText(String.valueOf(p.getCantidad()));
-                jTextField3.setText(p.getCaracteristicas());
+                txtQuantity.setText(String.valueOf(p.getQuantity()));
+                txtCharacteristics.setText(p.getCharacteristics());
                 txtSerialNo.setText(p.getSerial());
             } else {
                 JOptionPane.showMessageDialog(null, "No Existe");
@@ -421,13 +421,13 @@ public class InventoryManagement extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtDateInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateInActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtDateInActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtDateOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateOutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtDateOutActionPerformed
 
     private void closeHandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeHandler
         confirmarSalida();
@@ -439,17 +439,17 @@ public class InventoryManagement extends javax.swing.JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnView;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel lblCharacteristics;
+    private javax.swing.JLabel lblDateIn;
+    private javax.swing.JLabel lblDateOut;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblProduct;
     private javax.swing.JLabel lblQuantity;
     private javax.swing.JLabel lblSerialNo;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JTextField txtCharacteristics;
+    private javax.swing.JTextField txtDateIn;
+    private javax.swing.JTextField txtDateOut;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtProduct;
     private javax.swing.JTextField txtQuantity;
