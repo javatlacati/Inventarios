@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author IDELFONSO
  */
 @Component
-public class TablaClientes extends javax.swing.JFrame {
+public class ListaEmpleados extends javax.swing.JFrame {
 
     private DefaultTableModel modelo;
     int cont = 0;
@@ -24,7 +24,7 @@ public class TablaClientes extends javax.swing.JFrame {
     /**
      * Creates new form TablaClientes
      */
-    public TablaClientes() {
+    public ListaEmpleados() {
         initComponents();
         ((JPanel) getContentPane()).setOpaque(false);
         ImageIcon uno;
@@ -76,7 +76,7 @@ public class TablaClientes extends javax.swing.JFrame {
 
         lblTitle.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
-        lblTitle.setText(bundle.getString("TablaClientes.lblTitle.text")); // NOI18N
+        lblTitle.setText(bundle.getString("ListaEmpleados.lblTitle.text")); // NOI18N
 
         tblEmployees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -92,14 +92,14 @@ public class TablaClientes extends javax.swing.JFrame {
         scrlEmployees.setViewportView(tblEmployees);
 
         btnGetBack.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        btnGetBack.setText(bundle.getString("TablaClientes.btnGetBack.text")); // NOI18N
+        btnGetBack.setText(bundle.getString("ListaEmpleados.btnGetBack.text")); // NOI18N
         btnGetBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGetBackActionPerformed(evt);
             }
         });
 
-        btnClose.setText(bundle.getString("TablaClientes.btnClose.text")); // NOI18N
+        btnClose.setText(bundle.getString("ListaEmpleados.btnClose.text")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);

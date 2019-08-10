@@ -5,6 +5,7 @@
  */
 package inventarios.gui.desktop;
 
+import inventarios.service.EmployeeService;
 import inventarios.to.EmployeeDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,9 +25,10 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     Menu menu;
     
     @Autowired
-    TablaClientes tablaClientes;
-
-    public static List<EmployeeDetail> employeeDetails = new LinkedList<>();
+    ListaEmpleados tablaClientes;
+    
+    @Autowired
+    EmployeeService employeeService;
 
     /**
      * Creates new form Empleados
@@ -255,7 +257,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
 
         EmployeeDetail b = new EmployeeDetail(null, registrationNumber, name, lastName1, lastName2, domicilios, position, timeIn, timeOut);
 
-        employeeDetails.add(b);
+        employeeService.save(b);
 
         JOptionPane.showMessageDialog(null, "se han guardado los datos");
         clearFields();
@@ -268,6 +270,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         tablaClientes.cargarinterfaz();
         EmployeeDetail c;
 
+        List<EmployeeDetail> employeeDetails = employeeService.findAll();
         for (int i = 0; i < employeeDetails.size(); i++) {
             c = (EmployeeDetail) employeeDetails.get(i);
             tablaClientes.mostrardatos(c);

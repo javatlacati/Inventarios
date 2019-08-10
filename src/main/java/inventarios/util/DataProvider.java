@@ -5,10 +5,12 @@
  */
 package inventarios.util;
 
+import inventarios.repository.EmployeeRepository;
 import inventarios.repository.LoginUsersRepository;
 import inventarios.repository.ProductRepository;
 import inventarios.repository.ProviderRepository;
 import inventarios.repository.PurchaseRepository;
+import inventarios.to.EmployeeDetail;
 import inventarios.to.LoginUser;
 import inventarios.to.Product;
 import inventarios.to.Provider;
@@ -41,11 +43,15 @@ public class DataProvider implements CommandLineRunner {
     
     @Autowired
     PurchaseRepository purchaseRepository;
+    
+    @Autowired
+    EmployeeRepository employeeRepository;
 
     @Override
     @Transactional
     public void run(String... args) {
         usersRepository.save(new LoginUser("francisco", "francisco"));
+        employeeRepository.save(new EmployeeDetail(null, "4165465465", "sean", "herbert", "collins", "some addrees #2324", "manager", LocalDateTime.now().toString(), LocalDateTime.now().plusHours(8).toString()));
         usersRepository.save(new LoginUser("oscar", "oscar"));
         usersRepository.save(new LoginUser("ignacio", "ignacio"));
         usersRepository.save(new LoginUser("marroquin", "marroquin"));
