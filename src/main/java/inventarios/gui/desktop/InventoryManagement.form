@@ -36,17 +36,20 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="126" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="lblDateOut" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnClose" min="-2" pref="91" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="lblDateIn" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblDateIn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -68,8 +71,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtDateOut" max="32767" attributes="0"/>
                                   <Component id="txtDateIn" max="32767" attributes="0"/>
+                                  <Component id="txtDateOut" max="32767" attributes="0"/>
                                   <Component id="txtQuantity" alignment="1" max="32767" attributes="0"/>
                                   <Component id="txtSerialNo" max="32767" attributes="0"/>
                                   <Component id="txtCharacteristics" max="32767" attributes="0"/>
@@ -84,7 +87,7 @@
                       <Component id="txtName" min="-2" pref="137" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="179" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnView" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAdd" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -132,11 +135,12 @@
                               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                               <Component id="txtSerialNo" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Component id="btnMenu" min="-2" pref="41" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="lblProduct" min="-2" max="-2" attributes="0"/>
@@ -149,11 +153,11 @@
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDateIn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDateIn" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="lblDateIn" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDateIn" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblDateOut" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -362,15 +366,12 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtDateIn">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDateInActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JTextField" name="txtDateOut">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDateOutActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="txtDateIn">
     </Component>
   </SubComponents>
 </Form>

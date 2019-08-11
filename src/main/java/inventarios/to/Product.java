@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.Date;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -33,8 +35,8 @@ public class Product implements Serializable {
 //   @GraphQLQuery(name = "id", description = "El identificador de producto")
     private Long id;
 
-    @NotEmpty(message = "{productdatein.notempty}")
-    String dateIn;
+    @NotNull(message = "{productdatein.notempty}")
+    Date dateIn;
 
     String dateOut;
 
@@ -98,7 +100,7 @@ public class Product implements Serializable {
 //
 //    String Pueblo;
 
-    public Product(String name, String quantity, String characteristics, String serial, String dateIn, String dateOut) {
+    public Product(String name, String quantity, String characteristics, String serial, Date dateIn, String dateOut) {
         this.name = name;
         this.quantity = quantity;
         this.characteristics = characteristics;

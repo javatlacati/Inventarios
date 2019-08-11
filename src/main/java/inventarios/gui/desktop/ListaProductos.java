@@ -14,6 +14,7 @@ import java.awt.*;
 import java.util.List;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.springframework.data.domain.Example.of;
 import org.springframework.stereotype.Component;
@@ -237,7 +238,7 @@ public class ListaProductos extends javax.swing.JFrame {
             toBeDeleted.setQuantity((String) model.getValueAt(selectedRow, 1));
             toBeDeleted.setCharacteristics((String) model.getValueAt(selectedRow, 2));
             toBeDeleted.setSerial((String) model.getValueAt(selectedRow, 3));
-            toBeDeleted.setDateIn((String) model.getValueAt(selectedRow, 4));
+            toBeDeleted.setDateIn((Date) model.getValueAt(selectedRow, 4));
             toBeDeleted.setDateOut((String) model.getValueAt(selectedRow, 5));
 
             productsTable.addRowSelectionInterval(0, 0);

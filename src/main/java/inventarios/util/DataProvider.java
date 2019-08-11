@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -76,7 +77,7 @@ public class DataProvider implements CommandLineRunner {
         usersRepository.save(new LoginUser("miguel", "miguel"));
         usersRepository.save(new LoginUser("lupita", "lupita"));
 
-        productRepository.save(new Product("mesa", "2", "nueva", "1242552", Instant.now().toString(), Instant.now().plusMillis(2983).toString()));
+        productRepository.save(new Product("mesa", "2", "nueva", "1242552", Date.from(Instant.now()), Instant.now().plusMillis(2983).toString()));
         
         Provider provider1 = new Provider(null, "cervecería moctezuma", "puebla", "", "415646", "246522161", "moctezuma@moctezuma.com", "90153");
         providerRepository.save(provider1);

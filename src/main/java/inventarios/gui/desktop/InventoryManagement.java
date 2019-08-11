@@ -1,5 +1,6 @@
 package inventarios.gui.desktop;
 
+import com.toedter.calendar.JDateChooser;
 import inventarios.service.ProductService;
 import inventarios.to.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import javax.swing.*;
 import javax.validation.ConstraintViolation;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -80,8 +82,8 @@ public class InventoryManagement extends JFrame {
         btnMenu = new JButton();
         lblDateIn = new JLabel();
         lblDateOut = new JLabel();
-        txtDateIn = new JTextField();
         txtDateOut = new JTextField();
+        txtDateIn = new JDateChooser();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
@@ -199,12 +201,6 @@ public class InventoryManagement extends JFrame {
 
         lblDateOut.setText(bundle.getString("InventoryManagement.lblDateOut.text")); // NOI18N
 
-        txtDateIn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                txtDateInActionPerformed(evt);
-            }
-        });
-
         txtDateOut.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 txtDateOutActionPerformed(evt);
@@ -217,7 +213,7 @@ public class InventoryManagement extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(lblTitle)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -225,7 +221,9 @@ public class InventoryManagement extends JFrame {
                         .addComponent(lblDateOut)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnClose, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblDateIn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblDateIn)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
@@ -243,8 +241,8 @@ public class InventoryManagement extends JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDateIn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtDateOut)
-                                    .addComponent(txtDateIn)
                                     .addComponent(txtQuantity, GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtSerialNo)
                                     .addComponent(txtCharacteristics)))))
@@ -253,7 +251,7 @@ public class InventoryManagement extends JFrame {
                         .addComponent(lblName, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtName, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(btnView, GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAdd, GroupLayout.Alignment.TRAILING)
@@ -292,7 +290,8 @@ public class InventoryManagement extends JFrame {
                                 .addComponent(txtSerialNo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
-                                .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)))
+                        .addGap(125, 125, 125))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblProduct)
                         .addGap(18, 18, 18)
@@ -302,10 +301,10 @@ public class InventoryManagement extends JFrame {
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblSerialNo)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                     .addComponent(lblDateIn)
                     .addComponent(txtDateIn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(lblDateOut)
@@ -327,7 +326,7 @@ public class InventoryManagement extends JFrame {
         String productQuantity = txtQuantity.getText();
         String characteristics = txtCharacteristics.getText();
         String serial = txtSerialNo.getText();
-        String dateIn = txtDateIn.getText();
+        Date dateIn = txtDateIn.getDate();
         String dateOut = txtDateOut.getText();
 
 
@@ -356,7 +355,7 @@ public class InventoryManagement extends JFrame {
         txtQuantity.setText("");
         txtCharacteristics.setText("");
         txtSerialNo.setText("");
-        txtDateIn.setText("");
+        txtDateIn.cleanup();//setText("");
         txtDateOut.setText("");
     }
 
@@ -411,7 +410,8 @@ public class InventoryManagement extends JFrame {
                 txtQuantity.setText(String.valueOf(p.getQuantity()));
                 txtCharacteristics.setText(p.getCharacteristics());
                 txtSerialNo.setText(p.getSerial());
-                txtDateIn.setText(p.getDateIn());
+                txtDateIn.setDate(p.getDateIn());
+                //setText();
                 txtDateOut.setText(p.getDateOut());
             } else {
                 JOptionPane.showMessageDialog(null, "No Existe");
@@ -423,10 +423,6 @@ public class InventoryManagement extends JFrame {
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
-
-    private void txtDateInActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtDateInActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDateInActionPerformed
 
     private void txtDateOutActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtDateOutActionPerformed
         // TODO add your handling code here:
@@ -451,7 +447,7 @@ public class InventoryManagement extends JFrame {
     private JLabel lblSerialNo;
     private JLabel lblTitle;
     private JTextField txtCharacteristics;
-    private JTextField txtDateIn;
+    private JDateChooser txtDateIn;
     private JTextField txtDateOut;
     private JTextField txtName;
     private JTextField txtProduct;
