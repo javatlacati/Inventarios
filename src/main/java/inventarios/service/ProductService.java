@@ -33,5 +33,9 @@ public class ProductService {
     public <S extends Product> Optional<S> findOne(Example<S> exmpl) {
         return productRepository.findOne(exmpl);
     }
- 
+
+    public void delete(Product t) {
+        productRepository.delete(t);
+    }
+
 }
