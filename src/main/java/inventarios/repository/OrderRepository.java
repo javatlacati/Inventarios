@@ -5,9 +5,9 @@
  */
 package inventarios.repository;
 
-import inventarios.to.Order;
+import inventarios.to.OrderDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface OrderRepository extends JpaRepository<Order, Long> {
+public interface OrderRepository extends JpaRepository<OrderDetail, Long> {
     
 }
