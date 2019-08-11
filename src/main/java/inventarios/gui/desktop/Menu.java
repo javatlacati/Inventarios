@@ -405,7 +405,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreditsActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        dispose();
+        confirmarSalida();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
