@@ -1,5 +1,6 @@
 package inventarios;
 
+import inventarios.util.FontFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,5 +24,11 @@ public class Config {
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
         bean.setValidationMessageSource(messageSource());
         return bean;
+    }
+    
+    @Bean
+    public FontFactory fontFactory(){
+        FontFactory fontFactory = new FontFactory();
+        return fontFactory;
     }
 }

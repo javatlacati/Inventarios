@@ -7,6 +7,7 @@ package inventarios.gui.desktop;
 
 import inventarios.service.LoginUsersService;
 import inventarios.to.LoginUser;
+import inventarios.util.FontFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,16 +22,18 @@ import java.awt.event.KeyEvent;
 @Component
 public class LoginWindow extends javax.swing.JFrame {
 
-    @Autowired
     private LoginUsersService usersService;
+    private Menu menu;
+    private FontFactory fontFactory;
 
     @Autowired
-    Menu menu;
-
-    public LoginWindow() {
+    public LoginWindow(LoginUsersService usersService, inventarios.gui.desktop.Menu menu, FontFactory fontFactory) {
+        this.usersService = usersService;
+        this.menu = menu;
+        this.fontFactory = fontFactory;
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,14 +100,14 @@ public class LoginWindow extends javax.swing.JFrame {
     fieldsAndLogoPanel.setOpaque(false);
 
     fieldsPanel.setOpaque(false);
-    fieldsPanel.setLayout(new java.awt.GridLayout(2, 2, 0, 15));
+    fieldsPanel.setLayout(new java.awt.GridLayout(2, 2, 20, 15));
 
     userPanel.setOpaque(false);
     userPanel.setLayout(new java.awt.GridLayout(1, 0));
 
-    lblUser.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+    lblUser.setFont(fontFactory.getFont("Montserrat-Light.ttf"));
     lblUser.setForeground(new java.awt.Color(0, 0, 153));
-    lblUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/usuario.png"))); // NOI18N
+    lblUser.setText(bundle.getString("LoginWindow.lblUser.text")); // NOI18N
     userPanel.add(lblUser);
 
     txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -119,9 +122,9 @@ public class LoginWindow extends javax.swing.JFrame {
     psswPanel.setOpaque(false);
     psswPanel.setLayout(new java.awt.GridLayout(1, 0));
 
-    lblPassword.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+    lblPassword.setFont(lblUser.getFont());
     lblPassword.setForeground(new java.awt.Color(0, 0, 153));
-    lblPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/contraseña.png"))); // NOI18N
+    lblPassword.setText(bundle.getString("LoginWindow.lblPassword.text")); // NOI18N
     psswPanel.add(lblPassword);
 
     txtPsswd.addKeyListener(new java.awt.event.KeyAdapter() {

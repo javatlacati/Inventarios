@@ -28,7 +28,10 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <resource>
                 <directory>${basedir}/src/main/resources</directory>
                 <includes>
-                    <include>**/*</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.png</include>
+                    <include>**/*.jpg</include>
+                    <include>**/*.ttf</include>
                 </includes>
             </resource>
         </resources>
@@ -162,11 +165,11 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <artifactId>activation</artifactId>
             <version>1.1.1</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.github.javatlacati</groupId>-->
-<!--            <artifactId>jcalendar</artifactId>-->
-<!--            <version>-SNAPSHOT</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.github.javatlacati</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>64ce29bdec</version>
+        </dependency>
     </dependencies>
 
     <repositories>
