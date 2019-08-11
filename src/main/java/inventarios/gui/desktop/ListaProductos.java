@@ -15,6 +15,7 @@ import java.util.List;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
+import static org.springframework.data.domain.Example.of;
 import org.springframework.stereotype.Component;
 
 /**
@@ -31,22 +32,22 @@ public class ListaProductos extends javax.swing.JFrame {
     Menu menu;
 
     @Autowired
-    OrderManagement orderManagement;
+    InventoryManagement inventoryManagement;
 
     private DefaultTableModel model;
-    int con = 0;
 
     public ListaProductos() {
 
         initComponents();
 
         this.setLocationRelativeTo(null);
-        this.getContentPane().setBackground(Color.GRAY);
-        mostrarInterfaz();
+        this.getContentPane().setBackground(Color.GRAY);        
     }
-//metodo para mostrar la interfaz vacia de la tabla//
 
-    public void mostrarInterfaz() {
+    /**
+     * metodo para mostrar la interfaz vacia de la tabla
+     */
+    private void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//
         String data[][] = {};
 
@@ -57,17 +58,18 @@ public class ListaProductos extends javax.swing.JFrame {
     }
 
     public void mostrarLosDatos() {
+        mostrarInterfaz();
         List<Product> products = productService.findAll();
         Product p;
         for (int i = 0; i < products.size(); i++) {
             p = products.get(i);
-            model.insertRow(con, new Object[]{});
-            model.setValueAt(p.getName(), con, 0);
-            model.setValueAt(p.getQuantity(), con, 1);
-            model.setValueAt(p.getCharacteristics(), con, 2);
-            model.setValueAt(p.getSerial(), con, 3);
-            model.setValueAt(p.getDateIn(), con, 4);
-            model.setValueAt(p.getDateOut(), con, 5);
+            model.insertRow(i, new Object[]{});
+            model.setValueAt(p.getName(), i, 0);
+            model.setValueAt(p.getQuantity(), i, 1);
+            model.setValueAt(p.getCharacteristics(), i, 2);
+            model.setValueAt(p.getSerial(), i, 3);
+            model.setValueAt(p.getDateIn(), i, 4);
+            model.setValueAt(p.getDateOut(), i, 5);
         }
     }
     //Método para confirmar el cierre deJFrame//
@@ -226,12 +228,23 @@ public class ListaProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
-        // TODO add your handling code here:
         try {
             model = (DefaultTableModel) productsTable.getModel();
-            model.removeRow(productsTable.getSelectedRow());
+            final int selectedRow = productsTable.getSelectedRow();
+            Product toBeDeleted = new Product();
+
+            toBeDeleted.setName((String) model.getValueAt(selectedRow, 0));
+            toBeDeleted.setQuantity((String) model.getValueAt(selectedRow, 1));
+            toBeDeleted.setCharacteristics((String) model.getValueAt(selectedRow, 2));
+            toBeDeleted.setSerial((String) model.getValueAt(selectedRow, 3));
+            toBeDeleted.setDateIn((String) model.getValueAt(selectedRow, 4));
+            toBeDeleted.setDateOut((String) model.getValueAt(selectedRow, 5));
+
             productsTable.addRowSelectionInterval(0, 0);
-            model = null;
+            productService
+                    .findOne(of(toBeDeleted))
+                    .ifPresent(productService::delete);
+            mostrarLosDatos(); // reload            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Seleccione la fila que desea quitar.");
         }
@@ -262,7 +275,7 @@ public class ListaProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
-        orderManagement.setVisible(true);
+        inventoryManagement.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnGoBackActionPerformed
 
