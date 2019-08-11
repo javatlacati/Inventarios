@@ -10,7 +10,7 @@ public class LoginWindowPageObject {
     JTextFieldOperator userField;
     JPasswordFieldOperator passwordField;
     JButtonOperator btnAccept;
-    JButtonOperator btnCancel;
+    JButtonOperator btnClear;
     JDialogOperator userNotFoundMessage;
     ResourceBundle bundle;
 
@@ -20,7 +20,7 @@ public class LoginWindowPageObject {
         userField = new JTextFieldOperator(containerFrame);
         passwordField = new JPasswordFieldOperator(containerFrame);
         btnAccept = new JButtonOperator(containerFrame, 0);
-        btnCancel = new JButtonOperator(containerFrame, 1);
+        btnClear = new JButtonOperator(containerFrame, 1);
     }
 
     public String getUserFieldContent() {
@@ -47,8 +47,8 @@ public class LoginWindowPageObject {
         btnAccept.clickMouse();
     }
 
-    public void clickCancel() {
-        btnCancel.clickMouse();
+    public void clickClear() {
+        btnClear.clickMouse();
     }
 
     public void userNotFoundIsShown() {

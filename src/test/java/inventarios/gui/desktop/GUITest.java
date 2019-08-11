@@ -6,6 +6,7 @@ import inventarios.gui.desktop.pageobjects.LoginWindowPageObject;
 import inventarios.gui.desktop.pageobjects.MainMenuPageObject;
 import inventarios.gui.desktop.pageobjects.OrderManagementPageObject;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,6 +49,11 @@ public class GUITest {
     @Test
     public void navigationTest() {
         LoginWindowPageObject loginWindowPageObject = new LoginWindowPageObject();
+        loginWindowPageObject.setUserFieldContent("wrong");
+        loginWindowPageObject.setPasswordFieldContent("wrong");
+        loginWindowPageObject.clickClear();
+        Assert.assertEquals("",loginWindowPageObject.getUserFieldContent());
+        Assert.assertEquals("",loginWindowPageObject.getPasswordFieldContent());
         loginWindowPageObject.setUserFieldContent("oscar");
         loginWindowPageObject.setPasswordFieldContent("oscar");
         loginWindowPageObject.clickAcceptAndWait();
