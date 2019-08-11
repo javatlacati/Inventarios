@@ -320,12 +320,15 @@ public class InventoryManagement extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         String productName = txtProduct.getText();
         String productQuantity = txtQuantity.getText();
-        String Caracteristicas = txtCharacteristics.getText();
-        String Serial = txtSerialNo.getText();
-        String Fechai = txtDateIn.getText();
-        String Fechae = txtDateOut.getText();
+        String characteristics = txtCharacteristics.getText();
+        String serial = txtSerialNo.getText();
+        String dateIn = txtDateIn.getText();
+        String dateOut = txtDateOut.getText();
+        if(isProductInvalid(productName, productQuantity, serial, dateIn)){
+            return;
+        }
 
-        Product clase = new Product(productName, productQuantity, Caracteristicas, Serial, Fechai, Fechae);
+        Product clase = new Product(productName, productQuantity, characteristics, serial, dateIn, dateOut);
         productService.save(clase);
         txtProduct.setText("");
         txtQuantity.setText("");
@@ -335,6 +338,14 @@ public class InventoryManagement extends javax.swing.JFrame {
         txtDateOut.setText("");
 
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private boolean isProductInvalid(String productName, String productQuantity, String serial, String dateIn) throws HeadlessException {
+        final boolean invalid = productName.isBlank() || productQuantity.isBlank() || serial.isBlank()||dateIn.isBlank();
+        if(invalid){
+            JOptionPane.showMessageDialog(null, "Agrega los campos requeridos para agregar un nuevo producto");
+        }
+        return invalid;
+    }
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
         //limpiar las cajas de texto
@@ -347,7 +358,8 @@ public class InventoryManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        dispose();
+        menu.setVisible(true);
+        dispose();        
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
