@@ -5,15 +5,17 @@
  */
 package inventarios.to;
 
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
 /**
  *
@@ -31,16 +33,20 @@ public class Product implements Serializable {
 //   @GraphQLQuery(name = "id", description = "El identificador de producto")
     private Long id;
 
+    @NotEmpty(message = "{productdatein.notempty}")
     String dateIn;
 
     String dateOut;
 
+    @NotEmpty(message = "{productname.notempty}")
     String name;
 
+    @NotEmpty(message = "{productname.notempty}")
     String quantity;
 
     String characteristics;
 
+    @NotEmpty(message = "{productserial.notempty}")
     String serial;
 //    String size;
 //
