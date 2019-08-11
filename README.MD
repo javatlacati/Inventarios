@@ -6,3 +6,4 @@ Inventory System
 Screenshots
 ---
 
+![](screenshots/login.png)
