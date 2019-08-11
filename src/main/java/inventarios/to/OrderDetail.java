@@ -24,7 +24,7 @@ import javax.persistence.Id;
 @Getter
 @Entity
 @NoArgsConstructor
-public class Order {
+public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

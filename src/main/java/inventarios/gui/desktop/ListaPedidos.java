@@ -5,7 +5,7 @@
  */
 package inventarios.gui.desktop;
 
-import inventarios.to.Order;
+import inventarios.to.OrderDetail;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -54,9 +54,9 @@ public class ListaPedidos extends javax.swing.JFrame {
     }
 
     public void MostrarLosDatos() {
-        Order p;
+        OrderDetail p;
         for (int i = 0; i < OrderManagement.contenedor.size(); i++) {
-            p = (Order) OrderManagement.contenedor.get(i);
+            p = (OrderDetail) OrderManagement.contenedor.get(i);
             modelo.insertRow(con, new Object[]{});
             modelo.setValueAt(p.getName(), con, 0);
             modelo.setValueAt(p.getLastName(), con, 1);

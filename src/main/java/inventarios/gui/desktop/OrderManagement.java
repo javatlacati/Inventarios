@@ -8,7 +8,7 @@ package inventarios.gui.desktop;
 /*
 Se importa la paqueteria a utilizar
  */
-import inventarios.to.Order;
+import inventarios.to.OrderDetail;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +32,7 @@ public class OrderManagement extends javax.swing.JFrame {
     @Autowired
     ListaPedidos listaPedidos;
 
-    public static List<Order> contenedor = new LinkedList<>();
+    public static List<OrderDetail> contenedor = new LinkedList<>();
 
     /**
      * Creates new form PedidosVetana
@@ -330,7 +330,7 @@ public class OrderManagement extends javax.swing.JFrame {
         /*
         Se hace la instancia para guardar los datos en el ArrayList
          */
-        Order Ped = new Order(null,name, lastName, Producto, Empleado, NumPedido, RFC, Telefono, Direccion, Fecha);
+        OrderDetail Ped = new OrderDetail(null,name, lastName, Producto, Empleado, NumPedido, RFC, Telefono, Direccion, Fecha);
         contenedor.add(Ped);
 
         jTextField1.setText("");
