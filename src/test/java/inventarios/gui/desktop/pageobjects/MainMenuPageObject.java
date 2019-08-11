@@ -38,4 +38,8 @@ public class MainMenuPageObject {
     public void openInvenory(){
         btnInventory.clickMouse();
     }
+    
+    public void openOrders(){
+        btnOrders.clickMouse();
+    }
 }

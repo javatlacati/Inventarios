@@ -4,6 +4,7 @@ import inventarios.HeadlessSpringBootContextLoader;
 import inventarios.gui.desktop.pageobjects.InventoryManagementPageObject;
 import inventarios.gui.desktop.pageobjects.LoginWindowPageObject;
 import inventarios.gui.desktop.pageobjects.MainMenuPageObject;
+import inventarios.gui.desktop.pageobjects.OrderManagementPageObject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,7 +46,7 @@ public class GUITest {
     }
 
     @Test
-    public void successFulLogin() {
+    public void navigationTest() {
         LoginWindowPageObject loginWindowPageObject = new LoginWindowPageObject();
         loginWindowPageObject.setUserFieldContent("oscar");
         loginWindowPageObject.setPasswordFieldContent("oscar");
@@ -53,5 +54,8 @@ public class GUITest {
         MainMenuPageObject menuPageObject = new MainMenuPageObject();
         menuPageObject.openInvenory();
         InventoryManagementPageObject inventoryPageObject = new InventoryManagementPageObject();
+        inventoryPageObject.clickClose();
+        menuPageObject.openOrders();
+        OrderManagementPageObject orderPageObject = new OrderManagementPageObject();
     }
 }
