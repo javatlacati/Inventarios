@@ -5,15 +5,15 @@
  */
 package inventarios.to;
 
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -24,19 +24,16 @@ import javax.persistence.Id;
 @Getter
 @Entity
 @NoArgsConstructor
-public class OrderDetail {
+public class OrderDetail implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    String name;
-    String lastName;
-    String Producto;
-    String Empleado;
     String number;
-    String rfc;
-    String telephone;
-    String address;
-    String orderDate;
+    @OneToMany
+    List<Product> products;
+    @OneToOne
+    EmployeeDetail employee;
+    Date orderDate;
 //    String localNumber;
 //    String entity;
 //    String places;

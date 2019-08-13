@@ -59,7 +59,7 @@ public class BillingList extends javax.swing.JFrame {
         for (int i = 0; i < BillingManagement.contenedor.size(); i++) {
             f = (BillingDetails) BillingManagement.contenedor.get(i);
             modelo.insertRow(con, new Object[]{});
-            modelo.setValueAt(f.getRFC(), con, 0);
+            modelo.setValueAt(f.getRfc(), con, 0);
             modelo.setValueAt(f.getRS(), con, 1);
             modelo.setValueAt(f.getStreetName(), con, 2);
             modelo.setValueAt(f.getNE(), con, 3);

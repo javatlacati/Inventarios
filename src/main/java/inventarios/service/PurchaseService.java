@@ -19,6 +19,8 @@ public class PurchaseService {
     public List<Purchase> findAll() {
         return purchaseRepository.findAll();
     }
-    
-    
+
+    public <S extends Purchase> S save(S s) {
+        return purchaseRepository.save(s);
+    }
 }

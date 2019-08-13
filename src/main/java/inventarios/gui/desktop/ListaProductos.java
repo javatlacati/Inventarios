@@ -7,6 +7,7 @@ package inventarios.gui.desktop;
 
 import inventarios.service.ProductService;
 import inventarios.to.Product;
+import inventarios.to.ProductCharacteristic;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -235,11 +236,11 @@ public class ListaProductos extends javax.swing.JFrame {
             Product toBeDeleted = new Product();
 
             toBeDeleted.setName((String) model.getValueAt(selectedRow, 0));
-            toBeDeleted.setQuantity((String) model.getValueAt(selectedRow, 1));
-            toBeDeleted.setCharacteristics((String) model.getValueAt(selectedRow, 2));
+            toBeDeleted.setQuantity((Integer) model.getValueAt(selectedRow, 1));
+//            toBeDeleted.setCharacteristics((ProductCharacteristic) model.getValueAt(selectedRow, 2));
             toBeDeleted.setSerial((String) model.getValueAt(selectedRow, 3));
             toBeDeleted.setDateIn((Date) model.getValueAt(selectedRow, 4));
-            toBeDeleted.setDateOut((String) model.getValueAt(selectedRow, 5));
+            toBeDeleted.setDateOut((Date) model.getValueAt(selectedRow, 5));
 
             productsTable.addRowSelectionInterval(0, 0);
             productService

@@ -5,7 +5,10 @@
  */
 package inventarios.gui.desktop;
 
+import inventarios.service.ProductService;
 import inventarios.service.ProviderService;
+import inventarios.service.PurchaseService;
+import inventarios.to.Product;
 import inventarios.to.Provider;
 import inventarios.to.Purchase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +21,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.LinkedList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,16 +31,15 @@ import java.util.List;
 @Component
 public class ShoppingWindow extends javax.swing.JFrame {
 
-    @Autowired
     ListaCompras listaCompras;
 
-    @Autowired
     Menu menu;
     
-    @Autowired
     ProviderService providerService;
-
-    public static List<Purchase> shoppingList = new LinkedList<>();
+        
+    ProductService productService;
+    
+    PurchaseService purchaseService;
     /*
     Se Realiza el llamado del ArrayList
      */
@@ -45,14 +47,13 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
     TableRowSorter busqueda = new TableRowSorter(model);
 
-    /**
-     * Creates new form ComprasVentana
-     */
-    public ShoppingWindow() {
-        /*
-        Se inicializa la Lista
-         */
-
+    @Autowired
+    public ShoppingWindow(ListaCompras listaCompras, inventarios.gui.desktop.Menu menu, ProviderService providerService, ProductService productService, PurchaseService purchaseService) {
+        this.listaCompras = listaCompras;
+        this.menu = menu;
+        this.providerService = providerService;
+        this.productService = productService;
+        this.purchaseService = purchaseService;
         initComponents();
 
         this.setLocationRelativeTo(null);
@@ -60,6 +61,8 @@ public class ShoppingWindow extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.cyan);
         cerrar();
     }
+
+    
     
     //Método para confirmar el cierre deJFrame//
     public void cerrar() {
@@ -108,13 +111,14 @@ public class ShoppingWindow extends javax.swing.JFrame {
         lblEmail = new javax.swing.JLabel();
         lblProduct = new javax.swing.JLabel();
         pnlFields = new javax.swing.JPanel();
-        txtDate = new javax.swing.JTextField();
-        cmbPRovider = new javax.swing.JComboBox<>();
+        txtDate = new com.toedter.calendar.JDateChooser();
+        cmbProvider = new javax.swing.JComboBox<>();
         txtAdress = new javax.swing.JTextField();
         txtTelephone = new javax.swing.JTextField();
         txtContributor = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
-        txtProduct = new javax.swing.JTextField();
+        scrollProducts = new javax.swing.JScrollPane();
+        txtProduct = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
@@ -180,7 +184,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
         getContentPane().add(pntlButtons, java.awt.BorderLayout.EAST);
 
-        centerPanel.setLayout(new java.awt.GridLayout());
+        centerPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         pnlLabels.setLayout(new java.awt.GridLayout(0, 1));
 
@@ -208,15 +212,8 @@ public class ShoppingWindow extends javax.swing.JFrame {
         centerPanel.add(pnlLabels);
 
         pnlFields.setLayout(new java.awt.GridLayout(0, 1));
-
-        txtDate.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtDate.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDateKeyTyped(evt);
-            }
-        });
         pnlFields.add(txtDate);
-        pnlFields.add(cmbPRovider);
+        pnlFields.add(cmbProvider);
 
         txtAdress.setPreferredSize(new java.awt.Dimension(70, 25));
         txtAdress.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -250,13 +247,10 @@ public class ShoppingWindow extends javax.swing.JFrame {
         });
         pnlFields.add(txtEmail);
 
-        txtProduct.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtProduct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtProductKeyTyped(evt);
-            }
-        });
-        pnlFields.add(txtProduct);
+        txtProduct.setModel(new ProductListModel(productService.findAll()));
+        scrollProducts.setViewportView(txtProduct);
+
+        pnlFields.add(scrollProducts);
 
         centerPanel.add(pnlFields);
 
@@ -275,13 +269,6 @@ public class ShoppingWindow extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         add();
     }//GEN-LAST:event_btnAddActionPerformed
-
-    private void txtDateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDateKeyTyped
-        char cTeclaPresionada = evt.getKeyChar();
-        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
-            add();
-        }
-    }//GEN-LAST:event_txtDateKeyTyped
 
     private void txtAdressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAdressKeyTyped
         char cTeclaPresionada = evt.getKeyChar();
@@ -311,13 +298,6 @@ public class ShoppingWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtEmailKeyTyped
 
-    private void txtProductKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductKeyTyped
-        char cTeclaPresionada = evt.getKeyChar();
-        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
-            add();
-        }
-    }//GEN-LAST:event_txtProductKeyTyped
-
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         listaCompras.mostrarLosDatos();
         listaCompras.setVisible(true);
@@ -341,7 +321,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnSearch;
     private javax.swing.JPanel centerPanel;
-    private javax.swing.JComboBox<String> cmbPRovider;
+    private javax.swing.JComboBox<String> cmbProvider;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblContributor;
     private javax.swing.JLabel lblDate;
@@ -352,11 +332,12 @@ public class ShoppingWindow extends javax.swing.JFrame {
     private javax.swing.JPanel pnlFields;
     private javax.swing.JPanel pnlLabels;
     private javax.swing.JPanel pntlButtons;
+    private javax.swing.JScrollPane scrollProducts;
     private javax.swing.JTextField txtAdress;
     private javax.swing.JTextField txtContributor;
-    private javax.swing.JTextField txtDate;
+    private com.toedter.calendar.JDateChooser txtDate;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtProduct;
+    private javax.swing.JList<Product> txtProduct;
     private javax.swing.JTextField txtTelephone;
     // End of variables declaration//GEN-END:variables
 
@@ -364,18 +345,18 @@ public class ShoppingWindow extends javax.swing.JFrame {
         /*
         Declaramos las variables donde se guardara el contenido para los TextFiel
          */
-        String date = txtDate.getText();
-        Provider provider = (Provider)cmbPRovider.getSelectedItem();
+        Date date = txtDate.getDate();
+        Provider provider = (Provider)cmbProvider.getSelectedItem();
         String adress = txtAdress.getText();
         String telephone = txtTelephone.getText();
         String RFC = txtContributor.getText();
         String mail = txtEmail.getText();
-        String product = txtProduct.getText();
+        List<Product> product = txtProduct.getSelectedValuesList();
         /*
         Se hace la instancia para guardar los datos en el ArrayList
          */
-        Purchase clase = new Purchase(null,date, provider, adress, telephone, mail, product, RFC);
-        shoppingList.add(clase);
+        Purchase clase = new Purchase(null,date, provider, product, null);
+        purchaseService.save(clase);
         clearFields();
         /*
        * Agregar el contendio al jTable
@@ -383,14 +364,14 @@ public class ShoppingWindow extends javax.swing.JFrame {
     }
 
     private void clearFields() {
-        txtDate.setText("");
+        txtDate.cleanup();
         List<Provider> providers = providerService.findAll();
-        cmbPRovider.setModel(new ProviderComboBoxModel(providers));
+        cmbProvider.setModel(new ProviderComboBoxModel(providers));
 //        txtProvider.setText("");
         txtAdress.setText("");
         txtTelephone.setText("");
         txtContributor.setText("");
         txtEmail.setText("");
-        txtProduct.setText("");
+        txtProduct.clearSelection();
     }
 }

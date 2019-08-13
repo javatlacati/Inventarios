@@ -9,6 +9,7 @@ import inventarios.service.PurchaseService;
 import inventarios.to.Purchase;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -46,7 +47,7 @@ public class ListaCompras extends javax.swing.JFrame {
         //para agregar los datos en un arreglo vacio//
         String data[][] = {};
 
-        String col[] = {"Fecha", "Proveedor", "Dirección", "Teléfono", "RFC", "E-mail", "Producto"};
+        String col[] = {"Fecha", "Proveedor", "Productos", "Detalles de la Orden"};
         modelo = new DefaultTableModel(data, col);
         shoppingTable.setModel(modelo);
 
@@ -60,12 +61,8 @@ public class ListaCompras extends javax.swing.JFrame {
             modelo.insertRow(con, new Object[]{});
             modelo.setValueAt(c.getDate(), con, 0);
             modelo.setValueAt(c.getProvider().getName(), con, 1);
-            modelo.setValueAt(c.getAddress(), con, 2);
-            modelo.setValueAt(c.getTelephone(), con, 3);
-            modelo.setValueAt(c.getRfc(), con, 4);
-            modelo.setValueAt(c.getEmail(), con, 5);
-            modelo.setValueAt(c.getProducto(), con, 6);
-
+            modelo.setValueAt(c.getProducto().get(0).getName(), con, 2);
+            modelo.setValueAt(c.getRequestingOrder().getId(), con, 3);
         }
     }
     //Método para confirmar el cierre deJFrame//

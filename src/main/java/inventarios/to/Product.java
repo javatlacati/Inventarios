@@ -14,13 +14,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
 
 /**
- *
  * @author francisco
  */
 @AllArgsConstructor
@@ -31,6 +32,7 @@ import javax.validation.constraints.NotNull;
 public class Product implements Serializable {
 
     @Id
+    @Column(name = "product_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
 //   @GraphQLQuery(name = "id", description = "El identificador de producto")
     private Long id;
@@ -38,74 +40,27 @@ public class Product implements Serializable {
     @NotNull(message = "{productdatein.notempty}")
     Date dateIn;
 
-    String dateOut;
+    @NotNull
+    Date dateOut;
 
     @NotEmpty(message = "{productname.notempty}")
     String name;
 
-    @NotEmpty(message = "{productname.notempty}")
-    String quantity;
-
-    String characteristics;
+    @NotNull
+    Integer quantity;
 
     @NotEmpty(message = "{productserial.notempty}")
     String serial;
-//    String size;
-//
-//    String color;
-//
-//    String figura;
-//
-//    String variedad;
-//
-//    String cosas;
-//
-//    String descripcion;
-//
-//    String precio;
-//
-//    String moneda;
-//
-//    String calidad;
 
-//    String vistobueno;
-//
-//    String cosa;
-//
-//    String bueno;
-//
-//    String malo;
-//
-//    String regular;
-//
-//    String sabor;
-//
-//    String creado;
-//
-//    String ensamblado;
-//
-//    String facturado;
-//
-//    String compra;
+    @OneToOne
+    ProductCharacteristic characteristics;
 
-//    String venta;
-//
-//    String domicilio;
-//
-//    String estado;
-//
-//    String Ciudad;
-//
-//    String Municipio;
-//
-//    String Pueblo;
-
-    public Product(String name, String quantity, String characteristics, String serial, Date dateIn, String dateOut) {
+    public Product(String name, Integer quantity, String serial, Date dateIn, Date dateOut, ProductCharacteristic characteristics) {
         this.name = name;
         this.quantity = quantity;
-        this.characteristics = characteristics;
         this.serial = serial;
         this.dateIn = dateIn;
         this.dateOut = dateOut;
+        this.characteristics = characteristics;
     }
 }

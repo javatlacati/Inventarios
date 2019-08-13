@@ -3,6 +3,7 @@ package inventarios.gui.desktop;
 import com.toedter.calendar.JDateChooser;
 import inventarios.service.ProductService;
 import inventarios.to.Product;
+import inventarios.to.ProductCharacteristic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Example;
@@ -69,7 +70,6 @@ public class InventoryManagement extends JFrame {
         lblCharacteristics = new JLabel();
         lblSerialNo = new JLabel();
         txtProduct = new JTextField();
-        txtQuantity = new JTextField();
         txtCharacteristics = new JTextField();
         txtSerialNo = new JTextField();
         btnAdd = new JButton();
@@ -82,8 +82,9 @@ public class InventoryManagement extends JFrame {
         btnMenu = new JButton();
         lblDateIn = new JLabel();
         lblDateOut = new JLabel();
-        txtDateOut = new JTextField();
         txtDateIn = new JDateChooser();
+        txtDateOut = new JDateChooser();
+        txtQuantity = new JSpinner();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
@@ -115,12 +116,6 @@ public class InventoryManagement extends JFrame {
         txtProduct.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent evt) {
                 txtProductKeyTyped(evt);
-            }
-        });
-
-        txtQuantity.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent evt) {
-                txtQuantityKeyTyped(evt);
             }
         });
 
@@ -201,11 +196,7 @@ public class InventoryManagement extends JFrame {
 
         lblDateOut.setText(bundle.getString("InventoryManagement.lblDateOut.text")); // NOI18N
 
-        txtDateOut.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                txtDateOutActionPerformed(evt);
-            }
-        });
+        txtQuantity.setModel(new SpinnerNumberModel(0, null, 99, 1));
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,102 +206,93 @@ public class InventoryManagement extends JFrame {
                 .addComponent(lblTitle)
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDateOut)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnClose, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDateIn)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblSerialNo)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCharacteristics)
-                            .addComponent(lblProduct)
-                            .addComponent(lblQuantity))
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(txtProduct, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDateIn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtDateOut)
-                                    .addComponent(txtQuantity, GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtSerialNo)
-                                    .addComponent(txtCharacteristics)))))
                     .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
                         .addComponent(lblName, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtName, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtName, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSerialNo)
+                            .addComponent(lblCharacteristics)
+                            .addComponent(lblProduct)
+                            .addComponent(lblQuantity)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDateOut)
+                                    .addComponent(lblDateIn))))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDateIn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtSerialNo)
+                            .addComponent(txtCharacteristics)
+                            .addComponent(txtDateOut, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtProduct, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtQuantity))))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(btnClose, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnView, GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAdd, GroupLayout.Alignment.TRAILING)
                     .addComponent(btnClean, GroupLayout.Alignment.TRAILING)
                     .addComponent(btnMenu, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
+                .addContainerGap())
         );
         layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblTitle)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(txtName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblName))
-                        .addGap(29, 29, 29))
-                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAdd)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(txtProduct, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnView, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
+                            .addComponent(lblProduct)
+                            .addComponent(txtProduct, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(txtQuantity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnClean, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblQuantity)
+                            .addComponent(txtQuantity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCharacteristics, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
-                                .addComponent(txtSerialNo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)))
-                        .addGap(125, 125, 125))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblProduct)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblQuantity)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblCharacteristics)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblCharacteristics))
+                            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(txtCharacteristics, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblSerialNo)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblDateIn)
-                    .addComponent(txtDateIn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblDateOut)
-                        .addComponent(txtDateOut, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnClose, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblSerialNo)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblDateIn))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtSerialNo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(txtDateIn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDateOut)
+                            .addComponent(txtDateOut, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(40, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAdd)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnView, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(btnClean, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnClose, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -323,14 +305,14 @@ public class InventoryManagement extends JFrame {
 
     private void addNewProduct() {
         String productName = txtProduct.getText();
-        String productQuantity = txtQuantity.getText();
+        Integer productQuantity = (Integer) txtQuantity.getValue();
         String characteristics = txtCharacteristics.getText();
         String serial = txtSerialNo.getText();
         Date dateIn = txtDateIn.getDate();
-        String dateOut = txtDateOut.getText();
+        Date dateOut = txtDateOut.getDate();
+        final ProductCharacteristic productCharacteristic = new ProductCharacteristic();
 
-
-        Product clase = new Product(productName, productQuantity, characteristics, serial, dateIn, dateOut);
+        Product clase = new Product(productName, productQuantity, serial, dateIn, dateOut, productCharacteristic);
 
         Set<ConstraintViolation<Product>> constraintViolations = validatorFactory.getValidator().validate(clase);
         if (constraintViolations.isEmpty()) {
@@ -352,11 +334,11 @@ public class InventoryManagement extends JFrame {
      */
     private void clearFields() {
         txtProduct.setText("");
-        txtQuantity.setText("");
+        txtQuantity.setValue(0);
         txtCharacteristics.setText("");
         txtSerialNo.setText("");
         txtDateIn.cleanup();//setText("");
-        txtDateOut.setText("");
+        txtDateOut.cleanup();//setText("");
     }
 
     private void btnCleanActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
@@ -384,10 +366,6 @@ public class InventoryManagement extends JFrame {
         }
     }
 
-    private void txtQuantityKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtQuantityKeyTyped
-        addProductOnEnterKey(evt);
-    }//GEN-LAST:event_txtQuantityKeyTyped
-
     private void txtCharacteristicsKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtCharacteristicsKeyTyped
         addProductOnEnterKey(evt);
     }//GEN-LAST:event_txtCharacteristicsKeyTyped
@@ -407,12 +385,11 @@ public class InventoryManagement extends JFrame {
             if (found.isPresent()) {
                 Product p = found.get();
                 txtProduct.setText(p.getName());
-                txtQuantity.setText(String.valueOf(p.getQuantity()));
-                txtCharacteristics.setText(p.getCharacteristics());
+                txtQuantity.setValue(p.getQuantity());
+                txtCharacteristics.setText(p.getCharacteristics().toString());
                 txtSerialNo.setText(p.getSerial());
                 txtDateIn.setDate(p.getDateIn());
-                //setText();
-                txtDateOut.setText(p.getDateOut());
+                txtDateOut.setDate(p.getDateOut());
             } else {
                 JOptionPane.showMessageDialog(null, "No Existe");
             }
@@ -423,10 +400,6 @@ public class InventoryManagement extends JFrame {
         menu.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
-
-    private void txtDateOutActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtDateOutActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDateOutActionPerformed
 
     private void closeHandler(WindowEvent evt) {//GEN-FIRST:event_closeHandler
         confirmarSalida();
@@ -448,10 +421,10 @@ public class InventoryManagement extends JFrame {
     private JLabel lblTitle;
     private JTextField txtCharacteristics;
     private JDateChooser txtDateIn;
-    private JTextField txtDateOut;
+    private JDateChooser txtDateOut;
     private JTextField txtName;
     private JTextField txtProduct;
-    private JTextField txtQuantity;
+    private JSpinner txtQuantity;
     private JTextField txtSerialNo;
     // End of variables declaration//GEN-END:variables
 }

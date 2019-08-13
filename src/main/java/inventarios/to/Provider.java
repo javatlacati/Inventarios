@@ -39,6 +39,7 @@ public class Provider {
     String email;
     @Digits(integer = 5, fraction = 0, message = "{providerpobox.pattern}")
     String poBox;
+
 //    String lugar;
 //    String domicilio;
 //    String fecha;

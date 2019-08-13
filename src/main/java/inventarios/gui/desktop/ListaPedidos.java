@@ -9,6 +9,7 @@ import inventarios.to.OrderDetail;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -47,7 +48,8 @@ public class ListaPedidos extends javax.swing.JFrame {
         //para agregar los datos en un arreglo vacio//
         String data[][] = {};
 
-        String col[] = {"No. de Pedido", "Nombre", "Apellidos", "Producto", "RFC", "Teléfono", "Atendio por", "Direccion", "Fecha"};
+        //String col[] = {"No. de Pedido", "Nombre", "Apellidos", "Producto", "RFC", "Teléfono", "Atendio por", "Direccion", "Fecha"};
+        String col[] = {"No. de Pedido", "Productos", "Atendio por", "Fecha"};
         modelo = new DefaultTableModel(data, col);
         jTable1.setModel(modelo);
 
@@ -58,15 +60,10 @@ public class ListaPedidos extends javax.swing.JFrame {
         for (int i = 0; i < OrderManagement.contenedor.size(); i++) {
             p = (OrderDetail) OrderManagement.contenedor.get(i);
             modelo.insertRow(con, new Object[]{});
-            modelo.setValueAt(p.getName(), con, 0);
-            modelo.setValueAt(p.getLastName(), con, 1);
-            modelo.setValueAt(p.getProducto(), con, 2);
-            modelo.setValueAt(p.getRfc(), con, 3);
-            modelo.setValueAt(p.getTelephone(), con, 4);
-            modelo.setValueAt(p.getEmpleado(), con, 5);
-            modelo.setValueAt(p.getNumber(), con, 6);
-            modelo.setValueAt(p.getAddress(), con, 7);
-            modelo.setValueAt(p.getOrderDate(), con, 8);
+            modelo.setValueAt(p.getNumber(), con, 0);
+            modelo.setValueAt(p.getProducts(), con, 1);
+            modelo.setValueAt(p.getEmployee(), con, 2);
+            modelo.setValueAt(p.getOrderDate(), con, 3);
 
         }
     }

@@ -7,14 +7,20 @@ package inventarios.util;
 
 import inventarios.repository.EmployeeRepository;
 import inventarios.repository.LoginUsersRepository;
+import inventarios.repository.OrderRepository;
+import inventarios.repository.ProductDetailsRepository;
 import inventarios.repository.ProductRepository;
 import inventarios.repository.ProviderRepository;
 import inventarios.repository.PurchaseRepository;
+import inventarios.repository.StorageRepository;
 import inventarios.to.EmployeeDetail;
 import inventarios.to.LoginUser;
+import inventarios.to.OrderDetail;
 import inventarios.to.Product;
+import inventarios.to.ProductCharacteristic;
 import inventarios.to.Provider;
 import inventarios.to.Purchase;
+import inventarios.to.StorageLocation;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -23,6 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -38,21 +45,31 @@ public class DataProvider implements CommandLineRunner {
 
     @Autowired
     ProductRepository productRepository;
-    
+
     @Autowired
     ProviderRepository providerRepository;
-    
+
     @Autowired
     PurchaseRepository purchaseRepository;
-    
+
     @Autowired
     EmployeeRepository employeeRepository;
+
+    @Autowired
+    StorageRepository storageRepository;
+
+    @Autowired
+    ProductDetailsRepository productDetailsRepository;
+    
+    @Autowired
+    OrderRepository orderRepository;
 
     @Override
     @Transactional
     public void run(String... args) {
         usersRepository.save(new LoginUser("francisco", "francisco"));
-        employeeRepository.save(new EmployeeDetail(null, "4165465465", "sean", "herbert", "collins", "some addrees #2324", "manager", LocalDateTime.now().toString(), LocalDateTime.now().plusHours(8).toString()));
+        EmployeeDetail sean = new EmployeeDetail(null, "4165465465", "sean", "herbert", "collins", "some addrees #2324", "manager", LocalDateTime.now().toString(), LocalDateTime.now().plusHours(8).toString());
+        employeeRepository.save(sean);
         usersRepository.save(new LoginUser("oscar", "oscar"));
         usersRepository.save(new LoginUser("ignacio", "ignacio"));
         usersRepository.save(new LoginUser("marroquin", "marroquin"));
@@ -77,12 +94,20 @@ public class DataProvider implements CommandLineRunner {
         usersRepository.save(new LoginUser("miguel", "miguel"));
         usersRepository.save(new LoginUser("lupita", "lupita"));
 
-        productRepository.save(new Product("mesa", "2", "nueva", "1242552", Date.from(Instant.now()), Instant.now().plusMillis(2983).toString()));
-        
         Provider provider1 = new Provider(null, "cervecería moctezuma", "puebla", "", "415646", "246522161", "moctezuma@moctezuma.com", "90153");
         providerRepository.save(provider1);
-        
-        purchaseRepository.save(new Purchase(null, LocalDateTime.now().toString(), provider1, "some address", "246255156", "some@email.com", "a product", "asdioh85416"));
+
+        StorageLocation warehouse1 = new StorageLocation(null, "my warehouse", "my state", "my city");
+        storageRepository.save(warehouse1);
+        ProductCharacteristic tableCharacteristics = new ProductCharacteristic(null, sean, warehouse1, 45.23, "round", "black", "4 people", "good");
+        productDetailsRepository.save(tableCharacteristics);
+        Product table = new Product("mesa", 2, "1242552", Date.from(Instant.now()), Date.from(Instant.now().plusMillis(2983)), tableCharacteristics);
+        productRepository.save(table);
+
+        List<Product> productList1 = Arrays.asList(table);
+        OrderDetail requestingOrder = new OrderDetail(null, "0001", productList1, sean, Date.from(Instant.now().minusSeconds(2500)));
+        orderRepository.save(requestingOrder);
+        purchaseRepository.save(new Purchase(null, Date.from(Instant.now()), provider1, productList1, requestingOrder));
     }
 
     private static void fillInUserList(List<LoginUser> userList) {

@@ -14,6 +14,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +82,7 @@ public class OrderManagement extends javax.swing.JFrame {
         lblAddress = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         lblOrderDate = new javax.swing.JLabel();
-        txtOrderDate = new javax.swing.JTextField();
+        txtOrderDate = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
@@ -220,12 +221,14 @@ public class OrderManagement extends javax.swing.JFrame {
                                 .addComponent(lblOrderDate)))))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(txtOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 21, Short.MAX_VALUE))
+                    .addComponent(txtOrderDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnClean)
                     .addComponent(btnAdd)
@@ -278,16 +281,20 @@ public class OrderManagement extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnGetBack, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                        .addGap(14, 14, 14))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnGetBack, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                                .addGap(14, 14, 14))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnMenu))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAddress)
                             .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(btnMenu)
+                            .addComponent(lblOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -300,9 +307,13 @@ public class OrderManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
-        /*
-        Aplicamos estos codigos para eliminar el contenido de los TexField's
-         */
+        clearFields();
+    }//GEN-LAST:event_btnCleanActionPerformed
+
+    /**
+     * Aplicamos estos codigos para eliminar el contenido de los TexField's
+     */
+    private void clearFields() {
         jTextField1.setText("");
         txtName.setText("");
         txtLastName.setText("");
@@ -311,8 +322,8 @@ public class OrderManagement extends javax.swing.JFrame {
         txtTelephone.setText("");
         jTextField7.setText("");
         txtAddress.setText("");
-        txtOrderDate.setText("");
-    }//GEN-LAST:event_btnCleanActionPerformed
+        txtOrderDate.cleanup();
+    }
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         /*
@@ -321,27 +332,19 @@ public class OrderManagement extends javax.swing.JFrame {
         String NumPedido = jTextField1.getText();
         String name = txtName.getText();
         String lastName = txtLastName.getText();
-        String Producto = txtProduct.getText();
+        //String Producto = txtProduct.getText();
         String RFC = jTextField5.getText();
         String Telefono = txtTelephone.getText();
-        String Empleado = jTextField7.getText();
+//        String Empleado = jTextField7.getText();
         String Direccion = txtAddress.getText();
-        String Fecha = txtOrderDate.getText();
+        Date date = txtOrderDate.getDate();
         /*
         Se hace la instancia para guardar los datos en el ArrayList
          */
-        OrderDetail Ped = new OrderDetail(null,name, lastName, Producto, Empleado, NumPedido, RFC, Telefono, Direccion, Fecha);
+        OrderDetail Ped = new OrderDetail(null, NumPedido, null, null, date);
         contenedor.add(Ped);
 
-        jTextField1.setText("");
-        txtName.setText("");
-        txtLastName.setText("");
-        txtProduct.setText("");
-        jTextField5.setText("");
-        txtTelephone.setText("");
-        jTextField7.setText("");
-        txtAddress.setText("");
-        txtOrderDate.setText("");
+        clearFields();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
@@ -405,7 +408,7 @@ public class OrderManagement extends javax.swing.JFrame {
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtOrderDate;
+    private com.toedter.calendar.JDateChooser txtOrderDate;
     private javax.swing.JTextField txtProduct;
     private javax.swing.JTextField txtTelephone;
     // End of variables declaration//GEN-END:variables

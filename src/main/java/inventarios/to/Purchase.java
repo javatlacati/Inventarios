@@ -10,12 +10,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
-import javax.persistence.OneToOne;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -30,12 +28,11 @@ public class Purchase implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    String date;
+    Date date;
     @OneToOne
     Provider provider;
-    String address;
-    String telephone;
-    String email;
-    String Producto;
-    String rfc;
+    @OneToMany
+    List<Product> Producto;
+    @OneToOne
+    OrderDetail requestingOrder;
 }
