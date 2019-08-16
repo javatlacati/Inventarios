@@ -7,16 +7,21 @@ package inventarios.service;
 
 import inventarios.repository.EmployeeRepository;
 import inventarios.to.EmployeeDetail;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class EmployeeService {
 
-    @Autowired
-    EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
+
+    @Transactional
     public <S extends EmployeeDetail> S save(S s) {
         return employeeRepository.save(s);
     }
