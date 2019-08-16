@@ -24,6 +24,7 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Entity
 @NoArgsConstructor
+@ToString
 public class Provider {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
