@@ -32,16 +32,23 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>com.github.javatlacati</groupId>
+            <artifactId>inventarios-entities</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--integration tests-->
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.10.19</version>
             <scope>test</scope>
         </dependency>
+        <!--unit tests-->
         <dependency>
-            <groupId>com.github.javatlacati</groupId>
-            <artifactId>inventarios-entities</artifactId>
-            <version>1.0</version>
-            <scope>provided</scope>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
