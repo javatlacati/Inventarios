@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
+import org.springframework.context.annotation.Lazy;
 
 /**
  * @author david
@@ -39,7 +40,7 @@ public class InventoryManagement extends JFrame {
      * Creates new form InterfazConstructor
      */
     @Autowired
-    public InventoryManagement(inventarios.desktop.Menu menu, ProductService productService, ListaProductos listaProductos, LocalValidatorFactoryBean validatorFactory) {
+    public InventoryManagement(@Lazy inventarios.desktop.Menu menu, ProductService productService, ListaProductos listaProductos, LocalValidatorFactoryBean validatorFactory) {
         this.menu = menu;
         this.productService = productService;
         this.listaProductos = listaProductos;

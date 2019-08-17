@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.util.List;
+import org.springframework.context.annotation.Lazy;
 
 /**
  *
@@ -20,14 +21,21 @@ import java.util.List;
 @Component
 public class EmployeeRegistration extends javax.swing.JFrame {
 
-    @Autowired
     Menu menu;
     
-    @Autowired
     ListaEmpleados tablaClientes;
     
-    @Autowired
+    
     EmployeeService employeeService;
+
+    @Autowired
+    public EmployeeRegistration(@Lazy Menu menu, ListaEmpleados tablaClientes, EmployeeService employeeService) {
+        this.menu = menu;
+        this.tablaClientes = tablaClientes;
+        this.employeeService = employeeService;
+    }
+    
+    
 
     /**
      * Creates new form Empleados

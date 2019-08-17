@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Stack;
+import org.springframework.context.annotation.Lazy;
 
 /**
  *
@@ -45,7 +46,7 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     @Autowired
-    public Menu(LoginWindow loginWindow, InventoryManagement inventoryManagement, ShoppingWindow shoppingWindow, OrderManagement orderManagement, ProviderManagement providerManagement, BillingManagement billingManagement, Information information, EmployeeRegistration employeeRegistration, Credits credits) {
+    public Menu(LoginWindow loginWindow, InventoryManagement inventoryManagement, ShoppingWindow shoppingWindow, OrderManagement orderManagement, ProviderManagement providerManagement, @Lazy BillingManagement billingManagement, Information information, EmployeeRegistration employeeRegistration, Credits credits) {
         this.loginWindow = loginWindow;
         this.inventoryManagement = inventoryManagement;
         this.shoppingWindow = shoppingWindow;

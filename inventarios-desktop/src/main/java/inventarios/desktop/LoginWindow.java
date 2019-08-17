@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import org.springframework.context.annotation.Lazy;
 
 /**
  * @author EfraJiJim
@@ -26,7 +27,7 @@ public class LoginWindow extends javax.swing.JFrame {
     private FontFactory fontFactory;
 
     @Autowired
-    public LoginWindow(LoginUsersService usersService, inventarios.desktop.Menu menu, FontFactory fontFactory) {
+    public LoginWindow(LoginUsersService usersService, @Lazy inventarios.desktop.Menu menu, FontFactory fontFactory) {
         this.usersService = usersService;
         this.menu = menu;
         this.fontFactory = fontFactory;

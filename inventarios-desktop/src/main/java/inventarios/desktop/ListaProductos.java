@@ -18,6 +18,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.List;
+import org.springframework.context.annotation.Lazy;
 
 /**
  *
@@ -26,25 +27,24 @@ import java.util.List;
 @Component
 public class ListaProductos extends javax.swing.JFrame {
 
-    @Autowired
     ProductService productService;
 
-    @Autowired
     Menu menu;
-
-    @Autowired
+    
     InventoryManagement inventoryManagement;
 
-    private DefaultTableModel model;
-
-    public ListaProductos() {
-
-        initComponents();
+    @Autowired
+    public ListaProductos(ProductService productService, @Lazy Menu menu, @Lazy InventoryManagement inventoryManagement) {
+        this.productService = productService;
+        this.menu = menu;
+        this.inventoryManagement = inventoryManagement;
+         initComponents();
 
         this.setLocationRelativeTo(null);
-        this.getContentPane().setBackground(Color.GRAY);        
+        this.getContentPane().setBackground(Color.GRAY);   
     }
 
+    private DefaultTableModel model;
     /**
      * metodo para mostrar la interfaz vacia de la tabla
      */

@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,19 +23,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class ListaPedidos extends javax.swing.JFrame {
 
-    @Autowired
     Menu menu;
 
-    @Autowired
     OrderManagement orderManagement;
-
-    private DefaultTableModel modelo;
-    int con = 0;
 
     /**
      * Creates new form ListaPedidos
      */
-    public ListaPedidos() {
+    @Autowired
+    public ListaPedidos(@Lazy Menu menu, @Lazy OrderManagement orderManagement) {
+        this.menu = menu;
+        this.orderManagement = orderManagement;
         initComponents();
         MostrarInterfaz();
         MostrarLosDatos();
@@ -43,6 +42,8 @@ public class ListaPedidos extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.GRAY);
     }
 
+    private DefaultTableModel modelo;
+    int con = 0;
     public void MostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//
         String data[][] = {};

@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import org.springframework.context.annotation.Lazy;
 
 /**
  *
@@ -25,11 +26,15 @@ public class BillingList extends javax.swing.JFrame {
     private DefaultTableModel modelo;
     int con = 0;
 
-    @Autowired
-    Menu menu;
+    private Menu menu;
+    
+    private BillingManagement billingManagement;
 
     @Autowired
-    BillingManagement billingManagement;
+    public BillingList(@Lazy inventarios.desktop.Menu menu, @Lazy BillingManagement billingManagement) {
+        this.menu = menu;
+        this.billingManagement = billingManagement;
+    }
 
     /**
      * Creates new form ListaFacturación

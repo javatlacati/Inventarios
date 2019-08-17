@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,24 +25,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class ListaProveedores extends javax.swing.JFrame {
 
-    @Autowired
     ProviderManagement providerManagement;
-    
-    @Autowired
-    ProviderService providerService;
 
-    private DefaultTableModel modelo;
-    int con = 0;
+    ProviderService providerService;
 
     /**
      * Creates new form ListaProveedores
      */
-    public ListaProveedores() {
+    @Autowired
+    public ListaProveedores(@Lazy ProviderManagement providerManagement, ProviderService providerService) {
+        this.providerManagement = providerManagement;
+        this.providerService = providerService;
         initComponents();
         mostrarInterfaz();
         this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
     }
+
+    private DefaultTableModel modelo;
+    int con = 0;
 
     public void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//

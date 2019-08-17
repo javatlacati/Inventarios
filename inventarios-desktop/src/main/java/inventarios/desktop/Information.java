@@ -13,6 +13,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,12 +23,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class Information extends javax.swing.JFrame {
 
-    @Autowired
     Menu menu;
+
     /**
      * Creates new form Información
      */
-    public Information() {
+    @Autowired
+    public Information(@Lazy Menu menu) {
+        this.menu = menu;
         initComponents();
         ImageIcon imagen = new ImageIcon("/ImgFondos/isc.png");
         Icon icono2 = new ImageIcon(imagen.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));

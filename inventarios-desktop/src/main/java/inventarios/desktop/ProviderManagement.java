@@ -15,6 +15,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import org.springframework.context.annotation.Lazy;
 
 /**
  *
@@ -23,23 +24,20 @@ import java.util.ArrayList;
 @Component
 public class ProviderManagement extends javax.swing.JFrame {
     
-    @Autowired
     ListaProveedores listaProveedores;
     
-    @Autowired
     Menu menu;
     
-    @Autowired
     ProviderService providerService;
-
-    
-
-    ArrayList<Provider> Lista;
 
     /**
      * Creates new form ProveedorVentana
      */
-    public ProviderManagement() {
+    @Autowired
+    public ProviderManagement(ListaProveedores listaProveedores, @Lazy inventarios.desktop.Menu menu, ProviderService providerService) {
+        this.listaProveedores = listaProveedores;
+        this.menu = menu;
+        this.providerService = providerService;
         /*
         Se inicializa la Lista
          */
@@ -48,6 +46,8 @@ public class ProviderManagement extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.cyan);
     }
 
+  
+    ArrayList<Provider> Lista;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

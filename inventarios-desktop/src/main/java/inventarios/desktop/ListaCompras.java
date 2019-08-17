@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 /**
@@ -23,24 +24,26 @@ import org.springframework.stereotype.Component;
 @Component
 public class ListaCompras extends javax.swing.JFrame {
 
-    @Autowired
+    
     Menu menu;
     
-    @Autowired
     PurchaseService purchaseService;
-
-    private DefaultTableModel modelo;
-    int con = 0;
 
     /**
      * Creates new form ListaCompras
      */
-    public ListaCompras() {
-        initComponents();
+    @Autowired
+    public ListaCompras(@Lazy Menu menu, PurchaseService purchaseService) {
+        this.menu = menu;
+        this.purchaseService = purchaseService;
+          initComponents();
         mostrarInterfaz();
         this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
     }
+    
+    private DefaultTableModel modelo;
+    int con = 0;
 
     public void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//

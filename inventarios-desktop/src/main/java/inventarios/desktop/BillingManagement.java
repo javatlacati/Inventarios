@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
+import org.springframework.context.annotation.Lazy;
 
 /**
  *
@@ -21,11 +22,15 @@ import java.util.LinkedList;
 @Component
 public class BillingManagement extends javax.swing.JFrame {
 
-    @Autowired
     BillingList billingList;
 
-    @Autowired
     Menu menu;
+
+    @Autowired
+    public BillingManagement(BillingList billingList, @Lazy inventarios.desktop.Menu menu) {
+        this.billingList = billingList;
+        this.menu = menu;
+    }
 
     public static LinkedList contenedor = new LinkedList();
 

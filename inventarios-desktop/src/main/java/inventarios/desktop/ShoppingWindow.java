@@ -23,6 +23,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.List;
+import org.springframework.context.annotation.Lazy;
 
 /**
  *
@@ -48,7 +49,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
     TableRowSorter busqueda = new TableRowSorter(model);
 
     @Autowired
-    public ShoppingWindow(ListaCompras listaCompras, inventarios.desktop.Menu menu, ProviderService providerService, ProductService productService, PurchaseService purchaseService) {
+    public ShoppingWindow(ListaCompras listaCompras, @Lazy inventarios.desktop.Menu menu, ProviderService providerService, ProductService productService, PurchaseService purchaseService) {
         this.listaCompras = listaCompras;
         this.menu = menu;
         this.providerService = providerService;

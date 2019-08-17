@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 /**
@@ -27,11 +28,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderManagement extends javax.swing.JFrame {
 
-    @Autowired
     Menu menu;
+    
+    ListaPedidos listaPedidos;
 
     @Autowired
-    ListaPedidos listaPedidos;
+    public OrderManagement(@Lazy inventarios.desktop.Menu menu, ListaPedidos listaPedidos) {
+        this.menu = menu;
+        this.listaPedidos = listaPedidos;
+    }
+    
+    
 
     public static List<OrderDetail> contenedor = new LinkedList<>();
 
