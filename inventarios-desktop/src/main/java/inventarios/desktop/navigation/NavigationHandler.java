@@ -16,6 +16,7 @@
  */
 package inventarios.desktop.navigation;
 
+import inventarios.desktop.InventoryManagement;
 import javax.swing.JFrame;
 
 /**
@@ -48,4 +49,8 @@ public abstract class NavigationHandler {
     public abstract void goToEmployeeRegistration(JFrame origin);
 
     public abstract void goToCredits(JFrame origin);
+
+    public abstract void goToProductList(JFrame origin);
+    
+    public abstract void goToOrderList(JFrame origin);
 }

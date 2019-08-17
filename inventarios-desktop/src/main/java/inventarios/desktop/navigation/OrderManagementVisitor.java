@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,15 +16,8 @@
  */
 package inventarios.desktop.navigation;
 
-import inventarios.desktop.BillingManagement;
-import inventarios.desktop.Credits;
-import inventarios.desktop.EmployeeRegistration;
-import inventarios.desktop.Information;
-import inventarios.desktop.InventoryManagement;
-import inventarios.desktop.LoginWindow;
-import inventarios.desktop.OrderManagement;
-import inventarios.desktop.ProviderManagement;
-import inventarios.desktop.ShoppingWindow;
+import inventarios.desktop.ListaPedidos;
+import inventarios.desktop.Menu;
 import javax.swing.JFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -35,100 +28,64 @@ import org.springframework.stereotype.Component;
  * @author Ruslan López Carro <scherzo16 at gmail.com>
  */
 @Component
-public class MenuVisitor extends NavigationHandler {
+public class OrderManagementVisitor extends NavigationHandler {
 
     @Autowired
     @Lazy
-    private InventoryManagement inventoryManagement;
-
+    Menu menu;
+    
     @Autowired
-    @Lazy
-    private ShoppingWindow shoppingWindow;
-
-    @Autowired
-    @Lazy
-    private OrderManagement orderManagement;
-
-    @Autowired
-    @Lazy
-    private ProviderManagement providerManagement;
-
-    @Autowired
-    @Lazy
-    private BillingManagement billingManagement;
-
-    @Autowired
-    @Lazy
-    private Information information;
-
-    @Autowired
-    private LoginWindow loginWindow;
-
-    @Autowired
-    @Lazy
-    private EmployeeRegistration employeeRegistration;
-
-    @Autowired
-    @Lazy
-    private Credits credits;
+    ListaPedidos listaPedidos;
 
     @Override
     public void goToMenu(JFrame origin) {
-        throw new UnsupportedOperationException("You can't navitage from menu to itself.");
+        menu.setVisible(true);
+        origin.dispose();
     }
 
     @Override
     public void goToInventoryManagement(JFrame origin) {
-        inventoryManagement.setVisible(true);
-        origin.dispose();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToShopping(JFrame origin) {
-        shoppingWindow.setVisible(true);
-        origin.dispose();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToOrderManagement(JFrame origin) {
-        orderManagement.setVisible(true);
-        origin.dispose();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToProviderManagement(JFrame origin) {
-        providerManagement.setVisible(true);
-        origin.dispose();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToBillingManagement(JFrame origin) {
-        billingManagement.setVisible(true);
-        origin.dispose();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToInformation(JFrame origin) {
-        information.setVisible(true);
-        origin.dispose();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToLogin(JFrame origin) {
-        origin.dispose();
-        loginWindow.setVisible(true);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToEmployeeRegistration(JFrame origin) {
-        employeeRegistration.setVisible(true);
-        origin.dispose();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToCredits(JFrame origin) {
-        credits.setVisible(true);
-        origin.dispose();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -138,6 +95,8 @@ public class MenuVisitor extends NavigationHandler {
 
     @Override
     public void goToOrderList(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listaPedidos.setVisible(true);
+        //origin.dispose();
     }
+
 }

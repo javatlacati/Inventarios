@@ -75,7 +75,7 @@ public class GUITest {
     @Mock
     private ShoppingWindow shoppingWindow;
 
-    @Mock
+    @InjectMocks
     private OrderManagement orderManagement;
 
     @Mock
@@ -123,8 +123,9 @@ public class GUITest {
         loginWindow = new LoginWindow(navigationHandler, usersService, fontFactory);
         loginWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         loginWindow.setVisible(true);
-        inventoryManagement = new InventoryManagement(navigationHandler, productService, listaProductos, validatorFactory);
+        inventoryManagement = new InventoryManagement(navigationHandler, productService, validatorFactory);
         menu = new Menu(navigationHandler);
+        orderManagement = new OrderManagement(navigationHandler);
     }
 
     @After
@@ -185,7 +186,14 @@ public class GUITest {
         menuPageObject.openInvenory();
         InventoryManagementPageObject inventoryPageObject = new InventoryManagementPageObject();
         inventoryPageObject.clickClose();
-//        menuPageObject.openOrders();
-//        OrderManagementPageObject orderPageObject = new OrderManagementPageObject();
+        doAnswer(new Answer<Void>() {
+            public Void answer(InvocationOnMock invocation) {
+                orderManagement.setVisible(true);
+                menu.setVisible(false);
+                return null;
+            }
+        }).when(navigationHandler).goToOrderManagement(any(JFrame.class));
+        menuPageObject.openOrders();
+        OrderManagementPageObject orderPageObject = new OrderManagementPageObject();
     }
 }

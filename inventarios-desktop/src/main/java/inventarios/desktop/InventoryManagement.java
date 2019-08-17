@@ -21,6 +21,7 @@ import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProductService;
 import inventarios.to.Product;
 import inventarios.to.ProductCharacteristic;
+import inventarios.util.RoundedBorder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -34,6 +35,8 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
 
 /**
  * @author david
@@ -43,11 +46,9 @@ public class InventoryManagement extends JFrame {
 
     ProductService productService;
 
-    ListaProductos listaProductos;
-
     @Qualifier("getValidator")
     LocalValidatorFactoryBean validatorFactory;
-    
+
     NavigationHandler navigationHandler;
 
     public Optional<Product> found;
@@ -56,10 +57,9 @@ public class InventoryManagement extends JFrame {
      * Creates new form InterfazConstructor
      */
     @Autowired
-    public InventoryManagement(@Qualifier("inventoryManagementVisitor") NavigationHandler navigationHandler, ProductService productService, ListaProductos listaProductos, LocalValidatorFactoryBean validatorFactory) {
+    public InventoryManagement(@Qualifier("inventoryManagementVisitor") NavigationHandler navigationHandler, ProductService productService, LocalValidatorFactoryBean validatorFactory) {
         this.navigationHandler = navigationHandler;
         this.productService = productService;
-        this.listaProductos = listaProductos;
         this.validatorFactory = validatorFactory;
         initComponents();
         this.getContentPane().setBackground(Color.cyan);
@@ -168,9 +168,10 @@ public class InventoryManagement extends JFrame {
             }
         });
 
-        btnClose.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
-        btnClose.setBorder(null);
-        btnClose.setContentAreaFilled(false);
+        btnClose.setBackground(new Color(255, 51, 51));
+        btnClose.setFont(new Font("Tahoma", 1, 14)); // NOI18N
+        btnClose.setText(bundle.getString("InventoryManagement.btnClose.text")); // NOI18N
+        btnClose.setBorder(new RoundedBorder(10));
         btnClose.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         btnClose.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -337,11 +338,11 @@ public class InventoryManagement extends JFrame {
             clearFields();
         } else {
             constraintViolations.forEach(
-                    (violation) ->
-                            JOptionPane.showMessageDialog(null,
-                                    violation.getMessage() + ". por favor corrija el valor:\"" + violation.getInvalidValue() + "\""
-                                    , violation.getMessage()
-                                    , JOptionPane.WARNING_MESSAGE)
+                    (violation)
+                    -> JOptionPane.showMessageDialog(null,
+                            violation.getMessage() + ". por favor corrija el valor:\"" + violation.getInvalidValue() + "\"",
+                             violation.getMessage(),
+                             JOptionPane.WARNING_MESSAGE)
             );
         }
     }
@@ -365,12 +366,11 @@ public class InventoryManagement extends JFrame {
     private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
 //        menu.setVisible(true);
 //        dispose();
-navigationHandler.goToMenu(this);
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnViewActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        listaProductos.mostrarLosDatos();
-        listaProductos.setVisible(true);
+        navigationHandler.goToProductList(this);
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void txtProductKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtProductKeyTyped
@@ -417,7 +417,7 @@ navigationHandler.goToMenu(this);
     private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
 //        menu.setVisible(true);
 //        dispose();
-navigationHandler.goToMenu(this);
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void closeHandler(WindowEvent evt) {//GEN-FIRST:event_closeHandler

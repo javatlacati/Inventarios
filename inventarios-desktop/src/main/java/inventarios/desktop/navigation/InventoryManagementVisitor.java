@@ -16,6 +16,7 @@
  */
 package inventarios.desktop.navigation;
 
+import inventarios.desktop.ListaProductos;
 import inventarios.desktop.Menu;
 import javax.swing.JFrame;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class InventoryManagementVisitor extends NavigationHandler {
     @Autowired
     @Lazy
     private Menu menu;
+    
+    @Autowired
+    ListaProductos listaProductos;
     
     @Override
     public void goToMenu(JFrame origin){
@@ -83,5 +87,16 @@ public class InventoryManagementVisitor extends NavigationHandler {
     public void goToCredits(JFrame origin) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public void goToProductList(JFrame origin) {
+        listaProductos.mostrarLosDatos();
+        listaProductos.setVisible(true);
+        //origin.dispose();
+    }
+
+    @Override
+    public void goToOrderList(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

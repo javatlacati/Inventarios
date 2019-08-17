@@ -19,6 +19,7 @@ package inventarios.desktop;
 /*
 Se importa la paqueteria a utilizar
  */
+import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.to.OrderDetail;
 
 import javax.swing.*;
@@ -29,6 +30,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -38,25 +40,15 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class OrderManagement extends javax.swing.JFrame {
-
-    Menu menu;
     
-    ListaPedidos listaPedidos;
-
-    @Autowired
-    public OrderManagement(@Lazy inventarios.desktop.Menu menu, ListaPedidos listaPedidos) {
-        this.menu = menu;
-        this.listaPedidos = listaPedidos;
-    }
-    
-    
-
-    public static List<OrderDetail> contenedor = new LinkedList<>();
+    NavigationHandler navigationHandler;
 
     /**
      * Creates new form PedidosVetana
      */
-    public OrderManagement() {
+    @Autowired
+    public OrderManagement(@Qualifier("orderManagementVisitor") NavigationHandler navigationHandler) {
+        this.navigationHandler = navigationHandler;
         /*
         Se inicializa la Lista
          */
@@ -65,9 +57,11 @@ public class OrderManagement extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.cyan);
         this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
-
     }
+    
+    
 
+    public static List<OrderDetail> contenedor = new LinkedList<>();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -370,12 +364,11 @@ public class OrderManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        listaPedidos.setVisible(true);
+        navigationHandler.goToOrderList(this);
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        menu.setVisible(true);
-        dispose();
+       navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
