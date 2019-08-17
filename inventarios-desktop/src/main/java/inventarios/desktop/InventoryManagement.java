@@ -1,6 +1,23 @@
+/* 
+ * Copyright (C) 2019 Ruslan López Carro
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 package inventarios.desktop;
 
 import com.toedter.calendar.JDateChooser;
+import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProductService;
 import inventarios.to.Product;
 import inventarios.to.ProductCharacteristic;
@@ -17,7 +34,6 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
-import org.springframework.context.annotation.Lazy;
 
 /**
  * @author david
@@ -25,14 +41,14 @@ import org.springframework.context.annotation.Lazy;
 @Component
 public class InventoryManagement extends JFrame {
 
-    Menu menu;
-
     ProductService productService;
 
     ListaProductos listaProductos;
 
     @Qualifier("getValidator")
     LocalValidatorFactoryBean validatorFactory;
+    
+    NavigationHandler navigationHandler;
 
     public Optional<Product> found;
 
@@ -40,8 +56,8 @@ public class InventoryManagement extends JFrame {
      * Creates new form InterfazConstructor
      */
     @Autowired
-    public InventoryManagement(@Lazy inventarios.desktop.Menu menu, ProductService productService, ListaProductos listaProductos, LocalValidatorFactoryBean validatorFactory) {
-        this.menu = menu;
+    public InventoryManagement(@Qualifier("inventoryManagementVisitor") NavigationHandler navigationHandler, ProductService productService, ListaProductos listaProductos, LocalValidatorFactoryBean validatorFactory) {
+        this.navigationHandler = navigationHandler;
         this.productService = productService;
         this.listaProductos = listaProductos;
         this.validatorFactory = validatorFactory;
@@ -347,8 +363,9 @@ public class InventoryManagement extends JFrame {
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        menu.setVisible(true);
-        dispose();
+//        menu.setVisible(true);
+//        dispose();
+navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnViewActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
@@ -398,8 +415,9 @@ public class InventoryManagement extends JFrame {
     }//GEN-LAST:event_txtNameKeyTyped
 
     private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        menu.setVisible(true);
-        dispose();
+//        menu.setVisible(true);
+//        dispose();
+navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void closeHandler(WindowEvent evt) {//GEN-FIRST:event_closeHandler

@@ -1,10 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * Copyright (C) 2019 Ruslan LÃ³pez Carro
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.NavigationHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +25,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Stack;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  *
@@ -22,23 +34,7 @@ import org.springframework.context.annotation.Lazy;
 @Component
 public class Menu extends javax.swing.JFrame {
 
-    private LoginWindow loginWindow;
-
-    private InventoryManagement inventoryManagement;
-
-    private ShoppingWindow shoppingWindow;
-
-    private OrderManagement orderManagement;
-
-    private ProviderManagement providerManagement;
-
-    private BillingManagement billingManagement;
-
-    private Information information;
-
-    private EmployeeRegistration employeeRegistration;
-
-    private Credits credits;
+    private NavigationHandler navigationHandler;
 
     private final Stack<JFrame> previouses;
 
@@ -46,16 +42,8 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     @Autowired
-    public Menu(LoginWindow loginWindow, InventoryManagement inventoryManagement, ShoppingWindow shoppingWindow, OrderManagement orderManagement, ProviderManagement providerManagement, @Lazy BillingManagement billingManagement, Information information, EmployeeRegistration employeeRegistration, Credits credits) {
-        this.loginWindow = loginWindow;
-        this.inventoryManagement = inventoryManagement;
-        this.shoppingWindow = shoppingWindow;
-        this.orderManagement = orderManagement;
-        this.providerManagement = providerManagement;
-        this.billingManagement = billingManagement;
-        this.information = information;
-        this.employeeRegistration = employeeRegistration;
-        this.credits = credits;
+    public Menu(@Qualifier("menuVisitor") NavigationHandler navigationHandler) {
+        this.navigationHandler = navigationHandler;
          initComponents();
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.orange);
@@ -326,24 +314,19 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
-        inventoryManagement.setVisible(true);
-        dispose();
+        navigationHandler.goToInventoryManagement(this);
     }//GEN-LAST:event_btnInventoryActionPerformed
 
     private void btnTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransactionActionPerformed
-        //shoppingWindow.add(this);
-        shoppingWindow.setVisible(true);
-        dispose();
+        navigationHandler.goToShopping(this);
     }//GEN-LAST:event_btnTransactionActionPerformed
 
     private void btnOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdersActionPerformed
-        orderManagement.setVisible(true);
-        dispose();
+        navigationHandler.goToOrderManagement(this);
     }//GEN-LAST:event_btnOrdersActionPerformed
 
     private void btnProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProviderActionPerformed
-        providerManagement.setVisible(true);
-        dispose();
+        navigationHandler.goToProviderManagement(this);
     }//GEN-LAST:event_btnProviderActionPerformed
 
     private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
@@ -352,58 +335,47 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGetBackActionPerformed
 
     private void btnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillingActionPerformed
-        billingManagement.setVisible(true);
-        dispose();
+        navigationHandler.goToBillingManagement(this);
     }//GEN-LAST:event_btnBillingActionPerformed
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
-        information.setVisible(true);
-        dispose();
+        navigationHandler.goToInformation(this);
     }//GEN-LAST:event_btnAboutActionPerformed
 
     private void mnuInventoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuInventoriesActionPerformed
-        inventoryManagement.setVisible(true);
-        dispose();
+        navigationHandler.goToInventoryManagement(this);
     }//GEN-LAST:event_mnuInventoriesActionPerformed
 
     private void mnuAboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAboutItemActionPerformed
-        information.setVisible(true);
-        dispose();
+        navigationHandler.goToInformation(this);
     }//GEN-LAST:event_mnuAboutItemActionPerformed
 
     private void mnuBillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuBillsActionPerformed
-        billingManagement.setVisible(true);
-        dispose();
+        navigationHandler.goToBillingManagement(this);
     }//GEN-LAST:event_mnuBillsActionPerformed
 
     private void mnuProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProviderActionPerformed
-        providerManagement.setVisible(true);
-        dispose();
+        navigationHandler.goToProviderManagement(this);
     }//GEN-LAST:event_mnuProviderActionPerformed
 
     private void mnuOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOrdersActionPerformed
-        orderManagement.setVisible(true);
-        dispose();
+        navigationHandler.goToOrderManagement(this);
     }//GEN-LAST:event_mnuOrdersActionPerformed
 
     private void mnuTransactionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuTransactionsActionPerformed
-        shoppingWindow.setVisible(true);
-        dispose();
+        navigationHandler.goToShopping(this);
     }//GEN-LAST:event_mnuTransactionsActionPerformed
 
     private void mnuGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuGetBackActionPerformed
-        dispose();
-        loginWindow.setVisible(true);
+        navigationHandler.goToLogin(this);
     }//GEN-LAST:event_mnuGetBackActionPerformed
 
     private void btnEmployeeRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeRecordsActionPerformed
-        employeeRegistration.setVisible(true);
-        dispose();
+        navigationHandler.goToEmployeeRegistration(this);
     }//GEN-LAST:event_btnEmployeeRecordsActionPerformed
 
     private void btnCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditsActionPerformed
-        credits.setVisible(true);
-        dispose();
+        navigationHandler.goToCredits(this);
     }//GEN-LAST:event_btnCreditsActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
