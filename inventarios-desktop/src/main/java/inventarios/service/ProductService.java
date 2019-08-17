@@ -3,6 +3,7 @@ package inventarios.service;
 import inventarios.to.Product;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,7 @@ public class ProductService {
     }
 
     public List<Product> findAll() {
-        return null;
+        return Collections.emptyList();
     }
 
     public void delete(Product product) {

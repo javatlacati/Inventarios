@@ -3,6 +3,7 @@ package inventarios.service;
 import inventarios.to.Purchase;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -12,6 +13,6 @@ public class PurchaseService {
     }
 
     public List<Purchase> findAll() {
-        return null;
+        return Collections.emptyList();
     }
 }

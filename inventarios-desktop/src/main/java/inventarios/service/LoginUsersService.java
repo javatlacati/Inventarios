@@ -1,14 +1,13 @@
 package inventarios.service;
 
 import inventarios.to.LoginUser;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 @Service
+@Log
 public class LoginUsersService {
 
     private RestTemplate restTemplate;
@@ -19,9 +18,12 @@ public class LoginUsersService {
     }
 
     public boolean authenticate(LoginUser user) {
+        log.fine("Usuario: "+user);
         try {
-            return restTemplate.postForObject(new URI("http://localhost:8080/login"), user, Boolean.class);
-        } catch (URISyntaxException | NullPointerException e) {
+            Boolean aBoolean = restTemplate.postForObject("http://localhost:8080/login", user, Boolean.class);
+            log.info("Authenticated:"+aBoolean);
+            return aBoolean;
+        } catch (NullPointerException e) {
             e.printStackTrace();
             return false;
         }

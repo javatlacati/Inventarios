@@ -1,3 +1,4 @@
-/target
 .idea
 nbactions.xml
+/inventarios-*/*.iml
+/*/target/
