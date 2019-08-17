@@ -16,7 +16,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 /**
- *
  * @author EfraJiJim
  */
 @Component
@@ -33,7 +32,7 @@ public class LoginWindow extends javax.swing.JFrame {
         this.fontFactory = fontFactory;
         initComponents();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,16 +42,16 @@ public class LoginWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backgroundedPanel = new javax.swing.JPanel(){
+        backgroundedPanel = new javax.swing.JPanel() {
             @Override
             public void paintComponent(java.awt.Graphics g) {
                 javax.swing.ImageIcon backgroundImageIcon = new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"));
-                Image backgroundImage = 
-                new ImageIcon(
-                    backgroundImageIcon.getImage()
-                    .getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH)
-                ).getImage();
-                g.drawImage(backgroundImage,0,0,null); // draw the background image
+                Image backgroundImage =
+                        new ImageIcon(
+                                backgroundImageIcon.getImage()
+                                        .getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH)
+                        ).getImage();
+                g.drawImage(backgroundImage, 0, 0, null); // draw the background image
             }
         };
         ;
@@ -76,103 +75,103 @@ public class LoginWindow extends javax.swing.JFrame {
         setTitle(bundle.getString("LoginWindow.title")); // NOI18N
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImage(new ImageIcon(getClass().getResource
-            ("/ImgFondos/Icono.png")).getImage());
-    setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
-    setMinimumSize(new java.awt.Dimension(500, 400));
-    addWindowListener(new java.awt.event.WindowAdapter() {
-        public void windowClosing(java.awt.event.WindowEvent evt) {
-            windowCloseHandler(evt);
-        }
-    });
+                ("/ImgFondos/Icono.png")).getImage());
+        setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setMinimumSize(new java.awt.Dimension(500, 400));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                windowCloseHandler(evt);
+            }
+        });
 
-    backgroundedPanel.setOpaque(false);
-    backgroundedPanel.setLayout(new java.awt.BorderLayout());
+        backgroundedPanel.setOpaque(false);
+        backgroundedPanel.setLayout(new java.awt.BorderLayout());
 
-    titlePanel.setOpaque(false);
+        titlePanel.setOpaque(false);
 
-    lblTitle.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
-    lblTitle.setForeground(new java.awt.Color(204, 0, 0));
-    lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/login.png"))); // NOI18N
-    titlePanel.add(lblTitle);
+        lblTitle.setFont(new java.awt.Font("Tempus Sans ITC", 1, 36)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(204, 0, 0));
+        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/login.png"))); // NOI18N
+        titlePanel.add(lblTitle);
 
-    backgroundedPanel.add(titlePanel, java.awt.BorderLayout.PAGE_START);
+        backgroundedPanel.add(titlePanel, java.awt.BorderLayout.PAGE_START);
 
-    fieldsAndLogoPanel.setOpaque(false);
+        fieldsAndLogoPanel.setOpaque(false);
 
-    fieldsPanel.setOpaque(false);
-    fieldsPanel.setLayout(new java.awt.GridLayout(2, 2, 20, 15));
+        fieldsPanel.setOpaque(false);
+        fieldsPanel.setLayout(new java.awt.GridLayout(2, 2, 20, 15));
 
-    userPanel.setOpaque(false);
-    userPanel.setLayout(new java.awt.GridLayout(1, 0));
+        userPanel.setOpaque(false);
+        userPanel.setLayout(new java.awt.GridLayout(1, 0));
 
-    lblUser.setFont(fontFactory.getFont("Montserrat-Light.ttf"));
-    lblUser.setForeground(new java.awt.Color(0, 0, 153));
-    lblUser.setText(bundle.getString("LoginWindow.lblUser.text")); // NOI18N
-    userPanel.add(lblUser);
+        lblUser.setFont(fontFactory.getFont("Montserrat-Light.ttf"));
+        lblUser.setForeground(new java.awt.Color(0, 0, 153));
+        lblUser.setText(bundle.getString("LoginWindow.lblUser.text")); // NOI18N
+        userPanel.add(lblUser);
 
-    txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            txtUserKeyTyped(evt);
-        }
-    });
-    userPanel.add(txtUser);
+        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUserKeyTyped(evt);
+            }
+        });
+        userPanel.add(txtUser);
 
-    fieldsPanel.add(userPanel);
+        fieldsPanel.add(userPanel);
 
-    psswPanel.setOpaque(false);
-    psswPanel.setLayout(new java.awt.GridLayout(1, 0));
+        psswPanel.setOpaque(false);
+        psswPanel.setLayout(new java.awt.GridLayout(1, 0));
 
-    lblPassword.setFont(lblUser.getFont());
-    lblPassword.setForeground(new java.awt.Color(0, 0, 153));
-    lblPassword.setText(bundle.getString("LoginWindow.lblPassword.text")); // NOI18N
-    psswPanel.add(lblPassword);
+        lblPassword.setFont(lblUser.getFont());
+        lblPassword.setForeground(new java.awt.Color(0, 0, 153));
+        lblPassword.setText(bundle.getString("LoginWindow.lblPassword.text")); // NOI18N
+        psswPanel.add(lblPassword);
 
-    txtPsswd.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            txtPsswdKeyTyped(evt);
-        }
-    });
-    psswPanel.add(txtPsswd);
+        txtPsswd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPsswdKeyTyped(evt);
+            }
+        });
+        psswPanel.add(txtPsswd);
 
-    fieldsPanel.add(psswPanel);
+        fieldsPanel.add(psswPanel);
 
-    fieldsAndLogoPanel.add(fieldsPanel);
+        fieldsAndLogoPanel.add(fieldsPanel);
 
-    lblCorporativeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/Imagen2.png"))); // NOI18N
-    fieldsAndLogoPanel.add(lblCorporativeIcon);
+        lblCorporativeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/Imagen2.png"))); // NOI18N
+        fieldsAndLogoPanel.add(lblCorporativeIcon);
 
-    backgroundedPanel.add(fieldsAndLogoPanel, java.awt.BorderLayout.CENTER);
+        backgroundedPanel.add(fieldsAndLogoPanel, java.awt.BorderLayout.CENTER);
 
-    btnPanel.setOpaque(false);
+        btnPanel.setOpaque(false);
 
-    btnAccept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/aceptar.png"))); // NOI18N
-    btnAccept.setBorder(null);
-    btnAccept.setContentAreaFilled(false);
-    btnAccept.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    btnAccept.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnAcceptActionPerformed(evt);
-        }
-    });
-    btnPanel.add(btnAccept);
+        btnAccept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/aceptar.png"))); // NOI18N
+        btnAccept.setBorder(null);
+        btnAccept.setContentAreaFilled(false);
+        btnAccept.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcceptActionPerformed(evt);
+            }
+        });
+        btnPanel.add(btnAccept);
 
-    btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/limpiar.png"))); // NOI18N
-    btnClean.setBorder(null);
-    btnClean.setContentAreaFilled(false);
-    btnClean.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    btnClean.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnCleanActionPerformed(evt);
-        }
-    });
-    btnPanel.add(btnClean);
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/limpiar.png"))); // NOI18N
+        btnClean.setBorder(null);
+        btnClean.setContentAreaFilled(false);
+        btnClean.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnClean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCleanActionPerformed(evt);
+            }
+        });
+        btnPanel.add(btnClean);
 
-    backgroundedPanel.add(btnPanel, java.awt.BorderLayout.PAGE_END);
+        backgroundedPanel.add(btnPanel, java.awt.BorderLayout.PAGE_END);
 
-    getContentPane().add(backgroundedPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(backgroundedPanel, java.awt.BorderLayout.CENTER);
 
-    pack();
-    setLocationRelativeTo(null);
+        pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
@@ -209,15 +208,14 @@ public class LoginWindow extends javax.swing.JFrame {
         String user = txtUser.getText();
         String password = txtPsswd.getText();
 
-        for (LoginUser usuarioParaInicioSecion : usersService.findAll()) {
-            if (usuarioParaInicioSecion.getUserName().equals(user)
-                    && usuarioParaInicioSecion.getPassword().equals(password)) {
-                menu.setVisible(true);
-                menu.add(this);
-                this.setVisible(false);
-                clearFields();
-                return;
-            }
+        LoginUser loginUser = new LoginUser(user, password);
+
+        if (usersService.authenticate(loginUser)) {
+            menu.setVisible(true);
+            menu.add(this);
+            this.setVisible(false);
+            clearFields();
+            return;
         }
 
         JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado", "Credenciales incorrectas", JOptionPane.WARNING_MESSAGE);
@@ -234,6 +232,7 @@ public class LoginWindow extends javax.swing.JFrame {
             System.exit(0);
         }
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundedPanel;
     private javax.swing.JButton btnAccept;

@@ -1,4 +1,4 @@
-package inventarios.gui.desktop.pageobjects;
+package desktop.pageobjects;
 
 import org.netbeans.jemmy.operators.ContainerOperator;
 import org.netbeans.jemmy.operators.JFrameOperator;

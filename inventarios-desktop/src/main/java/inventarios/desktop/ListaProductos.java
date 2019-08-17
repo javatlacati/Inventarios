@@ -7,18 +7,17 @@ package inventarios.desktop;
 
 import inventarios.service.ProductService;
 import inventarios.to.Product;
-import inventarios.to.ProductCharacteristic;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.util.List;
+import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
-import org.springframework.beans.factory.annotation.Autowired;
-import static org.springframework.data.domain.Example.of;
-import org.springframework.stereotype.Component;
+import java.util.List;
 
 /**
  *
@@ -244,7 +243,7 @@ public class ListaProductos extends javax.swing.JFrame {
 
             productsTable.addRowSelectionInterval(0, 0);
             productService
-                    .findOne(of(toBeDeleted))
+                    .findOne(toBeDeleted)
                     .ifPresent(productService::delete);
             mostrarLosDatos(); // reload            
         } catch (Exception e) {

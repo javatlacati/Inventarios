@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package inventarios.gui.desktop.pageobjects;
+package desktop.pageobjects;
 
 import java.util.ResourceBundle;
 import org.netbeans.jemmy.operators.ContainerOperator;

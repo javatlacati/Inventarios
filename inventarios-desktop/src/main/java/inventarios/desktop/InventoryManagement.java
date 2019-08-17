@@ -6,7 +6,6 @@ import inventarios.to.Product;
 import inventarios.to.ProductCharacteristic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
@@ -380,7 +379,7 @@ public class InventoryManagement extends JFrame {
             String codigoCopiado = txtName.getText().trim();
             Product sampleProduct = new Product();
             sampleProduct.setName(codigoCopiado);
-            found = productService.findOne(Example.of(sampleProduct));
+            found = productService.findOne(sampleProduct);
 
             if (found.isPresent()) {
                 Product p = found.get();

@@ -1,4 +1,4 @@
-package inventarios.gui.desktop.pageobjects;
+package desktop.pageobjects;
 
 import org.junit.Assert;
 import org.netbeans.jemmy.operators.*;
