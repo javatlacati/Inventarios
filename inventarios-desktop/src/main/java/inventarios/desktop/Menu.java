@@ -21,40 +21,41 @@ import java.util.Stack;
 @Component
 public class Menu extends javax.swing.JFrame {
 
-    @Autowired
-    LoginWindow loginWindow;
+    private LoginWindow loginWindow;
 
-    @Autowired
-    InventoryManagement inventoryManagement;
+    private InventoryManagement inventoryManagement;
 
-    @Autowired
-    ShoppingWindow shoppingWindow;
+    private ShoppingWindow shoppingWindow;
 
-    @Autowired
-    OrderManagement orderManagement;
+    private OrderManagement orderManagement;
 
-    @Autowired
-    ProviderManagement providerManagement;
+    private ProviderManagement providerManagement;
 
-    @Autowired
-    BillingManagement billingManagement;
+    private BillingManagement billingManagement;
 
-    @Autowired
-    Information information;
+    private Information information;
 
-    @Autowired
-    EmployeeRegistration employeeRegistration;
+    private EmployeeRegistration employeeRegistration;
 
-    @Autowired
-    Credits credits;
+    private Credits credits;
 
     private final Stack<JFrame> previouses;
 
     /**
      * Creates new form Menu
      */
-    public Menu() {
-        initComponents();
+    @Autowired
+    public Menu(LoginWindow loginWindow, InventoryManagement inventoryManagement, ShoppingWindow shoppingWindow, OrderManagement orderManagement, ProviderManagement providerManagement, BillingManagement billingManagement, Information information, EmployeeRegistration employeeRegistration, Credits credits) {
+        this.loginWindow = loginWindow;
+        this.inventoryManagement = inventoryManagement;
+        this.shoppingWindow = shoppingWindow;
+        this.orderManagement = orderManagement;
+        this.providerManagement = providerManagement;
+        this.billingManagement = billingManagement;
+        this.information = information;
+        this.employeeRegistration = employeeRegistration;
+        this.credits = credits;
+         initComponents();
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.orange);
         cerrar();

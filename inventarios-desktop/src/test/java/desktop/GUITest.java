@@ -1,9 +1,22 @@
 package desktop;
 
+import desktop.pageobjects.InventoryManagementPageObject;
 import desktop.pageobjects.LoginWindowPageObject;
+import desktop.pageobjects.MainMenuPageObject;
+import desktop.pageobjects.OrderManagementPageObject;
+import inventarios.desktop.BillingManagement;
+import inventarios.desktop.Credits;
+import inventarios.desktop.EmployeeRegistration;
+import inventarios.desktop.Information;
+import inventarios.desktop.InventoryManagement;
+import inventarios.desktop.ListaProductos;
 import inventarios.desktop.LoginWindow;
 import inventarios.desktop.Menu;
+import inventarios.desktop.OrderManagement;
+import inventarios.desktop.ProviderManagement;
+import inventarios.desktop.ShoppingWindow;
 import inventarios.service.LoginUsersService;
+import inventarios.service.ProductService;
 import inventarios.util.FontFactory;
 import org.junit.After;
 import org.junit.Assert;
@@ -22,6 +35,7 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -30,14 +44,47 @@ public class GUITest {
     @InjectMocks
     private LoginWindow loginWindow;
 
+    @InjectMocks
+    private Menu menu;
+    
+    @InjectMocks
+    private InventoryManagement inventoryManagement;
+    
     @Mock
-    Menu menu;
+    private ShoppingWindow shoppingWindow;
+    
+    @Mock
+    private OrderManagement orderManagement;
+    
+    @Mock
+    private ProviderManagement providerManagement;
+    
+    @Mock
+    private BillingManagement billingManagement;
+    
+    @Mock
+    private Information information;
+    
+    @Mock
+    private EmployeeRegistration employeeRegistration;
+    
+    @Mock
+    private ListaProductos listaProductos;
+    
+    @Mock
+    private ProductService productService;
 
     @Mock
-    LoginUsersService usersService;
+    private LoginUsersService usersService;
+    
+    @Mock
+    private LocalValidatorFactoryBean validatorFactory;
+    
+    @Mock
+    private Credits credits;
 
     @Mock
-    FontFactory fontFactory;
+    private FontFactory fontFactory;
 
     @Before
     public void setUp() throws Exception {
@@ -51,6 +98,8 @@ public class GUITest {
         loginWindow = new LoginWindow(usersService, menu, fontFactory);
         loginWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         loginWindow.setVisible(true);
+        menu = new Menu(loginWindow, inventoryManagement, shoppingWindow, orderManagement, providerManagement, billingManagement, information, employeeRegistration, credits);
+        inventoryManagement = new InventoryManagement(menu, productService, listaProductos, validatorFactory);
     }
 
     @After
@@ -87,7 +136,7 @@ public class GUITest {
         loginWindowPageObject.clickAcceptAndWait();
         verify(usersService, times(1)).authenticate(any());
 
-//        MainMenuPageObject menuPageObject = new MainMenuPageObject();
+        MainMenuPageObject menuPageObject = new MainMenuPageObject();
 //        menuPageObject.openInvenory();
 //        InventoryManagementPageObject inventoryPageObject = new InventoryManagementPageObject();
 //        inventoryPageObject.clickClose();

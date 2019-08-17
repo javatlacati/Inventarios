@@ -24,17 +24,13 @@ import java.util.Set;
 @Component
 public class InventoryManagement extends JFrame {
 
-    @Autowired
     Menu menu;
 
-    @Autowired
     ProductService productService;
 
-    @Autowired
     ListaProductos listaProductos;
 
     @Qualifier("getValidator")
-    @Autowired
     LocalValidatorFactoryBean validatorFactory;
 
     public Optional<Product> found;
@@ -42,7 +38,12 @@ public class InventoryManagement extends JFrame {
     /**
      * Creates new form InterfazConstructor
      */
-    public InventoryManagement() {
+    @Autowired
+    public InventoryManagement(inventarios.desktop.Menu menu, ProductService productService, ListaProductos listaProductos, LocalValidatorFactoryBean validatorFactory) {
+        this.menu = menu;
+        this.productService = productService;
+        this.listaProductos = listaProductos;
+        this.validatorFactory = validatorFactory;
         initComponents();
         this.getContentPane().setBackground(Color.cyan);
     }
