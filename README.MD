@@ -4,8 +4,10 @@
   
   Windows Build [![Windows Build status](https://ci.appveyor.com/api/projects/status/m8wf4stxoxl5k4nl?svg=true)](https://ci.appveyor.com/project/javatlacati/inventarios)
   
- [![Open Source Helpers](https://www.codetriage.com/javatlacati/inventarios/badges/users.svg)](https://www.codetriage.com/javatlacati/inventarios) [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/javatlacati/Inventarios.svg)](http://isitmaintained.com/project/javatlacati/Inventarios "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/javatlacati/Inventarios.svg)](http://isitmaintained.com/project/javatlacati/Inventarios "Percentage of issues still open")
+ [![Open Source Helpers](https://www.codetriage.com/javatlacati/inventarios/badges/users.svg)](https://www.codetriage.com/javatlacati/inventarios)
+ [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/javatlacati/Inventarios.svg)](http://isitmaintained.com/project/javatlacati/Inventarios "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/javatlacati/Inventarios.svg)](http://isitmaintained.com/project/javatlacati/Inventarios "Percentage of issues still open")
  [![Known Vulnerabilities](https://snyk.io/test/github/javatlacati/Inventarios/badge.svg)](https://snyk.io/test/github/javatlacati/Inventarios)
+ [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjavatlacati%2FInventarios.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjavatlacati%2FInventarios?ref=badge_shield)
 
 It has two related systems, a rest service for an Inventory Management System and a system for Desktop client.
 
