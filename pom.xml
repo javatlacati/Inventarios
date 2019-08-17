@@ -49,6 +49,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modules>
         <module>inventarios-entities</module>
         <module>inventarios-service</module>
+        <module>inventarios-restservice</module>
         <module>inventarios-desktop</module>
     </modules>
 
