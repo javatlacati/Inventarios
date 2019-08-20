@@ -48,9 +48,9 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>4.3.0</version>
-                <configuration>
-                    <repoToken>DAM91Dwcgoa5x64XqjZOhvP3ErAmOJVSo</repoToken>
-                </configuration>
+<!--                <configuration>-->
+<!--                    <repoToken>tokenhere</repoToken>-->
+<!--                </configuration>-->
             </plugin>
             <!-- code coverage -->
             <plugin>
