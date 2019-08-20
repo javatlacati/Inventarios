@@ -28,7 +28,6 @@ import inventarios.desktop.InventoryManagement;
 import inventarios.desktop.ListaProductos;
 import inventarios.desktop.LoginWindow;
 import inventarios.desktop.Menu;
-import inventarios.desktop.navigation.MenuVisitor;
 import inventarios.desktop.OrderManagement;
 import inventarios.desktop.ProviderManagement;
 import inventarios.desktop.ShoppingWindow;
@@ -43,22 +42,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Matchers;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.stubbing.Answer;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.swing.JFrame;
 import java.awt.Font;
-
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyString;
-import org.mockito.Mockito;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GUITest {
@@ -113,9 +106,9 @@ public class GUITest {
 
     @Before
     public void setUp() throws Exception {
-        when(
+        Mockito.when(
                 fontFactory.getFont(
-                        anyString()
+                        Matchers.anyString()
                 )
         ).thenReturn(
                 new Font("serif", Font.PLAIN, 24)
@@ -135,19 +128,19 @@ public class GUITest {
 
     @Test
     public void failedLogin() {
-        when(usersService.authenticate(any(LoginUser.class)))
+        Mockito.when(usersService.authenticate(Matchers.any(LoginUser.class)))
                 .thenReturn(Boolean.FALSE);
         LoginWindowPageObject loginWindowPageObject = new LoginWindowPageObject();
         loginWindowPageObject.setUserFieldContent("wrong");
         loginWindowPageObject.setPasswordFieldContent("wrong");
         loginWindowPageObject.clickAccept();
         loginWindowPageObject.userNotFoundIsShown();
-        verify(usersService, times(1)).authenticate(any(LoginUser.class));
+        Mockito.verify(usersService, Mockito.times(1)).authenticate(Matchers.any(LoginUser.class));
     }
 
     @Test
     public void navigationTest() {
-        when(usersService.authenticate(any(LoginUser.class)))
+        Mockito.when(usersService.authenticate(Matchers.any(LoginUser.class)))
                 .thenReturn(true);
 
         LoginWindowPageObject loginWindowPageObject = new LoginWindowPageObject();
@@ -161,38 +154,38 @@ public class GUITest {
         String password = "oscar";
         loginWindowPageObject.setPasswordFieldContent(password);
         
-        doAnswer(new Answer<Void>() {
+        Mockito.doAnswer(new Answer<Void>() {
             public Void answer(InvocationOnMock invocation) {
                 inventoryManagement.setVisible(false);
                 menu.setVisible(true);
                 return null;
             }
-        }).when(navigationHandler).goToMenu(any(JFrame.class));
+        }).when(navigationHandler).goToMenu(Matchers.any(JFrame.class));
         
         
         loginWindowPageObject.clickAcceptAndWait();
-        verify(usersService, times(1)).authenticate(any(LoginUser.class));
+        Mockito.verify(usersService, Mockito.times(1)).authenticate(Matchers.any(LoginUser.class));
 
         MainMenuPageObject menuPageObject = new MainMenuPageObject();
         
-        doAnswer(new Answer<Void>() {
+        Mockito.doAnswer(new Answer<Void>() {
             public Void answer(InvocationOnMock invocation) {
                 inventoryManagement.setVisible(true);
                 menu.setVisible(false);
                 return null;
             }
-        }).when(navigationHandler).goToInventoryManagement(any(JFrame.class));
+        }).when(navigationHandler).goToInventoryManagement(Matchers.any(JFrame.class));
         
         menuPageObject.openInvenory();
         InventoryManagementPageObject inventoryPageObject = new InventoryManagementPageObject();
         inventoryPageObject.clickClose();
-        doAnswer(new Answer<Void>() {
+        Mockito.doAnswer(new Answer<Void>() {
             public Void answer(InvocationOnMock invocation) {
                 orderManagement.setVisible(true);
                 menu.setVisible(false);
                 return null;
             }
-        }).when(navigationHandler).goToOrderManagement(any(JFrame.class));
+        }).when(navigationHandler).goToOrderManagement(Matchers.any(JFrame.class));
         menuPageObject.openOrders();
         OrderManagementPageObject orderPageObject = new OrderManagementPageObject();
     }

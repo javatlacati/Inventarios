@@ -28,11 +28,11 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <build>
         <!--        resources to be included-->
-<!--        <resources>-->
-<!--            <resource>-->
-<!--                <directory>inventarios-desktop/src/main/resources</directory>-->
-<!--            </resource>-->
-<!--        </resources>-->
+        <!--        <resources>-->
+        <!--            <resource>-->
+        <!--                <directory>inventarios-desktop/src/main/resources</directory>-->
+        <!--            </resource>-->
+        <!--        </resources>-->
         <plugins>
             <!-- compilation config-->
             <plugin>
@@ -96,6 +96,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <module>inventarios-service</module>
         <module>inventarios-restservice</module>
         <module>inventarios-desktop</module>
+        <module>inventarios-desktop-testing-api</module>
     </modules>
 
 </project>

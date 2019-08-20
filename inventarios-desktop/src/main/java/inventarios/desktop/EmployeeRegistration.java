@@ -20,13 +20,14 @@ import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.EmployeeService;
 import inventarios.to.EmployeeDetail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import javax.swing.*;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.expression.spel.ast.QualifiedIdentifier;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
