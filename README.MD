@@ -1,6 +1,6 @@
 ## Inventory System
 
-  Linux Build [![Linux Build Status](https://travis-ci.org/javatlacati/Inventarios.svg?branch=master)](https://travis-ci.org/javatlacati/Inventarios)[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjavatlacati%2FInventarios.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjavatlacati%2FInventarios?ref=badge_shield)
+  Linux Build [![Linux Build Status](https://travis-ci.org/javatlacati/Inventarios.svg?branch=master)](https://travis-ci.org/javatlacati/Inventarios)
 
   
   Windows Build [![Windows Build status](https://ci.appveyor.com/api/projects/status/m8wf4stxoxl5k4nl?svg=true)](https://ci.appveyor.com/project/javatlacati/inventarios)
