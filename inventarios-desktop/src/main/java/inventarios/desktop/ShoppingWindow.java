@@ -259,7 +259,6 @@ public class ShoppingWindow extends javax.swing.JFrame {
         });
         pnlFields.add(txtEmail);
 
-        txtProduct.setModel(new ProductListModel(productService.findAll()));
         scrollProducts.setViewportView(txtProduct);
 
         pnlFields.add(scrollProducts);
@@ -386,4 +385,10 @@ public class ShoppingWindow extends javax.swing.JFrame {
         txtEmail.setText("");
         txtProduct.clearSelection();
     }
+
+    @Override
+    public void setVisible(boolean b) {
+        txtProduct.setModel(new ProductListModel(productService.findAll()));
+        super.setVisible(b);
+    }   
 }

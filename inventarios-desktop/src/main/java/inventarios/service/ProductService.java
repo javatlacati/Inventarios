@@ -1,5 +1,6 @@
 package inventarios.service;
 
+import inventarios.to.EmployeeDetail;
 import inventarios.to.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 
 @Service
 public class ProductService {
@@ -20,13 +23,21 @@ public class ProductService {
     }
 
     public Optional<Product> findOne(Product sampleProduct) {
-        return Optional.ofNullable(restTemplate.postForObject("http://localhost:8080/products", sampleProduct, Product.class));
+        if(sampleProduct == null){
+            return Optional.empty();
+        }
+        return Optional.ofNullable(restTemplate.postForObject("http://localhost:8080/product", sampleProduct, Product.class));
     }
 
     public List<Product> findAll() {
-        Object o = null;
-        ResponseEntity<List> forEntity = restTemplate.getForEntity("http://localhost:8080/products", List.class, o);
-        return (List<Product>) forEntity;
+        ResponseEntity<List<Product>> response = restTemplate.exchange(
+                "http://localhost:8080/products/",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<Product>>() {
+        });
+        List<Product> products = response.getBody();
+        return products;
     }
 
     public void delete(Product product) {

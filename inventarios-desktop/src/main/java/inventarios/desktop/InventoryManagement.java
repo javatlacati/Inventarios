@@ -107,7 +107,6 @@ public class InventoryManagement extends JFrame {
         ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("InventoryManagement.title")); // NOI18N
         setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
-        setResizable(false);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent evt) {
                 closeHandler(evt);

@@ -27,6 +27,7 @@ import inventarios.desktop.ProviderManagement;
 import inventarios.desktop.ShoppingWindow;
 import javax.swing.JFrame;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -36,6 +37,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class MenuVisitor extends NavigationHandler {
+    
+    @Autowired
+    ApplicationContext context;
 
     @Autowired
     @Lazy
@@ -64,9 +68,9 @@ public class MenuVisitor extends NavigationHandler {
     @Autowired
     private LoginWindow loginWindow;
 
-    @Autowired
-    @Lazy
-    private EmployeeRegistration employeeRegistration;
+//    @Autowired
+//    @Lazy
+//    private EmployeeRegistration employeeRegistration;
 
     @Autowired
     @Lazy
@@ -121,6 +125,7 @@ public class MenuVisitor extends NavigationHandler {
 
     @Override
     public void goToEmployeeRegistration(JFrame origin) {
+        EmployeeRegistration employeeRegistration = context.getBean(EmployeeRegistration.class);
         employeeRegistration.setVisible(true);
         origin.dispose();
     }
