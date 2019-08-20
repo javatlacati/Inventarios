@@ -17,11 +17,10 @@
 package desktop.pageobjects;
 
 import org.netbeans.jemmy.operators.ContainerOperator;
+import org.netbeans.jemmy.operators.JButtonOperator;
 import org.netbeans.jemmy.operators.JFrameOperator;
 
 import java.util.ResourceBundle;
-import org.netbeans.jemmy.ComponentSearcher;
-import org.netbeans.jemmy.operators.JButtonOperator;
 
 public class InventoryManagementPageObject {
     private ContainerOperator containerFrame;

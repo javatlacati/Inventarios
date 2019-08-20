@@ -17,7 +17,13 @@
 package desktop.pageobjects;
 
 import org.junit.Assert;
-import org.netbeans.jemmy.operators.*;
+import org.netbeans.jemmy.operators.ContainerOperator;
+import org.netbeans.jemmy.operators.JButtonOperator;
+import org.netbeans.jemmy.operators.JDialogOperator;
+import org.netbeans.jemmy.operators.JFrameOperator;
+import org.netbeans.jemmy.operators.JLabelOperator;
+import org.netbeans.jemmy.operators.JPasswordFieldOperator;
+import org.netbeans.jemmy.operators.JTextFieldOperator;
 
 import java.util.ResourceBundle;
 
