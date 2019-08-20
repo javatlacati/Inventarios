@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2019 Ruslan LÃ³pez Carro
+ * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProductService;
 import inventarios.to.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 
 /**
@@ -40,15 +42,13 @@ public class ListaProductos extends javax.swing.JFrame {
 
     ProductService productService;
 
-    Menu menu;
-    
-    InventoryManagement inventoryManagement;
 
+    private NavigationHandler navigationHandler;
+    
     @Autowired
-    public ListaProductos(ProductService productService, @Lazy Menu menu, @Lazy InventoryManagement inventoryManagement) {
+    public ListaProductos(ProductService productService, @Qualifier("listaProductosNavigationHandler") NavigationHandler navigationHandler) {
         this.productService = productService;
-        this.menu = menu;
-        this.inventoryManagement = inventoryManagement;
+        this.navigationHandler = navigationHandler;
          initComponents();
 
         this.setLocationRelativeTo(null);
@@ -277,8 +277,7 @@ public class ListaProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btneliminartodoActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        menu.setVisible(true);
-        dispose();
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -287,8 +286,7 @@ public class ListaProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
-        inventoryManagement.setVisible(true);
-        dispose();
+        navigationHandler.goToInventoryManagement(this);
     }//GEN-LAST:event_btnGoBackActionPerformed
 
     private javax.swing.JTable datos;

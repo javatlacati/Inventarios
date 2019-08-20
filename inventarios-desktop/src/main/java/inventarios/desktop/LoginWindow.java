@@ -228,7 +228,6 @@ public class LoginWindow extends javax.swing.JFrame {
 
         if (usersService.authenticate(loginUser)) {
             navigationHandler.goToMenu(this);
-            this.setVisible(false);
             clearFields();
             return;
         }

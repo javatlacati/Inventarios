@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.to.BillingDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  *
@@ -37,14 +38,11 @@ public class BillingList extends javax.swing.JFrame {
     private DefaultTableModel modelo;
     int con = 0;
 
-    private Menu menu;
-    
-    private BillingManagement billingManagement;
+    private NavigationHandler navigationHandler;
 
     @Autowired
-    public BillingList(@Lazy inventarios.desktop.Menu menu, @Lazy BillingManagement billingManagement) {
-        this.menu = menu;
-        this.billingManagement = billingManagement;
+    public BillingList(@Qualifier("billingListVisitor") NavigationHandler navigationHandler) {
+        this.navigationHandler = navigationHandler;
     }
 
     /**
@@ -238,12 +236,11 @@ public class BillingList extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteAllActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        menu.setVisible(true);
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
-        billingManagement.setVisible(true);
-        dispose();
+        navigationHandler.goToBillingManagement(this);
     }//GEN-LAST:event_btnGetBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

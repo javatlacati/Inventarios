@@ -25,11 +25,9 @@ import inventarios.desktop.LoginWindow;
 import inventarios.desktop.OrderManagement;
 import inventarios.desktop.ProviderManagement;
 import inventarios.desktop.ShoppingWindow;
-import javax.swing.JFrame;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+
+import javax.swing.JFrame;
 
 /**
  *
@@ -38,44 +36,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class MenuVisitor extends NavigationHandler {
     
-    @Autowired
-    ApplicationContext context;
-
-    @Autowired
-    @Lazy
-    private InventoryManagement inventoryManagement;
-
-    @Autowired
-    @Lazy
-    private ShoppingWindow shoppingWindow;
-
-    @Autowired
-    @Lazy
-    private OrderManagement orderManagement;
-
-    @Autowired
-    @Lazy
-    private ProviderManagement providerManagement;
-
-    @Autowired
-    @Lazy
-    private BillingManagement billingManagement;
-
-    @Autowired
-    @Lazy
-    private Information information;
-
-    @Autowired
-    private LoginWindow loginWindow;
-
-//    @Autowired
-//    @Lazy
-//    private EmployeeRegistration employeeRegistration;
-
-    @Autowired
-    @Lazy
-    private Credits credits;
-
     @Override
     public void goToMenu(JFrame origin) {
         throw new UnsupportedOperationException("You can't navitage from menu to itself.");
@@ -83,43 +43,51 @@ public class MenuVisitor extends NavigationHandler {
 
     @Override
     public void goToInventoryManagement(JFrame origin) {
+        InventoryManagement inventoryManagement = context.getBean(InventoryManagement.class);
         inventoryManagement.setVisible(true);
         origin.dispose();
     }
 
     @Override
     public void goToShopping(JFrame origin) {
+        ShoppingWindow shoppingWindow = context.getBean(ShoppingWindow.class);
         shoppingWindow.setVisible(true);
         origin.dispose();
     }
 
     @Override
     public void goToOrderManagement(JFrame origin) {
+        OrderManagement orderManagement = context.getBean(OrderManagement.class);
         orderManagement.setVisible(true);
         origin.dispose();
     }
 
     @Override
     public void goToProviderManagement(JFrame origin) {
+        ProviderManagement providerManagement = context.getBean(ProviderManagement.class);
         providerManagement.setVisible(true);
         origin.dispose();
     }
 
     @Override
     public void goToBillingManagement(JFrame origin) {
+        BillingManagement billingManagement = context.getBean(BillingManagement.class);
         billingManagement.setVisible(true);
         origin.dispose();
     }
 
     @Override
     public void goToInformation(JFrame origin) {
+        Information information = context.getBean(Information.class);
         information.setVisible(true);
         origin.dispose();
     }
 
     @Override
     public void goToLogin(JFrame origin) {
+        LoginWindow loginWindow = context.getBean(LoginWindow.class);
         origin.dispose();
+        // TODO perhaps clear previouses here
         loginWindow.setVisible(true);
     }
 
@@ -132,6 +100,7 @@ public class MenuVisitor extends NavigationHandler {
 
     @Override
     public void goToCredits(JFrame origin) {
+        Credits credits = context.getBean(Credits.class);
         credits.setVisible(true);
         origin.dispose();
     }
@@ -143,6 +112,11 @@ public class MenuVisitor extends NavigationHandler {
 
     @Override
     public void goToOrderList(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void goToShoppingList(JFrame origin) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

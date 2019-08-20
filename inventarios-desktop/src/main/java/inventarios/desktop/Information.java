@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.NavigationHandler;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.WindowAdapter;
@@ -24,7 +25,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -34,14 +35,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class Information extends javax.swing.JFrame {
 
-    Menu menu;
+    NavigationHandler navigationHandler;
 
     /**
      * Creates new form Información
      */
     @Autowired
-    public Information(@Lazy Menu menu) {
-        this.menu = menu;
+    public Information(@Qualifier("informationVisitor") NavigationHandler navigationHandler) {
+        this.navigationHandler = navigationHandler;
         initComponents();
         ImageIcon imagen = new ImageIcon("/ImgFondos/isc.png");
         Icon icono2 = new ImageIcon(imagen.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
@@ -185,8 +186,7 @@ public class Information extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        menu.setVisible(true);
-        dispose();
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed

@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProductService;
 import inventarios.service.ProviderService;
 import inventarios.service.PurchaseService;
@@ -34,7 +35,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.List;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  *
@@ -43,14 +44,12 @@ import org.springframework.context.annotation.Lazy;
 @Component
 public class ShoppingWindow extends javax.swing.JFrame {
 
-    ListaCompras listaCompras;
+    NavigationHandler navigationHandler;
 
-    Menu menu;
-    
     ProviderService providerService;
-        
+
     ProductService productService;
-    
+
     PurchaseService purchaseService;
     /*
     Se Realiza el llamado del ArrayList
@@ -60,9 +59,8 @@ public class ShoppingWindow extends javax.swing.JFrame {
     TableRowSorter busqueda = new TableRowSorter(model);
 
     @Autowired
-    public ShoppingWindow(ListaCompras listaCompras, @Lazy inventarios.desktop.Menu menu, ProviderService providerService, ProductService productService, PurchaseService purchaseService) {
-        this.listaCompras = listaCompras;
-        this.menu = menu;
+    public ShoppingWindow(@Qualifier("shoppingVisitor") NavigationHandler navigationHandler, ProviderService providerService, ProductService productService, PurchaseService purchaseService) {
+        this.navigationHandler = navigationHandler;
         this.providerService = providerService;
         this.productService = productService;
         this.purchaseService = purchaseService;
@@ -74,8 +72,6 @@ public class ShoppingWindow extends javax.swing.JFrame {
         cerrar();
     }
 
-    
-    
     //Método para confirmar el cierre deJFrame//
     public void cerrar() {
         try {
@@ -310,19 +306,15 @@ public class ShoppingWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailKeyTyped
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        listaCompras.mostrarLosDatos();
-        listaCompras.setVisible(true);
+        navigationHandler.goToShoppingList(this);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        dispose();
-        menu.setVisible(true);
+        navigationHandler.goToFrame(this, Menu.class);
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        menu.add(this);
-        menu.setVisible(true);
-        setVisible(false);
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -357,7 +349,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
         Declaramos las variables donde se guardara el contenido para los TextFiel
          */
         Date date = txtDate.getDate();
-        Provider provider = (Provider)cmbProvider.getSelectedItem();
+        Provider provider = (Provider) cmbProvider.getSelectedItem();
         String adress = txtAdress.getText();
         String telephone = txtTelephone.getText();
         String RFC = txtContributor.getText();
@@ -366,7 +358,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
         /*
         Se hace la instancia para guardar los datos en el ArrayList
          */
-        Purchase clase = new Purchase(null,date, provider, product, null);
+        Purchase clase = new Purchase(null, date, provider, product, null);
         purchaseService.save(clase);
         clearFields();
         /*
@@ -390,5 +382,5 @@ public class ShoppingWindow extends javax.swing.JFrame {
     public void setVisible(boolean b) {
         txtProduct.setModel(new ProductListModel(productService.findAll()));
         super.setVisible(b);
-    }   
+    }
 }

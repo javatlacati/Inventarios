@@ -16,11 +16,14 @@
  */
 package inventarios.desktop;
 
+import inventarios.service.EmployeeService;
 import inventarios.to.EmployeeDetail;
+import java.util.List;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -28,6 +31,9 @@ import javax.swing.table.DefaultTableModel;
  */
 @Component
 public class ListaEmpleados extends javax.swing.JFrame {
+    
+    @Autowired
+    EmployeeService employeeService;
 
     private DefaultTableModel modelo;
     int cont = 0;
@@ -69,6 +75,21 @@ public class ListaEmpleados extends javax.swing.JFrame {
         cont++;
 
     }
+
+    @Override
+    public void setVisible(boolean b) {
+        super.setVisible(b);
+        cargarinterfaz();
+        EmployeeDetail c;
+
+        List<EmployeeDetail> employeeDetails = employeeService.findAll();
+        for (int i = 0; i < employeeDetails.size(); i++) {
+            c = (EmployeeDetail) employeeDetails.get(i);
+            mostrardatos(c);
+        }
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

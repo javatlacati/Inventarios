@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProviderService;
 import inventarios.to.Provider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 
 /**
@@ -34,10 +36,8 @@ import org.springframework.context.annotation.Lazy;
  */
 @Component
 public class ProviderManagement extends javax.swing.JFrame {
-    
-    ListaProveedores listaProveedores;
-    
-    Menu menu;
+        
+    NavigationHandler navigationHandler;
     
     ProviderService providerService;
 
@@ -45,9 +45,8 @@ public class ProviderManagement extends javax.swing.JFrame {
      * Creates new form ProveedorVentana
      */
     @Autowired
-    public ProviderManagement(ListaProveedores listaProveedores, @Lazy inventarios.desktop.Menu menu, ProviderService providerService) {
-        this.listaProveedores = listaProveedores;
-        this.menu = menu;
+    public ProviderManagement(@Qualifier("providerManagementVisitor") NavigationHandler navigationHandler, ProviderService providerService) {
+        this.navigationHandler = navigationHandler;
         this.providerService = providerService;
         /*
         Se inicializa la Lista
@@ -309,13 +308,11 @@ public class ProviderManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_txtProviderKeyTyped
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        listaProveedores.mostrarLosDatos();
-        listaProveedores.setVisible(true);
+        navigationHandler.goToFrame(this, ListaProveedores.class);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        menu.setVisible(true);
-        dispose();
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
     //Método para confirmar el cierre deJFrame//
 

@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.EmployeeService;
 import inventarios.to.EmployeeDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,9 @@ import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.expression.spel.ast.QualifiedIdentifier;
 
 /**
  *
@@ -32,21 +35,17 @@ import org.springframework.context.annotation.Lazy;
 @Component
 public class EmployeeRegistration extends javax.swing.JFrame {
 
-    Menu menu;
-    
-    ListaEmpleados tablaClientes;
-    
-    
+    NavigationHandler navigationHandler;
+
     EmployeeService employeeService;
 
     @Autowired
-    public EmployeeRegistration(@Lazy Menu menu, ListaEmpleados tablaClientes, EmployeeService employeeService) {
-        this.menu = menu;
-        this.tablaClientes = tablaClientes;
+    public EmployeeRegistration(
+            @Qualifier("employeeVisitor") NavigationHandler navigationHandler,
+            EmployeeService employeeService) {
+        this.navigationHandler = navigationHandler;
         this.employeeService = employeeService;
     }
-    
-    
 
     /**
      * Creates new form Empleados
@@ -347,19 +346,11 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        tablaClientes.setVisible(true);
-        tablaClientes.cargarinterfaz();
-        EmployeeDetail c;
-
-        List<EmployeeDetail> employeeDetails = employeeService.findAll();
-        for (int i = 0; i < employeeDetails.size(); i++) {
-            c = (EmployeeDetail) employeeDetails.get(i);
-            tablaClientes.mostrardatos(c);
-        }
+        navigationHandler.goToFrame(this, ListaEmpleados.class);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        menu.setVisible(true);
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed

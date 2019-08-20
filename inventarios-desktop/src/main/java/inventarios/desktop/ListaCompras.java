@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2019 Ruslan LÃ³pez Carro
+ * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.PurchaseService;
 import inventarios.to.Purchase;
 import java.awt.event.WindowAdapter;
@@ -25,7 +26,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -36,7 +37,7 @@ import org.springframework.stereotype.Component;
 public class ListaCompras extends javax.swing.JFrame {
 
     
-    Menu menu;
+    NavigationHandler navigationHandler;
     
     PurchaseService purchaseService;
 
@@ -44,8 +45,8 @@ public class ListaCompras extends javax.swing.JFrame {
      * Creates new form ListaCompras
      */
     @Autowired
-    public ListaCompras(@Lazy Menu menu, PurchaseService purchaseService) {
-        this.menu = menu;
+    public ListaCompras(@Qualifier("listaComprasVisitor") NavigationHandler navigationHandler, PurchaseService purchaseService) {
+        this.navigationHandler = navigationHandler;
         this.purchaseService = purchaseService;
           initComponents();
         mostrarInterfaz();
@@ -237,8 +238,7 @@ public class ListaCompras extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteAllActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        menu.setVisible(true);
-        dispose();
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProviderService;
 import inventarios.to.Provider;
 
@@ -26,6 +27,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -36,7 +38,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ListaProveedores extends javax.swing.JFrame {
 
-    ProviderManagement providerManagement;
+    private NavigationHandler navigationHandler;
 
     ProviderService providerService;
 
@@ -44,8 +46,8 @@ public class ListaProveedores extends javax.swing.JFrame {
      * Creates new form ListaProveedores
      */
     @Autowired
-    public ListaProveedores(@Lazy ProviderManagement providerManagement, ProviderService providerService) {
-        this.providerManagement = providerManagement;
+    public ListaProveedores(@Qualifier("listaProvedoresVisitor") NavigationHandler navigationHandler, ProviderService providerService) {
+        this.navigationHandler = navigationHandler;
         this.providerService = providerService;
         initComponents();
         mostrarInterfaz();
@@ -244,10 +246,18 @@ public class ListaProveedores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteAllActionPerformed
 
     private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
-        providerManagement.setVisible(true);
-        dispose();
+        navigationHandler.goToProviderManagement(this);
     }//GEN-LAST:event_btnGetBackActionPerformed
 
+    @Override
+    public void setVisible(boolean visible) {
+        if(visible){
+            mostrarLosDatos();
+        }
+        super.setVisible(visible);
+    }
+
+    
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMenuActionPerformed

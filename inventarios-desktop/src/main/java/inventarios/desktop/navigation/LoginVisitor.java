@@ -17,10 +17,9 @@
 package inventarios.desktop.navigation;
 
 import inventarios.desktop.Menu;
-import javax.swing.JFrame;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+
+import javax.swing.JFrame;
 
 /**
  *
@@ -28,15 +27,12 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class LoginVisitor extends NavigationHandler {
-
-    @Autowired
-    @Lazy
-    Menu menu;
-
     @Override
     public void goToMenu(JFrame origin) {
+        Menu menu = context.getBean(Menu.class);
         menu.setVisible(true);
         menu.add(origin);
+        origin.setVisible(false);
     }
 
     @Override
@@ -91,6 +87,11 @@ public class LoginVisitor extends NavigationHandler {
 
     @Override
     public void goToOrderList(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void goToShoppingList(JFrame origin) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

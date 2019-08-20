@@ -16,17 +16,22 @@
  */
 package inventarios.desktop.navigation;
 
-import inventarios.desktop.InventoryManagement;
 import javax.swing.JFrame;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 /**
  *
  * @author Ruslan López Carro <scherzo16 at gmail.com>
  */
 public abstract class NavigationHandler {
+    
+    @Autowired
+    ApplicationContext context;
 
-    public void goToFrame(JFrame origin, JFrame target) {
-        target.setVisible(true);
+    public <T extends JFrame> void goToFrame(JFrame origin, Class<T> target) {
+        T aFrame = context.getBean(target);
+        aFrame.setVisible(true);
         origin.dispose();
     }
 
@@ -53,4 +58,6 @@ public abstract class NavigationHandler {
     public abstract void goToProductList(JFrame origin);
     
     public abstract void goToOrderList(JFrame origin);
+    
+    public abstract void goToShoppingList(JFrame origin);
 }

@@ -16,77 +16,72 @@
  */
 package inventarios.desktop.navigation;
 
-import inventarios.desktop.ListaProductos;
-import inventarios.desktop.Menu;
-import org.springframework.stereotype.Component;
-
+import inventarios.desktop.ProviderManagement;
 import javax.swing.JFrame;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Ruslan López Carro <scherzo16 at gmail.com>
  */
 @Component
-public class InventoryManagementVisitor extends NavigationHandler {
+public class ListaProvedoresVisitor extends NavigationHandler{
 
     @Override
-    public void goToMenu(JFrame origin){
-        Menu menu = context.getBean(Menu.class);
-        menu.setVisible(true);
-        origin.dispose();
+    public void goToMenu(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToInventoryManagement(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToShopping(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToOrderManagement(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToProviderManagement(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ProviderManagement providerManagement = context.getBean(ProviderManagement.class);
+        providerManagement.setVisible(true);
+        origin.dispose();
     }
 
     @Override
     public void goToBillingManagement(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToInformation(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToLogin(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToEmployeeRegistration(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToCredits(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void goToProductList(JFrame origin) {
-        ListaProductos listaProductos = context.getBean(ListaProductos.class);
-        listaProductos.mostrarLosDatos();
-        listaProductos.setVisible(true);
-        //origin.dispose();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -98,4 +93,5 @@ public class InventoryManagementVisitor extends NavigationHandler {
     public void goToShoppingList(JFrame origin) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }

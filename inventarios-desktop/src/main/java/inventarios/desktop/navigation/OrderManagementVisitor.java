@@ -18,10 +18,9 @@ package inventarios.desktop.navigation;
 
 import inventarios.desktop.ListaPedidos;
 import inventarios.desktop.Menu;
-import javax.swing.JFrame;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+
+import javax.swing.JFrame;
 
 /**
  *
@@ -30,15 +29,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderManagementVisitor extends NavigationHandler {
 
-    @Autowired
-    @Lazy
-    Menu menu;
-    
-    @Autowired
-    ListaPedidos listaPedidos;
-
     @Override
     public void goToMenu(JFrame origin) {
+        Menu menu = context.getBean(Menu.class);
         menu.setVisible(true);
         origin.dispose();
     }
@@ -95,8 +88,14 @@ public class OrderManagementVisitor extends NavigationHandler {
 
     @Override
     public void goToOrderList(JFrame origin) {
+        ListaPedidos listaPedidos = context.getBean(ListaPedidos.class);
         listaPedidos.setVisible(true);
-        //origin.dispose();
+        origin.dispose();
+    }
+
+    @Override
+    public void goToShoppingList(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

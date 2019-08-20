@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.NavigationHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +25,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  *
@@ -33,15 +34,14 @@ import org.springframework.context.annotation.Lazy;
 @Component
 public class BillingManagement extends javax.swing.JFrame {
 
-    BillingList billingList;
-
-    Menu menu;
+    NavigationHandler navigationHandler;
 
     @Autowired
-    public BillingManagement(BillingList billingList, @Lazy inventarios.desktop.Menu menu) {
-        this.billingList = billingList;
-        this.menu = menu;
+    public BillingManagement(@Qualifier("billingManagementVisitor") NavigationHandler navigationHandler) throws HeadlessException {
+        this.navigationHandler = navigationHandler;
     }
+
+    
 
     public static LinkedList contenedor = new LinkedList();
 
@@ -292,7 +292,7 @@ public class BillingManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        billingList.setVisible(true);
+        navigationHandler.goToFrame(this, BillingList.class);
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -301,7 +301,7 @@ public class BillingManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        menu.setVisible(true);
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
     public void cerrar() {
         try {
@@ -324,7 +324,7 @@ public class BillingManagement extends javax.swing.JFrame {
         }
 
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClean;
     private javax.swing.JButton btnClose;
