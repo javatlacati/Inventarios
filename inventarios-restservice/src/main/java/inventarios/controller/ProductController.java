@@ -28,7 +28,7 @@ public class ProductController {
         return productService.save(s);
     }
 
-    @GetMapping("/products")
+    @PostMapping("/product")
     public <S extends Product> Optional<S> findOne(@RequestBody S product) {
         return productService.findOne(Example.of(product));
     }
