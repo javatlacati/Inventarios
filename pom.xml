@@ -48,15 +48,15 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>4.3.0</version>
-<!--                <configuration>-->
-<!--                    <repoToken>tokenhere</repoToken>-->
-<!--                </configuration>-->
+                <configuration>
+                    <repoToken>cwOQWQhtPnhwjn1pTDmopqqmaqxkhvfS8</repoToken>
+                </configuration>
             </plugin>
             <!-- code coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.2</version>
+                <version>0.8.4</version>
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
