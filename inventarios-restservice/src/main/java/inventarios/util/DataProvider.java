@@ -41,28 +41,28 @@ import java.util.List;
 public class DataProvider implements CommandLineRunner {
 
     @Autowired
-    LoginUsersRepository usersRepository;
+    private LoginUsersRepository usersRepository;
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     @Autowired
-    ProviderRepository providerRepository;
+    private ProviderRepository providerRepository;
 
     @Autowired
-    PurchaseRepository purchaseRepository;
+    private PurchaseRepository purchaseRepository;
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     @Autowired
-    StorageRepository storageRepository;
+    private StorageRepository storageRepository;
 
     @Autowired
-    ProductDetailsRepository productDetailsRepository;
+    private ProductDetailsRepository productDetailsRepository;
     
     @Autowired
-    OrderRepository orderRepository;
+    private OrderRepository orderRepository;
 
     @Override
     @Transactional
