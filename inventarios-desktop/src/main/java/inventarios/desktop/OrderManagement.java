@@ -42,7 +42,7 @@ import java.util.List;
 @Component
 public class OrderManagement extends javax.swing.JFrame {
     
-    NavigationHandler navigationHandler;
+    private NavigationHandler navigationHandler;
 
     /**
      * Creates new form PedidosVetana

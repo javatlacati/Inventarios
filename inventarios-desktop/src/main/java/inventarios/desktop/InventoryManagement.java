@@ -59,12 +59,11 @@ import java.util.Set;
 @Component
 public class InventoryManagement extends JFrame {
 
-    ProductService productService;
+    private ProductService productService;
 
-    @Qualifier("getValidator")
-    LocalValidatorFactoryBean validatorFactory;
+    private LocalValidatorFactoryBean validatorFactory;
 
-    NavigationHandler navigationHandler;
+    private NavigationHandler navigationHandler;
 
     public Optional<Product> found;
 
@@ -72,7 +71,7 @@ public class InventoryManagement extends JFrame {
      * Creates new form InterfazConstructor
      */
     @Autowired
-    public InventoryManagement(@Qualifier("inventoryManagementVisitor") NavigationHandler navigationHandler, ProductService productService, LocalValidatorFactoryBean validatorFactory) {
+    public InventoryManagement(@Qualifier("inventoryManagementVisitor") NavigationHandler navigationHandler, ProductService productService, @Qualifier("getValidator") LocalValidatorFactoryBean validatorFactory) {
         this.navigationHandler = navigationHandler;
         this.productService = productService;
         this.validatorFactory = validatorFactory;
@@ -378,8 +377,6 @@ public class InventoryManagement extends JFrame {
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-//        menu.setVisible(true);
-//        dispose();
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnCloseActionPerformed
 

@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2019 Ruslan LÃ³pez Carro
+ * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import com.toedter.calendar.JDateChooser;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProductService;
 import inventarios.service.ProviderService;
@@ -30,11 +31,15 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
@@ -44,13 +49,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Component
 public class ShoppingWindow extends javax.swing.JFrame {
 
-    NavigationHandler navigationHandler;
+    private NavigationHandler navigationHandler;
 
-    ProviderService providerService;
+    private ProviderService providerService;
 
-    ProductService productService;
+    private ProductService productService;
 
-    PurchaseService purchaseService;
+    private PurchaseService purchaseService;
     /*
     Se Realiza el llamado del ArrayList
      */
@@ -103,98 +108,98 @@ public class ShoppingWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pntlButtons = new javax.swing.JPanel();
-        btnAdd = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
-        btnClean = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
-        btnMenu = new javax.swing.JButton();
-        centerPanel = new javax.swing.JPanel();
-        pnlLabels = new javax.swing.JPanel();
-        lblDate = new javax.swing.JLabel();
-        lblProvider = new javax.swing.JLabel();
-        lblAddress = new javax.swing.JLabel();
-        lblTelephone = new javax.swing.JLabel();
-        lblContributor = new javax.swing.JLabel();
-        lblEmail = new javax.swing.JLabel();
-        lblProduct = new javax.swing.JLabel();
-        pnlFields = new javax.swing.JPanel();
-        txtDate = new com.toedter.calendar.JDateChooser();
-        cmbProvider = new javax.swing.JComboBox<>();
-        txtAdress = new javax.swing.JTextField();
-        txtTelephone = new javax.swing.JTextField();
-        txtContributor = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        scrollProducts = new javax.swing.JScrollPane();
-        txtProduct = new javax.swing.JList<>();
+        pntlButtons = new JPanel();
+        btnAdd = new JButton();
+        btnSearch = new JButton();
+        btnClean = new JButton();
+        btnClose = new JButton();
+        btnMenu = new JButton();
+        centerPanel = new JPanel();
+        pnlLabels = new JPanel();
+        lblDate = new JLabel();
+        lblProvider = new JLabel();
+        lblAddress = new JLabel();
+        lblTelephone = new JLabel();
+        lblContributor = new JLabel();
+        lblEmail = new JLabel();
+        lblProduct = new JLabel();
+        pnlFields = new JPanel();
+        txtDate = new JDateChooser();
+        cmbProvider = new JComboBox<>();
+        txtAdress = new JTextField();
+        txtTelephone = new JTextField();
+        txtContributor = new JTextField();
+        txtEmail = new JTextField();
+        scrollProducts = new JScrollPane();
+        txtProduct = new JList<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("ShoppingWindow.title")); // NOI18N
         setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setResizable(false);
-        getContentPane().setLayout(new java.awt.BorderLayout(30, 10));
+        getContentPane().setLayout(new BorderLayout(30, 10));
 
-        pntlButtons.setLayout(new java.awt.GridLayout(0, 1));
+        pntlButtons.setLayout(new GridLayout(0, 1));
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
+        btnAdd.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
         btnAdd.setBorder(null);
         btnAdd.setContentAreaFilled(false);
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAdd.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
         pntlButtons.add(btnAdd);
 
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
+        btnSearch.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
         btnSearch.setBorder(null);
         btnSearch.setContentAreaFilled(false);
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSearch.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnSearchActionPerformed(evt);
             }
         });
         pntlButtons.add(btnSearch);
 
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
         btnClean.setBorder(null);
         btnClean.setContentAreaFilled(false);
-        btnClean.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnClean.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnCleanActionPerformed(evt);
             }
         });
         pntlButtons.add(btnClean);
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
         btnClose.setBorder(null);
         btnClose.setContentAreaFilled(false);
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnClose.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
         pntlButtons.add(btnClose);
 
-        btnMenu.setBackground(new java.awt.Color(51, 51, 255));
-        btnMenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnMenu.setBackground(new Color(51, 51, 255));
+        btnMenu.setFont(new Font("Tahoma", 1, 24)); // NOI18N
         btnMenu.setText(bundle.getString("ShoppingWindow.btnMenu.text")); // NOI18N
         btnMenu.setAutoscrolls(true);
         btnMenu.setBorder(null);
         btnMenu.setBorderPainted(false);
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
         pntlButtons.add(btnMenu);
 
-        getContentPane().add(pntlButtons, java.awt.BorderLayout.EAST);
+        getContentPane().add(pntlButtons, BorderLayout.EAST);
 
-        centerPanel.setLayout(new java.awt.GridLayout(1, 0));
+        centerPanel.setLayout(new GridLayout(1, 0));
 
-        pnlLabels.setLayout(new java.awt.GridLayout(0, 1));
+        pnlLabels.setLayout(new GridLayout(0, 1));
 
         lblDate.setText(bundle.getString("ShoppingWindow.lblDate.text")); // NOI18N
         pnlLabels.add(lblDate);
@@ -219,37 +224,37 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
         centerPanel.add(pnlLabels);
 
-        pnlFields.setLayout(new java.awt.GridLayout(0, 1));
+        pnlFields.setLayout(new GridLayout(0, 1));
         pnlFields.add(txtDate);
         pnlFields.add(cmbProvider);
 
-        txtAdress.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtAdress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        txtAdress.setPreferredSize(new Dimension(70, 25));
+        txtAdress.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
                 txtAdressKeyTyped(evt);
             }
         });
         pnlFields.add(txtAdress);
 
-        txtTelephone.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtTelephone.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        txtTelephone.setPreferredSize(new Dimension(70, 25));
+        txtTelephone.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
                 txtTelephoneKeyTyped(evt);
             }
         });
         pnlFields.add(txtTelephone);
 
-        txtContributor.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtContributor.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        txtContributor.setPreferredSize(new Dimension(70, 25));
+        txtContributor.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
                 txtContributorKeyTyped(evt);
             }
         });
         pnlFields.add(txtContributor);
 
-        txtEmail.setPreferredSize(new java.awt.Dimension(70, 25));
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        txtEmail.setPreferredSize(new Dimension(70, 25));
+        txtEmail.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
                 txtEmailKeyTyped(evt);
             }
         });
@@ -261,7 +266,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
         centerPanel.add(pnlFields);
 
-        getContentPane().add(centerPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(centerPanel, BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -269,79 +274,79 @@ public class ShoppingWindow extends javax.swing.JFrame {
     /**
      * Clears the Text Field's contents when clicked
      */
-    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
+    private void btnCleanActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
         clearFields();
     }//GEN-LAST:event_btnCleanActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnAddActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         add();
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void txtAdressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAdressKeyTyped
+    private void txtAdressKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtAdressKeyTyped
         char cTeclaPresionada = evt.getKeyChar();
         if (cTeclaPresionada == KeyEvent.VK_ENTER) {
             add();
         }
     }//GEN-LAST:event_txtAdressKeyTyped
 
-    private void txtTelephoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelephoneKeyTyped
+    private void txtTelephoneKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtTelephoneKeyTyped
         char cTeclaPresionada = evt.getKeyChar();
         if (cTeclaPresionada == KeyEvent.VK_ENTER) {
             add();
         }
     }//GEN-LAST:event_txtTelephoneKeyTyped
 
-    private void txtContributorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContributorKeyTyped
+    private void txtContributorKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtContributorKeyTyped
         char cTeclaPresionada = evt.getKeyChar();
         if (cTeclaPresionada == KeyEvent.VK_ENTER) {
             add();
         }
     }//GEN-LAST:event_txtContributorKeyTyped
 
-    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+    private void txtEmailKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
         char cTeclaPresionada = evt.getKeyChar();
         if (cTeclaPresionada == KeyEvent.VK_ENTER) {
             add();
         }
     }//GEN-LAST:event_txtEmailKeyTyped
 
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+    private void btnSearchActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         navigationHandler.goToShoppingList(this);
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+    private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         navigationHandler.goToFrame(this, Menu.class);
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+    private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnClean;
-    private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btnSearch;
-    private javax.swing.JPanel centerPanel;
-    private javax.swing.JComboBox<String> cmbProvider;
-    private javax.swing.JLabel lblAddress;
-    private javax.swing.JLabel lblContributor;
-    private javax.swing.JLabel lblDate;
-    private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblProduct;
-    private javax.swing.JLabel lblProvider;
-    private javax.swing.JLabel lblTelephone;
-    private javax.swing.JPanel pnlFields;
-    private javax.swing.JPanel pnlLabels;
-    private javax.swing.JPanel pntlButtons;
-    private javax.swing.JScrollPane scrollProducts;
-    private javax.swing.JTextField txtAdress;
-    private javax.swing.JTextField txtContributor;
-    private com.toedter.calendar.JDateChooser txtDate;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JList<Product> txtProduct;
-    private javax.swing.JTextField txtTelephone;
+    private JButton btnAdd;
+    private JButton btnClean;
+    private JButton btnClose;
+    private JButton btnMenu;
+    private JButton btnSearch;
+    private JPanel centerPanel;
+    private JComboBox<String> cmbProvider;
+    private JLabel lblAddress;
+    private JLabel lblContributor;
+    private JLabel lblDate;
+    private JLabel lblEmail;
+    private JLabel lblProduct;
+    private JLabel lblProvider;
+    private JLabel lblTelephone;
+    private JPanel pnlFields;
+    private JPanel pnlLabels;
+    private JPanel pntlButtons;
+    private JScrollPane scrollProducts;
+    private JTextField txtAdress;
+    private JTextField txtContributor;
+    private JDateChooser txtDate;
+    private JTextField txtEmail;
+    private JList<Product> txtProduct;
+    private JTextField txtTelephone;
     // End of variables declaration//GEN-END:variables
 
     private void add() {

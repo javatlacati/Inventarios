@@ -39,7 +39,7 @@ public class ListaProveedores extends javax.swing.JFrame {
 
     private NavigationHandler navigationHandler;
 
-    ProviderService providerService;
+    private ProviderService providerService;
 
     /**
      * Creates new form ListaProveedores

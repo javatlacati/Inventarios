@@ -18,7 +18,11 @@ package inventarios.desktop;
 
 import inventarios.service.EmployeeService;
 import inventarios.to.EmployeeDetail;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.ResourceBundle;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
@@ -33,10 +37,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ListaEmpleados extends javax.swing.JFrame {
     
     @Autowired
-    EmployeeService employeeService;
+    private EmployeeService employeeService;
 
     private DefaultTableModel modelo;
-    int cont = 0;
+    private int cont = 0;
 
     /**
      * Creates new form TablaClientes
@@ -81,6 +85,7 @@ public class ListaEmpleados extends javax.swing.JFrame {
         super.setVisible(b);
         cargarinterfaz();
         EmployeeDetail c;
+        cont=0;
 
         List<EmployeeDetail> employeeDetails = employeeService.findAll();
         for (int i = 0; i < employeeDetails.size(); i++) {
@@ -100,17 +105,17 @@ public class ListaEmpleados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTitle = new javax.swing.JLabel();
-        scrlEmployees = new javax.swing.JScrollPane();
-        tblEmployees = new javax.swing.JTable();
-        btnGetBack = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
+        lblTitle = new JLabel();
+        scrlEmployees = new JScrollPane();
+        tblEmployees = new JTable();
+        btnGetBack = new JButton();
+        btnClose = new JButton();
 
-        lblTitle.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        lblTitle.setFont(new Font("Verdana", 1, 18)); // NOI18N
+        ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         lblTitle.setText(bundle.getString("ListaEmpleados.lblTitle.text")); // NOI18N
 
-        tblEmployees.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmployees.setModel(new DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -123,66 +128,64 @@ public class ListaEmpleados extends javax.swing.JFrame {
         ));
         scrlEmployees.setViewportView(tblEmployees);
 
-        btnGetBack.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        btnGetBack.setFont(new Font("Verdana", 1, 18)); // NOI18N
         btnGetBack.setText(bundle.getString("ListaEmpleados.btnGetBack.text")); // NOI18N
-        btnGetBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnGetBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnGetBackActionPerformed(evt);
             }
         });
 
         btnClose.setText(bundle.getString("ListaEmpleados.btnClose.text")); // NOI18N
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnClose.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrlEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(scrlEmployees, GroupLayout.PREFERRED_SIZE, 668, GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblTitle, GroupLayout.PREFERRED_SIZE, 334, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnGetBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnClose)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitle, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGetBack)
                     .addComponent(btnClose))
                 .addGap(18, 18, 18)
-                .addComponent(scrlEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrlEmployees, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
+    private void btnGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
         dispose();
     }//GEN-LAST:event_btnGetBackActionPerformed
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+    private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnGetBack;
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JScrollPane scrlEmployees;
-    private javax.swing.JTable tblEmployees;
+    private JButton btnClose;
+    private JButton btnGetBack;
+    private JLabel lblTitle;
+    private JScrollPane scrlEmployees;
+    private JTable tblEmployees;
     // End of variables declaration//GEN-END:variables
 }

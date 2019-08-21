@@ -37,9 +37,9 @@ import org.springframework.stereotype.Component;
 public class ListaCompras extends javax.swing.JFrame {
 
     
-    NavigationHandler navigationHandler;
+    private NavigationHandler navigationHandler;
     
-    PurchaseService purchaseService;
+    private PurchaseService purchaseService;
 
     /**
      * Creates new form ListaCompras

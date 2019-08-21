@@ -39,7 +39,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Component
 public class ListaProductos extends javax.swing.JFrame {
 
-    ProductService productService;
+    private ProductService productService;
 
 
     private NavigationHandler navigationHandler;

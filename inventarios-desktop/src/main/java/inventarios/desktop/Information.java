@@ -35,7 +35,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Information extends javax.swing.JFrame {
 
-    NavigationHandler navigationHandler;
+    private NavigationHandler navigationHandler;
 
     /**
      * Creates new form Información

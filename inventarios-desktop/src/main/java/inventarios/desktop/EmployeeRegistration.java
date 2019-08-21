@@ -36,9 +36,9 @@ import javax.swing.JPanel;
 @Component
 public class EmployeeRegistration extends javax.swing.JFrame {
 
-    NavigationHandler navigationHandler;
+    private NavigationHandler navigationHandler;
 
-    EmployeeService employeeService;
+    private EmployeeService employeeService;
 
     @Autowired
     public EmployeeRegistration(

@@ -28,7 +28,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Lazy;
 
 /**
  *
@@ -37,9 +36,9 @@ import org.springframework.context.annotation.Lazy;
 @Component
 public class ProviderManagement extends javax.swing.JFrame {
         
-    NavigationHandler navigationHandler;
+    private NavigationHandler navigationHandler;
     
-    ProviderService providerService;
+    private ProviderService providerService;
 
     /**
      * Creates new form ProveedorVentana

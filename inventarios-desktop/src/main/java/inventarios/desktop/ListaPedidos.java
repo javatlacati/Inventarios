@@ -36,7 +36,7 @@ import java.awt.event.WindowEvent;
 @Component
 public class ListaPedidos extends javax.swing.JFrame {
 
-    NavigationHandler navigationHandler;
+    private NavigationHandler navigationHandler;
 
     /**
      * Creates new form ListaPedidos
