@@ -7,13 +7,10 @@
  [![Known Vulnerabilities](https://snyk.io/test/github/javatlacati/Inventarios/badge.svg)](https://snyk.io/test/github/javatlacati/Inventarios)
  [![DepShield Badge](https://depshield.sonatype.org/badges/javatlacati/Inventarios/depshield.svg)](https://depshield.github.io)
  
- 
   Linux Build [![Linux Build Status](https://travis-ci.org/javatlacati/Inventarios.svg?branch=master)](https://travis-ci.org/javatlacati/Inventarios)
-
   
   Windows Build [![Windows Build status](https://ci.appveyor.com/api/projects/status/m8wf4stxoxl5k4nl?svg=true)](https://ci.appveyor.com/project/javatlacati/inventarios)
   
-
 It has two related systems, a rest service for an Inventory Management System and a system for Desktop client.
 
 Database Model
@@ -26,7 +23,6 @@ Screenshots
 ---
 
 ![](screenshots/login.png)
-
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjavatlacati%2FInventarios.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjavatlacati%2FInventarios?ref=badge_large)
