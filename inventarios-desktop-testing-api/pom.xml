@@ -33,7 +33,7 @@
       <groupId>org.mockito</groupId>
       <artifactId>mockito-all</artifactId>
       <version>1.10.19</version>
-      <scope>compile</scope>
+      <scope>test</scope>
     </dependency>
       <dependency>
           <groupId>org.springframework.boot</groupId>
@@ -57,7 +57,7 @@
         <artifactId>inventarios-desktop</artifactId>
         <classifier>app-to-import</classifier>
         <version>1.0</version>
-        <scope>compile</scope>
+        <scope>test</scope>
     </dependency>
   </dependencies>
   

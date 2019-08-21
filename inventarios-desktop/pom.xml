@@ -176,6 +176,8 @@
                                 <include>**/service/*</include>
                                 <include>**/util/*</include>
                                 <include>**/model/*</include>
+                                <include>**/*.png</include>
+                                <include>**/*.jpeg</include>
                             </includes>
                         </configuration>
                     </execution>
