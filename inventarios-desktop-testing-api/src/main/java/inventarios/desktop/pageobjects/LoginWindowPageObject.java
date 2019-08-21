@@ -28,13 +28,13 @@ import org.netbeans.jemmy.operators.JTextFieldOperator;
 import java.util.ResourceBundle;
 
 public class LoginWindowPageObject {
-    ContainerOperator containerFrame;
-    JTextFieldOperator userField;
-    JPasswordFieldOperator passwordField;
-    JButtonOperator btnAccept;
-    JButtonOperator btnClear;
-    JDialogOperator userNotFoundMessage;
-    ResourceBundle bundle;
+    private ContainerOperator containerFrame;
+    private JTextFieldOperator userField;
+    private JPasswordFieldOperator passwordField;
+    private JButtonOperator btnAccept;
+    private JButtonOperator btnClear;
+    private JDialogOperator userNotFoundMessage;
+    private ResourceBundle bundle;
 
     public LoginWindowPageObject() {
         bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
