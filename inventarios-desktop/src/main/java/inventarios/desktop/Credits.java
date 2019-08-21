@@ -16,12 +16,20 @@
  */
 package inventarios.desktop;
 
+import java.awt.Font;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ResourceBundle;
+import javax.swing.GroupLayout;
 import org.springframework.stereotype.Component;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.LayoutStyle;
 
 /**
  *
@@ -53,46 +61,45 @@ public class Credits extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnGetBack = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
+        JButton btnGetBack = new JButton();
+        JButton btnClose = new JButton();
 
-        setLocation(new java.awt.Point(300, 150));
+        setLocation(new Point(300, 150));
 
-        btnGetBack.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        btnGetBack.setText("Regresar");
-        btnGetBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnGetBack.setFont(new Font("Verdana", 1, 18)); // NOI18N
+        ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        btnGetBack.setText(bundle.getString("Credits.btnGetBack.text")); // NOI18N
+        btnGetBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnGetBackActionPerformed(evt);
             }
         });
 
-        btnClose.setText("Cerrar");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnClose.setText(bundle.getString("Credits.btnClose.text")); // NOI18N
+        btnClose.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(btnClose)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 254, Short.MAX_VALUE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 254, Short.MAX_VALUE)
                 .addComponent(btnGetBack)
                 .addGap(45, 45, 45))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(463, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnGetBack)
                         .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnClose)
                         .addGap(19, 19, 19))))
         );
@@ -100,16 +107,14 @@ public class Credits extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
+    private void btnGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
         dispose();
     }//GEN-LAST:event_btnGetBackActionPerformed
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+    private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnGetBack;
     // End of variables declaration//GEN-END:variables
 }
