@@ -163,6 +163,7 @@
                             <includes>
                                 <include>**/desktop/*</include>
                                 <include>**/desktop/navigation/*</include>
+                                <include>**/service/*</include>
                                 <include>**/util/*</include>
                                 <include>**/model/*</include>
                             </includes>
