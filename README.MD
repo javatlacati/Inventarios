@@ -13,14 +13,14 @@
   
 It has two related systems, a rest service for an Inventory Management System and a system for Desktop client.
 
-Database Model
----
+## Database Model
+
 ![](screenshots/entities.png)
 
 **Note:** This project uses an in-memory database for demo purposes, you should add the driver dependency of your Database in the `pom.xml` and your user and password in the `application.properties` in order to make it work with your database. 
 
-Screenshots
----
+## Screenshots
+
 
 ![](screenshots/login.png)
 
