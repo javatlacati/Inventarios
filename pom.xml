@@ -24,6 +24,8 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--handles-->
         <maven.test.skip>false</maven.test.skip>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
     <build>
@@ -39,8 +41,8 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
             <!-- code coverage exporting -->
@@ -52,7 +54,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     <repoToken>cwOQWQhtPnhwjn1pTDmopqqmaqxkhvfS8</repoToken>
                 </configuration>
             </plugin>
-            <!-- code coverage -->
+            <!-- code coverage 
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -66,7 +68,8 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     </execution>
                 </executions>
                 <dependencies>
-                    <!--        jaxb-->
+        
+                    jaxb
                     <dependency>
                         <groupId>javax.xml.bind</groupId>
                         <artifactId>jaxb-api</artifactId>
@@ -88,6 +91,15 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                         <version>1.1.1</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
             </plugin>
         </plugins>
     </build>

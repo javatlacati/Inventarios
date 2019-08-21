@@ -14,24 +14,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package desktop.pageobjects;
+package inventarios.desktop.pageobjects;
 
-import java.util.ResourceBundle;
 import org.netbeans.jemmy.operators.ContainerOperator;
+import org.netbeans.jemmy.operators.JButtonOperator;
 import org.netbeans.jemmy.operators.JFrameOperator;
 
-/**
- *
- * @author Ivana Martinez C
- */
-public class OrderManagementPageObject {
-    
+import java.util.ResourceBundle;
+
+public class InventoryManagementPageObject {
     private ContainerOperator containerFrame;
     private ResourceBundle bundle;
+    private JButtonOperator btnClose;
 
-    public OrderManagementPageObject() {
+    public InventoryManagementPageObject() {
         bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
-        containerFrame = new JFrameOperator(bundle.getString("OrderManagement.title")); // NOI18N
+        containerFrame = new JFrameOperator(bundle.getString("InventoryManagement.title")); // NOI18N
+        btnClose = new JButtonOperator(containerFrame, bundle.getString("InventoryManagement.btnClose.text")); // NOI18N
     }
     
+    public void clickClose(){
+        btnClose.clickMouse();
+    }
 }

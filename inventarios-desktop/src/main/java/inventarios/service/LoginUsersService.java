@@ -1,15 +1,16 @@
 package inventarios.service;
 
 import inventarios.to.LoginUser;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.logging.Logger;
+
 @Service
-@Log
 public class LoginUsersService {
 
+    private static final Logger log = Logger.getLogger(LoginUsersService.class.getName());
     private RestTemplate restTemplate;
 
     @Autowired

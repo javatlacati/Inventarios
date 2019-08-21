@@ -16,10 +16,6 @@
  */
 package desktop;
 
-import desktop.pageobjects.InventoryManagementPageObject;
-import desktop.pageobjects.LoginWindowPageObject;
-import desktop.pageobjects.MainMenuPageObject;
-import desktop.pageobjects.OrderManagementPageObject;
 import inventarios.desktop.BillingManagement;
 import inventarios.desktop.Credits;
 import inventarios.desktop.EmployeeRegistration;
@@ -31,6 +27,10 @@ import inventarios.desktop.Menu;
 import inventarios.desktop.OrderManagement;
 import inventarios.desktop.ProviderManagement;
 import inventarios.desktop.ShoppingWindow;
+import inventarios.desktop.pageobjects.InventoryManagementPageObject;
+import inventarios.desktop.pageobjects.LoginWindowPageObject;
+import inventarios.desktop.pageobjects.MainMenuPageObject;
+import inventarios.desktop.pageobjects.OrderManagementPageObject;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.LoginUsersService;
 import inventarios.service.ProductService;
