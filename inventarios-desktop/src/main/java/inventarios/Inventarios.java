@@ -7,11 +7,17 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import org.springframework.boot.WebApplicationType;
 
 @SpringBootApplication
 public class Inventarios {
+
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = new SpringApplicationBuilder(Inventarios.class).headless(false).run(args);
+        ConfigurableApplicationContext context
+                = new SpringApplicationBuilder(Inventarios.class)
+                        .headless(false)
+                        .web(WebApplicationType.NONE)
+                        .run(args);
         SwingUtilities.invokeLater(() -> {
             LoginWindow loginWindow = context.getBean(LoginWindow.class);
             loginWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
