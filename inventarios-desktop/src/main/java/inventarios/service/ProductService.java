@@ -1,6 +1,5 @@
 package inventarios.service;
 
-import inventarios.to.EmployeeDetail;
 import inventarios.to.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

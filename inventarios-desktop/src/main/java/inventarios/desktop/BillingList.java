@@ -50,15 +50,15 @@ public class BillingList extends javax.swing.JFrame {
      */
     public BillingList() {
         initComponents();
-        MostrarInterfaz();
-        MostrarLosDatos();
+        mostrarInterfaz();
+        mostrarLosDatos();
         this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
         this.getContentPane().setBackground(Color.GRAY);
 
     }
 
-    public void MostrarInterfaz() {
+    public void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//
         String data[][] = {};
 
@@ -68,7 +68,7 @@ public class BillingList extends javax.swing.JFrame {
 
     }
 
-    public void MostrarLosDatos() {
+    public void mostrarLosDatos() {
         BillingDetails f;
         for (int i = 0; i < BillingManagement.contenedor.size(); i++) {
             f = (BillingDetails) BillingManagement.contenedor.get(i);

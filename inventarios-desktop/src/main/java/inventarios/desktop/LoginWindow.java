@@ -192,10 +192,6 @@ public class LoginWindow extends javax.swing.JFrame {
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
         loginAttempt();
-    }
-
-    private void PasswordActionPerformed(java.awt.event.ActionEvent evt) {
-        loginAttempt();
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
