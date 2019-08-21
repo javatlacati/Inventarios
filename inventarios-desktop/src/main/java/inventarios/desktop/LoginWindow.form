@@ -29,7 +29,7 @@
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="1"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
@@ -46,7 +46,7 @@
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xd;&#xa;    @Override&#xd;&#xa;        public void paintComponent(java.awt.Graphics g) {&#xd;&#xa;        javax.swing.ImageIcon backgroundImageIcon = new javax.swing.ImageIcon(getClass().getResource(&quot;/ImgFondos/fondo 1.png&quot;));&#xd;&#xa;        Image backgroundImage = &#xd;&#xa;            new ImageIcon(&#xd;&#xa;                backgroundImageIcon.getImage()&#xd;&#xa;                    .getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH)&#xd;&#xa;        ).getImage();&#xd;&#xa;        g.drawImage(backgroundImage,0,0,null); // draw the background image&#xd;&#xa;    }&#xd;&#xa;};&#xd;&#xa;"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xd;&#xa;    @Override&#xd;&#xa;        public void paintComponent(java.awt.Graphics g) {&#xd;&#xa;        javax.swing.ImageIcon backgroundImageIcon = new javax.swing.ImageIcon(getClass().getResource(&quot;/ImgFondos/fondo 1.png&quot;));&#xd;&#xa;        Image backgroundImage = &#xd;&#xa;            new ImageIcon(&#xd;&#xa;                backgroundImageIcon.getImage()&#xd;&#xa;                    .getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH)&#xd;&#xa;        ).getImage();&#xd;&#xa;        g.drawImage(backgroundImage,0,0,null); // draw the background image&#xd;&#xa;    }&#xd;&#xa;}&#xd;&#xa;"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">

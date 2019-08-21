@@ -45,8 +45,8 @@ public class ListaPedidos extends javax.swing.JFrame {
     public ListaPedidos(@Qualifier("listaPedidosVisitor") NavigationHandler navigationHandler) {
         this.navigationHandler = navigationHandler;
         initComponents();
-        MostrarInterfaz();
-        MostrarLosDatos();
+        mostrarInterfaz();
+        mostrarLosDatos();
         this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
         this.getContentPane().setBackground(Color.GRAY);
@@ -54,7 +54,7 @@ public class ListaPedidos extends javax.swing.JFrame {
 
     private DefaultTableModel modelo;
     int con = 0;
-    public void MostrarInterfaz() {
+    public void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//
         String data[][] = {};
 
@@ -65,7 +65,7 @@ public class ListaPedidos extends javax.swing.JFrame {
 
     }
 
-    public void MostrarLosDatos() {
+    public void mostrarLosDatos() {
         OrderDetail p;
         for (int i = 0; i < OrderManagement.contenedor.size(); i++) {
             p = (OrderDetail) OrderManagement.contenedor.get(i);
@@ -123,17 +123,6 @@ public class ListaPedidos extends javax.swing.JFrame {
         setTitle(bundle.getString("ListaPedidos.title")); // NOI18N
         setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         jScrollPane1.setViewportView(jTable1);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
