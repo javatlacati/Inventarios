@@ -37,9 +37,9 @@ public class StorageLocation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    String locationName;
-    String state;
-    String city;
+    private String locationName;
+    private String state;
+    private String city;
 //    String Municipio;
 //    String Pueblo;
 }

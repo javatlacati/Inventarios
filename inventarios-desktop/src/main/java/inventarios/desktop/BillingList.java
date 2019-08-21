@@ -87,7 +87,7 @@ public class BillingList extends JFrame {
             modelo.setValueAt(f.getState(), con, 8);
             modelo.setValueAt(f.getCountry(), con, 9);
             modelo.setValueAt(f.getPoBox(), con, 10);
-            modelo.setValueAt(f.getEM(), con, 11);
+            modelo.setValueAt(f.getEmail(), con, 11);
 
         }
     }

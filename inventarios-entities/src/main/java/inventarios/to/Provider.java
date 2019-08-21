@@ -41,16 +41,16 @@ public class Provider {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotEmpty(message = "{providername.notempty}")
-    String name;
-    String address;
-    String lastName;
-    String number;
+    private String name;
+    private String address;
+    private String lastName;
+    private String number;
     @Digits(integer = 10, fraction = 0, message = "{providerphone.pattern}")
-    String telephoneNumber;
+    private String telephoneNumber;
     @Email
-    String email;
+    private String email;
     @Digits(integer = 5, fraction = 0, message = "{providerpobox.pattern}")
-    String poBox;
+    private String poBox;
 
 //    String lugar;
 //    String domicilio;

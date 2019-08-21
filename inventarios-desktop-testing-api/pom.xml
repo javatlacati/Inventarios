@@ -68,13 +68,14 @@
               <artifactId>maven-compiler-plugin</artifactId>
               <configuration>
 <!--                  <release>12</release>-->
-                  <annotationProcessorPaths>
-                      <path>
-                          <groupId>org.projectlombok</groupId>
-                          <artifactId>lombok</artifactId>
-                          <version>1.18.8</version>
-                      </path>
-                  </annotationProcessorPaths>
+<!--                  <annotationProcessorPaths>-->
+<!--                      <path>-->
+<!--                          <groupId>org.projectlombok</groupId>-->
+<!--                          <artifactId>lombok</artifactId>-->
+<!--                          <version>1.18.8</version>-->
+<!--                      </path>-->
+<!--                  </annotationProcessorPaths>-->
+<!--                  <forceJavacCompilerUse>true</forceJavacCompilerUse>-->
               </configuration>
 <!--              <dependencies>-->
 <!--                  <dependency>-->

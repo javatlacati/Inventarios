@@ -52,7 +52,7 @@ public class LoginUser implements Serializable {
     @NotEmpty(message = "{password.notempty}")
     private String password;
     @OneToOne
-    EmployeeDetail employeeDetail;
+    private EmployeeDetail employeeDetail;
     private boolean active;
 
 

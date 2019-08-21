@@ -48,10 +48,10 @@ public class ProductPrice implements Serializable {
     private Long id;
     
     @OneToOne
-    Product product;
+    private Product product;
     
-    Double price;
+    private Double price;
     
     //@Temporal(value = DATE)
-    Date stablished;
+    private Date stablished;
 }

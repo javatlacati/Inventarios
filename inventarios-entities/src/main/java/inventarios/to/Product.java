@@ -51,22 +51,22 @@ public class Product implements Serializable {
     private Long id;
 
     @NotNull(message = "{productdatein.notempty}")
-    Date dateIn;
+    private Date dateIn;
 
     @NotNull
-    Date dateOut;
+    private Date dateOut;
 
     @NotEmpty(message = "{productname.notempty}")
-    String name;
+    private String name;
 
     @NotNull
-    Integer quantity;
+    private Integer quantity;
 
     @NotEmpty(message = "{productserial.notempty}")
-    String serial;
+    private String serial;
 
     @OneToOne
-    ProductCharacteristic characteristics;
+    private ProductCharacteristic characteristics;
 
     public Product(String name, Integer quantity, String serial, Date dateIn, Date dateOut, ProductCharacteristic characteristics) {
         this.name = name;

@@ -38,20 +38,20 @@ public class ProductCharacteristic implements Serializable {
     private Long id;
 
     @OneToOne
-    EmployeeDetail encargadoregistro;
+    private EmployeeDetail encargadoregistro;
     @OneToOne
-    StorageLocation location;
+    private StorageLocation location;
 
-    Double monetaryValue;
-    String shape;
-    String color;
-    String size;
+    private Double monetaryValue;
+    private String shape;
+    private String color;
+    private String size;
 //    String cosas;
 //    String variedad;
 //    String descripcion;
 //    String precio;
 //    String moneda;
-    String quality;
+    private String quality;
 //    String vistobueno;
 //    String cosa;
 //    String bueno;

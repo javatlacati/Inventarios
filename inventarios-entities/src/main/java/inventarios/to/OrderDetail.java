@@ -46,12 +46,12 @@ public class OrderDetail implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    String number;
+    private String number;
     @OneToMany
-    List<Product> products;
+    private List<Product> products;
     @OneToOne
-    EmployeeDetail employee;
-    Date orderDate;
+    private EmployeeDetail employee;
+    private Date orderDate;
 //    String localNumber;
 //    String entity;
 //    String places;

@@ -43,5 +43,5 @@ public class Sale implements Serializable {
     private Long id;
     
     @OneToMany
-    List<ProductPrice> productPrices;
+    private List<ProductPrice> productPrices;
 }

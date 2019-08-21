@@ -46,11 +46,11 @@ public class Purchase implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    Date date;
+    private Date date;
     @OneToOne
-    Provider provider;
+    private Provider provider;
     @OneToMany
-    List<Product> Producto;
+    private List<Product> Producto;
     @OneToOne
-    OrderDetail requestingOrder;
+    private OrderDetail requestingOrder;
 }

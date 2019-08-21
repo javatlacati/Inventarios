@@ -41,16 +41,16 @@ public class BillingDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    String rfc;
-    String RS;
-    String streetName;
-    String NE;
-    String NI;
-    String Colonia;
-    String Localidad;
-    String DM;
-    String state;
-    String country;
-    String poBox;
-    String EM;
+    private String rfc;
+    private String RS;
+    private String streetName;
+    private String NE;
+    private String NI;
+    private String Colonia;
+    private String Localidad;
+    private String DM;
+    private String state;
+    private String country;
+    private String poBox;
+    private String email;
 }
