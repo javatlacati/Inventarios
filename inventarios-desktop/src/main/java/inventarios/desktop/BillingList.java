@@ -24,8 +24,11 @@ import org.springframework.stereotype.Component;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ResourceBundle;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
@@ -33,7 +36,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * @author Personal
  */
 @Component
-public class BillingList extends javax.swing.JFrame {
+public class BillingList extends JFrame {
 
     private DefaultTableModel modelo;
     int con = 0;
@@ -115,18 +118,19 @@ public class BillingList extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnDeleteRow = new javax.swing.JButton();
-        btnDeleteAll = new javax.swing.JButton();
-        btnMenu = new javax.swing.JButton();
-        btnGetBack = new javax.swing.JButton();
+        jScrollPane1 = new JScrollPane();
+        jTable1 = new JTable();
+        btnDeleteRow = new JButton();
+        btnDeleteAll = new JButton();
+        btnMenu = new JButton();
+        btnGetBack = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Lista de Facturas Agregadas");
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setTitle(bundle.getString("BillingList.title")); // NOI18N
         setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -139,80 +143,78 @@ public class BillingList extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
+        btnDeleteRow.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
         btnDeleteRow.setContentAreaFilled(false);
-        btnDeleteRow.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDeleteRow.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnDeleteRowActionPerformed(evt);
             }
         });
 
-        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
+        btnDeleteAll.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
         btnDeleteAll.setBorder(null);
         btnDeleteAll.setContentAreaFilled(false);
-        btnDeleteAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDeleteAll.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnDeleteAllActionPerformed(evt);
             }
         });
 
-        btnMenu.setBackground(new java.awt.Color(255, 0, 51));
-        btnMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnMenu.setText("Menu");
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMenu.setBackground(new Color(255, 0, 51));
+        btnMenu.setFont(new Font("Tahoma", 1, 18)); // NOI18N
+        btnMenu.setText(bundle.getString("BillingList.btnMenu.text")); // NOI18N
+        btnMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
 
-        btnGetBack.setText("REGRESAR");
-        btnGetBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnGetBack.setText(bundle.getString("BillingList.btnGetBack.text")); // NOI18N
+        btnGetBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnGetBackActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 785, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(btnDeleteRow)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGetBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
                 .addGap(126, 126, 126)
                 .addComponent(btnDeleteAll)
                 .addGap(53, 53, 53))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnMenu, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnGetBack))
-                        .addComponent(btnDeleteRow, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnDeleteRow, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnDeleteAll))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDeleteRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowActionPerformed
+    private void btnDeleteRowActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowActionPerformed
         try {
             modelo = (DefaultTableModel) jTable1.getModel();
             modelo.removeRow(jTable1.getSelectedRow());
@@ -223,7 +225,7 @@ public class BillingList extends javax.swing.JFrame {
         }         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteRowActionPerformed
 
-    private void btnDeleteAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAllActionPerformed
+    private void btnDeleteAllActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnDeleteAllActionPerformed
         try {
             DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
             int filas = jTable1.getRowCount();
@@ -235,20 +237,20 @@ public class BillingList extends javax.swing.JFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteAllActionPerformed
 
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+    private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
+    private void btnGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
         navigationHandler.goToBillingManagement(this);
     }//GEN-LAST:event_btnGetBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDeleteAll;
-    private javax.swing.JButton btnDeleteRow;
-    private javax.swing.JButton btnGetBack;
-    private javax.swing.JButton btnMenu;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private JButton btnDeleteAll;
+    private JButton btnDeleteRow;
+    private JButton btnGetBack;
+    private JButton btnMenu;
+    private JScrollPane jScrollPane1;
+    private JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

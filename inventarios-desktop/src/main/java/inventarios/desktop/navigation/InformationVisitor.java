@@ -18,8 +18,6 @@ package inventarios.desktop.navigation;
 
 import inventarios.desktop.Menu;
 import javax.swing.JFrame;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 /**
