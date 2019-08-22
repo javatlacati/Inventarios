@@ -22,11 +22,28 @@ import inventarios.to.Provider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle;
+import javax.swing.WindowConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
@@ -34,7 +51,17 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * @author EfraJiJim
  */
 @Component
-public class ProviderManagement extends javax.swing.JFrame {
+public class ProviderManagement extends JFrame {
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JTextField txtAddress;
+    private JTextField txtEmail;
+    private JTextField txtLastName;
+    private JTextField txtName;
+    private JTextField txtPOBox;
+    private JTextField txtProvider;
+    private JTextField txtTelephone;
+    // End of variables declaration//GEN-END:variables
         
     private NavigationHandler navigationHandler;
     
@@ -66,28 +93,28 @@ public class ProviderManagement extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblName = new javax.swing.JLabel();
-        lblLastName = new javax.swing.JLabel();
-        lblAddress = new javax.swing.JLabel();
-        lblProvider = new javax.swing.JLabel();
-        lblTelephone = new javax.swing.JLabel();
-        lblEmail = new javax.swing.JLabel();
-        lblPOBox = new javax.swing.JLabel();
-        txtProvider = new javax.swing.JTextField();
-        txtName = new javax.swing.JTextField();
-        txtLastName = new javax.swing.JTextField();
-        txtAddress = new javax.swing.JTextField();
-        txtTelephone = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        txtPOBox = new javax.swing.JTextField();
-        btnAdd = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
-        btnClean = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
-        btnMenu = new javax.swing.JButton();
+        JLabel lblName = new JLabel();
+        JLabel lblLastName = new JLabel();
+        JLabel lblAddress = new JLabel();
+        JLabel lblProvider = new JLabel();
+        JLabel lblTelephone = new JLabel();
+        JLabel lblEmail = new JLabel();
+        JLabel lblPOBox = new JLabel();
+        txtProvider = new JTextField();
+        txtName = new JTextField();
+        txtLastName = new JTextField();
+        txtAddress = new JTextField();
+        txtTelephone = new JTextField();
+        txtEmail = new JTextField();
+        txtPOBox = new JTextField();
+        JButton btnAdd = new JButton();
+        JButton btnClose = new JButton();
+        JButton btnClean = new JButton();
+        JButton btnSearch = new JButton();
+        JButton btnMenu = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("ProviderManagement.title")); // NOI18N
         setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setResizable(false);
@@ -106,163 +133,161 @@ public class ProviderManagement extends javax.swing.JFrame {
 
         lblPOBox.setText(bundle.getString("ProviderManagement.lblPOBox.text")); // NOI18N
 
-        txtProvider.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
+        txtProvider.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
                 txtProviderKeyTyped(evt);
             }
         });
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
+        btnAdd.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
         btnAdd.setBorder(null);
         btnAdd.setContentAreaFilled(false);
-        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAdd.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnAdd.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
         btnClose.setBorder(null);
         btnClose.setContentAreaFilled(false);
-        btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnClose.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnClose.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
         btnClean.setBorder(null);
         btnClean.setContentAreaFilled(false);
-        btnClean.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnClean.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnClean.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnClean.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnCleanActionPerformed(evt);
             }
         });
 
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
+        btnSearch.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
         btnSearch.setBorder(null);
         btnSearch.setContentAreaFilled(false);
-        btnSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSearch.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnSearch.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnSearchActionPerformed(evt);
             }
         });
 
-        btnMenu.setBackground(new java.awt.Color(0, 0, 255));
-        btnMenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnMenu.setBackground(new Color(0, 0, 255));
+        btnMenu.setFont(new Font("Tahoma", 1, 24)); // NOI18N
         btnMenu.setText(bundle.getString("ProviderManagement.btnMenu.text")); // NOI18N
-        btnMenu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMenu.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
+        btnMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblProvider)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtProvider, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblName)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtName, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblAddress)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtAddress, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblLastName)
                                         .addGap(14, 14, 14)
-                                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtLastName, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)))
                                 .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPOBox)
                                     .addComponent(lblTelephone)
                                     .addComponent(lblEmail))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPOBox, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTelephone, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPOBox, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(btnMenu)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                         .addComponent(btnClean)
                         .addComponent(btnAdd))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addComponent(btnClose)
                             .addComponent(btnSearch))))
                 .addGap(20, 20, 20))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(lblProvider)
-                            .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtProvider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(lblName)
                             .addComponent(lblTelephone)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTelephone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(lblLastName)
                             .addComponent(lblEmail)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtLastName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(btnAdd)
                         .addGap(18, 18, 18)
                         .addComponent(btnClean)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAddress)
                             .addComponent(lblPOBox)
-                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPOBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtAddress, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPOBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSearch, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addComponent(btnClose)
                     .addComponent(btnMenu))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
+    private void btnCleanActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
         txtProvider.setText("");
         txtName.setText("");
         txtLastName.setText("");
@@ -277,11 +302,11 @@ public class ProviderManagement extends javax.swing.JFrame {
      *
      * @param evt event performen on the visual component
      */
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+    private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnAddActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         String Num = txtProvider.getText();
         String Nombre = txtName.getText();
         String Apellidos = txtLastName.getText();
@@ -302,15 +327,15 @@ public class ProviderManagement extends javax.swing.JFrame {
         txtPOBox.setText("");
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void txtProviderKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProviderKeyTyped
+    private void txtProviderKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtProviderKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtProviderKeyTyped
 
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+    private void btnSearchActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         navigationHandler.goToFrame(this, ListaProveedores.class);
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+    private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
     //Método para confirmar el cierre deJFrame//
@@ -337,25 +362,4 @@ public class ProviderManagement extends javax.swing.JFrame {
         }
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnClean;
-    private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btnSearch;
-    private javax.swing.JLabel lblAddress;
-    private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblLastName;
-    private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblPOBox;
-    private javax.swing.JLabel lblProvider;
-    private javax.swing.JLabel lblTelephone;
-    private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtLastName;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPOBox;
-    private javax.swing.JTextField txtProvider;
-    private javax.swing.JTextField txtTelephone;
-    // End of variables declaration//GEN-END:variables
 }

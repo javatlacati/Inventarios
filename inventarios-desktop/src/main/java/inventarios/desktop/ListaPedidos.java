@@ -47,6 +47,10 @@ import javax.swing.WindowConstants;
 @Component
 public class ListaPedidos extends javax.swing.JFrame {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JTable tableOrders;
+    // End of variables declaration//GEN-END:variables
+
     private NavigationHandler navigationHandler;
 
     /**
@@ -269,7 +273,4 @@ public class ListaPedidos extends javax.swing.JFrame {
         navigationHandler.goToOrderManagement(this);
     }//GEN-LAST:event_btnGoBackActionPerformed
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JTable tableOrders;
-    // End of variables declaration//GEN-END:variables
 }

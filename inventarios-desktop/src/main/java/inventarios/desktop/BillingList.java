@@ -47,8 +47,17 @@ import java.util.ResourceBundle;
 @Component
 public class BillingList extends JFrame {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JButton btnDeleteAll;
+    private JButton btnDeleteRow;
+    private JButton btnGetBack;
+    private JButton btnMenu;
+    private JScrollPane jScrollPane1;
+    private JTable jTable1;
+    // End of variables declaration//GEN-END:variables
+
     private DefaultTableModel modelo;
-    int con = 0;
+    private int con = 0;
 
     @Autowired
     @Qualifier("billingListVisitor")
@@ -251,12 +260,4 @@ public class BillingList extends JFrame {
         navigationHandler.goToBillingManagement(this);
     }//GEN-LAST:event_btnGetBackActionPerformed
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JButton btnDeleteAll;
-    private JButton btnDeleteRow;
-    private JButton btnGetBack;
-    private JButton btnMenu;
-    private JScrollPane jScrollPane1;
-    private JTable jTable1;
-    // End of variables declaration//GEN-END:variables
 }

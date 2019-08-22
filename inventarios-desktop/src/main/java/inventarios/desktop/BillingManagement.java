@@ -37,6 +37,21 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Component
 public class BillingManagement extends JFrame {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    JTextField txtCorporativeName;
+    JTextField txtCountry;
+    JTextField txtEmail;
+    JTextField txtInsideNumber;
+    JTextField txtLocality;
+    JTextField txtMunicipality;
+    JTextField txtNeighborhood;
+    JTextField txtOutsideNumber;
+    JTextField txtPOBox;
+    JTextField txtRfc;
+    JTextField txtState;
+    JTextField txtStreet;
+    // End of variables declaration//GEN-END:variables
+
     private NavigationHandler navigationHandler;
 
     @Autowired
@@ -264,19 +279,5 @@ public class BillingManagement extends JFrame {
         }
 
     }
-    
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    JTextField txtCorporativeName;
-    JTextField txtCountry;
-    JTextField txtEmail;
-    JTextField txtInsideNumber;
-    JTextField txtLocality;
-    JTextField txtMunicipality;
-    JTextField txtNeighborhood;
-    JTextField txtOutsideNumber;
-    JTextField txtPOBox;
-    JTextField txtRfc;
-    JTextField txtState;
-    JTextField txtStreet;
-    // End of variables declaration//GEN-END:variables
+
 }

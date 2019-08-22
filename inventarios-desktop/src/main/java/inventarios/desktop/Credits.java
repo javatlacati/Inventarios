@@ -38,6 +38,9 @@ import javax.swing.LayoutStyle;
 @Component
 public class Credits extends javax.swing.JFrame {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
+
     /**
      * Creates new form Creditos
      */
@@ -115,6 +118,4 @@ public class Credits extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
 }

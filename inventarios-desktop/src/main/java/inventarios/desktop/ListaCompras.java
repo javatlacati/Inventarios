@@ -48,6 +48,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class ListaCompras extends javax.swing.JFrame {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JTable shoppingTable;
+    // End of variables declaration//GEN-END:variables
     
     private NavigationHandler navigationHandler;
     
@@ -240,7 +243,5 @@ public class ListaCompras extends javax.swing.JFrame {
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JTable shoppingTable;
-    // End of variables declaration//GEN-END:variables
+
 }

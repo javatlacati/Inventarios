@@ -19,18 +19,33 @@ package inventarios.desktop;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProductService;
 import inventarios.to.Product;
+import java.awt.BorderLayout;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Qualifier;
+import java.util.ResourceBundle;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.OverlayLayout;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -38,6 +53,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
  */
 @Component
 public class ListaProductos extends javax.swing.JFrame {
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JTable productsTable;
+    // End of variables declaration//GEN-END:variables
 
     private ProductService productService;
 
@@ -110,90 +129,79 @@ public class ListaProductos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlTitle = new javax.swing.JPanel();
-        lblTitle = new javax.swing.JLabel();
-        lblBackgroundTitle = new javax.swing.JLabel();
-        pnlTable = new javax.swing.JPanel();
-        tableScroll = new javax.swing.JScrollPane();
-        productsTable = new javax.swing.JTable();
-        optionsMenu = new javax.swing.JPanel();
-        tableOptionsPanel = new javax.swing.JPanel();
-        btneliminar = new javax.swing.JButton();
-        btneliminartodo = new javax.swing.JButton();
-        navigationPanel = new javax.swing.JPanel();
-        btnMenu = new javax.swing.JButton();
-        btnGoBack = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
+        JPanel pnlTitle = new JPanel();
+        JLabel lblTitle = new JLabel();
+        JLabel lblBackgroundTitle = new JLabel();
+        JPanel pnlTable = new JPanel();
+        JScrollPane tableScroll = new JScrollPane();
+        productsTable = new JTable();
+        JPanel optionsMenu = new JPanel();
+        JPanel tableOptionsPanel = new JPanel();
+        JButton btneliminar = new JButton();
+        JButton btneliminartodo = new JButton();
+        JPanel navigationPanel = new JPanel();
+        JButton btnMenu = new JButton();
+        JButton btnGoBack = new JButton();
+        JButton btnClose = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("ListaProductos.title")); // NOI18N
         setIconImage(new ImageIcon(getClass().getResource
             ("/ImgFondos/Icono.png")).getImage());
     setResizable(false);
 
     pnlTitle.setOpaque(false);
-    pnlTitle.setLayout(new javax.swing.OverlayLayout(pnlTitle));
+    pnlTitle.setLayout(new OverlayLayout(pnlTitle));
 
-    lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-    lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/productos agregados.png"))); // NOI18N
+    lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+    lblTitle.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/productos agregados.png"))); // NOI18N
     pnlTitle.add(lblTitle);
 
-    lblBackgroundTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
+    lblBackgroundTitle.setIcon(new ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
     lblBackgroundTitle.setOpaque(true);
     lblBackgroundTitle.setPreferredSize(lblTitle.size());
     pnlTitle.add(lblBackgroundTitle);
 
-    getContentPane().add(pnlTitle, java.awt.BorderLayout.PAGE_START);
+    getContentPane().add(pnlTitle, BorderLayout.PAGE_START);
 
     pnlTable.setOpaque(false);
-    pnlTable.setLayout(new java.awt.BorderLayout());
+    pnlTable.setLayout(new BorderLayout());
 
     tableScroll.setOpaque(false);
 
-    productsTable.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
-    productsTable.setForeground(new java.awt.Color(153, 0, 0));
-    productsTable.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null}
-        },
-        new String [] {
-            "Title 1", "Title 2", "Title 3", "Title 4"
-        }
-    ));
+    productsTable.setFont(new Font("Monospaced", 1, 18)); // NOI18N
+    productsTable.setForeground(new Color(153, 0, 0));
     productsTable.setOpaque(false);
     tableScroll.setViewportView(productsTable);
 
-    pnlTable.add(tableScroll, java.awt.BorderLayout.CENTER);
+    pnlTable.add(tableScroll, BorderLayout.CENTER);
 
-    getContentPane().add(pnlTable, java.awt.BorderLayout.CENTER);
+    getContentPane().add(pnlTable, BorderLayout.CENTER);
 
     optionsMenu.setOpaque(false);
-    optionsMenu.setLayout(new java.awt.GridLayout(1, 3));
+    optionsMenu.setLayout(new GridLayout(1, 3));
 
     tableOptionsPanel.setOpaque(false);
-    tableOptionsPanel.setLayout(new java.awt.GridLayout(1, 0));
+    tableOptionsPanel.setLayout(new GridLayout(1, 0));
 
-    btneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
+    btneliminar.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
     btneliminar.setBorder(null);
     btneliminar.setContentAreaFilled(false);
-    btneliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    btneliminar.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
+    btneliminar.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    btneliminar.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
             btneliminarActionPerformed(evt);
         }
     });
     tableOptionsPanel.add(btneliminar);
 
-    btneliminartodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
+    btneliminartodo.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
     btneliminartodo.setBorder(null);
     btneliminartodo.setContentAreaFilled(false);
-    btneliminartodo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    btneliminartodo.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
+    btneliminartodo.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    btneliminartodo.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
             btneliminartodoActionPerformed(evt);
         }
     });
@@ -203,28 +211,28 @@ public class ListaProductos extends javax.swing.JFrame {
 
     navigationPanel.setOpaque(false);
 
-    btnMenu.setBackground(new java.awt.Color(255, 0, 51));
-    btnMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+    btnMenu.setBackground(new Color(255, 0, 51));
+    btnMenu.setFont(new Font("Tahoma", 1, 18)); // NOI18N
     btnMenu.setText(bundle.getString("ListaProductos.btnMenu.text")); // NOI18N
     btnMenu.setOpaque(false);
-    btnMenu.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
+    btnMenu.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
             btnMenuActionPerformed(evt);
         }
     });
     navigationPanel.add(btnMenu);
 
     btnGoBack.setText(bundle.getString("ListaProductos.btnGoBack.text")); // NOI18N
-    btnGoBack.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
+    btnGoBack.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
             btnGoBackActionPerformed(evt);
         }
     });
     navigationPanel.add(btnGoBack);
 
     btnClose.setText(bundle.getString("ListaProductos.btnClose.text")); // NOI18N
-    btnClose.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
+    btnClose.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
             btnCloseActionPerformed(evt);
         }
     });
@@ -232,13 +240,13 @@ public class ListaProductos extends javax.swing.JFrame {
 
     optionsMenu.add(navigationPanel);
 
-    getContentPane().add(optionsMenu, java.awt.BorderLayout.SOUTH);
+    getContentPane().add(optionsMenu, BorderLayout.SOUTH);
 
     pack();
     setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
+    private void btneliminarActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         try {
             model = (DefaultTableModel) productsTable.getModel();
             final int selectedRow = productsTable.getSelectedRow();
@@ -261,7 +269,7 @@ public class ListaProductos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btneliminarActionPerformed
 
-    private void btneliminartodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminartodoActionPerformed
+    private void btneliminartodoActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btneliminartodoActionPerformed
         // TODO add your handling code here:
         try {
             DefaultTableModel model = (DefaultTableModel) productsTable.getModel();
@@ -275,35 +283,19 @@ public class ListaProductos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btneliminartodoActionPerformed
 
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+    private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+    private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
 
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
+    private void btnGoBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         navigationHandler.goToInventoryManagement(this);
     }//GEN-LAST:event_btnGoBackActionPerformed
 
     private javax.swing.JTable datos;
     private javax.swing.JScrollPane jScrollPane1;
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnGoBack;
-    private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btneliminar;
-    private javax.swing.JButton btneliminartodo;
-    private javax.swing.JLabel lblBackgroundTitle;
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JPanel navigationPanel;
-    private javax.swing.JPanel optionsMenu;
-    private javax.swing.JPanel pnlTable;
-    private javax.swing.JPanel pnlTitle;
-    private javax.swing.JTable productsTable;
-    private javax.swing.JPanel tableOptionsPanel;
-    private javax.swing.JScrollPane tableScroll;
-    // End of variables declaration//GEN-END:variables
 }

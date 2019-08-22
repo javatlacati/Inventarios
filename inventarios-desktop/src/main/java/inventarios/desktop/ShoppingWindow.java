@@ -24,13 +24,16 @@ import inventarios.service.PurchaseService;
 import inventarios.to.Product;
 import inventarios.to.Provider;
 import inventarios.to.Purchase;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -40,6 +43,16 @@ import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
@@ -48,6 +61,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
  */
 @Component
 public class ShoppingWindow extends javax.swing.JFrame {
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JComboBox<String> cmbProvider;
+    private JTextField txtAdress;
+    private JTextField txtContributor;
+    private JDateChooser txtDate;
+    private JTextField txtEmail;
+    private JList<Product> txtProduct;
+    private JTextField txtTelephone;
+    // End of variables declaration//GEN-END:variables
 
     private NavigationHandler navigationHandler;
 
@@ -108,29 +131,29 @@ public class ShoppingWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pntlButtons = new JPanel();
-        btnAdd = new JButton();
-        btnSearch = new JButton();
-        btnClean = new JButton();
-        btnClose = new JButton();
-        btnMenu = new JButton();
-        centerPanel = new JPanel();
-        pnlLabels = new JPanel();
-        lblDate = new JLabel();
-        lblProvider = new JLabel();
-        lblAddress = new JLabel();
-        lblTelephone = new JLabel();
-        lblContributor = new JLabel();
-        lblEmail = new JLabel();
-        lblProduct = new JLabel();
-        pnlFields = new JPanel();
+        JPanel pntlButtons = new JPanel();
+        JButton btnAdd = new JButton();
+        JButton btnSearch = new JButton();
+        JButton btnClean = new JButton();
+        JButton btnClose = new JButton();
+        JButton btnMenu = new JButton();
+        JPanel centerPanel = new JPanel();
+        JPanel pnlLabels = new JPanel();
+        JLabel lblDate = new JLabel();
+        JLabel lblProvider = new JLabel();
+        JLabel lblAddress = new JLabel();
+        JLabel lblTelephone = new JLabel();
+        JLabel lblContributor = new JLabel();
+        JLabel lblEmail = new JLabel();
+        JLabel lblProduct = new JLabel();
+        JPanel pnlFields = new JPanel();
         txtDate = new JDateChooser();
         cmbProvider = new JComboBox<>();
         txtAdress = new JTextField();
         txtTelephone = new JTextField();
         txtContributor = new JTextField();
         txtEmail = new JTextField();
-        scrollProducts = new JScrollPane();
+        JScrollPane scrollProducts = new JScrollPane();
         txtProduct = new JList<>();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -321,33 +344,6 @@ public class ShoppingWindow extends javax.swing.JFrame {
     private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JButton btnAdd;
-    private JButton btnClean;
-    private JButton btnClose;
-    private JButton btnMenu;
-    private JButton btnSearch;
-    private JPanel centerPanel;
-    private JComboBox<String> cmbProvider;
-    private JLabel lblAddress;
-    private JLabel lblContributor;
-    private JLabel lblDate;
-    private JLabel lblEmail;
-    private JLabel lblProduct;
-    private JLabel lblProvider;
-    private JLabel lblTelephone;
-    private JPanel pnlFields;
-    private JPanel pnlLabels;
-    private JPanel pntlButtons;
-    private JScrollPane scrollProducts;
-    private JTextField txtAdress;
-    private JTextField txtContributor;
-    private JDateChooser txtDate;
-    private JTextField txtEmail;
-    private JList<Product> txtProduct;
-    private JTextField txtTelephone;
-    // End of variables declaration//GEN-END:variables
 
     private void add() {
         /*

@@ -17,6 +17,7 @@
 package inventarios.desktop;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
@@ -25,7 +26,11 @@ import javax.swing.JPanel;
  *
  * @author IDELFONSO
  */
-public class Presentacion extends javax.swing.JFrame {
+public class Presentacion extends JFrame {
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form Presentacion
@@ -69,6 +74,4 @@ public class Presentacion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
 }

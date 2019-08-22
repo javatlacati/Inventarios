@@ -63,6 +63,19 @@ import javax.swing.border.SoftBevelBorder;
  */
 @Component
 public class OrderManagement extends javax.swing.JFrame {
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JTextField txtAddress;
+    private JTextField txtEmployee;
+    private JTextField txtLastName;
+    private JTextField txtName;
+    private JDateChooser txtOrderDate;
+    private JTextField txtOrderNo;
+    private JTextField txtProduct;
+    private JTextField txtRfc;
+    private JTextField txtTelephone;
+    // End of variables declaration//GEN-END:variables
     
     private NavigationHandler navigationHandler;
 
@@ -423,15 +436,4 @@ public class OrderManagement extends javax.swing.JFrame {
         }
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JTextField txtAddress;
-    private JTextField txtEmployee;
-    private JTextField txtLastName;
-    private JTextField txtName;
-    private JDateChooser txtOrderDate;
-    private JTextField txtOrderNo;
-    private JTextField txtProduct;
-    private JTextField txtRfc;
-    private JTextField txtTelephone;
-    // End of variables declaration//GEN-END:variables
 }

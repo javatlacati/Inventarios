@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2019 Ruslan LÃ³pez Carro
+ * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,16 +17,17 @@
 package inventarios.desktop;
 
 import inventarios.to.Provider;
-import java.util.ArrayList;
-import java.util.List;
+
 import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ProviderComboBoxModel extends AbstractListModel implements ComboBoxModel {
 
-    Provider selectedItem;
-    List<Provider> model;
+    private Provider selectedItem;
+    private List<Provider> model;
 
     public ProviderComboBoxModel( List<Provider> model) {
         this.model = new ArrayList<>(model);

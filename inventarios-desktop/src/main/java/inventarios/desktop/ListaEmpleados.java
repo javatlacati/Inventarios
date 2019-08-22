@@ -19,32 +19,37 @@ package inventarios.desktop;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.EmployeeService;
 import inventarios.to.EmployeeDetail;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.ResourceBundle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle;
-import org.springframework.stereotype.Component;
-
 import javax.swing.table.DefaultTableModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  *
  * @author IDELFONSO
  */
 @Component
-public class ListaEmpleados extends javax.swing.JFrame {
+public class ListaEmpleados extends JFrame {
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    JTable tblEmployees;
+    // End of variables declaration//GEN-END:variables
 
     @Autowired
     private EmployeeService employeeService;
@@ -182,7 +187,4 @@ public class ListaEmpleados extends javax.swing.JFrame {
         navigationHandler.goToEmployeeRegistration(this);
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    JTable tblEmployees;
-    // End of variables declaration//GEN-END:variables
 }

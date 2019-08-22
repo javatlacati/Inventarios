@@ -22,8 +22,11 @@ import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ResourceBundle;
 import java.util.Stack;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -33,6 +36,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
  */
 @Component
 public class Menu extends javax.swing.JFrame {
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
 
     private NavigationHandler navigationHandler;
 
@@ -90,119 +97,119 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        titlePanel = new javax.swing.JPanel();
-        lblTitle = new javax.swing.JLabel();
-        contentPanel = new javax.swing.JPanel();
-        optionsPanel = new javax.swing.JPanel();
-        btnInventory = new javax.swing.JButton();
-        btnTransaction = new javax.swing.JButton();
-        btnOrders = new javax.swing.JButton();
-        btnBilling = new javax.swing.JButton();
-        btnProvider = new javax.swing.JButton();
-        btnAbout = new javax.swing.JButton();
-        btnEmployeeRecords = new javax.swing.JButton();
-        btnCredits = new javax.swing.JButton();
-        imageAndNavigationPanel = new javax.swing.JPanel();
-        imagePanel = new javax.swing.JPanel();
-        lblImage = new javax.swing.JLabel();
-        navivgationPanel = new javax.swing.JPanel();
-        btnClose = new javax.swing.JButton();
-        btnGetBack = new javax.swing.JButton();
-        menuBar = new javax.swing.JMenuBar();
-        mnuInventory = new javax.swing.JMenu();
-        mnuInventories = new javax.swing.JMenuItem();
-        mnuBills = new javax.swing.JMenuItem();
-        mnuProvider = new javax.swing.JMenuItem();
-        mnuServices = new javax.swing.JMenu();
-        mnuOrders = new javax.swing.JMenuItem();
-        mnuTransactions = new javax.swing.JMenuItem();
-        mnuAbout = new javax.swing.JMenu();
-        mnuAboutItem = new javax.swing.JMenuItem();
-        mnuGetBack = new javax.swing.JMenuItem();
+        JLabel jLabel2 = new JLabel();
+        JPanel titlePanel = new JPanel();
+        JLabel lblTitle = new JLabel();
+        JPanel contentPanel = new JPanel();
+        JPanel optionsPanel = new JPanel();
+        JButton btnInventory = new JButton();
+        JButton btnTransaction = new JButton();
+        JButton btnOrders = new JButton();
+        JButton btnBilling = new JButton();
+        JButton btnProvider = new JButton();
+        JButton btnAbout = new JButton();
+        JButton btnEmployeeRecords = new JButton();
+        JButton btnCredits = new JButton();
+        JPanel imageAndNavigationPanel = new JPanel();
+        JPanel imagePanel = new JPanel();
+        JLabel lblImage = new JLabel();
+        JPanel navivgationPanel = new JPanel();
+        JButton btnClose = new JButton();
+        JButton btnGetBack = new JButton();
+        JMenuBar menuBar = new JMenuBar();
+        JMenu mnuInventory = new JMenu();
+        JMenuItem mnuInventories = new JMenuItem();
+        JMenuItem mnuBills = new JMenuItem();
+        JMenuItem mnuProvider = new JMenuItem();
+        JMenu mnuServices = new JMenu();
+        JMenuItem mnuOrders = new JMenuItem();
+        JMenuItem mnuTransactions = new JMenuItem();
+        JMenu mnuAbout = new JMenu();
+        JMenuItem mnuAboutItem = new JMenuItem();
+        JMenuItem mnuGetBack = new JMenuItem();
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
+        jLabel2.setIcon(new ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"))); // NOI18N
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("Menu.title")); // NOI18N
         setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
-        setMinimumSize(new java.awt.Dimension(500, 250));
+        setMinimumSize(new Dimension(500, 250));
 
-        lblTitle.setFont(new java.awt.Font("Tw Cen MT", 3, 24)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(51, 0, 255));
+        lblTitle.setFont(new Font("Tw Cen MT", 3, 24)); // NOI18N
+        lblTitle.setForeground(new Color(51, 0, 255));
         lblTitle.setText(bundle.getString("Menu.lblTitle.text")); // NOI18N
         titlePanel.add(lblTitle);
 
-        getContentPane().add(titlePanel, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(titlePanel, BorderLayout.PAGE_START);
 
-        contentPanel.setLayout(new javax.swing.BoxLayout(contentPanel, javax.swing.BoxLayout.X_AXIS));
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.X_AXIS));
 
-        optionsPanel.setLayout(new java.awt.GridLayout(4, 2));
+        optionsPanel.setLayout(new GridLayout(4, 2));
 
         btnInventory.setText(bundle.getString("Menu.btnInventory.text")); // NOI18N
-        btnInventory.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnInventory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnInventory.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnInventory.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnInventoryActionPerformed(evt);
             }
         });
         optionsPanel.add(btnInventory);
 
         btnTransaction.setText(bundle.getString("Menu.btnTransaction.text")); // NOI18N
-        btnTransaction.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnTransaction.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTransaction.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnTransaction.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnTransactionActionPerformed(evt);
             }
         });
         optionsPanel.add(btnTransaction);
 
         btnOrders.setText(bundle.getString("Menu.btnOrders.text")); // NOI18N
-        btnOrders.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnOrders.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnOrders.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnOrders.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnOrdersActionPerformed(evt);
             }
         });
         optionsPanel.add(btnOrders);
 
         btnBilling.setText(bundle.getString("Menu.btnBilling.text")); // NOI18N
-        btnBilling.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBilling.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnBillingActionPerformed(evt);
             }
         });
         optionsPanel.add(btnBilling);
 
         btnProvider.setText(bundle.getString("Menu.btnProvider.text")); // NOI18N
-        btnProvider.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnProvider.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnProvider.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnProvider.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnProviderActionPerformed(evt);
             }
         });
         optionsPanel.add(btnProvider);
 
         btnAbout.setText(bundle.getString("Menu.btnAbout.text")); // NOI18N
-        btnAbout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAbout.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnAboutActionPerformed(evt);
             }
         });
         optionsPanel.add(btnAbout);
 
         btnEmployeeRecords.setText(bundle.getString("Menu.btnEmployeeRecords.text")); // NOI18N
-        btnEmployeeRecords.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnEmployeeRecords.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnEmployeeRecordsActionPerformed(evt);
             }
         });
         optionsPanel.add(btnEmployeeRecords);
 
         btnCredits.setText(bundle.getString("Menu.btnCredits.text")); // NOI18N
-        btnCredits.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCredits.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnCreditsActionPerformed(evt);
             }
         });
@@ -210,25 +217,25 @@ public class Menu extends javax.swing.JFrame {
 
         contentPanel.add(optionsPanel);
 
-        imageAndNavigationPanel.setLayout(new javax.swing.BoxLayout(imageAndNavigationPanel, javax.swing.BoxLayout.Y_AXIS));
+        imageAndNavigationPanel.setLayout(new BoxLayout(imageAndNavigationPanel, BoxLayout.Y_AXIS));
 
-        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgFondos/Imagen7.png"))); // NOI18N
+        lblImage.setIcon(new ImageIcon(getClass().getResource("/ImgFondos/Imagen7.png"))); // NOI18N
         imagePanel.add(lblImage);
 
         imageAndNavigationPanel.add(imagePanel);
 
         btnClose.setText(bundle.getString("Menu.btnClose.text")); // NOI18N
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnClose.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
         navivgationPanel.add(btnClose);
 
         btnGetBack.setText(bundle.getString("Menu.btnGetBack.text")); // NOI18N
-        btnGetBack.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnGetBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnGetBack.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnGetBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnGetBackActionPerformed(evt);
             }
         });
@@ -238,29 +245,29 @@ public class Menu extends javax.swing.JFrame {
 
         contentPanel.add(imageAndNavigationPanel);
 
-        getContentPane().add(contentPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(contentPanel, BorderLayout.CENTER);
 
         mnuInventory.setText(bundle.getString("Menu.mnuInventory.text")); // NOI18N
 
         mnuInventories.setText(bundle.getString("Menu.mnuInventories.text")); // NOI18N
-        mnuInventories.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mnuInventories.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 mnuInventoriesActionPerformed(evt);
             }
         });
         mnuInventory.add(mnuInventories);
 
         mnuBills.setText(bundle.getString("Menu.mnuBills.text")); // NOI18N
-        mnuBills.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mnuBills.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 mnuBillsActionPerformed(evt);
             }
         });
         mnuInventory.add(mnuBills);
 
         mnuProvider.setText(bundle.getString("Menu.mnuProvider.text")); // NOI18N
-        mnuProvider.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mnuProvider.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 mnuProviderActionPerformed(evt);
             }
         });
@@ -269,16 +276,16 @@ public class Menu extends javax.swing.JFrame {
         mnuServices.setText(bundle.getString("Menu.mnuServices.text")); // NOI18N
 
         mnuOrders.setText(bundle.getString("Menu.mnuOrders.text")); // NOI18N
-        mnuOrders.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mnuOrders.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 mnuOrdersActionPerformed(evt);
             }
         });
         mnuServices.add(mnuOrders);
 
         mnuTransactions.setText(bundle.getString("Menu.mnuTransactions.text")); // NOI18N
-        mnuTransactions.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mnuTransactions.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 mnuTransactionsActionPerformed(evt);
             }
         });
@@ -291,16 +298,16 @@ public class Menu extends javax.swing.JFrame {
         mnuAbout.setText(bundle.getString("Menu.mnuAbout.text")); // NOI18N
 
         mnuAboutItem.setText(bundle.getString("Menu.mnuAboutItem.text")); // NOI18N
-        mnuAboutItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mnuAboutItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 mnuAboutItemActionPerformed(evt);
             }
         });
         mnuAbout.add(mnuAboutItem);
 
         mnuGetBack.setText(bundle.getString("Menu.mnuGetBack.text")); // NOI18N
-        mnuGetBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mnuGetBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 mnuGetBackActionPerformed(evt);
             }
         });
@@ -313,105 +320,73 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
+    private void btnInventoryActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
         navigationHandler.goToInventoryManagement(this);
     }//GEN-LAST:event_btnInventoryActionPerformed
 
-    private void btnTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransactionActionPerformed
+    private void btnTransactionActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnTransactionActionPerformed
         navigationHandler.goToShopping(this);
     }//GEN-LAST:event_btnTransactionActionPerformed
 
-    private void btnOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdersActionPerformed
+    private void btnOrdersActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnOrdersActionPerformed
         navigationHandler.goToOrderManagement(this);
     }//GEN-LAST:event_btnOrdersActionPerformed
 
-    private void btnProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProviderActionPerformed
+    private void btnProviderActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnProviderActionPerformed
         navigationHandler.goToProviderManagement(this);
     }//GEN-LAST:event_btnProviderActionPerformed
 
-    private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
+    private void btnGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
         dispose();
         previouses.pop().setVisible(true);
     }//GEN-LAST:event_btnGetBackActionPerformed
 
-    private void btnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillingActionPerformed
+    private void btnBillingActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnBillingActionPerformed
         navigationHandler.goToBillingManagement(this);
     }//GEN-LAST:event_btnBillingActionPerformed
 
-    private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
+    private void btnAboutActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
         navigationHandler.goToInformation(this);
     }//GEN-LAST:event_btnAboutActionPerformed
 
-    private void mnuInventoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuInventoriesActionPerformed
+    private void mnuInventoriesActionPerformed(ActionEvent evt) {//GEN-FIRST:event_mnuInventoriesActionPerformed
         navigationHandler.goToInventoryManagement(this);
     }//GEN-LAST:event_mnuInventoriesActionPerformed
 
-    private void mnuAboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAboutItemActionPerformed
+    private void mnuAboutItemActionPerformed(ActionEvent evt) {//GEN-FIRST:event_mnuAboutItemActionPerformed
         navigationHandler.goToInformation(this);
     }//GEN-LAST:event_mnuAboutItemActionPerformed
 
-    private void mnuBillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuBillsActionPerformed
+    private void mnuBillsActionPerformed(ActionEvent evt) {//GEN-FIRST:event_mnuBillsActionPerformed
         navigationHandler.goToBillingManagement(this);
     }//GEN-LAST:event_mnuBillsActionPerformed
 
-    private void mnuProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuProviderActionPerformed
+    private void mnuProviderActionPerformed(ActionEvent evt) {//GEN-FIRST:event_mnuProviderActionPerformed
         navigationHandler.goToProviderManagement(this);
     }//GEN-LAST:event_mnuProviderActionPerformed
 
-    private void mnuOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOrdersActionPerformed
+    private void mnuOrdersActionPerformed(ActionEvent evt) {//GEN-FIRST:event_mnuOrdersActionPerformed
         navigationHandler.goToOrderManagement(this);
     }//GEN-LAST:event_mnuOrdersActionPerformed
 
-    private void mnuTransactionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuTransactionsActionPerformed
+    private void mnuTransactionsActionPerformed(ActionEvent evt) {//GEN-FIRST:event_mnuTransactionsActionPerformed
         navigationHandler.goToShopping(this);
     }//GEN-LAST:event_mnuTransactionsActionPerformed
 
-    private void mnuGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuGetBackActionPerformed
+    private void mnuGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_mnuGetBackActionPerformed
         navigationHandler.goToLogin(this);
     }//GEN-LAST:event_mnuGetBackActionPerformed
 
-    private void btnEmployeeRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeRecordsActionPerformed
+    private void btnEmployeeRecordsActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnEmployeeRecordsActionPerformed
         navigationHandler.goToEmployeeRegistration(this);
     }//GEN-LAST:event_btnEmployeeRecordsActionPerformed
 
-    private void btnCreditsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreditsActionPerformed
+    private void btnCreditsActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCreditsActionPerformed
         navigationHandler.goToCredits(this);
     }//GEN-LAST:event_btnCreditsActionPerformed
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+    private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         confirmarSalida();
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAbout;
-    private javax.swing.JButton btnBilling;
-    private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnCredits;
-    private javax.swing.JButton btnEmployeeRecords;
-    private javax.swing.JButton btnGetBack;
-    private javax.swing.JButton btnInventory;
-    private javax.swing.JButton btnOrders;
-    private javax.swing.JButton btnProvider;
-    private javax.swing.JButton btnTransaction;
-    private javax.swing.JPanel contentPanel;
-    private javax.swing.JPanel imageAndNavigationPanel;
-    private javax.swing.JPanel imagePanel;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lblImage;
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenu mnuAbout;
-    private javax.swing.JMenuItem mnuAboutItem;
-    private javax.swing.JMenuItem mnuBills;
-    private javax.swing.JMenuItem mnuGetBack;
-    private javax.swing.JMenuItem mnuInventories;
-    private javax.swing.JMenu mnuInventory;
-    private javax.swing.JMenuItem mnuOrders;
-    private javax.swing.JMenuItem mnuProvider;
-    private javax.swing.JMenu mnuServices;
-    private javax.swing.JMenuItem mnuTransactions;
-    private javax.swing.JPanel navivgationPanel;
-    private javax.swing.JPanel optionsPanel;
-    private javax.swing.JPanel titlePanel;
-    // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2019 Ruslan LÃ³pez Carro
+ * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,16 +17,17 @@
 package inventarios.desktop;
 
 import inventarios.to.Product;
-import java.util.List;
+
 import javax.swing.AbstractListModel;
+import java.util.List;
 
 /**
  *
- * @author Ivana Martinez C
+ * @author Ruslan López Carro
  */
 public class ProductListModel extends AbstractListModel {
-    Product selectedItem;
-    List<Product> model;
+    private Product selectedItem;
+    private List<Product> model;
 
     public ProductListModel(List<Product> model) {
         this.model = model;

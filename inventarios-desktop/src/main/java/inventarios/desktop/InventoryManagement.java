@@ -59,6 +59,16 @@ import java.util.Set;
 @Component
 public class InventoryManagement extends JFrame {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JTextField txtCharacteristics;
+    private JDateChooser txtDateIn;
+    private JDateChooser txtDateOut;
+    private JTextField txtName;
+    private JTextField txtProduct;
+    private JSpinner txtQuantity;
+    private JTextField txtSerialNo;
+    // End of variables declaration//GEN-END:variables
+
     private ProductService productService;
 
     private LocalValidatorFactoryBean validatorFactory;
@@ -96,23 +106,23 @@ public class InventoryManagement extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblProduct = new JLabel();
-        lblQuantity = new JLabel();
-        lblCharacteristics = new JLabel();
-        lblSerialNo = new JLabel();
+        JLabel lblProduct = new JLabel();
+        JLabel lblQuantity = new JLabel();
+        JLabel lblCharacteristics = new JLabel();
+        JLabel lblSerialNo = new JLabel();
         txtProduct = new JTextField();
         txtCharacteristics = new JTextField();
         txtSerialNo = new JTextField();
-        btnAdd = new JButton();
-        btnClean = new JButton();
-        btnClose = new JButton();
-        btnView = new JButton();
-        lblTitle = new JLabel();
+        JButton btnAdd = new JButton();
+        JButton btnClean = new JButton();
+        JButton btnClose = new JButton();
+        JButton btnView = new JButton();
+        JLabel lblTitle = new JLabel();
         txtName = new JTextField();
-        lblName = new JLabel();
-        btnMenu = new JButton();
-        lblDateIn = new JLabel();
-        lblDateOut = new JLabel();
+        JLabel lblName = new JLabel();
+        JButton btnMenu = new JButton();
+        JLabel lblDateIn = new JLabel();
+        JLabel lblDateOut = new JLabel();
         txtDateIn = new JDateChooser();
         txtDateOut = new JDateChooser();
         txtQuantity = new JSpinner();
@@ -435,26 +445,4 @@ public class InventoryManagement extends JFrame {
         confirmarSalida();
     }//GEN-LAST:event_closeHandler
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JButton btnAdd;
-    private JButton btnClean;
-    private JButton btnClose;
-    private JButton btnMenu;
-    private JButton btnView;
-    private JLabel lblCharacteristics;
-    private JLabel lblDateIn;
-    private JLabel lblDateOut;
-    private JLabel lblName;
-    private JLabel lblProduct;
-    private JLabel lblQuantity;
-    private JLabel lblSerialNo;
-    private JLabel lblTitle;
-    private JTextField txtCharacteristics;
-    private JDateChooser txtDateIn;
-    private JDateChooser txtDateOut;
-    private JTextField txtName;
-    private JTextField txtProduct;
-    private JSpinner txtQuantity;
-    private JTextField txtSerialNo;
-    // End of variables declaration//GEN-END:variables
 }

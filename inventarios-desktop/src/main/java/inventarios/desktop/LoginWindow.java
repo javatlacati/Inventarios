@@ -58,6 +58,11 @@ import org.springframework.context.annotation.Scope;
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class LoginWindow extends JFrame {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JPasswordField txtPsswd;
+    private JTextField txtUser;
+    // End of variables declaration//GEN-END:variables
+
     private LoginUsersService usersService;
     private FontFactory fontFactory;
     private NavigationHandler navigationHandler;
@@ -263,10 +268,5 @@ public class LoginWindow extends JFrame {
             System.exit(0);
         }
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JPasswordField txtPsswd;
-    private JTextField txtUser;
-    // End of variables declaration//GEN-END:variables
 
 }

@@ -18,12 +18,27 @@ package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ResourceBundle;
+import javax.swing.DebugGraphics;
+import javax.swing.GroupLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.LayoutStyle;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -34,6 +49,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Information extends javax.swing.JFrame {
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JLabel lblBigLogo;
+    private JLabel lblLogo;
+    // End of variables declaration//GEN-END:variables
 
     private NavigationHandler navigationHandler;
 
@@ -88,96 +108,94 @@ public class Information extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblBigLogo = new javax.swing.JLabel();
-        scrollCredits = new javax.swing.JScrollPane();
-        txtCredits = new javax.swing.JTextArea();
-        lblLogo = new javax.swing.JLabel();
-        btnMenu = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
+        lblBigLogo = new JLabel();
+        JScrollPane scrollCredits = new JScrollPane();
+        JTextArea txtCredits = new JTextArea();
+        lblLogo = new JLabel();
+        JButton btnMenu = new JButton();
+        JButton btnClose = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("Information.title")); // NOI18N
         setResizable(false);
 
         txtCredits.setEditable(false);
         txtCredits.setColumns(20);
-        txtCredits.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
+        txtCredits.setFont(new Font("Monospaced", 0, 18)); // NOI18N
         txtCredits.setLineWrap(true);
         txtCredits.setRows(5);
         txtCredits.setText(bundle.getString("Information.txtCredits.text")); // NOI18N
         txtCredits.setWrapStyleWord(true);
-        txtCredits.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtCredits.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         scrollCredits.setViewportView(txtCredits);
 
-        lblLogo.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lblLogo.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        lblLogo.setFont(new Font("Tahoma", 0, 8)); // NOI18N
+        lblLogo.setHorizontalAlignment(SwingConstants.CENTER);
+        lblLogo.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        lblLogo.setDebugGraphicsOptions(DebugGraphics.NONE_OPTION);
         lblLogo.setFocusable(false);
-        lblLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lblLogo.setMaximumSize(new java.awt.Dimension(10, 10));
-        lblLogo.setMinimumSize(new java.awt.Dimension(10, 10));
+        lblLogo.setHorizontalTextPosition(SwingConstants.CENTER);
+        lblLogo.setMaximumSize(new Dimension(10, 10));
+        lblLogo.setMinimumSize(new Dimension(10, 10));
         lblLogo.setName(""); // NOI18N
 
-        btnMenu.setBackground(new java.awt.Color(0, 0, 204));
-        btnMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnMenu.setBackground(new Color(0, 0, 204));
+        btnMenu.setFont(new Font("Tahoma", 1, 14)); // NOI18N
+        btnMenu.setForeground(new Color(255, 255, 255));
         btnMenu.setText(bundle.getString("Information.btnMenu.text")); // NOI18N
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
 
-        btnClose.setBackground(new java.awt.Color(255, 0, 0));
-        btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnClose.setForeground(new java.awt.Color(255, 255, 255));
+        btnClose.setBackground(new Color(255, 0, 0));
+        btnClose.setFont(new Font("Tahoma", 1, 18)); // NOI18N
+        btnClose.setForeground(new Color(255, 255, 255));
         btnClose.setText(bundle.getString("Information.btnClose.text")); // NOI18N
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnClose.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(lblBigLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblBigLogo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(6, 6, 6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(27, Short.MAX_VALUE)
-                        .addComponent(scrollCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrollCredits, GroupLayout.PREFERRED_SIZE, 512, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLogo, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addComponent(btnClose)
-                            .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
-                .addComponent(lblBigLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrollCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblBigLogo, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollCredits, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblLogo, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77)
-                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClose, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
         );
 
@@ -185,20 +203,12 @@ public class Information extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+    private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+    private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnMenu;
-    private javax.swing.JLabel lblBigLogo;
-    private javax.swing.JLabel lblLogo;
-    private javax.swing.JScrollPane scrollCredits;
-    private javax.swing.JTextArea txtCredits;
-    // End of variables declaration//GEN-END:variables
 }
