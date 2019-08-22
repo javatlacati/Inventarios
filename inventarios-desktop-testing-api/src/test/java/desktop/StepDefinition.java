@@ -40,7 +40,6 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.junit.Assert;
 import org.mockito.InjectMocks;
 import org.mockito.Matchers;
 import org.mockito.Mock;
@@ -51,6 +50,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import javax.swing.JFrame;
 import java.awt.Font;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
@@ -107,7 +107,7 @@ public class StepDefinition {
     private InventoryManagement inventoryManagement;
 
     @Before
-    public void beforeScenario(){
+    public void beforeScenario() {
         usersService = mock(LoginUsersService.class);
         navigationHandler = mock(NavigationHandler.class);
         fontFactory = mock(FontFactory.class);
@@ -125,7 +125,7 @@ public class StepDefinition {
     }
 
     @After
-    public void afterScenario(){
+    public void afterScenario() {
         reset(usersService);
         loginWindow.dispose();
     }
@@ -156,7 +156,7 @@ public class StepDefinition {
 
     @Then("^error prompt should appear$")
     public void errorPromptShouldAppear() {
-        loginWindowPageObject.userNotFoundIsShown();
+        loginWindowPageObject.userNotFoundMessageDialogIsShown();
         verify(usersService, times(1)).authenticate(Matchers.any(LoginUser.class));
     }
 
@@ -184,8 +184,8 @@ public class StepDefinition {
 
     @Then("^Login window fields should be empty$")
     public void verifyEmptyLoginFields() {
-        Assert.assertEquals("", loginWindowPageObject.getUserFieldContent());
-        Assert.assertEquals("", loginWindowPageObject.getPasswordFieldContent());
+        assertEquals("", loginWindowPageObject.getUserFieldContent());
+        assertEquals("", loginWindowPageObject.getPasswordFieldContent());
     }
 
 
@@ -202,5 +202,28 @@ public class StepDefinition {
                 .goToInventoryManagement(Matchers.any(JFrame.class));
         menuPageObject.openInvenory();
         inventoryPageObject = new InventoryManagementPageObject();
+    }
+
+    @And("^I click on close button in the Inventory Window$")
+    public void iClickOnCloseButtonInTheInventoryWindow() {
+        doAnswer(new Answer<Void>() {
+            public Void answer(InvocationOnMock invocation) {
+                inventoryManagement.setVisible(false);
+                menu.setVisible(true);
+                return null;
+            }
+        }).when(navigationHandler).goToMenu(Matchers.any(JFrame.class));
+        inventoryPageObject.clickClose();
+    }
+
+
+    @And("^error prompt message should be \'([A-Za-z\\s]+)\'$")
+    public void errorPromptMessageShouldBeUsuarioWrongNoEncontrado(String expectedMessage) {
+        assertEquals("error message in message dialog should be as expected", expectedMessage, loginWindowPageObject.getDialogMessageText());
+    }
+
+    @Then("^I click close button on prompt message$")
+    public void iClickCloseButtonOnPromptMessage() {
+        loginWindowPageObject.closeUserNotFoundMesssageDialog();
     }
 }

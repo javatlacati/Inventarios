@@ -74,17 +74,20 @@ public class LoginWindowPageObject {
         btnClear.clickMouse();
     }
 
-    public void userNotFoundIsShown() {
+    public void userNotFoundMessageDialogIsShown() {
         userNotFoundMessage = new JDialogOperator("Credenciales incorrectas");
         Assert.assertNotNull(userNotFoundMessage);
         dialogMessage = new JLabelOperator(userNotFoundMessage);
-        Assert.assertEquals("Usuario " + userField.getText() + " no encontrado", dialogMessage.getText());
+//        Assert.assertEquals("Usuario " + userField.getText() + " no encontrado", dialogMessage.getText());
+    }
+
+    public void closeUserNotFoundMesssageDialog(){
         JButtonOperator jbo = new JButtonOperator(userNotFoundMessage);
         jbo.push();
         userNotFoundMessage = null;
     }
 
-    public JLabelOperator getDialogMessage() {
-        return dialogMessage;
+    public String getDialogMessageText() {
+        return dialogMessage.getText();
     }
 }

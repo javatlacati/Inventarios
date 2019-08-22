@@ -9,6 +9,8 @@ Feature: Window Navigation
       Given I write login credentials using user 'wrong' and password 'wrong'
       And I click Login with wrong credentials
       Then error prompt should appear
+      And error prompt message should be 'Usuario wrong no encontrado'
+      Then I click close button on prompt message
 
    Scenario: Tour trough the application should be possible for authorized user
       Given I write login credentials using user 'wrong' and password 'wrong'
@@ -17,3 +19,4 @@ Feature: Window Navigation
       Given I write login credentials using user 'correct' and password 'correct'
       And I click Login with correct credentials
       And I click Inventory option in the Menu Window
+      And I click on close button in the Inventory Window

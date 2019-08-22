@@ -134,7 +134,8 @@ public class GUITest {
         loginWindowPageObject.setUserFieldContent("wrong");
         loginWindowPageObject.setPasswordFieldContent("wrong");
         loginWindowPageObject.clickAccept();
-        loginWindowPageObject.userNotFoundIsShown();
+        loginWindowPageObject.userNotFoundMessageDialogIsShown();
+        loginWindowPageObject.closeUserNotFoundMesssageDialog();
         Mockito.verify(usersService, Mockito.times(1)).authenticate(Matchers.any(LoginUser.class));
     }
 
