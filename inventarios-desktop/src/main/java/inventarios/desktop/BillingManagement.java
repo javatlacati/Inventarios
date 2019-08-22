@@ -55,8 +55,6 @@ public class BillingManagement extends JFrame {
         initComponents();
         cerrar();
         this.getContentPane().setBackground(Color.cyan);
-        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
-
     }
 
     /**
@@ -68,90 +66,100 @@ public class BillingManagement extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblRfc = new JLabel();
-        jLabel2 = new JLabel();
-        lblStreet = new JLabel();
-        jLabel4 = new JLabel();
-        jLabel5 = new JLabel();
-        jLabel6 = new JLabel();
-        jLabel7 = new JLabel();
-        jLabel8 = new JLabel();
-        lblState = new JLabel();
-        lblCountry = new JLabel();
-        lblPOBox = new JLabel();
-        lblEMail = new JLabel();
+        JPanel applicationContent = new JPanel();
+        JPanel pnlFields = new JPanel();
+        JLabel lblRfc = new JLabel();
         txtRfc = new JTextField();
-        jTextField2 = new JTextField();
+        JLabel lblCorporativeName = new JLabel();
+        txtCorporativeName = new JTextField();
+        JLabel lblStreet = new JLabel();
         txtStreet = new JTextField();
-        jTextField4 = new JTextField();
-        jTextField5 = new JTextField();
-        jTextField6 = new JTextField();
-        jTextField7 = new JTextField();
-        jTextField8 = new JTextField();
+        JLabel lblOutsideNumber = new JLabel();
+        txtOutsideNumber = new JTextField();
+        JLabel lblInsideNumber = new JLabel();
+        txtInsideNumber = new JTextField();
+        JLabel lblNeighborhood = new JLabel();
+        txtNeighborhood = new JTextField();
+        JLabel lblLocality = new JLabel();
+        txtLocality = new JTextField();
+        JLabel lblMunicipality = new JLabel();
+        txtMunicipality = new JTextField();
+        JLabel lblState = new JLabel();
         txtState = new JTextField();
-        txtCountry = new JTextField();
+        JLabel lblPOBox = new JLabel();
         txtPOBox = new JTextField();
+        JLabel lblCountry = new JLabel();
+        txtCountry = new JTextField();
+        JLabel lblEMail = new JLabel();
         txtEmail = new JTextField();
-        btnClean = new JButton();
-        btnView = new JButton();
-        btnClose = new JButton();
-        btnMenu = new JButton();
+        JPanel pnlOptions = new JPanel();
+        JButton btnMenu = new JButton();
+        JButton btnClean = new JButton();
+        JButton btnView = new JButton();
+        JButton btnClose = new JButton();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("BillingManagement.title")); // NOI18N
-        setResizable(false);
+        setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
+        getContentPane().setLayout(new GridLayout(1, 1));
+
+        applicationContent.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
+        applicationContent.setLayout(new GridLayout(1, 0, 35, 0));
+
+        pnlFields.setLayout(new GridLayout(12, 2, 10, 15));
 
         lblRfc.setText(bundle.getString("BillingManagement.lblRfc.text")); // NOI18N
+        pnlFields.add(lblRfc);
+        pnlFields.add(txtRfc);
 
-        jLabel2.setText(bundle.getString("BillingManagement.jLabel2.text")); // NOI18N
+        lblCorporativeName.setText(bundle.getString("BillingManagement.lblCorporativeName.text")); // NOI18N
+        pnlFields.add(lblCorporativeName);
+        pnlFields.add(txtCorporativeName);
 
         lblStreet.setText(bundle.getString("BillingManagement.lblStreet.text")); // NOI18N
+        pnlFields.add(lblStreet);
+        pnlFields.add(txtStreet);
 
-        jLabel4.setText(bundle.getString("BillingManagement.jLabel4.text")); // NOI18N
+        lblOutsideNumber.setText(bundle.getString("BillingManagement.lblOutsideNumber.text")); // NOI18N
+        pnlFields.add(lblOutsideNumber);
+        pnlFields.add(txtOutsideNumber);
 
-        jLabel5.setText(bundle.getString("BillingManagement.jLabel5.text")); // NOI18N
+        lblInsideNumber.setText(bundle.getString("BillingManagement.lblInsideNumber.text")); // NOI18N
+        pnlFields.add(lblInsideNumber);
+        pnlFields.add(txtInsideNumber);
 
-        jLabel6.setText(bundle.getString("BillingManagement.jLabel6.text")); // NOI18N
+        lblNeighborhood.setText(bundle.getString("BillingManagement.lblNeighborhood.text")); // NOI18N
+        pnlFields.add(lblNeighborhood);
+        pnlFields.add(txtNeighborhood);
 
-        jLabel7.setText(bundle.getString("BillingManagement.jLabel7.text")); // NOI18N
+        lblLocality.setText(bundle.getString("BillingManagement.lblLocality.text")); // NOI18N
+        pnlFields.add(lblLocality);
+        pnlFields.add(txtLocality);
 
-        jLabel8.setText(bundle.getString("BillingManagement.jLabel8.text")); // NOI18N
+        lblMunicipality.setText(bundle.getString("BillingManagement.lblMunicipality.text")); // NOI18N
+        pnlFields.add(lblMunicipality);
+        pnlFields.add(txtMunicipality);
 
         lblState.setText(bundle.getString("BillingManagement.lblState.text")); // NOI18N
-
-        lblCountry.setText(bundle.getString("BillingManagement.lblCountry.text")); // NOI18N
+        pnlFields.add(lblState);
+        pnlFields.add(txtState);
 
         lblPOBox.setText(bundle.getString("BillingManagement.lblPOBox.text")); // NOI18N
+        pnlFields.add(lblPOBox);
+        pnlFields.add(txtPOBox);
+
+        lblCountry.setText(bundle.getString("BillingManagement.lblCountry.text")); // NOI18N
+        pnlFields.add(lblCountry);
+        pnlFields.add(txtCountry);
 
         lblEMail.setText(bundle.getString("BillingManagement.lblEMail.text")); // NOI18N
+        pnlFields.add(lblEMail);
+        pnlFields.add(txtEmail);
 
-        btnClean.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
-        btnClean.setBorder(null);
-        btnClean.setContentAreaFilled(false);
-        btnClean.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                btnCleanActionPerformed(evt);
-            }
-        });
+        applicationContent.add(pnlFields);
 
-        btnView.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
-        btnView.setBorder(null);
-        btnView.setContentAreaFilled(false);
-        btnView.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                btnViewActionPerformed(evt);
-            }
-        });
-
-        btnClose.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
-        btnClose.setBorder(null);
-        btnClose.setContentAreaFilled(false);
-        btnClose.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
+        pnlOptions.setLayout(new GridLayout(4, 1));
 
         btnMenu.setBackground(new Color(255, 0, 255));
         btnMenu.setFont(new Font("Tahoma", 1, 14)); // NOI18N
@@ -162,135 +170,67 @@ public class BillingManagement extends JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
+        pnlOptions.add(btnMenu);
 
-        GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRfc)
-                    .addComponent(jLabel2)
-                    .addComponent(lblStreet)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(lblState)
-                    .addComponent(lblCountry)
-                    .addComponent(lblPOBox)
-                    .addComponent(lblEMail))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtRfc, GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
-                    .addComponent(txtStreet)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField5)
-                    .addComponent(jTextField6)
-                    .addComponent(jTextField7)
-                    .addComponent(jTextField8)
-                    .addComponent(txtState)
-                    .addComponent(txtCountry)
-                    .addComponent(txtPOBox)
-                    .addComponent(txtEmail))
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(btnClean, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnView, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClose, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblRfc)
-                            .addComponent(txtRfc, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblStreet)
-                            .addComponent(txtStreet, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(btnClean)))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextField6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnView, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(lblState)
-                            .addComponent(txtState, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCountry)
-                            .addComponent(txtCountry, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnClose, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPOBox)
-                    .addComponent(txtPOBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEMail)
-                    .addComponent(txtEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
+        btnClean.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setBorder(null);
+        btnClean.setContentAreaFilled(false);
+        btnClean.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnCleanActionPerformed(evt);
+            }
+        });
+        pnlOptions.add(btnClean);
+
+        btnView.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
+        btnView.setBorder(null);
+        btnView.setContentAreaFilled(false);
+        btnView.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
+        pnlOptions.add(btnView);
+
+        btnClose.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setBorder(null);
+        btnClose.setContentAreaFilled(false);
+        btnClose.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+        pnlOptions.add(btnClose);
+
+        applicationContent.add(pnlOptions);
+
+        getContentPane().add(applicationContent);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCleanActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
-//Código para limpiar el contenido de todos los TextField//      
+        clearFields();
+    }//GEN-LAST:event_btnCleanActionPerformed
+
+    /**
+     * limpia el contenido de todos los TextField
+     */
+    private void clearFields() {
         txtRfc.setText("");
-        jTextField2.setText("");
+        txtCorporativeName.setText("");
         txtStreet.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        jTextField8.setText("");
+        txtOutsideNumber.setText("");
+        txtInsideNumber.setText("");
+        txtNeighborhood.setText("");
+        txtLocality.setText("");
+        txtMunicipality.setText("");
         txtState.setText("");
         txtCountry.setText("");
         txtPOBox.setText("");
         txtEmail.setText("");
-    }//GEN-LAST:event_btnCleanActionPerformed
+    }
 
     private void btnViewActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         navigationHandler.goToFrame(this, BillingList.class);
@@ -326,33 +266,17 @@ public class BillingManagement extends JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JButton btnClean;
-    private JButton btnClose;
-    private JButton btnMenu;
-    private JButton btnView;
-    private JLabel jLabel2;
-    private JLabel jLabel4;
-    private JLabel jLabel5;
-    private JLabel jLabel6;
-    private JLabel jLabel7;
-    private JLabel jLabel8;
-    private JTextField jTextField2;
-    private JTextField jTextField4;
-    private JTextField jTextField5;
-    private JTextField jTextField6;
-    private JTextField jTextField7;
-    private JTextField jTextField8;
-    private JLabel lblCountry;
-    private JLabel lblEMail;
-    private JLabel lblPOBox;
-    private JLabel lblRfc;
-    private JLabel lblState;
-    private JLabel lblStreet;
-    private JTextField txtCountry;
-    private JTextField txtEmail;
-    private JTextField txtPOBox;
-    private JTextField txtRfc;
-    private JTextField txtState;
-    private JTextField txtStreet;
+    JTextField txtCorporativeName;
+    JTextField txtCountry;
+    JTextField txtEmail;
+    JTextField txtInsideNumber;
+    JTextField txtLocality;
+    JTextField txtMunicipality;
+    JTextField txtNeighborhood;
+    JTextField txtOutsideNumber;
+    JTextField txtPOBox;
+    JTextField txtRfc;
+    JTextField txtState;
+    JTextField txtStreet;
     // End of variables declaration//GEN-END:variables
 }
