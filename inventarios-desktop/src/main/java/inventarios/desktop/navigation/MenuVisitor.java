@@ -35,11 +35,6 @@ import javax.swing.JFrame;
  */
 @Component
 public class MenuVisitor extends NavigationHandler {
-    
-    @Override
-    public void goToMenu(JFrame origin) {
-        throw new UnsupportedOperationException("You can't navitage from menu to itself.");
-    }
 
     @Override
     public void goToInventoryManagement(JFrame origin) {
@@ -103,20 +98,5 @@ public class MenuVisitor extends NavigationHandler {
         Credits credits = context.getBean(Credits.class);
         credits.setVisible(true);
         origin.dispose();
-    }
-
-    @Override
-    public void goToProductList(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToOrderList(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToShoppingList(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -16,15 +16,16 @@
  */
 package inventarios.desktop.navigation;
 
-import javax.swing.JFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+
+import javax.swing.JFrame;
 
 /**
  *
  * @author Ruslan López Carro <scherzo16 at gmail.com>
  */
-public abstract class NavigationHandler {
+public class NavigationHandler {
     
     @Autowired
     ApplicationContext context;
@@ -35,29 +36,55 @@ public abstract class NavigationHandler {
         origin.dispose();
     }
 
-    public abstract void goToMenu(JFrame origin);
+    public void goToMenu(JFrame origin) {
+        throw new UnsupportedOperationException("You can't navitage from menu to itself.");
+    }
 
-    public abstract void goToInventoryManagement(JFrame origin);
+    public void goToInventoryManagement(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    public abstract void goToShopping(JFrame origin);
+    public void goToShopping(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    public abstract void goToOrderManagement(JFrame origin);
+    public void goToOrderManagement(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    public abstract void goToProviderManagement(JFrame origin);
+    public void goToProviderManagement(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    public abstract void goToBillingManagement(JFrame origin);
+    public void goToBillingManagement(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    public abstract void goToInformation(JFrame origin);
+    public void goToInformation(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    public abstract void goToLogin(JFrame origin);
+    public void goToLogin(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    public abstract void goToEmployeeRegistration(JFrame origin);
+    public void goToEmployeeRegistration(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    public abstract void goToCredits(JFrame origin);
+    public void goToCredits(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-    public abstract void goToProductList(JFrame origin);
-    
-    public abstract void goToOrderList(JFrame origin);
-    
-    public abstract void goToShoppingList(JFrame origin);
+    public void goToProductList(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void goToOrderList(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void goToShoppingList(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

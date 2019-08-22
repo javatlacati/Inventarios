@@ -18,8 +18,9 @@ package inventarios.desktop.navigation;
 
 import inventarios.desktop.InventoryManagement;
 import inventarios.desktop.Menu;
-import javax.swing.JFrame;
 import org.springframework.stereotype.Component;
+
+import javax.swing.JFrame;
 
 /**
  *
@@ -42,60 +43,4 @@ public class ListaProductosNavigationHandler extends NavigationHandler{
         inventoryManagement.setVisible(true);
         origin.dispose();
     }
-
-    @Override
-    public void goToShopping(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToOrderManagement(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToProviderManagement(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToBillingManagement(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToInformation(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToLogin(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToEmployeeRegistration(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToCredits(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToProductList(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToOrderList(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToShoppingList(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

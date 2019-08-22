@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.EmployeeService;
 import inventarios.to.EmployeeDetail;
 import java.awt.Font;
@@ -23,11 +24,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ResourceBundle;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.LayoutStyle;
 import org.springframework.stereotype.Component;
 
-import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  *
@@ -35,9 +45,13 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @Component
 public class ListaEmpleados extends javax.swing.JFrame {
-    
+
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    @Qualifier("listaEmpleadosVisitor")
+    NavigationHandler navigationHandler;
 
     private DefaultTableModel modelo;
     private int cont = 0;
@@ -85,7 +99,7 @@ public class ListaEmpleados extends javax.swing.JFrame {
         super.setVisible(b);
         cargarinterfaz();
         EmployeeDetail c;
-        cont=0;
+        cont = 0;
 
         List<EmployeeDetail> employeeDetails = employeeService.findAll();
         for (int i = 0; i < employeeDetails.size(); i++) {
@@ -93,8 +107,6 @@ public class ListaEmpleados extends javax.swing.JFrame {
             mostrardatos(c);
         }
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -105,27 +117,16 @@ public class ListaEmpleados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTitle = new JLabel();
-        scrlEmployees = new JScrollPane();
+        JLabel lblTitle = new JLabel();
+        JScrollPane scrlEmployees = new JScrollPane();
         tblEmployees = new JTable();
-        btnGetBack = new JButton();
-        btnClose = new JButton();
+        JButton btnGetBack = new JButton();
+        JButton btnClose = new JButton();
 
         lblTitle.setFont(new Font("Verdana", 1, 18)); // NOI18N
         ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         lblTitle.setText(bundle.getString("ListaEmpleados.lblTitle.text")); // NOI18N
 
-        tblEmployees.setModel(new DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         scrlEmployees.setViewportView(tblEmployees);
 
         btnGetBack.setFont(new Font("Verdana", 1, 18)); // NOI18N
@@ -160,7 +161,7 @@ public class ListaEmpleados extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitle, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGetBack)
@@ -174,18 +175,14 @@ public class ListaEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
-        dispose();
+        navigationHandler.goToEmployeeRegistration(this);
     }//GEN-LAST:event_btnGetBackActionPerformed
 
     private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        dispose();
+        navigationHandler.goToEmployeeRegistration(this);
     }//GEN-LAST:event_btnCloseActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JButton btnClose;
-    private JButton btnGetBack;
-    private JLabel lblTitle;
-    private JScrollPane scrlEmployees;
-    private JTable tblEmployees;
+    JTable tblEmployees;
     // End of variables declaration//GEN-END:variables
 }

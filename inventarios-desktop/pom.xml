@@ -30,16 +30,16 @@
     </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-web</artifactId>-->
+        <!--            <exclusions>-->
+        <!--                <exclusion>-->
+        <!--                    <groupId>org.springframework.boot</groupId>-->
+        <!--                    <artifactId>spring-boot-starter-tomcat</artifactId>-->
+        <!--                </exclusion>-->
+        <!--            </exclusions>-->
+        <!--        </dependency>-->
         <!--showing calendars on GUI-->
         <dependency>
             <groupId>com.github.javatlacati</groupId>
@@ -63,11 +63,11 @@
             <artifactId>jaxb-impl</artifactId>
             <version>2.3.2</version>
         </dependency>
-        <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>1.1.1</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>javax.activation</groupId>-->
+        <!--            <artifactId>activation</artifactId>-->
+        <!--            <version>1.1.1</version>-->
+        <!--        </dependency>-->
 
         <!-- Temporal dependency to test H2 database -->
         <dependency>
@@ -76,11 +76,11 @@
             <scope>runtime</scope>
         </dependency>
         <!--orm-->
-<!--        <dependency>-->
-<!--            <groupId>org.hibernate</groupId>-->
-<!--            <artifactId>hibernate-entitymanager</artifactId>-->
-<!--            <version>4.3.1.Final</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.hibernate</groupId>-->
+        <!--            <artifactId>hibernate-entitymanager</artifactId>-->
+        <!--            <version>4.3.1.Final</version>-->
+        <!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -104,20 +104,36 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-test</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-test</artifactId>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                    <artifactId>tomcat-embed-el</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jasper-el</artifactId>
+            <version>8.5.14</version>
         </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-devtools</artifactId>-->
+        <!--<optional>true</optional>-->
+        <!--</dependency>-->
         <!--unit tests-->
         <dependency>
             <groupId>junit</groupId>
@@ -125,7 +141,7 @@
             <scope>test</scope>
         </dependency>
 
-<!--        other modules from this application-->
+        <!--        other modules from this application-->
         <dependency>
             <groupId>com.github.javatlacati</groupId>
             <artifactId>inventarios-entities</artifactId>
@@ -183,28 +199,28 @@
                     </execution>
                 </executions>
             </plugin>
-<!--            <plugin>-->
-<!--                <artifactId>maven-assembly-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <archive>-->
-<!--                        <manifest>-->
-<!--                            <mainClass>inventarios.Inventarios</mainClass>-->
-<!--                        </manifest>-->
-<!--                    </archive>-->
-<!--                    <descriptorRefs>-->
-<!--                        <descriptorRef>jar-with-dependencies</descriptorRef>-->
-<!--                    </descriptorRefs>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>make-assembly</id> &lt;!&ndash; this is used for inheritance merges &ndash;&gt;-->
-<!--                        <phase>package</phase> &lt;!&ndash; bind to the packaging phase &ndash;&gt;-->
-<!--                        <goals>-->
-<!--                            <goal>single</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <artifactId>maven-assembly-plugin</artifactId>-->
+            <!--                <configuration>-->
+            <!--                    <archive>-->
+            <!--                        <manifest>-->
+            <!--                            <mainClass>inventarios.Inventarios</mainClass>-->
+            <!--                        </manifest>-->
+            <!--                    </archive>-->
+            <!--                    <descriptorRefs>-->
+            <!--                        <descriptorRef>jar-with-dependencies</descriptorRef>-->
+            <!--                    </descriptorRefs>-->
+            <!--                </configuration>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>make-assembly</id> &lt;!&ndash; this is used for inheritance merges &ndash;&gt;-->
+            <!--                        <phase>package</phase> &lt;!&ndash; bind to the packaging phase &ndash;&gt;-->
+            <!--                        <goals>-->
+            <!--                            <goal>single</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
             <!--            unit test config-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -254,6 +270,18 @@
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
+                <!--                <reportSets>-->
+                <!--                    <reportSet>-->
+                <!--                        <reports>-->
+                <!--                            <report>analyze-report</report>-->
+                <!--                        </reports>-->
+                <!--                    </reportSet>-->
+                <!--                </reportSets>-->
             </plugin>
         </plugins>
     </build>

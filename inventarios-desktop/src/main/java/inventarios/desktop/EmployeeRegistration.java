@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
@@ -34,19 +35,14 @@ import javax.swing.JPanel;
  * @author IDELFONSO
  */
 @Component
-public class EmployeeRegistration extends javax.swing.JFrame {
-
-    private NavigationHandler navigationHandler;
-
-    private EmployeeService employeeService;
+public class EmployeeRegistration extends JFrame {
 
     @Autowired
-    public EmployeeRegistration(
-            @Qualifier("employeeVisitor") NavigationHandler navigationHandler,
-            EmployeeService employeeService) {
-        this.navigationHandler = navigationHandler;
-        this.employeeService = employeeService;
-    }
+    @Qualifier("employeeVisitor")
+    private NavigationHandler navigationHandler;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     /**
      * Creates new form Empleados
@@ -97,14 +93,13 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         btnMenu = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/desktop/Bundle"); // NOI18N
-        setTitle(bundle.getString("EmployeeRegistration.title")); // NOI18N
+        setTitle(null);
 
         pnlTitle.setLayout(new java.awt.GridBagLayout());
 
         windowTitle.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        java.util.ResourceBundle bundle1 = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
-        windowTitle.setText(bundle1.getString("EmployeeRegistration.windowTitle.text")); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        windowTitle.setText(bundle.getString("EmployeeRegistration.windowTitle.text")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE;
@@ -115,7 +110,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         lblId.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblId.setText(bundle1.getString("EmployeeRegistration.lblId.text")); // NOI18N
+        lblId.setText(bundle.getString("EmployeeRegistration.lblId.text")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -134,7 +129,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         jPanel1.add(txtId, gridBagConstraints);
 
         lblFirstName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblFirstName.setText(bundle1.getString("EmployeeRegistration.lblFirstName.text")); // NOI18N
+        lblFirstName.setText(bundle.getString("EmployeeRegistration.lblFirstName.text")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -153,7 +148,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         jPanel1.add(txtName, gridBagConstraints);
 
         lblFirstLastName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblFirstLastName.setText(bundle1.getString("EmployeeRegistration.lblFirstLastName.text")); // NOI18N
+        lblFirstLastName.setText(bundle.getString("EmployeeRegistration.lblFirstLastName.text")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -172,7 +167,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         jPanel1.add(txtFirstLastName, gridBagConstraints);
 
         lblLastLastName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblLastLastName.setText(bundle1.getString("EmployeeRegistration.lblLastLastName.text")); // NOI18N
+        lblLastLastName.setText(bundle.getString("EmployeeRegistration.lblLastLastName.text")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -190,7 +185,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         jPanel1.add(txtLastLastName, gridBagConstraints);
 
         lblAdress.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblAdress.setText(bundle1.getString("EmployeeRegistration.lblAdress.text")); // NOI18N
+        lblAdress.setText(bundle.getString("EmployeeRegistration.lblAdress.text")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
@@ -208,7 +203,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         jPanel1.add(txtAddress, gridBagConstraints);
 
         lblPosition.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblPosition.setText(bundle1.getString("EmployeeRegistration.lblPosition.text")); // NOI18N
+        lblPosition.setText(bundle.getString("EmployeeRegistration.lblPosition.text")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
@@ -224,7 +219,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(43, 10, 0, 0);
         jPanel1.add(txtPosition, gridBagConstraints);
 
-        lblArrivingTime.setText(bundle1.getString("EmployeeRegistration.lblArrivingTime.text")); // NOI18N
+        lblArrivingTime.setText(bundle.getString("EmployeeRegistration.lblArrivingTime.text")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
@@ -242,7 +237,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(18, 10, 65, 0);
         jPanel1.add(txtArrivingTime, gridBagConstraints);
 
-        lblLeavingTime.setText(bundle1.getString("EmployeeRegistration.lblLeavingTime.text")); // NOI18N
+        lblLeavingTime.setText(bundle.getString("EmployeeRegistration.lblLeavingTime.text")); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 12;
@@ -262,7 +257,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         btnSave.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        btnSave.setText(bundle1.getString("EmployeeRegistration.btnSave.text")); // NOI18N
+        btnSave.setText(bundle.getString("EmployeeRegistration.btnSave.text")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -270,7 +265,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jButton2.setText(bundle1.getString("EmployeeRegistration.jButton2.text")); // NOI18N
+        jButton2.setText(bundle.getString("EmployeeRegistration.jButton2.text")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -279,7 +274,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
 
         btnMenu.setBackground(new java.awt.Color(255, 255, 255));
         btnMenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnMenu.setText(bundle1.getString("EmployeeRegistration.btnMenu.text")); // NOI18N
+        btnMenu.setText(bundle.getString("EmployeeRegistration.btnMenu.text")); // NOI18N
         btnMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,7 +282,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setText(bundle1.getString("EmployeeRegistration.btnClose.text")); // NOI18N
+        btnClose.setText(bundle.getString("EmployeeRegistration.btnClose.text")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -355,7 +350,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        dispose();
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnCloseActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

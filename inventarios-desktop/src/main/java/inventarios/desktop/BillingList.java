@@ -19,17 +19,26 @@ package inventarios.desktop;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.to.BillingDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import javax.swing.*;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.LayoutStyle;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ResourceBundle;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  *
@@ -41,12 +50,9 @@ public class BillingList extends JFrame {
     private DefaultTableModel modelo;
     int con = 0;
 
-    private NavigationHandler navigationHandler;
-
     @Autowired
-    public BillingList(@Qualifier("billingListVisitor") NavigationHandler navigationHandler) {
-        this.navigationHandler = navigationHandler;
-    }
+    @Qualifier("billingListVisitor")
+    private NavigationHandler navigationHandler;
 
     /**
      * Creates new form ListaFacturación

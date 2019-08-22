@@ -37,65 +37,10 @@ public class InventoryManagementVisitor extends NavigationHandler {
     }
 
     @Override
-    public void goToInventoryManagement(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void goToShopping(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void goToOrderManagement(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void goToProviderManagement(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void goToBillingManagement(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void goToInformation(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void goToLogin(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void goToEmployeeRegistration(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void goToCredits(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public void goToProductList(JFrame origin) {
         ListaProductos listaProductos = context.getBean(ListaProductos.class);
         listaProductos.mostrarLosDatos();
         listaProductos.setVisible(true);
         //origin.dispose();
-    }
-
-    @Override
-    public void goToOrderList(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void goToShoppingList(JFrame origin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

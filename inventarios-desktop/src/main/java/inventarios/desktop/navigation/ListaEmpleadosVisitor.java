@@ -16,31 +16,22 @@
  */
 package inventarios.desktop.navigation;
 
-import inventarios.desktop.BillingManagement;
-import inventarios.desktop.Menu;
-import org.springframework.stereotype.Component;
-
+import inventarios.desktop.EmployeeRegistration;
 import javax.swing.JFrame;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Ruslan López Carro <scherzo16 at gmail.com>
  */
 @Component
-public class BillingListVisitor extends NavigationHandler {
+public class ListaEmpleadosVisitor extends NavigationHandler{
 
     @Override
-    public void goToMenu(JFrame origin) {
-        Menu menu = context.getBean(Menu.class);
-        menu.setVisible(true);
-        menu.add(origin);
-        origin.setVisible(false);
-    }
-
-    @Override
-    public void goToBillingManagement(JFrame origin) {
-        BillingManagement billingManagement = context.getBean(BillingManagement.class);
-        billingManagement.setVisible(true);
+    public void goToEmployeeRegistration(JFrame origin) {
+        EmployeeRegistration employeeRegistration = context.getBean(EmployeeRegistration.class);
+        employeeRegistration.setVisible(true);
         origin.dispose();
     }
+    
 }
