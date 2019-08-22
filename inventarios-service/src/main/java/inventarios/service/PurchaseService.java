@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class PurchaseService {
     @Autowired
-    PurchaseRepository purchaseRepository;
+    private PurchaseRepository purchaseRepository;
 
     public List<Purchase> findAll() {
         return purchaseRepository.findAll();

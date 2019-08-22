@@ -7,11 +7,12 @@ package inventarios.service;
 
 import inventarios.repository.ProductRepository;
 import inventarios.to.Product;
-import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductService {
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     public List<Product> findAll() {
         return productRepository.findAll();

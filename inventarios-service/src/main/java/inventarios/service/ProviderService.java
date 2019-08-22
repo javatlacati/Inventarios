@@ -7,9 +7,10 @@ package inventarios.service;
 
 import inventarios.repository.ProviderRepository;
 import inventarios.to.Provider;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  *
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProviderService {
     @Autowired
-    ProviderRepository providerRepository;
+    private ProviderRepository providerRepository;
 
     public List<Provider> findAll() {
         return providerRepository.findAll();
