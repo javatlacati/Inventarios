@@ -28,12 +28,15 @@ import inventarios.desktop.OrderManagement;
 import inventarios.desktop.ProviderManagement;
 import inventarios.desktop.ShoppingWindow;
 import inventarios.desktop.navigation.NavigationHandler;
+import inventarios.desktop.pageobjects.InventoryManagementPageObject;
 import inventarios.desktop.pageobjects.LoginWindowPageObject;
 import inventarios.desktop.pageobjects.MainMenuPageObject;
 import inventarios.service.LoginUsersService;
 import inventarios.service.ProductService;
 import inventarios.to.LoginUser;
 import inventarios.util.FontFactory;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -49,6 +52,7 @@ import javax.swing.JFrame;
 import java.awt.Font;
 
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.times;
@@ -56,7 +60,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- *
  * @author Ruslan López Carro <scherzo16 at gmail.com>
  */
 public class StepDefinition {
@@ -103,7 +106,8 @@ public class StepDefinition {
 
     private InventoryManagement inventoryManagement;
 
-    public StepDefinition() {
+    @Before
+    public void beforeScenario(){
         usersService = mock(LoginUsersService.class);
         navigationHandler = mock(NavigationHandler.class);
         fontFactory = mock(FontFactory.class);
@@ -116,41 +120,52 @@ public class StepDefinition {
                 new Font("serif", Font.PLAIN, 24)
         );
         loginWindow = new LoginWindow(navigationHandler, usersService, fontFactory);
+        menu = new Menu(navigationHandler);
+        inventoryManagement = new InventoryManagement(navigationHandler, productService, validatorFactory);
+    }
+
+    @After
+    public void afterScenario(){
+        reset(usersService);
+        loginWindow.dispose();
     }
 
     //api objects
     private LoginWindowPageObject loginWindowPageObject;
     private MainMenuPageObject menuPageObject;
-    
+    private InventoryManagementPageObject inventoryPageObject;
+
     @Given("^I write login credentials using user \\'([A-Za-z]+)\\' and password \\'([A-Za-z]+)\\'$")
-    public void writeLoginFields(String nickName, String password){
+    public void writeLoginFields(String nickName, String password) {
         loginWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         loginWindow.setVisible(true);
-        
         loginWindowPageObject = new LoginWindowPageObject();
+
         loginWindowPageObject.setUserFieldContent(nickName);
         loginWindowPageObject.setPasswordFieldContent(password);
     }
-    
+
     @And("^I click Login with wrong credentials$")
-    public void clickLoginButtonWithWrongCredentials(){
-        reset(usersService);
-        when(usersService.authenticate(Matchers.any(LoginUser.class)))
-                .thenReturn(Boolean.FALSE);
+    public void clickLoginButtonWithWrongCredentials() {
+        //reset(usersService);
+        doReturn(Boolean.FALSE)
+                .when(usersService)
+                .authenticate(Matchers.any(LoginUser.class));
         loginWindowPageObject.clickAccept();
     }
-    
+
     @Then("^error prompt should appear$")
-    public void errorPromptShouldAppear(){
+    public void errorPromptShouldAppear() {
         loginWindowPageObject.userNotFoundIsShown();
         verify(usersService, times(1)).authenticate(Matchers.any(LoginUser.class));
     }
-    
+
     @And("^I click Login with correct credentials$")
-    public void clickLoginButtonWithCorrectCredentials(){
-        reset(usersService);
-        when(usersService.authenticate(Matchers.any(LoginUser.class)))
-                .thenReturn(Boolean.TRUE);
+    public void clickLoginButtonWithCorrectCredentials() {
+        //reset(usersService);
+        doReturn(Boolean.TRUE)
+                .when(usersService)
+                .authenticate(Matchers.any(LoginUser.class));
         doAnswer(new Answer<Void>() {
             public Void answer(InvocationOnMock invocation) {
                 loginWindow.setVisible(false);
@@ -158,20 +173,34 @@ public class StepDefinition {
                 return null;
             }
         }).when(navigationHandler).goToMenu(Matchers.any(JFrame.class));
-        loginWindowPageObject.clickAcceptAndWait();
+        loginWindowPageObject.clickAccept();
         menuPageObject = new MainMenuPageObject();
     }
-    
+
     @And("^I click the clear fields button$")
-    public void clickClearFields(){
+    public void clickClearFields() {
         loginWindowPageObject.clickClear();
     }
-    
+
     @Then("^Login window fields should be empty$")
-    public void verifyEmptyLoginFields(){
+    public void verifyEmptyLoginFields() {
         Assert.assertEquals("", loginWindowPageObject.getUserFieldContent());
         Assert.assertEquals("", loginWindowPageObject.getPasswordFieldContent());
     }
-    
-    
+
+
+    @And("^I click Inventory option in the Menu Window$")
+    public void iClickInventoryOptionInTheMenuWindow() {
+        doAnswer(new Answer<Void>() {
+            public Void answer(InvocationOnMock invocation) {
+                inventoryManagement.setVisible(true);
+                menu.setVisible(false);
+                return null;
+            }
+        })
+                .when(navigationHandler)
+                .goToInventoryManagement(Matchers.any(JFrame.class));
+        menuPageObject.openInvenory();
+        inventoryPageObject = new InventoryManagementPageObject();
+    }
 }

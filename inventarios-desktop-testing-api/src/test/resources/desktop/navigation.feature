@@ -16,3 +16,4 @@ Feature: Window Navigation
       Then Login window fields should be empty
       Given I write login credentials using user 'correct' and password 'correct'
       And I click Login with correct credentials
+      And I click Inventory option in the Menu Window

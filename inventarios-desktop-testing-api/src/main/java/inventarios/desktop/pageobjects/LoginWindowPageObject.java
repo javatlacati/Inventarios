@@ -28,17 +28,18 @@ import org.netbeans.jemmy.operators.JTextFieldOperator;
 import java.util.ResourceBundle;
 
 public class LoginWindowPageObject {
-    private ContainerOperator containerFrame;
     private JTextFieldOperator userField;
     private JPasswordFieldOperator passwordField;
     private JButtonOperator btnAccept;
     private JButtonOperator btnClear;
     private JDialogOperator userNotFoundMessage;
     private ResourceBundle bundle;
+    private JLabelOperator dialogMessage;
 
     public LoginWindowPageObject() {
+//        Locale.setDefault(Locale.GERMAN);
         bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
-        containerFrame = new JFrameOperator(bundle.getString("LoginWindow.title")); // NOI18N
+        ContainerOperator containerFrame = new JFrameOperator(bundle.getString("LoginWindow.title")); // NOI18N
         userField = new JTextFieldOperator(containerFrame);
         passwordField = new JPasswordFieldOperator(containerFrame);
         btnAccept = new JButtonOperator(containerFrame, 0);
@@ -76,10 +77,14 @@ public class LoginWindowPageObject {
     public void userNotFoundIsShown() {
         userNotFoundMessage = new JDialogOperator("Credenciales incorrectas");
         Assert.assertNotNull(userNotFoundMessage);
-        JLabelOperator dialogMessage = new JLabelOperator(userNotFoundMessage);
+        dialogMessage = new JLabelOperator(userNotFoundMessage);
         Assert.assertEquals("Usuario " + userField.getText() + " no encontrado", dialogMessage.getText());
         JButtonOperator jbo = new JButtonOperator(userNotFoundMessage);
         jbo.push();
         userNotFoundMessage = null;
+    }
+
+    public JLabelOperator getDialogMessage() {
+        return dialogMessage;
     }
 }
