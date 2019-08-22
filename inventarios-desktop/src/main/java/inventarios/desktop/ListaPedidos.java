@@ -26,8 +26,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ResourceBundle;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.LayoutStyle;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -61,7 +72,7 @@ public class ListaPedidos extends javax.swing.JFrame {
         //String col[] = {"No. de Pedido", "Nombre", "Apellidos", "Producto", "RFC", "Teléfono", "Atendio por", "Direccion", "Fecha"};
         String col[] = {"No. de Pedido", "Productos", "Atendio por", "Fecha"};
         modelo = new DefaultTableModel(data, col);
-        jTable1.setModel(modelo);
+        tableOrders.setModel(modelo);
 
     }
 
@@ -109,75 +120,74 @@ public class ListaPedidos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        lblTitle = new javax.swing.JLabel();
-        btnDeleteRow = new javax.swing.JButton();
-        btnDeleteAll = new javax.swing.JButton();
-        btnMenu = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        JScrollPane scrollTableOrders = new JScrollPane();
+        tableOrders = new JTable();
+        JLabel lblTitle = new JLabel();
+        JButton btnDeleteRow = new JButton();
+        JButton btnDeleteAll = new JButton();
+        JButton btnMenu = new JButton();
+        JButton btnClose = new JButton();
+        JButton btnGoBack = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("ListaPedidos.title")); // NOI18N
         setResizable(false);
 
-        jScrollPane1.setViewportView(jTable1);
+        scrollTableOrders.setViewportView(tableOrders);
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setFont(new Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText(bundle.getString("ListaPedidos.lblTitle.text")); // NOI18N
 
-        btnDeleteRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
+        btnDeleteRow.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
         btnDeleteRow.setContentAreaFilled(false);
-        btnDeleteRow.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDeleteRow.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnDeleteRowActionPerformed(evt);
             }
         });
 
-        btnDeleteAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
+        btnDeleteAll.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
         btnDeleteAll.setBorder(null);
         btnDeleteAll.setContentAreaFilled(false);
-        btnDeleteAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDeleteAll.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnDeleteAllActionPerformed(evt);
             }
         });
 
-        btnMenu.setBackground(new java.awt.Color(255, 0, 51));
-        btnMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnMenu.setBackground(new Color(255, 0, 51));
+        btnMenu.setFont(new Font("Tahoma", 1, 18)); // NOI18N
         btnMenu.setText(bundle.getString("ListaPedidos.btnMenu.text")); // NOI18N
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
 
         btnClose.setText(bundle.getString("ListaPedidos.btnClose.text")); // NOI18N
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnClose.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        jButton5.setText(bundle.getString("ListaPedidos.jButton5.text")); // NOI18N
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+        btnGoBack.setText(bundle.getString("ListaPedidos.btnGoBack.text")); // NOI18N
+        btnGoBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnGoBackActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE))
+                        .addComponent(scrollTableOrders, GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(339, 339, 339)
                         .addComponent(lblTitle)
@@ -189,34 +199,33 @@ public class ListaPedidos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnDeleteAll)
                 .addGap(30, 30, 30)
-                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnClose)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnGoBack)
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(lblTitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(scrollTableOrders, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnClose)
-                                    .addComponent(jButton5)))
+                                    .addComponent(btnGoBack)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(19, 19, 19)
                                 .addComponent(btnDeleteAll))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDeleteRow)))
                 .addContainerGap())
         );
@@ -225,21 +234,21 @@ public class ListaPedidos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDeleteRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowActionPerformed
+    private void btnDeleteRowActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowActionPerformed
         try {
-            modelo = (DefaultTableModel) jTable1.getModel();
-            modelo.removeRow(jTable1.getSelectedRow());
-            jTable1.addRowSelectionInterval(0, 0);
+            modelo = (DefaultTableModel) tableOrders.getModel();
+            modelo.removeRow(tableOrders.getSelectedRow());
+            tableOrders.addRowSelectionInterval(0, 0);
             modelo = null;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Seleccione la fila que desea quitar.");
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteRowActionPerformed
 
-    private void btnDeleteAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAllActionPerformed
+    private void btnDeleteAllActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnDeleteAllActionPerformed
         try {
-            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-            int filas = jTable1.getRowCount();
+            DefaultTableModel modelo = (DefaultTableModel) tableOrders.getModel();
+            int filas = tableOrders.getRowCount();
             for (int i = 0; filas > i; i++) {
                 modelo.removeRow(0);
             }
@@ -248,26 +257,19 @@ public class ListaPedidos extends javax.swing.JFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteAllActionPerformed
 
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+    private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+    private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnGoBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         navigationHandler.goToOrderManagement(this);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnGoBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnDeleteAll;
-    private javax.swing.JButton btnDeleteRow;
-    private javax.swing.JButton btnMenu;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lblTitle;
+    private JTable tableOrders;
     // End of variables declaration//GEN-END:variables
 }
