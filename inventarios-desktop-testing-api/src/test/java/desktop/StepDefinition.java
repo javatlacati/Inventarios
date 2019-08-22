@@ -41,13 +41,19 @@ import org.junit.Assert;
 import org.mockito.InjectMocks;
 import org.mockito.Matchers;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import javax.swing.JFrame;
 import java.awt.Font;
+
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  *
@@ -80,23 +86,28 @@ public class StepDefinition {
     @Mock
     private ProductService productService;
 
-    @Mock
     private LoginUsersService usersService;
 
     @Mock
     private LocalValidatorFactoryBean validatorFactory;
 
-    @Mock
     private Credits credits;
 
-    @Mock
     private FontFactory fontFactory;
 
-    @Mock
     private NavigationHandler navigationHandler;
 
-    {
-        Mockito.when(
+    private LoginWindow loginWindow;
+
+    private Menu menu;
+
+    private InventoryManagement inventoryManagement;
+
+    public StepDefinition() {
+        usersService = mock(LoginUsersService.class);
+        navigationHandler = mock(NavigationHandler.class);
+        fontFactory = mock(FontFactory.class);
+        when(
                 fontFactory
                         .getFont(
                                 Matchers.anyString()
@@ -107,15 +118,6 @@ public class StepDefinition {
         loginWindow = new LoginWindow(navigationHandler, usersService, fontFactory);
     }
 
-    @InjectMocks
-    private LoginWindow loginWindow;
-
-    @InjectMocks
-    private Menu menu;
-
-    @InjectMocks
-    private InventoryManagement inventoryManagement;
-    
     //api objects
     private LoginWindowPageObject loginWindowPageObject;
     private MainMenuPageObject menuPageObject;
@@ -132,30 +134,31 @@ public class StepDefinition {
     
     @And("^I click Login with wrong credentials$")
     public void clickLoginButtonWithWrongCredentials(){
-        Mockito.when(usersService.authenticate(Matchers.any(LoginUser.class)))
+        reset(usersService);
+        when(usersService.authenticate(Matchers.any(LoginUser.class)))
                 .thenReturn(Boolean.FALSE);
         loginWindowPageObject.clickAccept();
-        Mockito.verify(usersService, Mockito.times(1)).authenticate(Matchers.any(LoginUser.class));
     }
     
     @Then("^error prompt should appear$")
     public void errorPromptShouldAppear(){
         loginWindowPageObject.userNotFoundIsShown();
+        verify(usersService, times(1)).authenticate(Matchers.any(LoginUser.class));
     }
     
     @And("^I click Login with correct credentials$")
     public void clickLoginButtonWithCorrectCredentials(){
-        Mockito.when(usersService.authenticate(Matchers.any(LoginUser.class)))
-                .thenReturn(true);
-        Mockito.doAnswer(new Answer<Void>() {
+        reset(usersService);
+        when(usersService.authenticate(Matchers.any(LoginUser.class)))
+                .thenReturn(Boolean.TRUE);
+        doAnswer(new Answer<Void>() {
             public Void answer(InvocationOnMock invocation) {
-                inventoryManagement.setVisible(false);
+                loginWindow.setVisible(false);
                 menu.setVisible(true);
                 return null;
             }
         }).when(navigationHandler).goToMenu(Matchers.any(JFrame.class));
         loginWindowPageObject.clickAcceptAndWait();
-        Mockito.verify(usersService, Mockito.times(1)).authenticate(Matchers.any(LoginUser.class));
         menuPageObject = new MainMenuPageObject();
     }
     
