@@ -1,149 +1,182 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>inventarios</artifactId>
-    <groupId>com.github.javatlacati</groupId>
-    <version>1.0</version>
-  </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>inventarios</artifactId>
+        <groupId>com.github.javatlacati</groupId>
+        <version>1.0</version>
+    </parent>
 
-  <groupId>com.github.javatlacati</groupId>
-  <artifactId>inventarios-desktop-testing-api</artifactId>
-  <version>1.0-SNAPSHOT</version>
+    <groupId>com.github.javatlacati</groupId>
+    <artifactId>inventarios-desktop-testing-api</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-  <name>inventarios-desktop-testing-api</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+    <name>inventarios-desktop-testing-api</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-  <dependencies>
-    <!--        automated GUI testing-->
-    <dependency>
-      <groupId>org.netbeans.external</groupId>
-      <artifactId>jemmy-2.3.1.1</artifactId>
-      <scope>compile</scope>
-      <version>RELEASE110</version>
-    </dependency>
-    <!--integration tests-->
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
-      <version>1.10.19</version>
-      <scope>test</scope>
-    </dependency>
-      <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter</artifactId>
-      </dependency>
-    <!--unit tests-->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <!--        other modules from this application-->
-    <dependency>
-      <groupId>com.github.javatlacati</groupId>
-      <artifactId>inventarios-entities</artifactId>
-      <version>1.0</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-        <groupId>com.github.javatlacati</groupId>
-        <artifactId>inventarios-desktop</artifactId>
-        <classifier>app-to-import</classifier>
-        <version>1.0</version>
-        <scope>test</scope>
-    </dependency>
-  </dependencies>
-  
-  <build>
-      <plugins>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <configuration>
-<!--                  <release>12</release>-->
-<!--                  <annotationProcessorPaths>-->
-<!--                      <path>-->
-<!--                          <groupId>org.projectlombok</groupId>-->
-<!--                          <artifactId>lombok</artifactId>-->
-<!--                          <version>1.18.8</version>-->
-<!--                      </path>-->
-<!--                  </annotationProcessorPaths>-->
-<!--                  <forceJavacCompilerUse>true</forceJavacCompilerUse>-->
-              </configuration>
-<!--              <dependencies>-->
-<!--                  <dependency>-->
-<!--                      <groupId>com.github.javatlacati</groupId>-->
-<!--                      <artifactId>inventarios-entities</artifactId>-->
-<!--                      <version>1.0</version>-->
-<!--                  </dependency>-->
-<!--                  <dependency>-->
-<!--                      <groupId>com.github.javatlacati</groupId>-->
-<!--                      <artifactId>inventarios-desktop</artifactId>-->
-<!--                      <version>1.0</version>-->
-<!--                  </dependency>-->
-<!--                  <dependency>-->
-<!--                      <groupId>org.ow2.asm</groupId>-->
-<!--                      <artifactId>asm</artifactId>-->
-<!--                      <version>6.2</version> &lt;!&ndash; Use newer version of ASM &ndash;&gt;-->
-<!--                  </dependency>-->
-<!--              </dependencies>-->
-          </plugin>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-surefire-plugin</artifactId>
-              <version>3.0.0-M3</version>
-              <dependencies>
-                  <dependency>
-                      <groupId>junit</groupId>
-                      <artifactId>junit</artifactId>
-                      <version>4.12</version>
-                  </dependency>
-              </dependencies>
-              <configuration>
-                  <trimStackTrace>false</trimStackTrace>
-                  <forkCount>0</forkCount>
-                  <reuseForks>false</reuseForks>
-                  <printSummary>true</printSummary>
-                  <argLine>
-                      --illegal-access=permit
-                  </argLine>
-                  <!--                    <useSystemClassLoader>false</useSystemClassLoader>-->
-<!--                  <excludes>-->
-<!--                      <exclude>**/**.GUITest.java</exclude>-->
-<!--                  </excludes>-->
-              </configuration>
-          </plugin>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-failsafe-plugin</artifactId>
-              <version>2.22.0</version>
-              <configuration>
-                  <argLine>
-                      --illegal-access=permit
-                  </argLine>
-              </configuration>
-              <executions>
-                  <execution>
-                      <id>integration-test</id>
-                      <goals>
-                          <goal>integration-test</goal>
-                      </goals>
-                  </execution>
-                  <execution>
-                      <id>verify</id>
-                      <goals>
-                          <goal>verify</goal>
-                      </goals>
-                  </execution>
-              </executions>
-          </plugin>
-      </plugins>
-  </build>
+    <dependencies>
+        <!--        automated GUI testing-->
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>jemmy-2.3.1.1</artifactId>
+            <scope>compile</scope>
+            <version>RELEASE110</version>
+        </dependency>
+        <!--integration tests-->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <!--unit tests-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>4.7.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>4.7.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--        other modules from this application-->
+        <dependency>
+            <groupId>com.github.javatlacati</groupId>
+            <artifactId>inventarios-entities</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javatlacati</groupId>
+            <artifactId>inventarios-desktop</artifactId>
+            <classifier>app-to-import</classifier>
+            <version>1.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!--                  <release>12</release>-->
+                    <!--                  <annotationProcessorPaths>-->
+                    <!--                      <path>-->
+                    <!--                          <groupId>org.projectlombok</groupId>-->
+                    <!--                          <artifactId>lombok</artifactId>-->
+                    <!--                          <version>1.18.8</version>-->
+                    <!--                      </path>-->
+                    <!--                  </annotationProcessorPaths>-->
+                    <!--                  <forceJavacCompilerUse>true</forceJavacCompilerUse>-->
+                </configuration>
+                <!--              <dependencies>-->
+                <!--                  <dependency>-->
+                <!--                      <groupId>com.github.javatlacati</groupId>-->
+                <!--                      <artifactId>inventarios-entities</artifactId>-->
+                <!--                      <version>1.0</version>-->
+                <!--                  </dependency>-->
+                <!--                  <dependency>-->
+                <!--                      <groupId>com.github.javatlacati</groupId>-->
+                <!--                      <artifactId>inventarios-desktop</artifactId>-->
+                <!--                      <version>1.0</version>-->
+                <!--                  </dependency>-->
+                <!--                  <dependency>-->
+                <!--                      <groupId>org.ow2.asm</groupId>-->
+                <!--                      <artifactId>asm</artifactId>-->
+                <!--                      <version>6.2</version> &lt;!&ndash; Use newer version of ASM &ndash;&gt;-->
+                <!--                  </dependency>-->
+                <!--              </dependencies>-->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>junit</groupId>
+                        <artifactId>junit</artifactId>
+                        <version>4.12</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <trimStackTrace>false</trimStackTrace>
+                    <forkCount>0</forkCount>
+                    <reuseForks>false</reuseForks>
+                    <printSummary>true</printSummary>
+                    <argLine>
+                        --illegal-access=permit
+                    </argLine>
+                    <includes>
+                        <include>**/*UserHistoryRunner.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-failsafe-plugin</artifactId>-->
+<!--                <version>2.22.0</version>-->
+<!--                <configuration>-->
+<!--                    <argLine>-->
+<!--                        &#45;&#45;illegal-access=permit-->
+<!--                    </argLine>-->
+
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>integration-test</id>-->
+<!--                        <goals>-->
+<!--                            <goal>integration-test</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>verify</id>-->
+<!--                        <goals>-->
+<!--                            <goal>verify</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.codehaus.mojo</groupId>-->
+<!--                <artifactId>templating-maven-plugin</artifactId>-->
+<!--                <version>1.0.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>integration-test</id>-->
+<!--                        <goals>-->
+<!--                            <goal>filter-test-sources</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <sourceDirectory>${basedir}/src/test/java/desktop/userhistories/</sourceDirectory>-->
+<!--                            <outputDirectory>${build.testOutputDirectory}/desktop/userhistories/</outputDirectory>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+        </plugins>
+    </build>
 </project>
