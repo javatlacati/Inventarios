@@ -20,11 +20,17 @@ import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.LoginUsersService;
 import inventarios.to.LoginUser;
 import inventarios.util.FontFactory;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Rectangle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -32,6 +38,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ResourceBundle;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -41,7 +56,7 @@ import org.springframework.context.annotation.Scope;
  */
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
-public class LoginWindow extends javax.swing.JFrame {
+public class LoginWindow extends JFrame {
 
     private LoginUsersService usersService;
     private FontFactory fontFactory;
@@ -64,7 +79,7 @@ public class LoginWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backgroundedPanel = new JPanel(){
+        JPanel backgroundedPanel = new JPanel(){
             @Override
             public void paintComponent(Graphics g) {
                 ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("/ImgFondos/fondo 1.png"));
@@ -77,20 +92,20 @@ public class LoginWindow extends javax.swing.JFrame {
             }
         }
         ;
-        titlePanel = new JPanel();
-        lblTitle = new JLabel();
-        fieldsAndLogoPanel = new JPanel();
-        fieldsPanel = new JPanel();
-        userPanel = new JPanel();
-        lblUser = new JLabel();
+        JPanel titlePanel = new JPanel();
+        JLabel lblTitle = new JLabel();
+        JPanel fieldsAndLogoPanel = new JPanel();
+        JPanel fieldsPanel = new JPanel();
+        JPanel userPanel = new JPanel();
+        JLabel lblUser = new JLabel();
         txtUser = new JTextField();
-        psswPanel = new JPanel();
-        lblPassword = new JLabel();
+        JPanel psswPanel = new JPanel();
+        JLabel lblPassword = new JLabel();
         txtPsswd = new JPasswordField();
-        lblCorporativeIcon = new JLabel();
-        btnPanel = new JPanel();
-        btnAccept = new JButton();
-        btnClean = new JButton();
+        JLabel lblCorporativeIcon = new JLabel();
+        JPanel btnPanel = new JPanel();
+        JButton btnAccept = new JButton();
+        JButton btnClean = new JButton();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
@@ -124,7 +139,7 @@ public class LoginWindow extends javax.swing.JFrame {
     fieldsPanel.setLayout(new GridLayout(2, 2, 20, 15));
 
     userPanel.setOpaque(false);
-    userPanel.setLayout(new GridLayout(1, 0));
+    userPanel.setLayout(new GridLayout(1, 0, 5, 0));
 
     lblUser.setFont(fontFactory.getFont("Montserrat-Light.ttf"));
     lblUser.setForeground(new Color(0, 0, 153));
@@ -141,7 +156,7 @@ public class LoginWindow extends javax.swing.JFrame {
     fieldsPanel.add(userPanel);
 
     psswPanel.setOpaque(false);
-    psswPanel.setLayout(new GridLayout(1, 0));
+    psswPanel.setLayout(new GridLayout(1, 0, 5, 0));
 
     lblPassword.setFont(lblUser.getFont());
     lblPassword.setForeground(new Color(0, 0, 153));
@@ -250,21 +265,8 @@ public class LoginWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JPanel backgroundedPanel;
-    private JButton btnAccept;
-    private JButton btnClean;
-    private JPanel btnPanel;
-    private JPanel fieldsAndLogoPanel;
-    private JPanel fieldsPanel;
-    private JLabel lblCorporativeIcon;
-    private JLabel lblPassword;
-    private JLabel lblTitle;
-    private JLabel lblUser;
-    private JPanel psswPanel;
-    private JPanel titlePanel;
     private JPasswordField txtPsswd;
     private JTextField txtUser;
-    private JPanel userPanel;
     // End of variables declaration//GEN-END:variables
 
 }

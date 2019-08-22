@@ -20,6 +20,7 @@ package inventarios.desktop;
 Se importa la paqueteria a utilizar
  */
 
+import com.toedter.calendar.JDateChooser;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.to.OrderDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,32 @@ import org.springframework.stereotype.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
 
 /**
  *
@@ -71,38 +93,40 @@ public class OrderManagement extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
-        lblName = new javax.swing.JLabel();
-        blLastName = new javax.swing.JLabel();
-        lblProduct = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        lblTelephone = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        btnAdd = new javax.swing.JButton();
-        btnClean = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        txtName = new javax.swing.JTextField();
-        txtLastName = new javax.swing.JTextField();
-        txtProduct = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        txtTelephone = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        btnView = new javax.swing.JButton();
-        btnMenu = new javax.swing.JButton();
-        btnGetBack = new javax.swing.JButton();
-        lblAddress = new javax.swing.JLabel();
-        txtAddress = new javax.swing.JTextField();
-        lblOrderDate = new javax.swing.JLabel();
-        txtOrderDate = new com.toedter.calendar.JDateChooser();
+        JLabel lblOrderNo = new JLabel();
+        JLabel lblName = new JLabel();
+        JLabel blLastName = new JLabel();
+        JLabel lblProduct = new JLabel();
+        JLabel lblRfc = new JLabel();
+        JLabel lblTelephone = new JLabel();
+        JLabel lblEmployee = new JLabel();
+        txtOrderNo = new JTextField();
+        txtName = new JTextField();
+        txtLastName = new JTextField();
+        txtProduct = new JTextField();
+        txtRfc = new JTextField();
+        txtTelephone = new JTextField();
+        txtEmployee = new JTextField();
+        JLabel lblAddress = new JLabel();
+        txtAddress = new JTextField();
+        JLabel lblOrderDate = new JLabel();
+        txtOrderDate = new JDateChooser();
+        JPanel PnlOptions = new JPanel();
+        JButton btnAdd = new JButton();
+        JButton btnClean = new JButton();
+        JButton btnView = new JButton();
+        JButton btnClose = new JButton();
+        JButton btnGetBack = new JButton();
+        JButton btnMenu = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("OrderManagement.title")); // NOI18N
         setResizable(false);
 
-        jLabel1.setText(bundle.getString("OrderManagement.jLabel1.text")); // NOI18N
+        lblOrderNo.setText(bundle.getString("OrderManagement.lblOrderNo.text")); // NOI18N
 
         lblName.setText(bundle.getString("OrderManagement.lblName.text")); // NOI18N
 
@@ -110,204 +134,205 @@ public class OrderManagement extends javax.swing.JFrame {
 
         lblProduct.setText(bundle.getString("OrderManagement.lblProduct.text")); // NOI18N
 
-        jLabel5.setText(bundle.getString("OrderManagement.jLabel5.text")); // NOI18N
+        lblRfc.setText(bundle.getString("OrderManagement.lblRfc.text")); // NOI18N
 
         lblTelephone.setText(bundle.getString("OrderManagement.lblTelephone.text")); // NOI18N
 
-        jLabel7.setText(bundle.getString("OrderManagement.jLabel7.text")); // NOI18N
+        lblEmployee.setText(bundle.getString("OrderManagement.lblEmployee.text")); // NOI18N
 
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
-        btnAdd.setBorder(null);
-        btnAdd.setContentAreaFilled(false);
-        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+        txtOrderNo.setPreferredSize(new Dimension(70, 25));
+        txtOrderNo.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent evt) {
+                txtOrderNoKeyTyped(evt);
             }
         });
 
-        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
-        btnClean.setBorder(null);
-        btnClean.setContentAreaFilled(false);
-        btnClean.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnClean.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCleanActionPerformed(evt);
-            }
-        });
+        txtName.setPreferredSize(new Dimension(70, 25));
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
-        btnClose.setBorder(null);
-        btnClose.setContentAreaFilled(false);
-        btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
+        txtLastName.setPreferredSize(new Dimension(70, 25));
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(70, 25));
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField1KeyTyped(evt);
-            }
-        });
+        txtProduct.setPreferredSize(new Dimension(70, 25));
 
-        txtName.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtRfc.setPreferredSize(new Dimension(70, 25));
 
-        txtLastName.setPreferredSize(new java.awt.Dimension(70, 25));
+        txtTelephone.setPreferredSize(new Dimension(70, 25));
 
-        txtProduct.setPreferredSize(new java.awt.Dimension(70, 25));
-
-        jTextField5.setPreferredSize(new java.awt.Dimension(70, 25));
-
-        txtTelephone.setPreferredSize(new java.awt.Dimension(70, 25));
-
-        jTextField7.setPreferredSize(new java.awt.Dimension(70, 25));
-
-        btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
-        btnView.setBorder(null);
-        btnView.setContentAreaFilled(false);
-        btnView.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewActionPerformed(evt);
-            }
-        });
-
-        btnMenu.setBackground(new java.awt.Color(0, 0, 255));
-        btnMenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnMenu.setText(bundle.getString("OrderManagement.btnMenu.text")); // NOI18N
-        btnMenu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuActionPerformed(evt);
-            }
-        });
-
-        btnGetBack.setBackground(new java.awt.Color(255, 51, 204));
-        btnGetBack.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
-        btnGetBack.setText(bundle.getString("OrderManagement.btnGetBack.text")); // NOI18N
-        btnGetBack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnGetBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnGetBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGetBackActionPerformed(evt);
-            }
-        });
+        txtEmployee.setPreferredSize(new Dimension(70, 25));
 
         lblAddress.setText(bundle.getString("OrderManagement.lblAddress.text")); // NOI18N
 
         lblOrderDate.setText(bundle.getString("OrderManagement.lblOrderDate.text")); // NOI18N
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        PnlOptions.setLayout(new GridBagLayout());
+
+        btnAdd.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/agregar1.png"))); // NOI18N
+        btnAdd.setBorder(null);
+        btnAdd.setContentAreaFilled(false);
+        btnAdd.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnAdd.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+        PnlOptions.add(btnAdd, new GridBagConstraints());
+
+        btnClean.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
+        btnClean.setBorder(null);
+        btnClean.setContentAreaFilled(false);
+        btnClean.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnClean.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnCleanActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        PnlOptions.add(btnClean, gridBagConstraints);
+
+        btnView.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/consulta.png"))); // NOI18N
+        btnView.setBorder(null);
+        btnView.setContentAreaFilled(false);
+        btnView.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnView.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        PnlOptions.add(btnView, gridBagConstraints);
+
+        btnClose.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/cerrar.png"))); // NOI18N
+        btnClose.setBorder(null);
+        btnClose.setContentAreaFilled(false);
+        btnClose.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        btnClose.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        PnlOptions.add(btnClose, gridBagConstraints);
+
+        btnGetBack.setBackground(new Color(255, 51, 204));
+        btnGetBack.setFont(new Font("Tempus Sans ITC", 1, 24)); // NOI18N
+        btnGetBack.setText(bundle.getString("OrderManagement.btnGetBack.text")); // NOI18N
+        btnGetBack.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
+        btnGetBack.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnGetBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnGetBackActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        PnlOptions.add(btnGetBack, gridBagConstraints);
+
+        btnMenu.setBackground(new Color(0, 0, 255));
+        btnMenu.setFont(new Font("Tahoma", 1, 24)); // NOI18N
+        btnMenu.setText(bundle.getString("OrderManagement.btnMenu.text")); // NOI18N
+        btnMenu.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
+        btnMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        PnlOptions.add(btnMenu, gridBagConstraints);
+
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                             .addComponent(blLastName)
                             .addComponent(lblName)
-                            .addComponent(jLabel1)
+                            .addComponent(lblOrderNo)
                             .addComponent(lblProduct)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblAddress, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(txtOrderNo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddress, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addComponent(txtName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLastName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProduct, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblEmployee)
                             .addComponent(lblTelephone)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5)
+                            .addGroup(GroupLayout.Alignment.LEADING, layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblRfc)
                                 .addComponent(lblOrderDate)))))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 21, Short.MAX_VALUE))
-                    .addComponent(txtOrderDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnClean)
-                    .addComponent(btnAdd)
-                    .addComponent(btnView)
-                    .addComponent(btnClose)
-                    .addComponent(btnGetBack, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMenu))
-                .addGap(29, 29, 29))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTelephone, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtEmployee, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtRfc, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtOrderDate, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(PnlOptions, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAdd))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblName)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnClean))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblOrderNo)
+                            .addComponent(txtOrderNo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblName)
+                            .addComponent(txtName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEmployee)
+                            .addComponent(txtEmployee, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(blLastName)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelephone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLastName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTelephone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTelephone))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblProduct)
-                                    .addComponent(txtProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtProduct, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnClose)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnGetBack, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                                .addGap(14, 14, 14))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(btnMenu))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblAddress)
-                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtRfc, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblRfc))))
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addComponent(txtOrderDate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblAddress)
+                                .addComponent(txtAddress, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblOrderDate, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(PnlOptions, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -315,11 +340,11 @@ public class OrderManagement extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+    private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
+    private void btnCleanActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
         clearFields();
     }//GEN-LAST:event_btnCleanActionPerformed
 
@@ -327,28 +352,28 @@ public class OrderManagement extends javax.swing.JFrame {
      * Aplicamos estos codigos para eliminar el contenido de los TexField's
      */
     private void clearFields() {
-        jTextField1.setText("");
+        txtOrderNo.setText("");
         txtName.setText("");
         txtLastName.setText("");
         txtProduct.setText("");
-        jTextField5.setText("");
+        txtRfc.setText("");
         txtTelephone.setText("");
-        jTextField7.setText("");
+        txtEmployee.setText("");
         txtAddress.setText("");
         txtOrderDate.cleanup();
     }
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnAddActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         /*
         Declaramos las variables donde se guardara el contenido para los TextFiel
          */
-        String NumPedido = jTextField1.getText();
+        String NumPedido = txtOrderNo.getText();
         String name = txtName.getText();
         String lastName = txtLastName.getText();
         //String Producto = txtProduct.getText();
-        String RFC = jTextField5.getText();
+        String RFC = txtRfc.getText();
         String Telefono = txtTelephone.getText();
-//        String Empleado = jTextField7.getText();
+//        String Empleado = txtEmployee.getText();
         String Direccion = txtAddress.getText();
         Date date = txtOrderDate.getDate();
         /*
@@ -360,20 +385,20 @@ public class OrderManagement extends javax.swing.JFrame {
         clearFields();
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+    private void txtOrderNoKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtOrderNoKeyTyped
 
-    }//GEN-LAST:event_jTextField1KeyTyped
+    }//GEN-LAST:event_txtOrderNoKeyTyped
 
-    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+    private void btnViewActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         navigationHandler.goToOrderList(this);
     }//GEN-LAST:event_btnViewActionPerformed
 
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+    private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    private void btnGetBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
-        dispose();
+    private void btnGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnGetBackActionPerformed
     //Método para confirmar el cierre deJFrame//
 
@@ -399,29 +424,14 @@ public class OrderManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel blLastName;
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnClean;
-    private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnGetBack;
-    private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btnView;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JLabel lblAddress;
-    private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblOrderDate;
-    private javax.swing.JLabel lblProduct;
-    private javax.swing.JLabel lblTelephone;
-    private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtLastName;
-    private javax.swing.JTextField txtName;
-    private com.toedter.calendar.JDateChooser txtOrderDate;
-    private javax.swing.JTextField txtProduct;
-    private javax.swing.JTextField txtTelephone;
+    private JTextField txtAddress;
+    private JTextField txtEmployee;
+    private JTextField txtLastName;
+    private JTextField txtName;
+    private JDateChooser txtOrderDate;
+    private JTextField txtOrderNo;
+    private JTextField txtProduct;
+    private JTextField txtRfc;
+    private JTextField txtTelephone;
     // End of variables declaration//GEN-END:variables
 }
