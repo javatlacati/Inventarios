@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Log
 public class SimpleAuthenticationController {
 
-    private static LoginUsersService loginUsersService;
+    private LoginUsersService loginUsersService;
 
     @Autowired
     public SimpleAuthenticationController(LoginUsersService loginUsersService) {

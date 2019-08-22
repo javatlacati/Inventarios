@@ -26,14 +26,20 @@ public class InventoryManagementPageObject {
     private ContainerOperator containerFrame;
     private ResourceBundle bundle;
     private JButtonOperator btnClose;
+    private JButtonOperator btnMenu;
 
     public InventoryManagementPageObject() {
         bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         containerFrame = new JFrameOperator(bundle.getString("InventoryManagement.title")); // NOI18N
         btnClose = new JButtonOperator(containerFrame, bundle.getString("InventoryManagement.btnClose.text")); // NOI18N
+        btnMenu = new JButtonOperator(containerFrame, bundle.getString("InventoryManagement.btnMenu.text")); // NOI18N
     }
     
     public void clickClose(){
         btnClose.clickMouse();
+    }
+
+    public void clickMenu(){
+        btnMenu.clickMouse();
     }
 }

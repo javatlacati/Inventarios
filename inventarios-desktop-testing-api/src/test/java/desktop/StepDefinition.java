@@ -31,6 +31,7 @@ import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.desktop.pageobjects.InventoryManagementPageObject;
 import inventarios.desktop.pageobjects.LoginWindowPageObject;
 import inventarios.desktop.pageobjects.MainMenuPageObject;
+import inventarios.desktop.pageobjects.OrderManagementPageObject;
 import inventarios.service.LoginUsersService;
 import inventarios.service.ProductService;
 import inventarios.to.LoginUser;
@@ -134,6 +135,7 @@ public class StepDefinition {
     private LoginWindowPageObject loginWindowPageObject;
     private MainMenuPageObject menuPageObject;
     private InventoryManagementPageObject inventoryPageObject;
+    private OrderManagementPageObject orderPageObject;
 
     @Given("^I write login credentials using user \\'([A-Za-z]+)\\' and password \\'([A-Za-z]+)\\'$")
     public void writeLoginFields(String nickName, String password) {
@@ -169,6 +171,7 @@ public class StepDefinition {
         doAnswer(new Answer<Void>() {
             public Void answer(InvocationOnMock invocation) {
                 loginWindow.setVisible(false);
+                menu.add(loginWindow);
                 menu.setVisible(true);
                 return null;
             }
@@ -199,12 +202,12 @@ public class StepDefinition {
             }
         })
                 .when(navigationHandler)
-                .goToInventoryManagement(Matchers.any(JFrame.class));
+                .goToInventoryManagement(Matchers.any(Menu.class));
         menuPageObject.openInvenory();
         inventoryPageObject = new InventoryManagementPageObject();
     }
 
-    @And("^I click on close button in the Inventory Window$")
+    @And("^I click on menu button in the Inventory Window$")
     public void iClickOnCloseButtonInTheInventoryWindow() {
         doAnswer(new Answer<Void>() {
             public Void answer(InvocationOnMock invocation) {
@@ -212,8 +215,8 @@ public class StepDefinition {
                 menu.setVisible(true);
                 return null;
             }
-        }).when(navigationHandler).goToMenu(Matchers.any(JFrame.class));
-        inventoryPageObject.clickClose();
+        }).when(navigationHandler).goToMenu(Matchers.any(InventoryManagement.class));
+        inventoryPageObject.clickMenu();
     }
 
 
@@ -225,5 +228,10 @@ public class StepDefinition {
     @Then("^I click close button on prompt message$")
     public void iClickCloseButtonOnPromptMessage() {
         loginWindowPageObject.closeUserNotFoundMesssageDialog();
+    }
+
+    @And("^I click close button on The Menu Window$")
+    public void iClickCloseButtonOnMenu() {
+        menuPageObject.goToLogin();
     }
 }
