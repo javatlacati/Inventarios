@@ -20,6 +20,7 @@ import org.netbeans.jemmy.operators.ContainerOperator;
 import org.netbeans.jemmy.operators.JFrameOperator;
 
 import java.util.ResourceBundle;
+import org.netbeans.jemmy.operators.JTextFieldOperator;
 
 /**
  *
@@ -27,12 +28,24 @@ import java.util.ResourceBundle;
  */
 public class OrderManagementPageObject {
     
-    private ContainerOperator containerFrame;
     private ResourceBundle bundle;
+    private JTextFieldOperator txtAddress;
+    private JTextFieldOperator txtEmployee;
+    private JTextFieldOperator txtLastName;
+    private JTextFieldOperator txtName;
+    private JTextFieldOperator txtOrderNo;
+    private JTextFieldOperator txtProduct;
+    private JTextFieldOperator txtRfc;
+    private JTextFieldOperator txtTelephone;
+    private JTextFieldOperator txtOrderDate;
 
     public OrderManagementPageObject() {
         bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
-        containerFrame = new JFrameOperator(bundle.getString("OrderManagement.title")); // NOI18N
+        ContainerOperator containerFrame = new JFrameOperator(bundle.getString("OrderManagement.title")); // NOI18N
+        txtAddress = new JTextFieldOperator(containerFrame, 0);
+        txtEmployee = new JTextFieldOperator(containerFrame, 1);
+        txtLastName = new JTextFieldOperator(containerFrame, 2);
+        txtName = new JTextFieldOperator(containerFrame, 3);
     }
     
 }
