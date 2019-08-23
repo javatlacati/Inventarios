@@ -19,6 +19,8 @@ package inventarios.desktop;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.EmployeeService;
 import inventarios.to.EmployeeDetail;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -35,10 +37,16 @@ import javax.swing.JTable;
 import javax.swing.LayoutStyle;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
 
 /**
  *
@@ -48,7 +56,7 @@ import java.util.ResourceBundle;
 public class ListaEmpleados extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    JTable tblEmployees;
+    private JTable tblEmployees;
     // End of variables declaration//GEN-END:variables
 
     @Autowired
@@ -56,7 +64,7 @@ public class ListaEmpleados extends JFrame {
 
     @Autowired
     @Qualifier("listaEmpleadosVisitor")
-    NavigationHandler navigationHandler;
+    private NavigationHandler navigationHandler;
 
     private DefaultTableModel modelo;
     private int cont = 0;
@@ -67,12 +75,6 @@ public class ListaEmpleados extends JFrame {
     public ListaEmpleados() {
         initComponents();
         ((JPanel) getContentPane()).setOpaque(false);
-        ImageIcon uno;
-        uno = new ImageIcon(this.getClass().getResource("/ImgFondos/tabla.jpg"));
-        JLabel fondo = new JLabel();
-        fondo.setIcon(uno);
-        getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
-        fondo.setBounds(0, 0, uno.getIconWidth(), uno.getIconHeight());
     }
 
     public void cargarinterfaz() {
@@ -122,17 +124,48 @@ public class ListaEmpleados extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        JPanel applicationContent = new JPanel(){
+            @Override
+            public void paintComponent(Graphics g) {
+                Point point1 = new Point(10, 10);
+                Point point2 = new Point(
+                    getWidth() - 10,
+                    getHeight() - 10);
+
+                //ultramar 10,73,123
+
+                final GradientPaint gp = new GradientPaint(
+                    point1, new Color(72,114,126),
+                    point2, new Color(156,191,127),
+                    true);
+
+                final Graphics2D g2 = (Graphics2D) g;
+                g2.setPaint(gp);
+                g.fillRect(0, 0, getWidth(), getHeight());
+            }
+        };
+        ;
+        JPanel pnlTitle = new JPanel();
         JLabel lblTitle = new JLabel();
-        JScrollPane scrlEmployees = new JScrollPane();
-        tblEmployees = new JTable();
+        JPanel pnlButtons = new JPanel();
         JButton btnGetBack = new JButton();
         JButton btnClose = new JButton();
+        JScrollPane scrlEmployees = new JScrollPane();
+        tblEmployees = new JTable();
+
+        applicationContent.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        applicationContent.setLayout(new BorderLayout(0, 10));
+
+        pnlTitle.setOpaque(false);
+        pnlTitle.setLayout(new GridLayout(1, 0, 15, 0));
 
         lblTitle.setFont(new Font("Verdana", 1, 18)); // NOI18N
         ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         lblTitle.setText(bundle.getString("ListaEmpleados.lblTitle.text")); // NOI18N
+        pnlTitle.add(lblTitle);
 
-        scrlEmployees.setViewportView(tblEmployees);
+        pnlButtons.setOpaque(false);
+        pnlButtons.setLayout(new GridLayout());
 
         btnGetBack.setFont(new Font("Verdana", 1, 18)); // NOI18N
         btnGetBack.setText(bundle.getString("ListaEmpleados.btnGetBack.text")); // NOI18N
@@ -141,6 +174,7 @@ public class ListaEmpleados extends JFrame {
                 btnGetBackActionPerformed(evt);
             }
         });
+        pnlButtons.add(btnGetBack);
 
         btnClose.setText(bundle.getString("ListaEmpleados.btnClose.text")); // NOI18N
         btnClose.addActionListener(new ActionListener() {
@@ -148,33 +182,17 @@ public class ListaEmpleados extends JFrame {
                 btnCloseActionPerformed(evt);
             }
         });
+        pnlButtons.add(btnClose);
 
-        GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(scrlEmployees, GroupLayout.PREFERRED_SIZE, 668, GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTitle, GroupLayout.PREFERRED_SIZE, 334, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnGetBack)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClose)))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGetBack)
-                    .addComponent(btnClose))
-                .addGap(18, 18, 18)
-                .addComponent(scrlEmployees, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-        );
+        pnlTitle.add(pnlButtons);
+
+        applicationContent.add(pnlTitle, BorderLayout.NORTH);
+
+        scrlEmployees.setViewportView(tblEmployees);
+
+        applicationContent.add(scrlEmployees, BorderLayout.CENTER);
+
+        getContentPane().add(applicationContent, BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
