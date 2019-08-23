@@ -53,4 +53,11 @@ public class OrderManagementPageObject {
         btnGetBack = new JButtonOperator(containerFrame, bundle.getString("OrderManagement.btnGetBack.text")); // NOI18N
     }
     
+    public void clickMenuButton(){
+        btnMenu.clickMouse();
+    }
+    
+    public void clickGetackButton(){
+        btnGetBack.clickMouse();
+    }
 }
