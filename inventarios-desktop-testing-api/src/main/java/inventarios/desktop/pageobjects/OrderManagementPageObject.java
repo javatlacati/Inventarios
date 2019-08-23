@@ -20,6 +20,7 @@ import org.netbeans.jemmy.operators.ContainerOperator;
 import org.netbeans.jemmy.operators.JFrameOperator;
 
 import java.util.ResourceBundle;
+import org.netbeans.jemmy.operators.JButtonOperator;
 import org.netbeans.jemmy.operators.JTextFieldOperator;
 
 /**
@@ -38,6 +39,8 @@ public class OrderManagementPageObject {
     private JTextFieldOperator txtRfc;
     private JTextFieldOperator txtTelephone;
     private JTextFieldOperator txtOrderDate;
+    private JButtonOperator btnMenu;
+    private JButtonOperator btnGetBack;
 
     public OrderManagementPageObject() {
         bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
@@ -46,6 +49,8 @@ public class OrderManagementPageObject {
         txtEmployee = new JTextFieldOperator(containerFrame, 1);
         txtLastName = new JTextFieldOperator(containerFrame, 2);
         txtName = new JTextFieldOperator(containerFrame, 3);
+        btnMenu = new JButtonOperator(containerFrame, bundle.getString("OrderManagement.btnMenu.text"));  // NOI18N
+        btnGetBack = new JButtonOperator(containerFrame, bundle.getString("OrderManagement.btnGetBack.text")); // NOI18N
     }
     
 }
