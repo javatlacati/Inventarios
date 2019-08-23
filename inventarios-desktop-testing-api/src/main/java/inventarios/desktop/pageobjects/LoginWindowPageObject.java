@@ -16,7 +16,6 @@
  */
 package inventarios.desktop.pageobjects;
 
-import org.junit.Assert;
 import org.netbeans.jemmy.operators.ContainerOperator;
 import org.netbeans.jemmy.operators.JButtonOperator;
 import org.netbeans.jemmy.operators.JDialogOperator;
@@ -76,9 +75,7 @@ public class LoginWindowPageObject {
 
     public void userNotFoundMessageDialogIsShown() {
         userNotFoundMessage = new JDialogOperator("Credenciales incorrectas");
-        Assert.assertNotNull(userNotFoundMessage);
         dialogMessage = new JLabelOperator(userNotFoundMessage);
-//        Assert.assertEquals("Usuario " + userField.getText() + " no encontrado", dialogMessage.getText());
     }
 
     public void closeUserNotFoundMesssageDialog(){
