@@ -369,9 +369,8 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
     private void clearFields() {
         txtDate.cleanup();
-        List<Provider> providers = providerService.findAll();
-        cmbProvider.setModel(new ProviderComboBoxModel(providers));
-//        txtProvider.setText("");
+        cmbProvider.setModel(new ProviderComboBoxModel(providerService.findAll()));
+        txtProduct.setModel(new ProductListModel(productService.findAll()));
         txtAdress.setText("");
         txtTelephone.setText("");
         txtContributor.setText("");
@@ -381,6 +380,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
     @Override
     public void setVisible(boolean b) {
+        cmbProvider.setModel(new ProviderComboBoxModel(providerService.findAll()));
         txtProduct.setModel(new ProductListModel(productService.findAll()));
         super.setVisible(b);
     }

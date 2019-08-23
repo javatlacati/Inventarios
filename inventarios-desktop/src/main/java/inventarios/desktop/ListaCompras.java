@@ -172,6 +172,11 @@ public class ListaCompras extends javax.swing.JFrame {
         });
 
         btnGetBack.setText(bundle.getString("ListaCompras.btnGetBack.text")); // NOI18N
+        btnGetBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnGetBackActionPerformed(evt);
+            }
+        });
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -242,6 +247,10 @@ public class ListaCompras extends javax.swing.JFrame {
     private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void btnGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
+        navigationHandler.goToShopping(this);
+    }//GEN-LAST:event_btnGetBackActionPerformed
 
 
 }

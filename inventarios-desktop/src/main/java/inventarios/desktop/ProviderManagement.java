@@ -303,7 +303,7 @@ public class ProviderManagement extends JFrame {
      * @param evt event performen on the visual component
      */
     private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        dispose();
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnAddActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed

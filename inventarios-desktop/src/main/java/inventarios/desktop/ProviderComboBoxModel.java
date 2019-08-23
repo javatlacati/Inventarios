@@ -35,7 +35,7 @@ public class ProviderComboBoxModel extends AbstractListModel implements ComboBox
     
     @Override
     public void setSelectedItem(Object anItem) {
-        selectedItem = (Provider) anItem;
+        selectedItem = model.stream().filter(provider->provider.getName().equals(anItem.toString())).findFirst().orElse(null);
     }
 
     @Override

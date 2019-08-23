@@ -17,6 +17,7 @@
 package inventarios.desktop.navigation;
 
 import inventarios.desktop.Menu;
+import inventarios.desktop.ShoppingWindow;
 import org.springframework.stereotype.Component;
 
 import javax.swing.JFrame;
@@ -35,4 +36,11 @@ public class ListaComprasVisitor extends NavigationHandler {
         menu.add(origin);
         origin.setVisible(false);
     }
+
+    @Override
+    public void goToShopping(JFrame origin) {
+        ShoppingWindow shoppingWindow = context.getBean(ShoppingWindow.class);
+        shoppingWindow.setVisible(true);
+        origin.dispose();
+    }    
 }
