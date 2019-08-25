@@ -54,7 +54,8 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     <repoToken>cwOQWQhtPnhwjn1pTDmopqqmaqxkhvfS8</repoToken>
                 </configuration>
             </plugin>
-            <!-- code coverage 
+            
+            <!-- code coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -69,7 +70,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                 </executions>
                 <dependencies>
         
-                    jaxb
+                    <!-- jaxb -->
                     <dependency>
                         <groupId>javax.xml.bind</groupId>
                         <artifactId>jaxb-api</artifactId>
@@ -92,7 +93,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     </dependency>
                 </dependencies>
             </plugin>
-            -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
