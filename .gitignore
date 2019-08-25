@@ -2,3 +2,5 @@
 nbactions.xml
 /inventarios-*/*.iml
 /*/target/
+/*/nbproject/
+/*/nb-configuration.xml
