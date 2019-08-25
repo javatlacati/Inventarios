@@ -18,9 +18,9 @@ test_script:
   
 after_test:
   - ps: Start-FileDownload 'https://ci.appveyor.com/api/buildjobs/t8yfa0v7jnhuo2b6/artifacts/jq.exe'
-  - ps: Start-FileDownload 'https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest' | jq.exe -r .assets[0].browser_download_url
+  - ps: Start-FileDownload 'https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest' | ./jq.exe -r .assets[0].browser_download_url
   - dir
-  - ps: java -jar codacy-coverage-reporter-assembly.jar report -l Java -r jacoco.xml
+  - ps: java -jar codacy-coverage-reporter-assembly.jar report -l Java -r -r target/site/jacoco-aggregate/jacoco.xml
 
 cache:
   - C:\Users\appveyor\.m2
