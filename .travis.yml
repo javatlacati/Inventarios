@@ -12,6 +12,7 @@ before_install:
 
 after_success:
   - mvn clean test jacoco:report coveralls:report
+  - ls
   - java -jar ~/codacy-coverage-reporter-assembly-latest.jar report -l Java -r target/site/cobertura/coverage.xml
 
 jdk:
