@@ -20,6 +20,7 @@ import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.LoginUsersService;
 import inventarios.to.LoginUser;
 import inventarios.util.FontFactory;
+import inventarios.util.Utils;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -239,7 +240,7 @@ public class LoginWindow extends JFrame {
     }//GEN-LAST:event_txtPsswdKeyTyped
 
     private void windowCloseHandler(WindowEvent evt) {//GEN-FIRST:event_windowCloseHandler
-        confirmExit();
+        Utils.confirmExit();
     }//GEN-LAST:event_windowCloseHandler
 
     private void loginAttempt() {
@@ -260,13 +261,6 @@ public class LoginWindow extends JFrame {
     private void clearFields() {
         txtUser.setText("");
         txtPsswd.setText("");
-    }
-
-    public void confirmExit() {
-        int valor = JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar la aplicación?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
     }
 
 }

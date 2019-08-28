@@ -19,6 +19,7 @@ package inventarios.desktop;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProviderService;
 import inventarios.to.Provider;
+import inventarios.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -346,20 +347,11 @@ public class ProviderManagement extends JFrame {
             addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
-                    confirmarSalida();
+                    Utils.confirmExit();
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    //Confirmar salida//
-    public void confirmarSalida() {
-        int valor = JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
-    }
-
 }

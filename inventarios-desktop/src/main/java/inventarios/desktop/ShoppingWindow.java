@@ -24,6 +24,7 @@ import inventarios.service.PurchaseService;
 import inventarios.to.Product;
 import inventarios.to.Provider;
 import inventarios.to.Purchase;
+import inventarios.util.Utils;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -106,19 +107,11 @@ public class ShoppingWindow extends javax.swing.JFrame {
             this.setDefaultCloseOperation(ShoppingWindow.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    confirmarSalida();
+                    Utils.confirmExit();
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    //Confirmar salida//
-    public void confirmarSalida() {
-        int valor = JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas la ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor == JOptionPane.YES_OPTION) {
-            System.exit(0);
         }
     }
 

@@ -17,6 +17,7 @@
 package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
+import inventarios.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -72,19 +73,11 @@ public class Menu extends javax.swing.JFrame {
             this.setDefaultCloseOperation(Menu.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    confirmarSalida();
+                    Utils.confirmExit();
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    //Confirmar salida//
-    public void confirmarSalida() {
-        int valor = JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor == JOptionPane.YES_OPTION) {
-            System.exit(0);
         }
     }
 
@@ -386,7 +379,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreditsActionPerformed
 
     private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        confirmarSalida();
+        Utils.confirmExit();
     }//GEN-LAST:event_btnCloseActionPerformed
 
 }

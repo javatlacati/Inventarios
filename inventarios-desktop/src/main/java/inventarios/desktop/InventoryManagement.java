@@ -22,6 +22,7 @@ import inventarios.service.ProductService;
 import inventarios.to.Product;
 import inventarios.to.ProductCharacteristic;
 import inventarios.util.RoundedBorder;
+import inventarios.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -87,14 +88,6 @@ public class InventoryManagement extends JFrame {
         this.validatorFactory = validatorFactory;
         initComponents();
         this.getContentPane().setBackground(Color.cyan);
-    }
-
-    //Confirmar salida//
-    public void confirmarSalida() {
-        int valor = JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
     }
 
     /**
@@ -442,7 +435,7 @@ public class InventoryManagement extends JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void closeHandler(WindowEvent evt) {//GEN-FIRST:event_closeHandler
-        confirmarSalida();
+        Utils.confirmExit();
     }//GEN-LAST:event_closeHandler
 
 }

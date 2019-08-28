@@ -17,6 +17,7 @@
 package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
+import inventarios.util.Utils;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -59,6 +60,7 @@ public class Information extends javax.swing.JFrame {
 
     /**
      * Creates new form Información
+     * @param navigationHandler
      */
     @Autowired
     public Information(@Qualifier("informationVisitor") NavigationHandler navigationHandler) {
@@ -83,19 +85,11 @@ public class Information extends javax.swing.JFrame {
             this.setDefaultCloseOperation(Information.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    confirmarSalida();
+                    Utils.confirmExit();
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    //Confirmar salida//
-    public void confirmarSalida() {
-        int valor = JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar la aplicación?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor == JOptionPane.YES_OPTION) {
-            System.exit(0);
         }
     }
 

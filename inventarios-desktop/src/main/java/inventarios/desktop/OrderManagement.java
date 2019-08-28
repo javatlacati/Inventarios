@@ -23,6 +23,7 @@ Se importa la paqueteria a utilizar
 import com.toedter.calendar.JDateChooser;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.to.OrderDetail;
+import inventarios.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -91,7 +92,6 @@ public class OrderManagement extends javax.swing.JFrame {
 
         initComponents();
         this.getContentPane().setBackground(Color.cyan);
-        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
     }
     
@@ -137,6 +137,7 @@ public class OrderManagement extends javax.swing.JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("OrderManagement.title")); // NOI18N
+        setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setResizable(false);
 
         lblOrderNo.setText(bundle.getString("OrderManagement.lblOrderNo.text")); // NOI18N
@@ -420,19 +421,11 @@ public class OrderManagement extends javax.swing.JFrame {
             this.setDefaultCloseOperation(OrderManagement.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    confirmarSalida();
+                    Utils.confirmExit();
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    //Confirmar salida//
-    public void confirmarSalida() {
-        int valor = JOptionPane.showConfirmDialog(this, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor == JOptionPane.YES_OPTION) {
-            System.exit(0);
         }
     }
 
