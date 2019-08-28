@@ -19,6 +19,7 @@ test_script:
 after_test:
   # - ps: Start-FileDownload 'https://ci.appveyor.com/api/buildjobs/t8yfa0v7jnhuo2b6/artifacts/jq.exe'
   - ps: Start-FileDownload 'https://github.com/codacy/codacy-coverage-reporter/releases/download/6.0.2/codacy-coverage-reporter-6.0.2-assembly.jar'
+  - dir
   - cd inventarios-service/target
   - dir
   - cd ..
