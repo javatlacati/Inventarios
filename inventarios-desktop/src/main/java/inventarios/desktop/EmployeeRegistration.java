@@ -38,6 +38,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -117,6 +118,7 @@ public class EmployeeRegistration extends JFrame {
         txtAddress = new JTextField();
         JLabel lblPosition = new JLabel();
         txtPosition = new JTextField();
+        JPanel pnlHorary = new JPanel();
         JLabel lblArrivingTime = new JLabel();
         txtArrivingTime = new JTextField();
         JLabel lblLeavingTime = new JLabel();
@@ -143,10 +145,9 @@ public class EmployeeRegistration extends JFrame {
 
         pnlContents.setLayout(new GridBagLayout());
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 205;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(15, 12, 0, 0);
@@ -155,9 +156,8 @@ public class EmployeeRegistration extends JFrame {
         lblId.setFont(new Font("Tahoma", 1, 18)); // NOI18N
         lblId.setText(bundle.getString("EmployeeRegistration.lblId.text")); // NOI18N
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(11, 10, 0, 0);
         pnlContents.add(lblId, gridBagConstraints);
@@ -165,17 +165,15 @@ public class EmployeeRegistration extends JFrame {
         lblFirstName.setFont(new Font("Tahoma", 1, 18)); // NOI18N
         lblFirstName.setText(bundle.getString("EmployeeRegistration.lblFirstName.text")); // NOI18N
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(44, 10, 0, 0);
         pnlContents.add(lblFirstName, gridBagConstraints);
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 205;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(28, 12, 0, 0);
@@ -184,17 +182,15 @@ public class EmployeeRegistration extends JFrame {
         lblFirstLastName.setFont(new Font("Tahoma", 1, 18)); // NOI18N
         lblFirstLastName.setText(bundle.getString("EmployeeRegistration.lblFirstLastName.text")); // NOI18N
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(61, 10, 0, 0);
         pnlContents.add(lblFirstLastName, gridBagConstraints);
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 205;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(54, 12, 0, 0);
@@ -203,16 +199,15 @@ public class EmployeeRegistration extends JFrame {
         lblLastLastName.setFont(new Font("Tahoma", 1, 18)); // NOI18N
         lblLastLastName.setText(bundle.getString("EmployeeRegistration.lblLastLastName.text")); // NOI18N
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(48, 10, 0, 0);
         pnlContents.add(lblLastLastName, gridBagConstraints);
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 205;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(48, 10, 0, 0);
@@ -221,16 +216,15 @@ public class EmployeeRegistration extends JFrame {
         lblAdress.setFont(new Font("Tahoma", 1, 18)); // NOI18N
         lblAdress.setText(bundle.getString("EmployeeRegistration.lblAdress.text")); // NOI18N
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(47, 10, 0, 0);
         pnlContents.add(lblAdress, gridBagConstraints);
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 205;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(51, 10, 0, 0);
@@ -239,19 +233,21 @@ public class EmployeeRegistration extends JFrame {
         lblPosition.setFont(new Font("Tahoma", 1, 18)); // NOI18N
         lblPosition.setText(bundle.getString("EmployeeRegistration.lblPosition.text")); // NOI18N
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(39, 10, 0, 0);
         pnlContents.add(lblPosition, gridBagConstraints);
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 205;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(43, 10, 0, 0);
         pnlContents.add(txtPosition, gridBagConstraints);
+
+        pnlHorary.setLayout(new GridBagLayout());
 
         lblArrivingTime.setText(bundle.getString("EmployeeRegistration.lblArrivingTime.text")); // NOI18N
         gridBagConstraints = new GridBagConstraints();
@@ -261,7 +257,7 @@ public class EmployeeRegistration extends JFrame {
         gridBagConstraints.ipadx = 13;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(21, 10, 0, 0);
-        pnlContents.add(lblArrivingTime, gridBagConstraints);
+        pnlHorary.add(lblArrivingTime, gridBagConstraints);
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 12;
@@ -269,7 +265,7 @@ public class EmployeeRegistration extends JFrame {
         gridBagConstraints.ipadx = 205;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(18, 10, 65, 0);
-        pnlContents.add(txtArrivingTime, gridBagConstraints);
+        pnlHorary.add(txtArrivingTime, gridBagConstraints);
 
         lblLeavingTime.setText(bundle.getString("EmployeeRegistration.lblLeavingTime.text")); // NOI18N
         gridBagConstraints = new GridBagConstraints();
@@ -278,7 +274,7 @@ public class EmployeeRegistration extends JFrame {
         gridBagConstraints.ipadx = 21;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(21, 8, 0, 0);
-        pnlContents.add(lblLeavingTime, gridBagConstraints);
+        pnlHorary.add(lblLeavingTime, gridBagConstraints);
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 12;
@@ -286,9 +282,17 @@ public class EmployeeRegistration extends JFrame {
         gridBagConstraints.ipadx = 79;
         gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(18, 4, 65, 55);
-        pnlContents.add(txtLeavingTime, gridBagConstraints);
+        pnlHorary.add(txtLeavingTime, gridBagConstraints);
+
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 2;
+        pnlContents.add(pnlHorary, gridBagConstraints);
 
         getContentPane().add(pnlContents, BorderLayout.CENTER);
+
+        pnlButtons.setLayout(new GridLayout(1, 4, 20, 0));
 
         btnSave.setFont(new Font("Verdana", 1, 18)); // NOI18N
         btnSave.setText(bundle.getString("EmployeeRegistration.btnSave.text")); // NOI18N
@@ -297,6 +301,7 @@ public class EmployeeRegistration extends JFrame {
                 btnSaveActionPerformed(evt);
             }
         });
+        pnlButtons.add(btnSave);
 
         jButton2.setFont(new Font("Verdana", 1, 18)); // NOI18N
         jButton2.setText(bundle.getString("EmployeeRegistration.jButton2.text")); // NOI18N
@@ -305,6 +310,7 @@ public class EmployeeRegistration extends JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        pnlButtons.add(jButton2);
 
         btnMenu.setBackground(new Color(255, 255, 255));
         btnMenu.setFont(new Font("Tahoma", 1, 24)); // NOI18N
@@ -315,6 +321,7 @@ public class EmployeeRegistration extends JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
+        pnlButtons.add(btnMenu);
 
         btnClose.setText(bundle.getString("EmployeeRegistration.btnClose.text")); // NOI18N
         btnClose.addActionListener(new ActionListener() {
@@ -322,31 +329,7 @@ public class EmployeeRegistration extends JFrame {
                 btnCloseActionPerformed(evt);
             }
         });
-
-        GroupLayout pnlButtonsLayout = new GroupLayout(pnlButtons);
-        pnlButtons.setLayout(pnlButtonsLayout);
-        pnlButtonsLayout.setHorizontalGroup(pnlButtonsLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(pnlButtonsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnSave)
-                .addGap(74, 74, 74)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
-                .addComponent(btnClose)
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-        pnlButtonsLayout.setVerticalGroup(pnlButtonsLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(pnlButtonsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlButtonsLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave)
-                    .addComponent(jButton2)
-                    .addComponent(btnMenu)
-                    .addComponent(btnClose))
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        pnlButtons.add(btnClose);
 
         getContentPane().add(pnlButtons, BorderLayout.SOUTH);
 
