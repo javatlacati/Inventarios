@@ -16,23 +16,26 @@
  */
 package inventarios.service;
 
-import inventarios.repository.PurchaseRepository;
-import inventarios.to.Purchase;
+import inventarios.repository.OrderRepository;
+import inventarios.to.OrderDetail;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+/**
+ *
+ * @author Ruslan López Carro <scherzo16 at gmail.com>
+ */
 @Service
-public class PurchaseService {
+public class OrderService {
     @Autowired
-    private PurchaseRepository purchaseRepository;
+    private OrderRepository orderRepository;
 
-    public List<Purchase> findAll() {
-        return purchaseRepository.findAll();
+    public List<OrderDetail> findAll() {
+        return orderRepository.findAll();
     }
 
-    public <S extends Purchase> S save(S s) {
-        return purchaseRepository.save(s);
+    public <S extends OrderDetail> S save(S s) {
+        return orderRepository.save(s);
     }
 }
