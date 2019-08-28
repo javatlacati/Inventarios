@@ -73,8 +73,6 @@ public class OrderList extends javax.swing.JFrame {
         this.orderService = orderService;
         this.shutdownManager = shutdownManager;
         initComponents();
-        mostrarInterfaz();
-        mostrarLosDatos();
         cerrar();
         this.getContentPane().setBackground(Color.GRAY);
     }
@@ -119,6 +117,15 @@ public class OrderList extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void setVisible(boolean visible) {
+        if(visible){
+            mostrarInterfaz();
+            mostrarLosDatos();
+        }
+        super.setVisible(visible);
     }
 
     /**
