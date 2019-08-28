@@ -39,7 +39,7 @@ public class ShutdownManager {
             int exitCode = SpringApplication.exit(appContext,
                     () -> 0
             );
-            System.exit(exitCode);
+            Runtime.getRuntime().exit(exitCode);
         }
     }
 }

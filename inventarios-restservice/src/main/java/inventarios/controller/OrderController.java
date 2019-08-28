@@ -37,12 +37,12 @@ public class OrderController {
     private OrderService orderService;
     
     @GetMapping("/orders")
-    List<OrderDetail> all() {
+    public List<OrderDetail> all() {
         return orderService.findAll();
     }
 
     @PostMapping("/orders")
-    OrderDetail newEmployee(@RequestBody OrderDetail newEmployee) {
+    public OrderDetail newEmployee(@RequestBody OrderDetail newEmployee) {
         return orderService.save(newEmployee);
     }
 }
