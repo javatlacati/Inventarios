@@ -21,7 +21,6 @@ It has two related systems, a rest service for an Inventory Management System an
 
 ## Screenshots
 
-
 ![](screenshots/login.png)
 
 ## License
