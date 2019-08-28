@@ -308,31 +308,19 @@ public class ShoppingWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void txtAdressKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtAdressKeyTyped
-        char cTeclaPresionada = evt.getKeyChar();
-        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
-            add();
-        }
+        addOnEnterKey(evt);
     }//GEN-LAST:event_txtAdressKeyTyped
 
     private void txtTelephoneKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtTelephoneKeyTyped
-        char cTeclaPresionada = evt.getKeyChar();
-        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
-            add();
-        }
+        addOnEnterKey(evt);
     }//GEN-LAST:event_txtTelephoneKeyTyped
 
     private void txtContributorKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtContributorKeyTyped
-        char cTeclaPresionada = evt.getKeyChar();
-        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
-            add();
-        }
+        addOnEnterKey(evt);
     }//GEN-LAST:event_txtContributorKeyTyped
 
     private void txtEmailKeyTyped(KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
-        char cTeclaPresionada = evt.getKeyChar();
-        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
-            add();
-        }
+        addOnEnterKey(evt);
     }//GEN-LAST:event_txtEmailKeyTyped
 
     private void btnSearchActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
@@ -367,6 +355,13 @@ public class ShoppingWindow extends javax.swing.JFrame {
         /*
        * Agregar el contendio al jTable
          */
+    }
+    
+    private void addOnEnterKey(KeyEvent evt) {
+        char cTeclaPresionada = evt.getKeyChar();
+        if (cTeclaPresionada == KeyEvent.VK_ENTER) {
+            add();
+        }
     }
 
     private void clearFields() {
