@@ -16,27 +16,33 @@
  */
 package inventarios.controller;
 
-import inventarios.service.ProviderService;
-import inventarios.to.Provider;
+import inventarios.service.OrderService;
+import inventarios.to.OrderDetail;
+import java.util.List;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
+/**
+ *
+ * @author Ruslan López Carro <scherzo16 at gmail.com>
+ */
 @RestController
-public class ProviderController {
+@Log
+public class OrderController {
     @Autowired
-    private ProviderService providerService;
-
-    @GetMapping("/providers")
-    public List<Provider> findAll() {
-        return providerService.findAll();
+    private OrderService orderService;
+    
+    @GetMapping("/orders")
+    List<OrderDetail> all() {
+        return orderService.findAll();
     }
 
-    @PostMapping("/providers")
-    public <S extends Provider> S save(S s) {
-        return providerService.save(s);
+    @PostMapping("/orders")
+    OrderDetail newEmployee(@RequestBody OrderDetail newEmployee) {
+        return orderService.save(newEmployee);
     }
 }
