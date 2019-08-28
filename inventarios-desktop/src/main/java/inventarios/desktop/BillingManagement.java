@@ -17,7 +17,7 @@
 package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -39,25 +39,31 @@ import org.springframework.beans.factory.annotation.Qualifier;
 public class BillingManagement extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    JTextField txtCorporativeName;
-    JTextField txtCountry;
-    JTextField txtEmail;
-    JTextField txtInsideNumber;
-    JTextField txtLocality;
-    JTextField txtMunicipality;
-    JTextField txtNeighborhood;
-    JTextField txtOutsideNumber;
-    JTextField txtPOBox;
-    JTextField txtRfc;
-    JTextField txtState;
-    JTextField txtStreet;
+    private JTextField txtCorporativeName;
+    private JTextField txtCountry;
+    private JTextField txtEmail;
+    private JTextField txtInsideNumber;
+    private JTextField txtLocality;
+    private JTextField txtMunicipality;
+    private JTextField txtNeighborhood;
+    private JTextField txtOutsideNumber;
+    private JTextField txtPOBox;
+    private JTextField txtRfc;
+    private JTextField txtState;
+    private JTextField txtStreet;
     // End of variables declaration//GEN-END:variables
 
     private NavigationHandler navigationHandler;
 
+    private ShutdownManager shutdownManager;
+
     @Autowired
-    public BillingManagement(@Qualifier("billingManagementVisitor") NavigationHandler navigationHandler) throws HeadlessException {
+    public BillingManagement(
+            @Qualifier("billingManagementVisitor") NavigationHandler navigationHandler,
+            ShutdownManager shutdownManager
+    ) throws HeadlessException {
         this.navigationHandler = navigationHandler;
+        this.shutdownManager = shutdownManager;
     }
 
     public static LinkedList contenedor = new LinkedList();
@@ -262,7 +268,7 @@ public class BillingManagement extends JFrame {
             this.setDefaultCloseOperation(BillingManagement.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    Utils.confirmExit();
+                    shutdownManager.confirmExit();
                 }
             });
         } catch (Exception e) {

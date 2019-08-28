@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2019 Ruslan LÃ³pez Carro
+ * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,13 +19,12 @@ package inventarios.desktop;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProviderService;
 import inventarios.to.Provider;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -35,7 +34,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -67,24 +65,25 @@ public class ProviderManagement extends JFrame {
     private NavigationHandler navigationHandler;
     
     private ProviderService providerService;
+    private ShutdownManager shutdownManager;
 
     /**
      * Creates new form ProveedorVentana
      */
     @Autowired
-    public ProviderManagement(@Qualifier("providerManagementVisitor") NavigationHandler navigationHandler, ProviderService providerService) {
+    public ProviderManagement(
+            @Qualifier("providerManagementVisitor")
+                    NavigationHandler navigationHandler
+            , ProviderService providerService,
+            ShutdownManager shutdownManager
+    ) {
         this.navigationHandler = navigationHandler;
         this.providerService = providerService;
-        /*
-        Se inicializa la Lista
-         */
-        Lista = new ArrayList<>();
+        this.shutdownManager = shutdownManager;
         initComponents();
         this.getContentPane().setBackground(Color.cyan);
     }
-
   
-    ArrayList<Provider> Lista;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -347,7 +346,7 @@ public class ProviderManagement extends JFrame {
             addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
-                    Utils.confirmExit();
+                    shutdownManager.confirmExit();
                 }
             });
         } catch (Exception e) {

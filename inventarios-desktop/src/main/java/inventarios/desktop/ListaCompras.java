@@ -19,7 +19,7 @@ package inventarios.desktop;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.PurchaseService;
 import inventarios.to.Purchase;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -52,23 +52,29 @@ public class ListaCompras extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JTable shoppingTable;
     // End of variables declaration//GEN-END:variables
-    
+
     private NavigationHandler navigationHandler;
-    
+
     private PurchaseService purchaseService;
+
+    private ShutdownManager shutdownManager;
 
     /**
      * Creates new form ListaCompras
      */
     @Autowired
-    public ListaCompras(@Qualifier("listaComprasVisitor") NavigationHandler navigationHandler, PurchaseService purchaseService) {
+    public ListaCompras(
+            @Qualifier("listaComprasVisitor") NavigationHandler navigationHandler,
+            PurchaseService purchaseService, ShutdownManager shutdownManager
+    ) {
         this.navigationHandler = navigationHandler;
         this.purchaseService = purchaseService;
-          initComponents();
+        this.shutdownManager = shutdownManager;
+        initComponents();
         mostrarInterfaz();
         cerrar();
     }
-    
+
     private DefaultTableModel modelo;
     private int con = 0;
 
@@ -101,7 +107,7 @@ public class ListaCompras extends javax.swing.JFrame {
             this.setDefaultCloseOperation(ListaCompras.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    Utils.confirmExit();
+                    shutdownManager.confirmExit();
                 }
             });
         } catch (Exception e) {
@@ -244,6 +250,5 @@ public class ListaCompras extends javax.swing.JFrame {
     private void btnGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
         navigationHandler.goToShopping(this);
     }//GEN-LAST:event_btnGetBackActionPerformed
-
 
 }

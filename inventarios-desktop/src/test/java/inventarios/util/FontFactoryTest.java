@@ -16,18 +16,26 @@
  */
 package inventarios.util;
 
-import javax.swing.JOptionPane;
+import java.awt.Font;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author Ruslan López Carro <scherzo16 at gmail.com>
  */
-public class Utils {
-    //Confirmar salida//
-    public static void confirmExit() {
-        int valor = JOptionPane.showConfirmDialog(null, "¿Desea cerrar todas las ventanas abiertas?", "Advertencia", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-        if (valor == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
-    }   
+public class FontFactoryTest {
+    
+    FontFactory factory;
+    
+    public FontFactoryTest() {
+        factory = new FontFactory();
+    }
+
+    @Test
+    public void testGetFont() {
+        final Font font = factory.getFont("does not exist");
+        assertEquals(new Font("serif", Font.PLAIN, 24), font);
+    }
+    
 }

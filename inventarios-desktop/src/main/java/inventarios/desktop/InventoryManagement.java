@@ -22,7 +22,7 @@ import inventarios.service.ProductService;
 import inventarios.to.Product;
 import inventarios.to.ProductCharacteristic;
 import inventarios.util.RoundedBorder;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -76,16 +76,24 @@ public class InventoryManagement extends JFrame {
 
     private NavigationHandler navigationHandler;
 
+    private ShutdownManager shutdownManager;
+
     public Optional<Product> found;
 
     /**
      * Creates new form InterfazConstructor
      */
     @Autowired
-    public InventoryManagement(@Qualifier("inventoryManagementVisitor") NavigationHandler navigationHandler, ProductService productService, @Qualifier("getValidator") LocalValidatorFactoryBean validatorFactory) {
+    public InventoryManagement(
+            @Qualifier("inventoryManagementVisitor") NavigationHandler navigationHandler,
+            ProductService productService,
+            @Qualifier("getValidator") LocalValidatorFactoryBean validatorFactory,
+            ShutdownManager shutdownManager
+    ) {
         this.navigationHandler = navigationHandler;
         this.productService = productService;
         this.validatorFactory = validatorFactory;
+        this.shutdownManager = shutdownManager;
         initComponents();
         this.getContentPane().setBackground(Color.cyan);
     }
@@ -357,8 +365,8 @@ public class InventoryManagement extends JFrame {
                     (violation)
                     -> JOptionPane.showMessageDialog(null,
                             violation.getMessage() + ". por favor corrija el valor:\"" + violation.getInvalidValue() + "\"",
-                             violation.getMessage(),
-                             JOptionPane.WARNING_MESSAGE)
+                            violation.getMessage(),
+                            JOptionPane.WARNING_MESSAGE)
             );
         }
     }
@@ -435,7 +443,7 @@ public class InventoryManagement extends JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void closeHandler(WindowEvent evt) {//GEN-FIRST:event_closeHandler
-        Utils.confirmExit();
+        shutdownManager.confirmExit();
     }//GEN-LAST:event_closeHandler
 
 }

@@ -67,6 +67,7 @@
             <Component class="javax.swing.JTextField" name="txtRfc">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCorporativeName">
@@ -79,6 +80,7 @@
             <Component class="javax.swing.JTextField" name="txtCorporativeName">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblStreet">
@@ -91,6 +93,7 @@
             <Component class="javax.swing.JTextField" name="txtStreet">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblOutsideNumber">
@@ -103,6 +106,7 @@
             <Component class="javax.swing.JTextField" name="txtOutsideNumber">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblInsideNumber">
@@ -115,6 +119,7 @@
             <Component class="javax.swing.JTextField" name="txtInsideNumber">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblNeighborhood">
@@ -127,6 +132,7 @@
             <Component class="javax.swing.JTextField" name="txtNeighborhood">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblLocality">
@@ -139,6 +145,7 @@
             <Component class="javax.swing.JTextField" name="txtLocality">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblMunicipality">
@@ -151,6 +158,7 @@
             <Component class="javax.swing.JTextField" name="txtMunicipality">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblState">
@@ -163,6 +171,7 @@
             <Component class="javax.swing.JTextField" name="txtState">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblPOBox">
@@ -175,6 +184,7 @@
             <Component class="javax.swing.JTextField" name="txtPOBox">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCountry">
@@ -187,6 +197,7 @@
             <Component class="javax.swing.JTextField" name="txtCountry">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblEMail">
@@ -199,6 +210,7 @@
             <Component class="javax.swing.JTextField" name="txtEmail">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
               </AuxValues>
             </Component>
           </SubComponents>

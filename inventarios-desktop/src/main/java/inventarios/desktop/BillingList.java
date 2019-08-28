@@ -18,7 +18,7 @@ package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.to.BillingDetails;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -63,6 +63,9 @@ public class BillingList extends JFrame {
     @Autowired
     @Qualifier("billingListVisitor")
     private NavigationHandler navigationHandler;
+    
+    @Autowired
+    private ShutdownManager shutdownManager;
 
     /**
      * Creates new form ListaFacturación
@@ -113,7 +116,7 @@ public class BillingList extends JFrame {
             this.setDefaultCloseOperation(BillingList.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    Utils.confirmExit();
+                    shutdownManager.confirmExit();
                 }
             });
         } catch (Exception e) {
@@ -138,17 +141,6 @@ public class BillingList extends JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setResizable(false);
 
-        jTable1.setModel(new DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
         jScrollPane1.setViewportView(jTable1);
 
         btnDeleteRow.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N

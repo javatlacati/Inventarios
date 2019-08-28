@@ -19,7 +19,7 @@ package inventarios.desktop;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProductService;
 import inventarios.to.Product;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import java.awt.BorderLayout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -61,20 +61,25 @@ public class ListaProductos extends javax.swing.JFrame {
 
     private ProductService productService;
 
-
     private NavigationHandler navigationHandler;
-    
+
+    private ShutdownManager shutdownManager;
+
     @Autowired
-    public ListaProductos(ProductService productService, @Qualifier("listaProductosNavigationHandler") NavigationHandler navigationHandler) {
+    public ListaProductos(ProductService productService,
+            @Qualifier("listaProductosNavigationHandler") NavigationHandler navigationHandler,
+            ShutdownManager shutdownManager) {
         this.productService = productService;
         this.navigationHandler = navigationHandler;
-         initComponents();
+        this.shutdownManager = shutdownManager;
+        initComponents();
 
         this.setLocationRelativeTo(null);
-        this.getContentPane().setBackground(Color.GRAY);   
+        this.getContentPane().setBackground(Color.GRAY);
     }
 
     private DefaultTableModel model;
+
     /**
      * metodo para mostrar la interfaz vacia de la tabla
      */
@@ -110,7 +115,7 @@ public class ListaProductos extends javax.swing.JFrame {
             this.setDefaultCloseOperation(ListaProductos.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    Utils.confirmExit();
+                    shutdownManager.confirmExit();
                 }
             });
         } catch (Exception e) {

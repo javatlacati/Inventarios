@@ -20,7 +20,7 @@ import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.LoginUsersService;
 import inventarios.to.LoginUser;
 import inventarios.util.FontFactory;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -67,12 +67,17 @@ public class LoginWindow extends JFrame {
     private LoginUsersService usersService;
     private FontFactory fontFactory;
     private NavigationHandler navigationHandler;
+    private ShutdownManager shutdownManager;
 
     @Autowired
-    public LoginWindow(@Qualifier("loginVisitor") NavigationHandler navigationHandler,LoginUsersService usersService, FontFactory fontFactory) {
+    public LoginWindow(
+            @Qualifier("loginVisitor") NavigationHandler navigationHandler,
+            LoginUsersService usersService, FontFactory fontFactory,
+            ShutdownManager shutdownManager) {
         this.usersService = usersService;
         this.navigationHandler = navigationHandler;
         this.fontFactory = fontFactory;
+        this.shutdownManager = shutdownManager;
         initComponents();
     }
 
@@ -240,7 +245,7 @@ public class LoginWindow extends JFrame {
     }//GEN-LAST:event_txtPsswdKeyTyped
 
     private void windowCloseHandler(WindowEvent evt) {//GEN-FIRST:event_windowCloseHandler
-        Utils.confirmExit();
+        shutdownManager.confirmExit();
     }//GEN-LAST:event_windowCloseHandler
 
     private void loginAttempt() {

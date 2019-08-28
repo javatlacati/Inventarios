@@ -24,7 +24,7 @@ import inventarios.service.PurchaseService;
 import inventarios.to.Product;
 import inventarios.to.Provider;
 import inventarios.to.Purchase;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -49,7 +49,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -80,6 +79,9 @@ public class ShoppingWindow extends javax.swing.JFrame {
     private ProductService productService;
 
     private PurchaseService purchaseService;
+
+    private ShutdownManager shutdownManager;
+
     /*
     Se Realiza el llamado del ArrayList
      */
@@ -88,11 +90,18 @@ public class ShoppingWindow extends javax.swing.JFrame {
     TableRowSorter busqueda = new TableRowSorter(model);
 
     @Autowired
-    public ShoppingWindow(@Qualifier("shoppingVisitor") NavigationHandler navigationHandler, ProviderService providerService, ProductService productService, PurchaseService purchaseService) {
+    public ShoppingWindow(
+            @Qualifier("shoppingVisitor") NavigationHandler navigationHandler,
+            ProviderService providerService,
+            ProductService productService,
+            PurchaseService purchaseService,
+            ShutdownManager shutdownManager
+    ) {
         this.navigationHandler = navigationHandler;
         this.providerService = providerService;
         this.productService = productService;
         this.purchaseService = purchaseService;
+        this.shutdownManager = shutdownManager;
         initComponents();
 
         this.setLocationRelativeTo(null);
@@ -107,7 +116,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
             this.setDefaultCloseOperation(ShoppingWindow.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    Utils.confirmExit();
+                    shutdownManager.confirmExit();
                 }
             });
         } catch (Exception e) {

@@ -17,7 +17,7 @@
 package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,8 +41,8 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
     private NavigationHandler navigationHandler;
+    private ShutdownManager shutdownManager;
 
     private final Stack<JFrame> previouses;
 
@@ -50,9 +50,11 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     @Autowired
-    public Menu(@Qualifier("menuVisitor") NavigationHandler navigationHandler) {
+    public Menu(@Qualifier("menuVisitor") NavigationHandler navigationHandler,
+            ShutdownManager shutdownManager) {
         this.navigationHandler = navigationHandler;
-         initComponents();
+        this.shutdownManager = shutdownManager;
+        initComponents();
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.orange);
         cerrar();
@@ -73,7 +75,7 @@ public class Menu extends javax.swing.JFrame {
             this.setDefaultCloseOperation(Menu.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    Utils.confirmExit();
+                    shutdownManager.confirmExit();
                 }
             });
         } catch (Exception e) {
@@ -379,7 +381,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreditsActionPerformed
 
     private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        Utils.confirmExit();
+        shutdownManager.confirmExit();
     }//GEN-LAST:event_btnCloseActionPerformed
 
 }

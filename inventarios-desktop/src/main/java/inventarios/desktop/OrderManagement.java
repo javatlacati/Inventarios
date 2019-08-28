@@ -23,13 +23,12 @@ Se importa la paqueteria a utilizar
 import com.toedter.calendar.JDateChooser;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.to.OrderDetail;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -79,17 +78,19 @@ public class OrderManagement extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
     private NavigationHandler navigationHandler;
+    private ShutdownManager shutdownManager;
 
     /**
      * Creates new form PedidosVetana
      */
     @Autowired
-    public OrderManagement(@Qualifier("orderManagementVisitor") NavigationHandler navigationHandler) {
+    public OrderManagement(
+            @Qualifier("orderManagementVisitor")
+                    NavigationHandler navigationHandler,
+            ShutdownManager shutdownManager
+    ) {
         this.navigationHandler = navigationHandler;
-        /*
-        Se inicializa la Lista
-         */
-
+        this.shutdownManager = shutdownManager;
         initComponents();
         this.getContentPane().setBackground(Color.cyan);
         cerrar();
@@ -421,7 +422,7 @@ public class OrderManagement extends javax.swing.JFrame {
             this.setDefaultCloseOperation(OrderManagement.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    Utils.confirmExit();
+                    shutdownManager.confirmExit();
                 }
             });
         } catch (Exception e) {

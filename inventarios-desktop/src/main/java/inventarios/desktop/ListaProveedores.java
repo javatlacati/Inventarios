@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2019 Ruslan LÃ³pez Carro
+ * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ package inventarios.desktop;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProviderService;
 import inventarios.to.Provider;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -58,13 +58,18 @@ public class ListaProveedores extends javax.swing.JFrame {
 
     private ProviderService providerService;
 
+    private ShutdownManager shutdownManager;
+
     /**
      * Creates new form ListaProveedores
      */
     @Autowired
-    public ListaProveedores(@Qualifier("listaProvedoresVisitor") NavigationHandler navigationHandler, ProviderService providerService) {
+    public ListaProveedores(
+            @Qualifier("listaProvedoresVisitor") NavigationHandler navigationHandler,
+            ProviderService providerService, ShutdownManager shutdownManager) {
         this.navigationHandler = navigationHandler;
         this.providerService = providerService;
+        this.shutdownManager = shutdownManager;
         initComponents();
         mostrarInterfaz();
         this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
@@ -107,7 +112,7 @@ public class ListaProveedores extends javax.swing.JFrame {
             this.setDefaultCloseOperation(ListaProveedores.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    Utils.confirmExit();
+                    shutdownManager.confirmExit();
                 }
             });
         } catch (Exception e) {
@@ -246,13 +251,13 @@ public class ListaProveedores extends javax.swing.JFrame {
 
     @Override
     public void setVisible(boolean visible) {
-        if(visible){
+        if (visible) {
             mostrarLosDatos();
         }
         super.setVisible(visible);
     }
 
-    
+
     private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed

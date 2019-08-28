@@ -36,6 +36,7 @@ import inventarios.service.LoginUsersService;
 import inventarios.service.ProductService;
 import inventarios.to.LoginUser;
 import inventarios.util.FontFactory;
+import inventarios.util.ShutdownManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -64,7 +65,6 @@ import static org.mockito.Mockito.when;
  * @author Ruslan López Carro <scherzo16 at gmail.com>
  */
 public class StepDefinition {
-
 
     @Mock
     private ShoppingWindow shoppingWindow;
@@ -107,10 +107,13 @@ public class StepDefinition {
 
     private InventoryManagement inventoryManagement;
 
+    private ShutdownManager shutdownManager;
+
     @Before
     public void beforeScenario() {
         usersService = mock(LoginUsersService.class);
         navigationHandler = mock(NavigationHandler.class);
+        shutdownManager = mock(ShutdownManager.class);
         fontFactory = mock(FontFactory.class);
         when(
                 fontFactory
@@ -120,9 +123,9 @@ public class StepDefinition {
         ).thenReturn(
                 new Font("serif", Font.PLAIN, 24)
         );
-        loginWindow = new LoginWindow(navigationHandler, usersService, fontFactory);
-        menu = new Menu(navigationHandler);
-        inventoryManagement = new InventoryManagement(navigationHandler, productService, validatorFactory);
+        loginWindow = new LoginWindow(navigationHandler, usersService, fontFactory, shutdownManager);
+        menu = new Menu(navigationHandler, shutdownManager);
+        inventoryManagement = new InventoryManagement(navigationHandler, productService, validatorFactory, shutdownManager);
     }
 
     @After
@@ -191,7 +194,6 @@ public class StepDefinition {
         assertEquals("", loginWindowPageObject.getPasswordFieldContent());
     }
 
-
     @And("^I click Inventory option in the Menu Window$")
     public void iClickInventoryOptionInTheMenuWindow() {
         doAnswer(new Answer<Void>() {
@@ -218,7 +220,6 @@ public class StepDefinition {
         }).when(navigationHandler).goToMenu(Matchers.any(InventoryManagement.class));
         inventoryPageObject.clickMenu();
     }
-
 
     @And("^error prompt message should be \'([A-Za-z\\s]+)\'$")
     public void errorPromptMessageShouldBeUsuarioWrongNoEncontrado(String expectedMessage) {

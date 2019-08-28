@@ -63,7 +63,7 @@
       <LayoutCode>
         <CodeStatement>
           <CodeExpression id="1_pnlTitle">
-            <CodeVariable name="pnlTitle" type="4096" declaredType="javax.swing.JPanel"/>
+            <CodeVariable name="pnlTitle" type="20480" declaredType="javax.swing.JPanel"/>
             <ExpressionOrigin>
               <ExpressionProvider type="ComponentRef">
                 <ComponentRef name="pnlTitle"/>

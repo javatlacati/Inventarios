@@ -18,7 +18,7 @@ package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.to.OrderDetail;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -54,22 +54,28 @@ public class ListaPedidos extends javax.swing.JFrame {
 
     private NavigationHandler navigationHandler;
 
+    private ShutdownManager shutdownManager;
+
     /**
      * Creates new form ListaPedidos
      */
     @Autowired
-    public ListaPedidos(@Qualifier("listaPedidosVisitor") NavigationHandler navigationHandler) {
+    public ListaPedidos(
+            @Qualifier("listaPedidosVisitor") NavigationHandler navigationHandler,
+            ShutdownManager shutdownManager
+    ) {
         this.navigationHandler = navigationHandler;
+        this.shutdownManager = shutdownManager;
         initComponents();
         mostrarInterfaz();
         mostrarLosDatos();
-        this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
         this.getContentPane().setBackground(Color.GRAY);
     }
 
     private DefaultTableModel modelo;
     int con = 0;
+
     public void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//
         String data[][] = {};
@@ -100,7 +106,7 @@ public class ListaPedidos extends javax.swing.JFrame {
             this.setDefaultCloseOperation(ListaPedidos.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    Utils.confirmExit();
+                    shutdownManager.confirmExit();
                 }
             });
         } catch (Exception e) {
@@ -129,6 +135,7 @@ public class ListaPedidos extends javax.swing.JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("ListaPedidos.title")); // NOI18N
+        setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setResizable(false);
 
         scrollTableOrders.setViewportView(tableOrders);

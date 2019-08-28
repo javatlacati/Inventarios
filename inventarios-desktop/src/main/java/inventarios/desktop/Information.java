@@ -17,7 +17,7 @@
 package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
-import inventarios.util.Utils;
+import inventarios.util.ShutdownManager;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -34,7 +34,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.LayoutStyle;
@@ -58,13 +57,19 @@ public class Information extends javax.swing.JFrame {
 
     private NavigationHandler navigationHandler;
 
+    private ShutdownManager shutdownManager;
+
     /**
      * Creates new form Información
+     *
      * @param navigationHandler
      */
     @Autowired
-    public Information(@Qualifier("informationVisitor") NavigationHandler navigationHandler) {
+    public Information(
+            @Qualifier("informationVisitor") NavigationHandler navigationHandler, ShutdownManager shutdownManager
+    ) {
         this.navigationHandler = navigationHandler;
+        this.shutdownManager = shutdownManager;
         initComponents();
         ImageIcon imagen = new ImageIcon("/ImgFondos/isc.png");
         Icon icono2 = new ImageIcon(imagen.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_DEFAULT));
@@ -85,7 +90,7 @@ public class Information extends javax.swing.JFrame {
             this.setDefaultCloseOperation(Information.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
-                    Utils.confirmExit();
+                    shutdownManager.confirmExit();
                 }
             });
         } catch (Exception e) {
