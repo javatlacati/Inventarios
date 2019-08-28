@@ -16,46 +16,37 @@
  */
 package inventarios.service;
 
+import inventarios.to.OrderDetail;
 import inventarios.to.Product;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-import java.util.Optional;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-
+/**
+ *
+ * @author Ruslan López Carro <scherzo16 at gmail.com>
+ */
 @Service
-public class ProductService {
-
+public class OrderService {
     @Autowired
     private RestTemplate restTemplate;
-
-    public void save(Product product) {
-        restTemplate.getForEntity("http://localhost:8080/products", Product.class, product);
-    }
-
-    public Optional<Product> findOne(Product sampleProduct) {
-        if(sampleProduct == null){
-            return Optional.empty();
-        }
-        return Optional.ofNullable(restTemplate.postForObject("http://localhost:8080/product", sampleProduct, Product.class));
-    }
-
-    public List<Product> findAll() {
-        ResponseEntity<List<Product>> response = restTemplate.exchange(
-                "http://localhost:8080/products/",
+    
+    public List<OrderDetail> findAll() {
+        ResponseEntity<List<OrderDetail>> response = restTemplate.exchange(
+                "http://localhost:8080/orders/",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<Product>>() {
+                new ParameterizedTypeReference<List<OrderDetail>>() {
         });
-        List<Product> products = response.getBody();
-        return products;
+        List<OrderDetail> employees = response.getBody();
+        return employees;
     }
-
-    public void delete(Product product) {
-        restTemplate.delete("http://localhost:8080/products", product);
+    
+    public void save(OrderDetail orderDetail) {
+        restTemplate.getForEntity("http://localhost:8080/orders", OrderDetail.class, orderDetail);
     }
 }
