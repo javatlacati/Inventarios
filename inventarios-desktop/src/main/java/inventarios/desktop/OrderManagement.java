@@ -22,6 +22,7 @@ Se importa la paqueteria a utilizar
 
 import com.toedter.calendar.JDateChooser;
 import inventarios.desktop.navigation.NavigationHandler;
+import inventarios.service.OrderService;
 import inventarios.to.OrderDetail;
 import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,6 +80,7 @@ public class OrderManagement extends javax.swing.JFrame {
     
     private NavigationHandler navigationHandler;
     private ShutdownManager shutdownManager;
+    private OrderService orderService;
 
     /**
      * Creates new form PedidosVetana
@@ -87,6 +89,7 @@ public class OrderManagement extends javax.swing.JFrame {
     public OrderManagement(
             @Qualifier("orderManagementVisitor")
                     NavigationHandler navigationHandler,
+            OrderService orderService,
             ShutdownManager shutdownManager
     ) {
         this.navigationHandler = navigationHandler;
@@ -98,7 +101,6 @@ public class OrderManagement extends javax.swing.JFrame {
     
     
 
-    public static List<OrderDetail> contenedor = new LinkedList<>();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -395,7 +397,7 @@ public class OrderManagement extends javax.swing.JFrame {
         Se hace la instancia para guardar los datos en el ArrayList
          */
         OrderDetail Ped = new OrderDetail(null, NumPedido, null, null, date);
-        contenedor.add(Ped);
+        orderService.save(Ped);
 
         clearFields();
     }//GEN-LAST:event_btnAddActionPerformed

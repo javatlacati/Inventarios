@@ -16,7 +16,7 @@
  */
 package inventarios.desktop.navigation;
 
-import inventarios.desktop.ListaPedidos;
+import inventarios.desktop.OrderList;
 import inventarios.desktop.Menu;
 import org.springframework.stereotype.Component;
 
@@ -38,7 +38,7 @@ public class OrderManagementVisitor extends NavigationHandler {
 
     @Override
     public void goToOrderList(JFrame origin) {
-        ListaPedidos listaPedidos = context.getBean(ListaPedidos.class);
+        OrderList listaPedidos = context.getBean(OrderList.class);
         listaPedidos.setVisible(true);
         origin.dispose();
     }

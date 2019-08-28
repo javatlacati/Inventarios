@@ -17,6 +17,7 @@
 package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
+import inventarios.service.OrderService;
 import inventarios.to.OrderDetail;
 import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -46,7 +48,7 @@ import javax.swing.WindowConstants;
  * @author heberdavid
  */
 @Component
-public class ListaPedidos extends javax.swing.JFrame {
+public class OrderList extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JTable tableOrders;
@@ -55,16 +57,20 @@ public class ListaPedidos extends javax.swing.JFrame {
     private NavigationHandler navigationHandler;
 
     private ShutdownManager shutdownManager;
+    
+    private OrderService orderService;
 
     /**
      * Creates new form ListaPedidos
      */
     @Autowired
-    public ListaPedidos(
+    public OrderList(
             @Qualifier("listaPedidosVisitor") NavigationHandler navigationHandler,
+            OrderService orderService,
             ShutdownManager shutdownManager
     ) {
         this.navigationHandler = navigationHandler;
+        this.orderService = orderService;
         this.shutdownManager = shutdownManager;
         initComponents();
         mostrarInterfaz();
@@ -88,9 +94,10 @@ public class ListaPedidos extends javax.swing.JFrame {
     }
 
     public void mostrarLosDatos() {
-        OrderDetail p;
-        for (int i = 0; i < OrderManagement.contenedor.size(); i++) {
-            p = (OrderDetail) OrderManagement.contenedor.get(i);
+        List<OrderDetail> orderList = orderService.findAll();
+        
+        for (int i = 0; i < orderList.size(); i++) {
+            OrderDetail p = orderList.get(i);
             modelo.insertRow(con, new Object[]{});
             modelo.setValueAt(p.getNumber(), con, 0);
             modelo.setValueAt(p.getProducts(), con, 1);
@@ -103,7 +110,7 @@ public class ListaPedidos extends javax.swing.JFrame {
 
     public void cerrar() {
         try {
-            this.setDefaultCloseOperation(ListaPedidos.DO_NOTHING_ON_CLOSE);
+            this.setDefaultCloseOperation(OrderList.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
                     shutdownManager.confirmExit();
@@ -134,14 +141,14 @@ public class ListaPedidos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
-        setTitle(bundle.getString("ListaPedidos.title")); // NOI18N
+        setTitle(bundle.getString("OrderList.title")); // NOI18N
         setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         setResizable(false);
 
         scrollTableOrders.setViewportView(tableOrders);
 
         lblTitle.setFont(new Font("Tahoma", 1, 18)); // NOI18N
-        lblTitle.setText(bundle.getString("ListaPedidos.lblTitle.text")); // NOI18N
+        lblTitle.setText(bundle.getString("OrderList.lblTitle.text")); // NOI18N
 
         btnDeleteRow.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
@@ -163,21 +170,21 @@ public class ListaPedidos extends javax.swing.JFrame {
 
         btnMenu.setBackground(new Color(255, 0, 51));
         btnMenu.setFont(new Font("Tahoma", 1, 18)); // NOI18N
-        btnMenu.setText(bundle.getString("ListaPedidos.btnMenu.text")); // NOI18N
+        btnMenu.setText(bundle.getString("OrderList.btnMenu.text")); // NOI18N
         btnMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
 
-        btnClose.setText(bundle.getString("ListaPedidos.btnClose.text")); // NOI18N
+        btnClose.setText(bundle.getString("OrderList.btnClose.text")); // NOI18N
         btnClose.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        btnGoBack.setText(bundle.getString("ListaPedidos.btnGoBack.text")); // NOI18N
+        btnGoBack.setText(bundle.getString("OrderList.btnGoBack.text")); // NOI18N
         btnGoBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnGoBackActionPerformed(evt);
@@ -258,7 +265,7 @@ public class ListaPedidos extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
-        }        // TODO add your handling code here:
+        }
     }//GEN-LAST:event_btnDeleteAllActionPerformed
 
     private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
@@ -266,7 +273,7 @@ public class ListaPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        dispose();
+        navigationHandler.goToOrderManagement(this);
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnGoBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
