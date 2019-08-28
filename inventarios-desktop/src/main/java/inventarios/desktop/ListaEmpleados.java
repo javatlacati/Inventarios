@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2019 Ruslan LÃ³pez Carro
+ * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,16 +25,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.LayoutStyle;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
 import java.awt.GradientPaint;
@@ -144,7 +140,6 @@ public class ListaEmpleados extends JFrame {
                 g.fillRect(0, 0, getWidth(), getHeight());
             }
         };
-        ;
         JPanel pnlTitle = new JPanel();
         JLabel lblTitle = new JLabel();
         JPanel pnlButtons = new JPanel();
@@ -165,7 +160,7 @@ public class ListaEmpleados extends JFrame {
         pnlTitle.add(lblTitle);
 
         pnlButtons.setOpaque(false);
-        pnlButtons.setLayout(new GridLayout());
+        pnlButtons.setLayout(new GridLayout(1, 0));
 
         btnGetBack.setFont(new Font("Verdana", 1, 18)); // NOI18N
         btnGetBack.setText(bundle.getString("ListaEmpleados.btnGetBack.text")); // NOI18N
