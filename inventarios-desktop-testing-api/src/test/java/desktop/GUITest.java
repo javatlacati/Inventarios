@@ -33,6 +33,7 @@ import inventarios.desktop.pageobjects.MainMenuPageObject;
 import inventarios.desktop.pageobjects.OrderManagementPageObject;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.LoginUsersService;
+import inventarios.service.OrderService;
 import inventarios.service.ProductService;
 import inventarios.to.LoginUser;
 import inventarios.util.FontFactory;
@@ -92,6 +93,9 @@ public class GUITest {
 
     @Mock
     private LoginUsersService usersService;
+    
+    @Mock
+    private OrderService orderService;
 
     @Mock
     private LocalValidatorFactoryBean validatorFactory;
@@ -122,7 +126,7 @@ public class GUITest {
         loginWindow.setVisible(true);
         inventoryManagement = new InventoryManagement(navigationHandler, productService, validatorFactory, shutdownManager);
         menu = new Menu(navigationHandler, shutdownManager);
-        orderManagement = new OrderManagement(navigationHandler, shutdownManager);
+        orderManagement = new OrderManagement(navigationHandler, orderService, shutdownManager);
     }
 
     @After
