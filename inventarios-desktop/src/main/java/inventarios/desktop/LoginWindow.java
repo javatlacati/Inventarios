@@ -25,20 +25,25 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Rectangle;
+import java.awt.Insets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ResourceBundle;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -48,6 +53,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -68,6 +75,8 @@ public class LoginWindow extends JFrame {
     private FontFactory fontFactory;
     private NavigationHandler navigationHandler;
     private ShutdownManager shutdownManager;
+    
+    private static final String USER_PLACEHOLDER = "Ingresa tu usuario";
 
     @Autowired
     public LoginWindow(
@@ -104,16 +113,16 @@ public class LoginWindow extends JFrame {
         }
         ;
         JPanel titlePanel = new JPanel();
+        JLabel lblCorporativeIcon = new JLabel();
         JLabel lblTitle = new JLabel();
         JPanel fieldsAndLogoPanel = new JPanel();
         JPanel fieldsPanel = new JPanel();
-        JPanel userPanel = new JPanel();
         JLabel lblUser = new JLabel();
         txtUser = new JTextField();
-        JPanel psswPanel = new JPanel();
+        txtUser.setForeground(Color.GRAY);
+        txtUser.setText(USER_PLACEHOLDER);
         JLabel lblPassword = new JLabel();
         txtPsswd = new JPasswordField();
-        JLabel lblCorporativeIcon = new JLabel();
         JPanel btnPanel = new JPanel();
         JButton btnAccept = new JButton();
         JButton btnClean = new JButton();
@@ -124,7 +133,6 @@ public class LoginWindow extends JFrame {
         setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         setIconImage(new ImageIcon(getClass().getResource
             ("/ImgFondos/Icono.png")).getImage());
-    setMaximizedBounds(new Rectangle(0, 0, 0, 0));
     setMinimumSize(new Dimension(500, 400));
     addWindowListener(new WindowAdapter() {
         public void windowClosing(WindowEvent evt) {
@@ -136,6 +144,12 @@ public class LoginWindow extends JFrame {
     backgroundedPanel.setLayout(new BorderLayout());
 
     titlePanel.setOpaque(false);
+        FlowLayout flowLayout1 = new FlowLayout(FlowLayout.CENTER, 15, 5);
+    flowLayout1.setAlignOnBaseline(true);
+    titlePanel.setLayout(flowLayout1);
+
+    lblCorporativeIcon.setIcon(new ImageIcon(getClass().getResource("/ImgFondos/Imagen2.png"))); // NOI18N
+    titlePanel.add(lblCorporativeIcon);
 
     lblTitle.setFont(new Font("Tempus Sans ITC", 1, 36)); // NOI18N
     lblTitle.setForeground(new Color(204, 0, 0));
@@ -144,58 +158,65 @@ public class LoginWindow extends JFrame {
 
     backgroundedPanel.add(titlePanel, BorderLayout.PAGE_START);
 
+    fieldsAndLogoPanel.setBorder(BorderFactory.createEmptyBorder(40, 20, 40, 20));
     fieldsAndLogoPanel.setOpaque(false);
+    fieldsAndLogoPanel.setLayout(new BoxLayout(fieldsAndLogoPanel, BoxLayout.LINE_AXIS));
 
     fieldsPanel.setOpaque(false);
-    fieldsPanel.setLayout(new GridLayout(2, 2, 20, 15));
-
-    userPanel.setOpaque(false);
-    userPanel.setLayout(new GridLayout(1, 0, 5, 0));
+    fieldsPanel.setLayout(new GridLayout(4, 1, 20, 15));
 
     lblUser.setFont(fontFactory.getFont("Montserrat-Light.ttf"));
     lblUser.setForeground(new Color(0, 0, 153));
     lblUser.setText(bundle.getString("LoginWindow.lblUser.text")); // NOI18N
-    userPanel.add(lblUser);
+    fieldsPanel.add(lblUser);
 
+    txtUser.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(204, 204, 204)));
+    txtUser.setOpaque(false);
+    txtUser.addFocusListener(new FocusAdapter() {
+        public void focusGained(FocusEvent evt) {
+            txtUserFocusGained(evt);
+        }
+        public void focusLost(FocusEvent evt) {
+            txtUserFocusLost(evt);
+        }
+    });
     txtUser.addKeyListener(new KeyAdapter() {
         public void keyTyped(KeyEvent evt) {
             txtUserKeyTyped(evt);
         }
     });
-    userPanel.add(txtUser);
-
-    fieldsPanel.add(userPanel);
-
-    psswPanel.setOpaque(false);
-    psswPanel.setLayout(new GridLayout(1, 0, 5, 0));
+    fieldsPanel.add(txtUser);
 
     lblPassword.setFont(lblUser.getFont());
     lblPassword.setForeground(new Color(0, 0, 153));
     lblPassword.setText(bundle.getString("LoginWindow.lblPassword.text")); // NOI18N
-    psswPanel.add(lblPassword);
+    fieldsPanel.add(lblPassword);
 
+    txtPsswd.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(204, 204, 204)));
+    txtPsswd.setOpaque(false);
     txtPsswd.addKeyListener(new KeyAdapter() {
         public void keyTyped(KeyEvent evt) {
             txtPsswdKeyTyped(evt);
         }
     });
-    psswPanel.add(txtPsswd);
-
-    fieldsPanel.add(psswPanel);
+    fieldsPanel.add(txtPsswd);
 
     fieldsAndLogoPanel.add(fieldsPanel);
-
-    lblCorporativeIcon.setIcon(new ImageIcon(getClass().getResource("/ImgFondos/Imagen2.png"))); // NOI18N
-    fieldsAndLogoPanel.add(lblCorporativeIcon);
 
     backgroundedPanel.add(fieldsAndLogoPanel, BorderLayout.CENTER);
 
     btnPanel.setOpaque(false);
 
-    btnAccept.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/aceptar.png"))); // NOI18N
-    btnAccept.setBorder(null);
+    btnAccept.setBackground(new Color(0, 255, 0));
+    btnAccept.setFont(new Font("Tahoma", 1, 24)); // NOI18N
+        ResourceBundle bundle1 = ResourceBundle.getBundle("inventarios/desktop/Bundle"); // NOI18N
+    btnAccept.setText(bundle1.getString("LoginWindow.btnAccept.text")); // NOI18N
+    btnAccept.setBorder(BorderFactory.createCompoundBorder(new LineBorder(new Color(0, 0, 0), 2, true), BorderFactory.createBevelBorder(BevelBorder.RAISED, new Color(102, 255, 102), new Color(102, 255, 102), new Color(51, 102, 0), new Color(51, 153, 0))));
     btnAccept.setContentAreaFilled(false);
     btnAccept.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    btnAccept.setMargin(new Insets(18, 24, 18, 24));
+    btnAccept.setOpaque(true);
+    btnAccept.setSelected(true);
     btnAccept.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
             btnAcceptActionPerformed(evt);
@@ -203,10 +224,14 @@ public class LoginWindow extends JFrame {
     });
     btnPanel.add(btnAccept);
 
-    btnClean.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/limpiar.png"))); // NOI18N
-    btnClean.setBorder(null);
+    btnClean.setBackground(new Color(50, 201, 235));
+    btnClean.setFont(new Font("Tahoma", 1, 24)); // NOI18N
+    btnClean.setText(bundle1.getString("LoginWindow.btnClean.text")); // NOI18N
+    btnClean.setBorder(BorderFactory.createCompoundBorder(new LineBorder(new Color(0, 0, 0), 2, true), BorderFactory.createBevelBorder(BevelBorder.RAISED)));
     btnClean.setContentAreaFilled(false);
     btnClean.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    btnClean.setMargin(new Insets(18, 24, 18, 24));
+    btnClean.setOpaque(true);
     btnClean.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
             btnCleanActionPerformed(evt);
@@ -214,7 +239,7 @@ public class LoginWindow extends JFrame {
     });
     btnPanel.add(btnClean);
 
-    backgroundedPanel.add(btnPanel, BorderLayout.PAGE_END);
+    backgroundedPanel.add(btnPanel, BorderLayout.SOUTH);
 
     getContentPane().add(backgroundedPanel, BorderLayout.CENTER);
 
@@ -248,23 +273,41 @@ public class LoginWindow extends JFrame {
         shutdownManager.confirmExit();
     }//GEN-LAST:event_windowCloseHandler
 
+    private void txtUserFocusGained(FocusEvent evt) {//GEN-FIRST:event_txtUserFocusGained
+        if (USER_PLACEHOLDER.equals(txtUser.getText())) {
+            txtUser.setText("");
+            txtUser.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtUserFocusGained
+
+    private void txtUserFocusLost(FocusEvent evt) {//GEN-FIRST:event_txtUserFocusLost
+        final String text = txtUser.getText();
+        if (text.isEmpty()) {
+            txtUser.setForeground(Color.GRAY);
+            txtUser.setText(USER_PLACEHOLDER);
+        }
+    }//GEN-LAST:event_txtUserFocusLost
+
     private void loginAttempt() {
         String user = txtUser.getText();
-        String password = txtPsswd.getText();
+        if (!user.isBlank() && !user.equals("Ingresa tu usuario")) {
+            String password = txtPsswd.getText();
 
-        LoginUser loginUser = new LoginUser(user, password);
+            LoginUser loginUser = new LoginUser(user, password);
 
-        if (usersService.authenticate(loginUser)) {
-            navigationHandler.goToMenu(this);
-            clearFields();
-            return;
+            if (usersService.authenticate(loginUser)) {
+                navigationHandler.goToMenu(this);
+                clearFields();
+                return;
+            }
+
+            JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado", "Credenciales incorrectas", JOptionPane.WARNING_MESSAGE);
         }
-
-        JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado", "Credenciales incorrectas", JOptionPane.WARNING_MESSAGE);
     }
 
     private void clearFields() {
-        txtUser.setText("");
+        txtUser.setForeground(Color.GRAY);
+        txtUser.setText(USER_PLACEHOLDER);
         txtPsswd.setText("");
     }
 
