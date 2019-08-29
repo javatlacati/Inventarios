@@ -190,7 +190,7 @@ public class StepDefinition {
 
     @Then("^Login window fields should be empty$")
     public void verifyEmptyLoginFields() {
-        assertEquals("", loginWindowPageObject.getUserFieldContent());
+        assertEquals("Ingresa tu usuario", loginWindowPageObject.getUserFieldContent());
         assertEquals("", loginWindowPageObject.getPasswordFieldContent());
     }
 

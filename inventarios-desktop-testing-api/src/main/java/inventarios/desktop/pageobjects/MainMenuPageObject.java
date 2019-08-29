@@ -23,7 +23,6 @@ import org.netbeans.jemmy.operators.JFrameOperator;
 import java.util.ResourceBundle;
 
 public class MainMenuPageObject {
-    private ContainerOperator containerFrame;
     private ResourceBundle bundle;
     private JButtonOperator btnClose;
     private JButtonOperator btnGetBack;
@@ -38,7 +37,7 @@ public class MainMenuPageObject {
 
     public MainMenuPageObject() {
         bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
-        containerFrame = new JFrameOperator(bundle.getString("Menu.title")); // NOI18N
+        ContainerOperator containerFrame = new JFrameOperator(bundle.getString("Menu.title")); // NOI18N
         btnClose = new JButtonOperator(containerFrame, bundle.getString("Menu.btnClose.text")); // NOI18N
         btnGetBack = new JButtonOperator(containerFrame, bundle.getString("Menu.btnGetBack.text")); // NOI18N
         btnInventory = new JButtonOperator(containerFrame, bundle.getString("Menu.btnInventory.text")); // NOI18N
