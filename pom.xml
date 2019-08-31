@@ -22,6 +22,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <jacoco.reportPath>${project.basedir}/../target/jacoco.exec</jacoco.reportPath>
         <!--handles-->
         <maven.test.skip>false</maven.test.skip>
         <maven.compiler.source>8</maven.compiler.source>
@@ -44,6 +45,10 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
             <!-- code coverage exporting -->
             <plugin>
