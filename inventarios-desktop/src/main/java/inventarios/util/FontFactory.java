@@ -30,7 +30,7 @@ public class FontFactory {
                                 .getResourceAsStream("/fonts/" + name)
                 ).deriveFont(25f);
             } catch (FontFormatException | IOException ex) {
-                LOGGER.log(Level.SEVERE, null, ex);
+                LOGGER.log(Level.FINE, null, ex);
                 return new Font("serif", Font.PLAIN, 24); // fallback
             }
         }
