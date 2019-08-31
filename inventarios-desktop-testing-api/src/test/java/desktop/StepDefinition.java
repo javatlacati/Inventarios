@@ -109,6 +109,12 @@ public class StepDefinition {
 
     private ShutdownManager shutdownManager;
 
+    //api objects
+    private LoginWindowPageObject loginWindowPageObject;
+    private MainMenuPageObject menuPageObject;
+    private InventoryManagementPageObject inventoryPageObject;
+    private OrderManagementPageObject orderPageObject;
+
     @Before
     public void beforeScenario() {
         usersService = mock(LoginUsersService.class);
@@ -133,12 +139,6 @@ public class StepDefinition {
         reset(usersService);
         loginWindow.dispose();
     }
-
-    //api objects
-    private LoginWindowPageObject loginWindowPageObject;
-    private MainMenuPageObject menuPageObject;
-    private InventoryManagementPageObject inventoryPageObject;
-    private OrderManagementPageObject orderPageObject;
 
     @Given("^I write login credentials using user \\'([A-Za-z]+)\\' and password \\'([A-Za-z]+)\\'$")
     public void writeLoginFields(String nickName, String password) {
