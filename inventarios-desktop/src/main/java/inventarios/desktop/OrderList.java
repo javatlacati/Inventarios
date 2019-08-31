@@ -24,8 +24,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.LayoutStyle;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 import java.awt.Font;
@@ -35,13 +42,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.ResourceBundle;
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.LayoutStyle;
-import javax.swing.WindowConstants;
 
 /**
  *
@@ -60,6 +60,9 @@ public class OrderList extends javax.swing.JFrame {
     
     private OrderService orderService;
 
+    private DefaultTableModel modelo;
+    private int con = 0;
+
     /**
      * Creates new form ListaPedidos
      */
@@ -76,9 +79,6 @@ public class OrderList extends javax.swing.JFrame {
         cerrar();
         this.getContentPane().setBackground(Color.GRAY);
     }
-
-    private DefaultTableModel modelo;
-    int con = 0;
 
     public void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//

@@ -19,17 +19,26 @@ package inventarios.desktop;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.LinkedList;
 import java.util.ResourceBundle;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  *
@@ -65,8 +74,6 @@ public class BillingManagement extends JFrame {
         this.navigationHandler = navigationHandler;
         this.shutdownManager = shutdownManager;
     }
-
-    public static LinkedList contenedor = new LinkedList();
 
     /**
      * Creates new form FacturaciónVentana

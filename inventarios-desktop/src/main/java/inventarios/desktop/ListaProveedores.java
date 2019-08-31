@@ -20,28 +20,28 @@ import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProviderService;
 import inventarios.to.Provider;
 import inventarios.util.ShutdownManager;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.List;
-import java.util.ResourceBundle;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle;
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -60,6 +60,9 @@ public class ListaProveedores extends javax.swing.JFrame {
 
     private ShutdownManager shutdownManager;
 
+    private DefaultTableModel modelo;
+    private int con = 0;
+
     /**
      * Creates new form ListaProveedores
      */
@@ -75,9 +78,6 @@ public class ListaProveedores extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage());
         cerrar();
     }
-
-    private DefaultTableModel modelo;
-    int con = 0;
 
     public void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//

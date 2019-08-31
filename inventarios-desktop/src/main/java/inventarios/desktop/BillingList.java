@@ -17,6 +17,7 @@
 package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
+import inventarios.service.BillingService;
 import inventarios.to.BillingDetails;
 import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -67,6 +69,9 @@ public class BillingList extends JFrame {
     @Autowired
     private ShutdownManager shutdownManager;
 
+    @Autowired
+    private BillingService billingService;
+
     /**
      * Creates new form ListaFacturación
      */
@@ -90,9 +95,8 @@ public class BillingList extends JFrame {
     }
 
     public void mostrarLosDatos() {
-        BillingDetails f;
-        for (int i = 0; i < BillingManagement.contenedor.size(); i++) {
-            f = (BillingDetails) BillingManagement.contenedor.get(i);
+        List<BillingDetails> billingDetails = billingService.findAll();
+        for (BillingDetails f : billingDetails) {
             modelo.insertRow(con, new Object[]{});
             modelo.setValueAt(f.getRfc(), con, 0);
             modelo.setValueAt(f.getRS(), con, 1);

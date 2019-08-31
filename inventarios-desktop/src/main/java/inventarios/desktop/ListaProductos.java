@@ -20,14 +20,22 @@ import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.ProductService;
 import inventarios.to.Product;
 import inventarios.util.ShutdownManager;
-import java.awt.BorderLayout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.OverlayLayout;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -39,14 +47,6 @@ import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.OverlayLayout;
-import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
 
 /**
  *
@@ -65,6 +65,8 @@ public class ListaProductos extends javax.swing.JFrame {
 
     private ShutdownManager shutdownManager;
 
+    private DefaultTableModel model;
+
     @Autowired
     public ListaProductos(ProductService productService,
             @Qualifier("listaProductosNavigationHandler") NavigationHandler navigationHandler,
@@ -77,8 +79,6 @@ public class ListaProductos extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.GRAY);
     }
-
-    private DefaultTableModel model;
 
     /**
      * metodo para mostrar la interfaz vacia de la tabla
@@ -293,7 +293,4 @@ public class ListaProductos extends javax.swing.JFrame {
     private void btnGoBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         navigationHandler.goToInventoryManagement(this);
     }//GEN-LAST:event_btnGoBackActionPerformed
-
-    private javax.swing.JTable datos;
-    private javax.swing.JScrollPane jScrollPane1;
 }
