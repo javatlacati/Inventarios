@@ -23,8 +23,8 @@ after_test:
   - cd inventarios-service/target
   - dir
   - cd ..
-  - ps: java -jar C:/projects/inventarios/codacy-coverage-reporter-6.0.2-assembly.jar report -l Java -r inventarios-service/target/site/jacoco/jacoco.xml --partial
-  - ps: java -jar C:/projects/inventarios/codacy-coverage-reporter-6.0.2-assembly.jar report -l Java -r inventarios-desktop-testing-api/target/site/jacoco/jacoco.xml final
+  - ps: java -jar C:/projects/inventarios/codacy-coverage-reporter-6.0.2-assembly.jar report -l Java -r inventarios-service/target/site/jacoco-aggregate/jacoco.xml --partial
+  - ps: java -jar C:/projects/inventarios/codacy-coverage-reporter-6.0.2-assembly.jar report -l Java -r inventarios-desktop-testing-api/target/site/jacoco-aggregate/jacoco.xml final
 
 cache:
   - C:\Users\appveyor\.m2
