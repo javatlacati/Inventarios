@@ -37,12 +37,12 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees")
-    List<EmployeeDetail> all() {
+    public List<EmployeeDetail> all() {
         return employeeService.findAll();
     }
 
     @PostMapping("/employees")
-    EmployeeDetail newEmployee(@RequestBody EmployeeDetail newEmployee) {
+    public EmployeeDetail newEmployee(@RequestBody EmployeeDetail newEmployee) {
         return employeeService.save(newEmployee);
     }
 
