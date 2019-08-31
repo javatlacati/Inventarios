@@ -72,6 +72,13 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>generate-code-coverage-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
                 </executions>
                 <dependencies>
         

@@ -19,21 +19,31 @@ package inventarios.controller;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import inventarios.service.EmployeeService;
+import inventarios.service.LoginUsersService;
+import inventarios.service.OrderService;
+import inventarios.service.ProductService;
+import inventarios.service.ProviderService;
+import inventarios.service.PurchaseService;
 import inventarios.to.EmployeeDetail;
-import java.io.IOException;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import java.io.IOException;
+import java.util.Collections;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.BDDMockito.given;
 
 
 /**
@@ -41,16 +51,49 @@ import org.springframework.web.context.WebApplicationContext;
  * @author Ruslan López Carro <scherzo16 at gmail.com>
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = EmployeeController.class)
-@WebAppConfiguration()
+//@SpringBootTest(classes = {EmployeeController.class})
+//@WebAppConfiguration
+@WebMvcTest
 public class EmployeeControllerIT {
-    
-    protected MockMvc mvc;
+
     @Autowired
-    WebApplicationContext webApplicationContext;    
+    private MockMvc mvc;
+
+    @Autowired
+    WebApplicationContext webApplicationContext;
+
+    @MockBean
+    private EmployeeService employeeService;
+
+    @MockBean
+    private OrderService orderService;
+
+    @MockBean
+    private ProductService productService;
+
+    @MockBean
+    private ProviderService providerService;
+
+    @MockBean
+    private PurchaseService purchaseService;
+
+    @MockBean
+    private LoginUsersService loginUsersService;
+
+//    protected void setUp() {
+//        mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+//    }
 
     @Test
     public void getEmployeeList() throws Exception {
+
+        given(employeeService.findAll())
+                .willReturn(
+                        Collections.singletonList(
+                                new EmployeeDetail(1L, "number", "name", "middle name", "last name", "home address", "position", "starttime", "end time")
+                        )
+                );
+
         String uri = "/employees";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
                 .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
@@ -58,7 +101,8 @@ public class EmployeeControllerIT {
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
         EmployeeDetail[] productlist = mapFromJson(content, EmployeeDetail[].class);
-        assertTrue(productlist.length > 0);
+
+        assertTrue(productlist.length == 1);
     }
 
     protected <T> T mapFromJson(String json, Class<T> clazz)
