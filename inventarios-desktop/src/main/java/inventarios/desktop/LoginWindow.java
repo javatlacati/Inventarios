@@ -272,7 +272,7 @@ public class LoginWindow extends JFrame {
 
     private void loginAttempt() {
         String user = txtUser.getText();
-        if (!user.isEmpty() && !user.equals("Ingresa tu usuario")) {
+        if (!user.isEmpty() && !"Ingresa tu usuario".equals(user)) {
             String password = txtPsswd.getText();
 
             LoginUser loginUser = new LoginUser(user, password);
