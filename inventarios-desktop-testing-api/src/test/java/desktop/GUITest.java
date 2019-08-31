@@ -156,7 +156,7 @@ public class GUITest {
         loginWindowPageObject.setUserFieldContent("wrong");
         loginWindowPageObject.setPasswordFieldContent("wrong");
         loginWindowPageObject.clickClear();
-        Assert.assertEquals("", loginWindowPageObject.getUserFieldContent());
+        Assert.assertEquals("Ingresa tu usuario", loginWindowPageObject.getUserFieldContent());
         Assert.assertEquals("", loginWindowPageObject.getPasswordFieldContent());
         String user = "oscar";
         loginWindowPageObject.setUserFieldContent(user);
