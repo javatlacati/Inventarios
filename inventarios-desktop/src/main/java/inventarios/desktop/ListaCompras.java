@@ -20,14 +20,10 @@ import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.PurchaseService;
 import inventarios.to.Purchase;
 import inventarios.util.ShutdownManager;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.List;
-import java.util.ResourceBundle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,9 +34,14 @@ import javax.swing.JTable;
 import javax.swing.LayoutStyle;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -59,6 +60,9 @@ public class ListaCompras extends javax.swing.JFrame {
 
     private ShutdownManager shutdownManager;
 
+    private DefaultTableModel modelo;
+    private int con = 0;
+
     /**
      * Creates new form ListaCompras
      */
@@ -74,9 +78,6 @@ public class ListaCompras extends javax.swing.JFrame {
         mostrarInterfaz();
         cerrar();
     }
-
-    private DefaultTableModel modelo;
-    private int con = 0;
 
     public void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//
