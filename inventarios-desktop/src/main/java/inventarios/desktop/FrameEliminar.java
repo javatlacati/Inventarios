@@ -16,7 +16,17 @@
  */
 package inventarios.desktop;
 
+import java.awt.Font;
+import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle;
 
 /**
  *
@@ -25,9 +35,9 @@ import java.awt.Toolkit;
 public class FrameEliminar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TexBORRAR;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private JButton btnDelete;
+    private JLabel lblInstructions;
+    private JTextField txtDelete;
     // End of variables declaration//GEN-END:variables
      /**
      * Creates new form FrameEliminar
@@ -53,70 +63,68 @@ public class FrameEliminar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        TexBORRAR = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        btnDelete = new JButton();
+        txtDelete = new JTextField();
+        lblInstructions = new JLabel();
 
         setTitle("ELIMINAR REGISTRO_ISC.ITSE");
         setIconImage(getIconImage());
-        setLocation(new java.awt.Point(400, 300));
+        setLocation(new Point(400, 300));
         setResizable(false);
 
-        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/incon/files_folder_256.png"))); // NOI18N
-        jButton1.setText("Eliminar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        btnDelete.setFont(new Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnDelete.setIcon(new ImageIcon(getClass().getResource("/incon/files_folder_256.png"))); // NOI18N
+        btnDelete.setText("Eliminar");
+        btnDelete.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
             }
         });
 
-        TexBORRAR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TexBORRARActionPerformed(evt);
+        txtDelete.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                txtDeleteActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/incon/eliminar.gif"))); // NOI18N
-        jLabel1.setText("Eliminacion de articulo mediante su codigo:");
+        lblInstructions.setFont(new Font("Tahoma", 0, 14)); // NOI18N
+        lblInstructions.setIcon(new ImageIcon(getClass().getResource("/incon/eliminar.gif"))); // NOI18N
+        lblInstructions.setText("Eliminacion de articulo mediante su codigo:");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jLabel1))
+                        .addComponent(lblInstructions))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnDelete, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(69, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(TexBORRAR, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDelete, GroupLayout.PREFERRED_SIZE, 198, GroupLayout.PREFERRED_SIZE)
                 .addGap(114, 114, 114))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jLabel1)
+                .addComponent(lblInstructions)
                 .addGap(54, 54, 54)
-                .addComponent(TexBORRAR, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(txtDelete, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(btnDelete)
                 .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDeleteActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         
-        String nombreborrar = TexBORRAR.getText();
+        String nombreborrar = txtDelete.getText();
         boolean encontrado = false;
         RegistroClase c = null;
 
@@ -143,11 +151,11 @@ public class FrameEliminar extends javax.swing.JFrame {
 //   
 //         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void TexBORRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexBORRARActionPerformed
+    private void txtDeleteActionPerformed(ActionEvent evt) {//GEN-FIRST:event_txtDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TexBORRARActionPerformed
+    }//GEN-LAST:event_txtDeleteActionPerformed
 
     /**
      * @param args the command line arguments
