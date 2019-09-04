@@ -21,6 +21,13 @@ package inventarios.desktop;
  * @author oscar
  */
 public class RegistroClase {
+
+    private String nombre;
+    private String codigo;
+    private String modelo;
+    private String categoria;
+    private String observaciones;
+    
      public RegistroClase(String nombre, String codigo, String modelo, String categoria, String observaciones) {
         this.nombre = nombre;
         this.codigo = codigo;
@@ -28,8 +35,6 @@ public class RegistroClase {
         this.categoria = categoria;
         this.observaciones = observaciones;
     }
-
-  
 
     public String getNombre() {
         return nombre;
@@ -70,10 +75,4 @@ public class RegistroClase {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-    
-    private String nombre;
-    private String codigo;
-    private String modelo;
-    private String categoria;
-    private String observaciones;
 }

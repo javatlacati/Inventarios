@@ -20,14 +20,25 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 
 import static inventarios.desktop.newRegistro.lista;
+import java.awt.Color;
+import java.awt.Cursor;
 
 import java.awt.HeadlessException;
+import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.LayoutStyle;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -35,29 +46,28 @@ import javax.swing.JOptionPane;
  */
 public class ventana1 extends javax.swing.JFrame {
 
-   // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JButton btnDelete;
+    private JButton btnNewRecord;
+    private JButton btnOpenRecors;
+    private JButton btnPrintRecords;
+    private JButton btnSearch;
+    private JLabel jLabel2;
+    private JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
-   
+
     /**
      * Creates new form ventana1
      */
     public ventana1() {
-        
+
         initComponents();
     }
 
-  @Override
+    @Override
     public java.awt.Image getIconImage() {
         java.awt.Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("ImagenBloqueo/cheques.png"));
-
 
         return retValue;
     }
@@ -71,246 +81,226 @@ public class ventana1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        lblTitle = new JLabel();
+        btnNewRecord = new JButton();
+        btnOpenRecors = new JButton();
+        btnPrintRecords = new JButton();
+        jLabel2 = new JLabel();
+        btnDelete = new JButton();
+        btnSearch = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMAS DE INVENTARIO_ISC.ITSE");
         setIconImage(getIconImage());
-        setLocation(new java.awt.Point(300, 100));
+        setLocation(new Point(300, 100));
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("SISTEMA DE INVENTARIO");
+        lblTitle.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        lblTitle.setForeground(new Color(153, 153, 153));
+        lblTitle.setText("SISTEMA DE INVENTARIO");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/incon/ingresar.gif"))); // NOI18N
-        jButton1.setText("NUEVO REGISTRO");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        btnNewRecord.setIcon(new ImageIcon(getClass().getResource("/incon/ingresar.gif"))); // NOI18N
+        btnNewRecord.setText("NUEVO REGISTRO");
+        btnNewRecord.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnNewRecord.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnNewRecordActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/incon/files_folder_256.png"))); // NOI18N
-        jButton2.setText("VER TODOS LO REGISTROS");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        btnOpenRecors.setIcon(new ImageIcon(getClass().getResource("/incon/files_folder_256.png"))); // NOI18N
+        btnOpenRecors.setText("VER TODOS LO REGISTROS");
+        btnOpenRecors.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnOpenRecors.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnOpenRecorsActionPerformed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/incon/CARSON DELLOSA-9.jpg"))); // NOI18N
-        jButton3.setText("IMPRIMIR TODOS LOS REGISTROS");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        btnPrintRecords.setIcon(new ImageIcon(getClass().getResource("/incon/CARSON DELLOSA-9.jpg"))); // NOI18N
+        btnPrintRecords.setText("IMPRIMIR TODOS LOS REGISTROS");
+        btnPrintRecords.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnPrintRecords.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnPrintRecordsActionPerformed(evt);
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/incon/sistemas de inventario.jpg"))); // NOI18N
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.setIcon(new ImageIcon(getClass().getResource("/incon/sistemas de inventario.jpg"))); // NOI18N
+        jLabel2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/incon/eliminar.gif"))); // NOI18N
-        jButton4.setText("ELIMINAR ARTICULO");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+        btnDelete.setIcon(new ImageIcon(getClass().getResource("/incon/eliminar.gif"))); // NOI18N
+        btnDelete.setText("ELIMINAR ARTICULO");
+        btnDelete.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenBloqueo/icono_buscar.png"))); // NOI18N
-        jButton5.setText("BUSCAR ARTICULO");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+        btnSearch.setIcon(new ImageIcon(getClass().getResource("/ImagenBloqueo/icono_buscar.png"))); // NOI18N
+        btnSearch.setText("BUSCAR ARTICULO");
+        btnSearch.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnSearchActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(btnNewRecord, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(btnOpenRecors)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3))
+                        .addComponent(btnPrintRecords))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSearch)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(btnDelete)
                         .addGap(5, 5, 5)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTitle, GroupLayout.PREFERRED_SIZE, 438, GroupLayout.PREFERRED_SIZE)
                 .addGap(162, 162, 162))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblTitle, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(106, 106, 106)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDelete)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSearch, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
                         .addGap(113, 113, 113)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNewRecord, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnOpenRecors, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPrintRecords))
                 .addGap(50, 50, 50))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void btnNewRecordActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnNewRecordActionPerformed
+        newRegistro v = new newRegistro();
+        v.setVisible(true);
+    }//GEN-LAST:event_btnNewRecordActionPerformed
 
-        
-      newRegistro v= new newRegistro();
-      v.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-    tablaRegistros x = new tablaRegistros();
+    private void btnOpenRecorsActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnOpenRecorsActionPerformed
+        tablaRegistros x = new tablaRegistros();
         x.setVisible(true);
         x.CargarInterfaz();
         RegistroClase c;
-        
-        for(int i=0; i<lista.size(); i++){
-            c=(RegistroClase)lista.get(i);
+
+        for (int i = 0; i < lista.size(); i++) {
+            c = (RegistroClase) lista.get(i);
             x.MostrarDatos(c);
         }
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
+
+    }//GEN-LAST:event_btnOpenRecorsActionPerformed
+
+    private void btnPrintRecordsActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnPrintRecordsActionPerformed
+
         JFileChooser LG = new JFileChooser();
-      
+
         int opcion = LG.showSaveDialog(this);
-       
-        if (opcion == JFileChooser.APPROVE_OPTION){
-           
+
+        if (opcion == JFileChooser.APPROVE_OPTION) {
+
             File f = LG.getSelectedFile();
-             String f1= f.toString();
-              
-              
-         Document documento = new Document();  
-              FileOutputStream ficheroPdf;  
-        
-        try 
-{
- ficheroPdf = new FileOutputStream(f1+".pdf");
- PdfWriter.getInstance(documento,ficheroPdf);
- 
- documento.open();
-   Paragraph parrafo3 = new Paragraph("INSTITUTO TECNOLOGICO SUPERIOR DE ESCARCEGA");
-   parrafo3.setAlignment(1);//el 1 es para centrar
-      documento.add(parrafo3);
-  documento.add(new Paragraph(" "));
-   Paragraph parrafo2 = new Paragraph("LISTA DE TODOS LOS ARTICULOS REGISTRADOS");
-     parrafo2.setAlignment(1);//el 1 es para centrar
-    documento.add(parrafo2);
-      
-    documento.add(new Paragraph(" "));
- PdfPTable tabla = new PdfPTable(5);
-   
-   
-     tabla.addCell("NOMBRE");  
-      tabla.addCell("CODIGO");
-      tabla.addCell("CATEGORIA");
+            String f1 = f.toString();
 
-      tabla.addCell("MODELO");
+            Document documento = new Document();
+            FileOutputStream ficheroPdf;
 
-      tabla.addCell("OBSERVACIONES");
+            try {
+                ficheroPdf = new FileOutputStream(f1 + ".pdf");
+                PdfWriter.getInstance(documento, ficheroPdf);
 
-         for(int i=0; i<lista.size(); i++){
-             RegistroClase c;
-            c=(RegistroClase)lista.get(i);
-           
-         
-      tabla.addCell(c.getNombre());  
-      tabla.addCell(c.getCodigo());
-      tabla.addCell(c.getCategoria());
+                documento.open();
+                Paragraph parrafo3 = new Paragraph("INSTITUTO TECNOLOGICO SUPERIOR DE ESCARCEGA");
+                parrafo3.setAlignment(1);//el 1 es para centrar
+                documento.add(parrafo3);
+                documento.add(new Paragraph(" "));
+                Paragraph parrafo2 = new Paragraph("LISTA DE TODOS LOS ARTICULOS REGISTRADOS");
+                parrafo2.setAlignment(1);//el 1 es para centrar
+                documento.add(parrafo2);
 
-      tabla.addCell(c.getModelo());
+                documento.add(new Paragraph(" "));
+                PdfPTable tabla = new PdfPTable(5);
 
-      tabla.addCell(c.getObservaciones());
+                tabla.addCell("NOMBRE");
+                tabla.addCell("CODIGO");
+                tabla.addCell("CATEGORIA");
 
+                tabla.addCell("MODELO");
 
-    // esto nos crea una tabla de 3 Columnas por 2 Filas
-         }
-              documento.add(tabla);
-   
-               Paragraph parrafo5 = new Paragraph("SISTEMAS DE INVENTARIOS");
-      parrafo5.setAlignment(1);//el 1 es para centrar
-    documento.add(parrafo5);
-    
-    
-   
-  
+                tabla.addCell("OBSERVACIONES");
 
-  documento.close();
-   JOptionPane.showMessageDialog(null, "Creacion finalizada");
- 
-}
-catch (     FileNotFoundException | DocumentException | HeadlessException p) 
-    
-{
-    JOptionPane.showMessageDialog(null, "ERROR"+p);
- 
-}
+                for (int i = 0; i < lista.size(); i++) {
+                    RegistroClase c;
+                    c = (RegistroClase) lista.get(i);
+
+                    tabla.addCell(c.getNombre());
+                    tabla.addCell(c.getCodigo());
+                    tabla.addCell(c.getCategoria());
+
+                    tabla.addCell(c.getModelo());
+
+                    tabla.addCell(c.getObservaciones());
+
+                    // esto nos crea una tabla de 3 Columnas por 2 Filas
+                }
+                documento.add(tabla);
+
+                Paragraph parrafo5 = new Paragraph("SISTEMAS DE INVENTARIOS");
+                parrafo5.setAlignment(1);//el 1 es para centrar
+                documento.add(parrafo5);
+
+                documento.close();
+                JOptionPane.showMessageDialog(null, "Creacion finalizada");
+
+            } catch (FileNotFoundException | DocumentException | HeadlessException p) {
+                JOptionPane.showMessageDialog(null, "ERROR" + p);
+
+            }
         }
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
-     FrameEliminar   q= new FrameEliminar();
-     q.setVisible(true);
-         
-        
-  
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnPrintRecordsActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnDeleteActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+
+        FrameEliminar q = new FrameEliminar();
+        q.setVisible(true);
+
+
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnSearchActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        
-        AgregarUsuario d = new AgregarUsuario ();
+
+        AgregarUsuario d = new AgregarUsuario();
         d.setVisible(true);
-        
-    }//GEN-LAST:event_jButton5ActionPerformed
+
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,7 +322,7 @@ catch (     FileNotFoundException | DocumentException | HeadlessException p)
             java.util.logging.Logger.getLogger(ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
