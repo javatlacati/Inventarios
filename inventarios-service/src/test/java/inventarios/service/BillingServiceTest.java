@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,45 +16,42 @@
  */
 package inventarios.service;
 
-import inventarios.repository.EmployeeRepository;
+import inventarios.repository.BillingRepository;
+import inventarios.to.BillingDetails;
 import inventarios.to.EmployeeDetail;
 import java.util.Collections;
 import static org.junit.Assert.assertEquals;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import static org.mockito.Matchers.eq;
 import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
 
+/**
+ *
+ * @author Ruslan López Carro <scherzo16 at gmail.com>
+ */
 @RunWith(MockitoJUnitRunner.class)
-public class EmployeeServiceTest {
+public class BillingServiceTest {
 
     @InjectMocks
-    private EmployeeService employeeService;
+    private BillingService billingService;
 
     @Mock
-    private EmployeeRepository employeeRepository;
+    private BillingRepository billingRepository;
 
     @Before
     public void setUp() throws Exception {
-        employeeService = new EmployeeService(employeeRepository);
+        billingService = new BillingService(billingRepository);
     }
 
     @Test
-    public void save() {
-        EmployeeDetail detail = new EmployeeDetail(null, "123", "employee names", "middle name", "last name", "homa adress", "Manager", "no", "now");
-        EmployeeDetail detail1 = new EmployeeDetail(1L, "123", "employee names", "middle name", "last name", "homa adress", "Manager", "no", "now");
-        when(employeeRepository.save(eq(detail))).thenReturn(detail1);
-        assertEquals(detail1, employeeService.save(detail));
+    public void testFindAll() {
+        BillingDetails detail = new BillingDetails(1L, "rfc", "rs", "street name", "ne", "ni", "colony", "locality", "dm", "state", "country", "pobox", "e@mail.com");
+        when(billingRepository.findAll()).thenReturn(Collections.singletonList(detail));
+        assertEquals(Collections.singletonList(detail), billingService.findAll());
     }
 
-    @Test
-    public void findAll() {
-        EmployeeDetail detail = new EmployeeDetail(1L, "123", "employee names", "middle name", "last name", "homa adress", "Manager", "no", "now");
-        when(employeeRepository.findAll()).thenReturn(Collections.singletonList(detail));
-        assertEquals(Collections.singletonList(detail), employeeService.findAll());
-    }
 }
