@@ -16,6 +16,8 @@
  */
 package inventarios.desktop;
 
+import inventarios.service.LoginUsersService;
+import inventarios.to.LoginUser;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,11 +26,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author oscar
  */
+@Component
 public class AgregarUsuario extends javax.swing.JFrame {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
@@ -40,6 +45,9 @@ public class AgregarUsuario extends javax.swing.JFrame {
     private JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
+    @Autowired
+    private LoginUsersService usersService;
+    
     /**
      * Creates new form FrameBuscar
      */
@@ -121,7 +129,8 @@ public class AgregarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
+        LoginUser user = new LoginUser(txtUsername.getText(), txtPassword.getText());
+        usersService.saveNewLoginUser(user);
     }//GEN-LAST:event_btnAddActionPerformed
 
     /**

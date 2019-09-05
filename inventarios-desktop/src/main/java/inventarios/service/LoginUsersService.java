@@ -29,6 +29,8 @@ public class LoginUsersService {
 
     private static final Logger log = Logger.getLogger(LoginUsersService.class.getName());
     private RestTemplate restTemplate;
+    
+    private LoginUser currentUser;
 
     @Autowired
     public LoginUsersService(RestTemplate restTemplate) {
@@ -38,12 +40,22 @@ public class LoginUsersService {
     public boolean authenticate(LoginUser user) {
         log.log(Level.FINE, "Usuario: {0}", user);
         try {
-            Boolean aBoolean = restTemplate.postForObject("http://localhost:8080/login", user, Boolean.class);
-            log.log(Level.INFO, "Authenticated:{0}", aBoolean);
-            return aBoolean;
+            Boolean authenticated = restTemplate.postForObject("http://localhost:8080/login", user, Boolean.class);
+            log.log(Level.INFO, "Authenticated:{0}", authenticated);
+            if(authenticated){
+                currentUser = user;
+            }
+            return authenticated;
         } catch (NullPointerException e) {
             e.printStackTrace();
             return false;
         }
     }
+    
+    public boolean saveNewLoginUser(LoginUser user){
+        LoginUser saved = restTemplate.postForObject("http://localhost:8080/users", user, LoginUser.class);
+        return null == saved;
+    }
+    
+    // TODO public boolean userHasPermission(Permission p)
 }
