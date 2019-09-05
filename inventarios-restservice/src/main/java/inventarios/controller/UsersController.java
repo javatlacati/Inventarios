@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
@@ -14,35 +14,36 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package inventarios.service;
+package inventarios.controller;
 
-import inventarios.repository.LoginUsersRepository;
+import inventarios.service.LoginUsersService;
 import inventarios.to.LoginUser;
+import java.util.logging.Level;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import org.springframework.transaction.annotation.Transactional;
+/**
+ *
+ * @author Ruslan López Carro <scherzo16 at gmail.com>
+ */
+@RestController
+@Log
+public class UsersController {
+    
+    private LoginUsersService loginUsersService;
 
-@Service
-public class LoginUsersService {
     @Autowired
-    private LoginUsersRepository usersRepository;
-
-    public List<LoginUser> findAll() {
-        return usersRepository.findAll();
+    public UsersController(LoginUsersService loginUsersService) {
+        this.loginUsersService = loginUsersService;
     }
-
-    public final boolean login(LoginUser user) {
-        return usersRepository.
-                findOne(Example.of(user))
-                .map(LoginUser::isActive)
-                .orElse(Boolean.FALSE);
-    }
-
-    @Transactional
-    public <S extends LoginUser> S save(S entity) {
-        return usersRepository.save(entity);
+    
+    
+    @PostMapping("/users")
+    public <S extends LoginUser> S save(@RequestBody S user) {
+        log.log(Level.FINE, "User: {0}", user);
+        return loginUsersService.save(user);
     }
 }
