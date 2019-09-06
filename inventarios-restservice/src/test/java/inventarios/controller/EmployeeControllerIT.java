@@ -19,6 +19,7 @@ package inventarios.controller;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import inventarios.service.BillingService;
 import inventarios.service.EmployeeService;
 import inventarios.service.LoginUsersService;
 import inventarios.service.OrderService;
@@ -79,6 +80,9 @@ public class EmployeeControllerIT {
 
     @MockBean
     private LoginUsersService loginUsersService;
+    
+    @MockBean
+    private BillingService billingService;
 
 //    protected void setUp() {
 //        mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
