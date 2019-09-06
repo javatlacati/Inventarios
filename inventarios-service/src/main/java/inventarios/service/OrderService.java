@@ -18,9 +18,10 @@ package inventarios.service;
 
 import inventarios.repository.OrderRepository;
 import inventarios.to.OrderDetail;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  *
@@ -28,8 +29,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class OrderService {
+    private final OrderRepository orderRepository;
+
     @Autowired
-    private OrderRepository orderRepository;
+    public OrderService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
 
     public List<OrderDetail> findAll() {
         return orderRepository.findAll();

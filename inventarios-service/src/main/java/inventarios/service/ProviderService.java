@@ -29,8 +29,13 @@ import java.util.List;
  */
 @Service
 public class ProviderService {
+
+    private final ProviderRepository providerRepository;
+
     @Autowired
-    private ProviderRepository providerRepository;
+    public ProviderService(ProviderRepository providerRepository) {
+        this.providerRepository = providerRepository;
+    }
 
     public List<Provider> findAll() {
         return providerRepository.findAll();

@@ -9,7 +9,6 @@
         <version>1.0</version>
     </parent>
 
-    <groupId>com.github.javatlacati</groupId>
     <artifactId>inventarios-entities</artifactId>
     <version>1.0</version>
 
