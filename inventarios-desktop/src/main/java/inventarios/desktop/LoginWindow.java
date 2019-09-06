@@ -191,8 +191,7 @@ public class LoginWindow extends JFrame {
 
     btnAccept.setBackground(new Color(0, 255, 0));
     btnAccept.setFont(new Font("Tahoma", 1, 24)); // NOI18N
-        ResourceBundle bundle1 = ResourceBundle.getBundle("inventarios/desktop/Bundle"); // NOI18N
-    btnAccept.setText(bundle1.getString("LoginWindow.btnAccept.text")); // NOI18N
+    btnAccept.setText(bundle.getString("LoginWindow.btnAccept.text")); // NOI18N
     btnAccept.setBorder(BorderFactory.createCompoundBorder(new LineBorder(new Color(0, 0, 0), 2, true), BorderFactory.createBevelBorder(BevelBorder.RAISED, new Color(102, 255, 102), new Color(102, 255, 102), new Color(51, 102, 0), new Color(51, 153, 0))));
     btnAccept.setContentAreaFilled(false);
     btnAccept.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
@@ -208,7 +207,7 @@ public class LoginWindow extends JFrame {
 
     btnClean.setBackground(new Color(50, 201, 235));
     btnClean.setFont(new Font("Tahoma", 1, 24)); // NOI18N
-    btnClean.setText(bundle1.getString("LoginWindow.btnClean.text")); // NOI18N
+    btnClean.setText(bundle.getString("LoginWindow.btnClean.text")); // NOI18N
     btnClean.setBorder(BorderFactory.createCompoundBorder(new LineBorder(new Color(0, 0, 0), 2, true), BorderFactory.createBevelBorder(BevelBorder.RAISED)));
     btnClean.setContentAreaFilled(false);
     btnClean.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));

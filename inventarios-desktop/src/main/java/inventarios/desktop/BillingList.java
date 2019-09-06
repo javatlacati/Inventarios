@@ -77,12 +77,21 @@ public class BillingList extends JFrame {
      */
     public BillingList() {
         initComponents();
-        mostrarInterfaz();
-        mostrarLosDatos();
         cerrar();
         this.getContentPane().setBackground(Color.GRAY);
 
     }
+
+    @Override
+    public void setVisible(boolean visible) {
+        if(visible){
+            mostrarInterfaz();
+            mostrarLosDatos();
+        }
+        super.setVisible(visible);
+    }
+    
+    
 
     public void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//
