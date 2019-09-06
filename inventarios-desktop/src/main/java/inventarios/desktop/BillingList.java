@@ -42,12 +42,16 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import lombok.extern.java.Log;
+import org.springframework.web.client.HttpServerErrorException;
 
 /**
  *
  * @author Personal
  */
 @Component
+@Log
 public class BillingList extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -65,7 +69,7 @@ public class BillingList extends JFrame {
     @Autowired
     @Qualifier("billingListVisitor")
     private NavigationHandler navigationHandler;
-    
+
     @Autowired
     private ShutdownManager shutdownManager;
 
@@ -84,14 +88,12 @@ public class BillingList extends JFrame {
 
     @Override
     public void setVisible(boolean visible) {
-        if(visible){
+        if (visible) {
             mostrarInterfaz();
             mostrarLosDatos();
         }
         super.setVisible(visible);
     }
-    
-    
 
     public void mostrarInterfaz() {
         //para agregar los datos en un arreglo vacio//
@@ -104,22 +106,27 @@ public class BillingList extends JFrame {
     }
 
     public void mostrarLosDatos() {
-        List<BillingDetails> billingDetails = billingService.findAll();
-        for (BillingDetails f : billingDetails) {
-            modelo.insertRow(con, new Object[]{});
-            modelo.setValueAt(f.getRfc(), con, 0);
-            modelo.setValueAt(f.getRS(), con, 1);
-            modelo.setValueAt(f.getStreetName(), con, 2);
-            modelo.setValueAt(f.getNE(), con, 3);
-            modelo.setValueAt(f.getNI(), con, 4);
-            modelo.setValueAt(f.getColonia(), con, 5);
-            modelo.setValueAt(f.getLocalidad(), con, 6);
-            modelo.setValueAt(f.getDM(), con, 7);
-            modelo.setValueAt(f.getState(), con, 8);
-            modelo.setValueAt(f.getCountry(), con, 9);
-            modelo.setValueAt(f.getPoBox(), con, 10);
-            modelo.setValueAt(f.getEmail(), con, 11);
+        try {
+            List<BillingDetails> billingDetails = billingService.findAll();
+            for (BillingDetails f : billingDetails) {
+                modelo.insertRow(con, new Object[]{});
+                modelo.setValueAt(f.getRfc(), con, 0);
+                modelo.setValueAt(f.getRS(), con, 1);
+                modelo.setValueAt(f.getStreetName(), con, 2);
+                modelo.setValueAt(f.getNE(), con, 3);
+                modelo.setValueAt(f.getNI(), con, 4);
+                modelo.setValueAt(f.getColonia(), con, 5);
+                modelo.setValueAt(f.getLocalidad(), con, 6);
+                modelo.setValueAt(f.getDM(), con, 7);
+                modelo.setValueAt(f.getState(), con, 8);
+                modelo.setValueAt(f.getCountry(), con, 9);
+                modelo.setValueAt(f.getPoBox(), con, 10);
+                modelo.setValueAt(f.getEmail(), con, 11);
 
+            }
+        } catch (HttpServerErrorException serverErrorException) {
+            log.log(Level.SEVERE, "Hubo un problema al comunicarse con el servidor.", serverErrorException);
+            JOptionPane.showMessageDialog(this, "Hubo un problema al comunicarse con el servidor, por favor reintente en unos segundos", "Problema del servidor", JOptionPane.ERROR_MESSAGE);
         }
     }
     //Método para confirmar el cierre deJFrame//
@@ -128,12 +135,13 @@ public class BillingList extends JFrame {
         try {
             this.setDefaultCloseOperation(BillingList.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
+                @Override
                 public void windowClosing(WindowEvent e) {
                     shutdownManager.confirmExit();
                 }
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            log.log(Level.SEVERE, "There was a problem closing the application", e);
         }
     }
 
@@ -234,6 +242,7 @@ public class BillingList extends JFrame {
             jTable1.addRowSelectionInterval(0, 0);
             modelo = null;
         } catch (Exception e) {
+            log.log(Level.FINE, "Fila no seleccionada.", e);
             JOptionPane.showMessageDialog(null, "Seleccione la fila que desea quitar.");
         }         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteRowActionPerformed
@@ -246,6 +255,7 @@ public class BillingList extends JFrame {
                 modelo.removeRow(0);
             }
         } catch (Exception e) {
+            log.log(Level.SEVERE, "Error al limpiar la tabla.", e);
             JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
         }
     }//GEN-LAST:event_btnDeleteAllActionPerformed

@@ -73,12 +73,6 @@ public class BillingManagement extends JFrame {
     ) throws HeadlessException {
         this.navigationHandler = navigationHandler;
         this.shutdownManager = shutdownManager;
-    }
-
-    /**
-     * Creates new form FacturaciónVentana
-     */
-    public BillingManagement() {
         initComponents();
         cerrar();
         this.getContentPane().setBackground(Color.cyan);
