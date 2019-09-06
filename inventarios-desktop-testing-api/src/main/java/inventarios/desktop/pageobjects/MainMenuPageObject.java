@@ -61,4 +61,8 @@ public class MainMenuPageObject {
     public void goToLogin(){
         btnGetBack.clickMouse();
     }
+    
+    public void goToBilling(){
+        btnBilling.clickMouse();
+    }
 }

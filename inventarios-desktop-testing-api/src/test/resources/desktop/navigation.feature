@@ -20,5 +20,7 @@ Feature: Window Navigation
       And I click Login with correct credentials
       And I click Inventory option in the Menu Window
       And I click on menu button in the Inventory Window
+      And I click Billing option in the Menu Window
+      And I click on menu button in the Billing Window
       And I click close button on The Menu Window
       Then Login window fields should be empty

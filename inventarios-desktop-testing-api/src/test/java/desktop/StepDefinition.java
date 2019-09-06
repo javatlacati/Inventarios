@@ -28,6 +28,7 @@ import inventarios.desktop.OrderManagement;
 import inventarios.desktop.ProviderManagement;
 import inventarios.desktop.ShoppingWindow;
 import inventarios.desktop.navigation.NavigationHandler;
+import inventarios.desktop.pageobjects.BillingManagementPageObject;
 import inventarios.desktop.pageobjects.InventoryManagementPageObject;
 import inventarios.desktop.pageobjects.LoginWindowPageObject;
 import inventarios.desktop.pageobjects.MainMenuPageObject;
@@ -114,6 +115,7 @@ public class StepDefinition {
     private MainMenuPageObject menuPageObject;
     private InventoryManagementPageObject inventoryPageObject;
     private OrderManagementPageObject orderPageObject;
+    private BillingManagementPageObject billingManagementPageObject;
 
     @Before
     public void beforeScenario() {
@@ -208,6 +210,21 @@ public class StepDefinition {
         menuPageObject.openInvenory();
         inventoryPageObject = new InventoryManagementPageObject();
     }
+    
+    @And("^I click Billing option in the Menu Window$")
+    public void iClickBillingOptionInTheMenuWindow() {
+        doAnswer(new Answer<Void>() {
+            public Void answer(InvocationOnMock invocation) {
+                billingManagement.setVisible(true);
+                menu.setVisible(false);
+                return null;
+            }
+        })
+                .when(navigationHandler)
+                .goToInventoryManagement(Matchers.any(Menu.class));
+        menuPageObject.openInvenory();
+        billingManagementPageObject = new BillingManagementPageObject();
+    }
 
     @And("^I click on menu button in the Inventory Window$")
     public void iClickOnCloseButtonInTheInventoryWindow() {
@@ -220,7 +237,19 @@ public class StepDefinition {
         }).when(navigationHandler).goToMenu(Matchers.any(InventoryManagement.class));
         inventoryPageObject.clickMenu();
     }
-
+    
+    @And("^I click on menu button in the Billing Window$")
+    public void iClickOnMenuButtonInTheInventoryWindow() {
+        doAnswer(new Answer<Void>() {
+            public Void answer(InvocationOnMock invocation) {
+                billingManagement.setVisible(false);
+                menu.setVisible(true);
+                return null;
+            }
+        }).when(navigationHandler).goToMenu(Matchers.any(BillingManagement.class));
+        billingManagementPageObject.clickMenu();
+    }
+    
     @And("^error prompt message should be \'([A-Za-z\\s]+)\'$")
     public void errorPromptMessageShouldBeUsuarioWrongNoEncontrado(String expectedMessage) {
         assertEquals("error message in message dialog should be as expected", expectedMessage, loginWindowPageObject.getDialogMessageText());
