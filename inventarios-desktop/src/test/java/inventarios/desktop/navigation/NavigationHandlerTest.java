@@ -1,11 +1,9 @@
 package inventarios.desktop.navigation;
 
+import javax.swing.JFrame;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.swing.JFrame;
-
-import static org.junit.Assert.*;
 
 public class NavigationHandlerTest {
 
@@ -15,6 +13,7 @@ public class NavigationHandlerTest {
     @Before
     public void setUp() throws Exception {
         origin = new JFrame();
+        navigationHandler = new NavigationHandler();
     }
 
     @Test
