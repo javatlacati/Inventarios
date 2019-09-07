@@ -40,10 +40,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import lombok.extern.java.Log;
+import org.springframework.web.client.HttpServerErrorException;
 
 /**
  * @author EfraJiJim
  */
+@Log
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class LoginWindow extends JFrame {
@@ -276,13 +280,18 @@ public class LoginWindow extends JFrame {
 
             LoginUser loginUser = new LoginUser(user, password);
 
-            if (usersService.authenticate(loginUser)) {
-                navigationHandler.goToMenu(this);
-                clearFields();
-                return;
-            }
+            try{
+                if (usersService.authenticate(loginUser)) {
+                    navigationHandler.goToMenu(this);
+                    clearFields();
+                    return;
+                }
 
-            JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado", "Credenciales incorrectas", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado", "Credenciales incorrectas", JOptionPane.WARNING_MESSAGE);
+            } catch(HttpServerErrorException hsee){
+                log.log(Level.SEVERE, "Hubo un problema al comunicarse con el servidor.", hsee);
+                JOptionPane.showMessageDialog(this, "Hubo un problema al comunicarse con el servidor, por favor reintente en unos segundos", "Problema del servidor", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 

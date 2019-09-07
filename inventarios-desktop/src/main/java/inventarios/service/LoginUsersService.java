@@ -23,13 +23,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.logging.Logger;
+import org.springframework.web.client.HttpServerErrorException;
 
 @Service
 public class LoginUsersService {
 
     private static final Logger log = Logger.getLogger(LoginUsersService.class.getName());
     private RestTemplate restTemplate;
-    
+
     private LoginUser currentUser;
 
     @Autowired
@@ -37,25 +38,25 @@ public class LoginUsersService {
         this.restTemplate = restTemplate;
     }
 
-    public boolean authenticate(LoginUser user) {
+    public boolean authenticate(LoginUser user) throws HttpServerErrorException {
         log.log(Level.FINE, "Usuario: {0}", user);
         try {
             Boolean authenticated = restTemplate.postForObject("http://localhost:8080/login", user, Boolean.class);
             log.log(Level.INFO, "Authenticated:{0}", authenticated);
-            if(authenticated){
+            if (authenticated) {
                 currentUser = user;
             }
             return authenticated;
         } catch (NullPointerException e) {
-            e.printStackTrace();
+            log.log(Level.FINER, "Null object received", e);
             return false;
         }
     }
-    
-    public boolean saveNewLoginUser(LoginUser user){
+
+    public boolean saveNewLoginUser(LoginUser user) {
         LoginUser saved = restTemplate.postForObject("http://localhost:8080/users", user, LoginUser.class);
         return null == saved;
     }
-    
+
     // TODO public boolean userHasPermission(Permission p)
 }
