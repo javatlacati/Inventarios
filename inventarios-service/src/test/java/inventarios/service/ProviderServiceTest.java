@@ -17,7 +17,6 @@
 package inventarios.service;
 
 import inventarios.repository.ProviderRepository;
-import inventarios.service.restclient.ProviderService;
 import inventarios.to.Provider;
 import org.junit.Before;
 import org.junit.Test;

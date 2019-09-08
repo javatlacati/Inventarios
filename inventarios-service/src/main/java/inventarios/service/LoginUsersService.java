@@ -30,8 +30,12 @@ import java.util.logging.Logger;
 @Service
 public class LoginUsersService {
     private static final Logger log = Logger.getLogger(LoginUsersService.class.getName());
+    private final LoginUsersRepository usersRepository;
+
     @Autowired
-    private LoginUsersRepository usersRepository;
+    public LoginUsersService(LoginUsersRepository usersRepository) {
+        this.usersRepository = usersRepository;
+    }
 
     public List<LoginUser> findAll() {
         return usersRepository.findAll();
