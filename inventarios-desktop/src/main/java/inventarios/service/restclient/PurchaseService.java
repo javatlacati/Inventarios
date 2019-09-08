@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package inventarios.service;
+package inventarios.service.restclient;
 
-import inventarios.to.EmployeeDetail;
+import inventarios.to.Purchase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -25,28 +25,28 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import lombok.extern.java.Log;
 
 @Service
-public class EmployeeService {
-    private RestTemplate restTemplate;
+@Log
+public class PurchaseService {
 
     @Autowired
-    public EmployeeService(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    private RestTemplate restTemplate;
+
+    public void save(Purchase purchase) {
+        log.info("Trying to save:"+purchase);
+        restTemplate.getForEntity("http://localhost:8080/purchases", Purchase.class, purchase);
     }
 
-    public void save(EmployeeDetail employee) {
-        restTemplate.getForEntity("http://localhost:8080/employees", EmployeeDetail.class, employee);
-    }
-
-    public List<EmployeeDetail> findAll() {        
-        ResponseEntity<List<EmployeeDetail>> response = restTemplate.exchange(
-                "http://localhost:8080/employees/",
+    public List<Purchase> findAll() {
+        ResponseEntity<List<Purchase>> response = restTemplate.exchange(
+                "http://localhost:8080/purchases/",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<EmployeeDetail>>() {
-        });
-        List<EmployeeDetail> employees = response.getBody();
+                new ParameterizedTypeReference<List<Purchase>>() {
+                });
+        List<Purchase> employees = response.getBody();
         return employees;
     }
 }

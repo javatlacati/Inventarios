@@ -14,48 +14,36 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package inventarios.service;
+package inventarios.service.restclient;
 
-import inventarios.to.Product;
+import inventarios.to.Provider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.Optional;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 
 @Service
-public class ProductService {
+public class ProviderService {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    public void save(Product product) {
-        restTemplate.getForEntity("http://localhost:8080/products", Product.class, product);
-    }
-
-    public Optional<Product> findOne(Product sampleProduct) {
-        if(sampleProduct == null){
-            return Optional.empty();
-        }
-        return Optional.ofNullable(restTemplate.postForObject("http://localhost:8080/product", sampleProduct, Product.class));
-    }
-
-    public List<Product> findAll() {
-        ResponseEntity<List<Product>> response = restTemplate.exchange(
-                "http://localhost:8080/products/",
+    public List<Provider> findAll() {
+        ResponseEntity<List<Provider>> response = restTemplate.exchange(
+                "http://localhost:8080/providers/",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<Product>>() {
-        });
-        List<Product> products = response.getBody();
-        return products;
+                new ParameterizedTypeReference<List<Provider>>() {
+                });
+        List<Provider> employees = response.getBody();
+        return employees;
     }
 
-    public void delete(Product product) {
-        restTemplate.delete("http://localhost:8080/products", product);
+    public void save(Provider provider) {
+        restTemplate.getForEntity("http://localhost:8080/providers", Provider.class, provider);
     }
 }

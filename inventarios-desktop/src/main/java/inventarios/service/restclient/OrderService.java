@@ -14,9 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package inventarios.service;
+package inventarios.service.restclient;
 
-import inventarios.to.Purchase;
+import inventarios.to.OrderDetail;
+import inventarios.to.Product;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -24,26 +26,27 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-
+/**
+ *
+ * @author Ruslan López Carro <scherzo16 at gmail.com>
+ */
 @Service
-public class PurchaseService {
-
+public class OrderService {
     @Autowired
     private RestTemplate restTemplate;
-
-    public void save(Purchase purchase) {
-        restTemplate.getForEntity("http://localhost:8080/purchases", Purchase.class, purchase);
-    }
-
-    public List<Purchase> findAll() {
-        ResponseEntity<List<Purchase>> response = restTemplate.exchange(
-                "http://localhost:8080/purchases/",
+    
+    public List<OrderDetail> findAll() {
+        ResponseEntity<List<OrderDetail>> response = restTemplate.exchange(
+                "http://localhost:8080/orders/",
                 HttpMethod.GET,
                 null,
-                new ParameterizedTypeReference<List<Purchase>>() {
-                });
-        List<Purchase> employees = response.getBody();
+                new ParameterizedTypeReference<List<OrderDetail>>() {
+        });
+        List<OrderDetail> employees = response.getBody();
         return employees;
+    }
+    
+    public void save(OrderDetail orderDetail) {
+        restTemplate.getForEntity("http://localhost:8080/orders", OrderDetail.class, orderDetail);
     }
 }

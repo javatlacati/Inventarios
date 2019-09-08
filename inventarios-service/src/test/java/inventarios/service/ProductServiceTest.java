@@ -17,6 +17,7 @@
 package inventarios.service;
 
 import inventarios.repository.ProductRepository;
+import inventarios.service.restclient.ProductService;
 import inventarios.to.Product;
 import inventarios.to.ProductCharacteristic;
 import org.junit.Before;

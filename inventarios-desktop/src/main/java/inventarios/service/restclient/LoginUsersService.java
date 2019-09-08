@@ -14,9 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package inventarios.service;
+package inventarios.service.restclient;
 
 import inventarios.to.LoginUser;
+
 import java.util.logging.Level;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.logging.Logger;
 import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.ResourceAccessException;
 
 @Service
 public class LoginUsersService {
@@ -38,7 +40,7 @@ public class LoginUsersService {
         this.restTemplate = restTemplate;
     }
 
-    public boolean authenticate(LoginUser user) throws HttpServerErrorException {
+    public boolean authenticate(LoginUser user) throws HttpServerErrorException, ResourceAccessException {
         log.log(Level.FINE, "Usuario: {0}", user);
         try {
             Boolean authenticated = restTemplate.postForObject("http://localhost:8080/login", user, Boolean.class);

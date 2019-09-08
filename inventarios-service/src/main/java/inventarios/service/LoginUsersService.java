@@ -21,12 +21,15 @@ import inventarios.to.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class LoginUsersService {
+    private static final Logger log = Logger.getLogger(LoginUsersService.class.getName());
     @Autowired
     private LoginUsersRepository usersRepository;
 
@@ -35,6 +38,7 @@ public class LoginUsersService {
     }
 
     public final boolean login(LoginUser user) {
+        log.log(Level.INFO, "authenticating user: {0}", user);
         return usersRepository.
                 findOne(Example.of(user))
                 .map(LoginUser::isActive)
