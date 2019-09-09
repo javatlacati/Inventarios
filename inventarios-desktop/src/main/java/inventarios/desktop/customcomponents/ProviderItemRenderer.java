@@ -14,12 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package inventarios.desktop;
+package inventarios.desktop.customcomponents;
 
 import inventarios.to.Provider;
 import java.awt.Color;
 import java.awt.Component;
-import javax.swing.GroupLayout;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -50,21 +49,8 @@ public class ProviderItemRenderer extends JPanel implements ListCellRenderer<Pro
         lblItemName = new JLabel();
 
         lblItemName.setText("                   ");
-
-        GroupLayout layout = new GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblItemName)
-                .addContainerGap(172, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblItemName)
-                .addContainerGap())
-        );
+        lblItemName.setOpaque(true);
+        add(lblItemName);
     }// </editor-fold>//GEN-END:initComponents
 
     
@@ -82,7 +68,7 @@ public class ProviderItemRenderer extends JPanel implements ListCellRenderer<Pro
             lblItemName.setForeground(Color.WHITE);
         }else{
             lblItemName.setBackground(Color.BLACK);
-            lblItemName.setForeground(Color.LIGHT_GRAY);
+            lblItemName.setForeground(Color.YELLOW);
         }
         return this;
     }

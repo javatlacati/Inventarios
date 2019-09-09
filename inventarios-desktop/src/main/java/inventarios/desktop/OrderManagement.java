@@ -22,7 +22,7 @@ Se importa la paqueteria a utilizar
 
 import com.toedter.calendar.JDateChooser;
 import inventarios.desktop.navigation.NavigationHandler;
-import inventarios.service.OrderService;
+import inventarios.service.restclient.OrderService;
 import inventarios.to.OrderDetail;
 import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +43,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;

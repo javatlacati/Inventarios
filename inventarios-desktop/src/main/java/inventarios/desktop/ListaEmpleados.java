@@ -17,7 +17,7 @@
 package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
-import inventarios.service.EmployeeService;
+import inventarios.service.restclient.EmployeeService;
 import inventarios.to.EmployeeDetail;
 import java.awt.BorderLayout;
 import java.awt.Color;

@@ -18,7 +18,7 @@ package inventarios.desktop;
 
 import com.toedter.calendar.JDateChooser;
 import inventarios.desktop.navigation.NavigationHandler;
-import inventarios.service.ProductService;
+import inventarios.service.restclient.ProductService;
 import inventarios.to.Product;
 import inventarios.to.ProductCharacteristic;
 import inventarios.util.RoundedBorder;

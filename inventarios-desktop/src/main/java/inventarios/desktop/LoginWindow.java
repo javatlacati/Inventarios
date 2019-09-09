@@ -17,7 +17,7 @@
 package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
-import inventarios.service.LoginUsersService;
+import inventarios.service.restclient.LoginUsersService;
 import inventarios.to.LoginUser;
 import inventarios.util.FontFactory;
 import inventarios.util.ShutdownManager;
@@ -41,8 +41,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
+
 import lombok.extern.java.Log;
 import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.ResourceAccessException;
 
 /**
  * @author EfraJiJim
@@ -289,8 +291,11 @@ public class LoginWindow extends JFrame {
 
                 JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado", "Credenciales incorrectas", JOptionPane.WARNING_MESSAGE);
             } catch(HttpServerErrorException hsee){
-                log.log(Level.SEVERE, "Hubo un problema al comunicarse con el servidor.", hsee);
-                JOptionPane.showMessageDialog(this, "Hubo un problema al comunicarse con el servidor, por favor reintente en unos segundos", "Problema del servidor", JOptionPane.ERROR_MESSAGE);
+                log.log(Level.SEVERE, "El servicio está experimentando problemas.", hsee);
+                JOptionPane.showMessageDialog(this, "El servicio está experimentando problemas, favor de reportar con la hora exacta", "Problema del servidor", JOptionPane.ERROR_MESSAGE);
+            } catch (ResourceAccessException ex) {
+                log.log(Level.INFO, "Hubo un problema al comunicarse con el servidor.", ex);
+                JOptionPane.showMessageDialog(this, "Hubo un problema al comunicarse con el servidor, por favor reintente en unos segundos", "Problema de comunicación", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

@@ -16,7 +16,7 @@
  */
 package inventarios.desktop;
 
-import inventarios.service.LoginUsersService;
+import inventarios.service.restclient.LoginUsersService;
 import inventarios.to.LoginUser;
 import java.awt.Font;
 import java.awt.event.ActionEvent;

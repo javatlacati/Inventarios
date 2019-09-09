@@ -17,7 +17,7 @@
 package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
-import inventarios.service.ProviderService;
+import inventarios.service.restclient.ProviderService;
 import inventarios.to.Provider;
 import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;

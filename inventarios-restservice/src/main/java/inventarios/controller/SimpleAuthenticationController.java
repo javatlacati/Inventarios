@@ -18,14 +18,13 @@ package inventarios.controller;
 
 import inventarios.service.LoginUsersService;
 import inventarios.to.LoginUser;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Log
+//@Log
 public class SimpleAuthenticationController {
 
     private LoginUsersService loginUsersService;
@@ -37,7 +36,7 @@ public class SimpleAuthenticationController {
 
     @PostMapping("/login")
     public boolean hasAccess(@RequestBody LoginUser user) {
-        log.fine("User: "+user);
+//        log.info("User: "+user);
         return loginUsersService.login(user);
     }
 }

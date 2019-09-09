@@ -14,33 +14,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package inventarios.desktop;
+package inventarios.desktop.customcomponents;
 
-import inventarios.to.Provider;
+import inventarios.to.Product;
 
 import javax.swing.AbstractListModel;
-import javax.swing.ComboBoxModel;
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Ruslan López Carro
+ */
+public class ProductListModel extends AbstractListModel<Product> {
+    private Product selectedItem;
+    private List<Product> model;
 
-public class ProviderComboBoxModel extends AbstractListModel implements ComboBoxModel {
-
-    private Provider selectedItem;
-    private List<Provider> model;
-
-    public ProviderComboBoxModel( List<Provider> model) {
-        this.model = new ArrayList<>(model);
-    }
-    
-    @Override
-    public void setSelectedItem(Object anItem) {
-        selectedItem = model.stream().filter(provider->provider.getName().equals(anItem.toString())).findFirst().orElse(null);
-    }
-
-    @Override
-    public Object getSelectedItem() {
-        return selectedItem;
+    public ProductListModel(List<Product> model) {
+        this.model = model;
     }
 
     @Override
@@ -49,8 +39,7 @@ public class ProviderComboBoxModel extends AbstractListModel implements ComboBox
     }
 
     @Override
-    public String getElementAt(int index) {
-        return model.get(index).getName();
+    public Product getElementAt(int index) {
+        return model.get(index);
     }
-
 }

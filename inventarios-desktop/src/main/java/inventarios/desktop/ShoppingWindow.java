@@ -16,11 +16,15 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.customcomponents.ProviderItemRenderer;
+import inventarios.desktop.customcomponents.ProviderComboBoxModel;
+import inventarios.desktop.customcomponents.ProductListModel;
 import com.toedter.calendar.JDateChooser;
+import inventarios.desktop.customcomponents.ProviderItemEditor;
 import inventarios.desktop.navigation.NavigationHandler;
-import inventarios.service.ProductService;
-import inventarios.service.ProviderService;
-import inventarios.service.PurchaseService;
+import inventarios.service.restclient.ProductService;
+import inventarios.service.restclient.ProviderService;
+import inventarios.service.restclient.PurchaseService;
 import inventarios.to.Product;
 import inventarios.to.Provider;
 import inventarios.to.Purchase;
@@ -63,7 +67,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 public class ShoppingWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JComboBox<String> cmbProvider;
+    private JComboBox<Provider> cmbProvider;
     private JTextField txtAdress;
     private JTextField txtContributor;
     private JDateChooser txtDate;
@@ -251,6 +255,10 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
         pnlFields.setLayout(new GridLayout(0, 1));
         pnlFields.add(txtDate);
+
+        cmbProvider.setEditable(true);
+        cmbProvider.setEditor(new ProviderItemEditor());
+        cmbProvider.setRenderer(new ProviderItemRenderer());
         pnlFields.add(cmbProvider);
 
         txtAdress.setPreferredSize(new Dimension(70, 25));
