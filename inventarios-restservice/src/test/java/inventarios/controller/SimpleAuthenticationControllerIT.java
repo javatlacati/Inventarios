@@ -1,12 +1,12 @@
 package inventarios.controller;
 
-import inventarios.service.restclient.BillingService;
-import inventarios.service.restclient.EmployeeService;
-import inventarios.service.restclient.LoginUsersService;
-import inventarios.service.restclient.OrderService;
-import inventarios.service.restclient.ProductService;
-import inventarios.service.restclient.ProviderService;
-import inventarios.service.restclient.PurchaseService;
+import inventarios.service.BillingService;
+import inventarios.service.EmployeeService;
+import inventarios.service.LoginUsersService;
+import inventarios.service.OrderService;
+import inventarios.service.ProductService;
+import inventarios.service.ProviderService;
+import inventarios.service.PurchaseService;
 import inventarios.to.LoginUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
