@@ -134,6 +134,7 @@ public class StepDefinition {
         loginWindow = new LoginWindow(navigationHandler, usersService, fontFactory, shutdownManager);
         menu = new Menu(navigationHandler, shutdownManager);
         inventoryManagement = new InventoryManagement(navigationHandler, productService, validatorFactory, shutdownManager);
+        billingManagement = new BillingManagement(navigationHandler, shutdownManager);
     }
 
     @After
