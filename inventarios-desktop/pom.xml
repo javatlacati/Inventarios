@@ -191,11 +191,9 @@
                             <!--to be imported on other projects-->
                             <classifier>app-to-import</classifier>
                             <includes>
-                                <include>**/desktop/*</include>
-                                <include>**/desktop/navigation/*</include>
-                                <include>**/service/*</include>
+                                <include>**/desktop/**/*</include>
+                                <include>**/service/**/*</include>
                                 <include>**/util/*</include>
-                                <include>**/model/*</include>
                                 <include>**/*.png</include>
                                 <include>**/*.jpeg</include>
                             </includes>
