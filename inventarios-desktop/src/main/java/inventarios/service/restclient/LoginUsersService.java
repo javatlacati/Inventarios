@@ -59,6 +59,10 @@ public class LoginUsersService {
         LoginUser saved = restTemplate.postForObject("http://localhost:8080/users", user, LoginUser.class);
         return null == saved;
     }
-
+    
     // TODO public boolean userHasPermission(Permission p)
+
+    public LoginUser getCurrentUser() {
+        return currentUser;
+    }
 }
