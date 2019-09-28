@@ -49,6 +49,7 @@ public class LoginUsersService {
 
     @Transactional
     public <S extends LoginUser> S save(S entity) {
+        entity.setActive(true); // activate newly created users by default
         return usersRepository.save(entity);
     }
 }

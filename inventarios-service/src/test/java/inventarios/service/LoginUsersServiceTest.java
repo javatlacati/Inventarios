@@ -65,5 +65,12 @@ public class LoginUsersServiceTest {
 
     @Test
     public void save() {
+        LoginUser user = new LoginUser("username", "pwd");
+        
+        LoginUser userAuthenticated = new LoginUser("username", "pwd");
+        userAuthenticated.setActive(true);
+        when(usersRepository.save(any(LoginUser.class)))
+                .thenReturn(user);
+        assertEquals(userAuthenticated, loginUsersService.save(user));
     }
 }
