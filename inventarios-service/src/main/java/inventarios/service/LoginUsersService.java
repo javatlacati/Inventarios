@@ -18,7 +18,6 @@ package inventarios.service;
 
 import inventarios.repository.LoginUsersRepository;
 import inventarios.to.LoginUser;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +31,6 @@ public class LoginUsersService {
     private static final Logger log = Logger.getLogger(LoginUsersService.class.getName());
     private final LoginUsersRepository usersRepository;
 
-    @Autowired
     public LoginUsersService(LoginUsersRepository usersRepository) {
         this.usersRepository = usersRepository;
     }
@@ -41,7 +39,7 @@ public class LoginUsersService {
         return usersRepository.findAll();
     }
 
-    public final boolean login(LoginUser user) {
+    public boolean login(LoginUser user) { //TODO perhaps make final but need workaround for mockito
         log.log(Level.INFO, "authenticating user: {0}", user);
         return usersRepository
                 .findOne(Example.of(user))
