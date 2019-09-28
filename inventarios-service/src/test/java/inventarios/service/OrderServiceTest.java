@@ -20,20 +20,19 @@ import inventarios.repository.OrderRepository;
 import inventarios.to.EmployeeDetail;
 import inventarios.to.OrderDetail;
 import inventarios.to.Product;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-
 import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import static org.mockito.Matchers.any;
+import org.mockito.Mock;
 import static org.mockito.Mockito.when;
+import org.mockito.runners.MockitoJUnitRunner;
 
 /**
  *
@@ -64,5 +63,13 @@ public class OrderServiceTest {
 
     @Test
     public void save() {
+        List<Product> products = Arrays.asList(new Product());
+        EmployeeDetail employeeDetail = new EmployeeDetail();
+        OrderDetail provider = new OrderDetail(1L, "654654564", products, employeeDetail, new Date());
+        
+        when(orderRepository.save(any(OrderDetail.class)))
+                .thenReturn(provider);
+        
+        assertEquals(provider, orderService.save(provider));
     }
 }
