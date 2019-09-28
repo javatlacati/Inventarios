@@ -19,23 +19,33 @@ package inventarios.desktop.customcomponents;
 import inventarios.to.Provider;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
 
-
 public class ProviderComboBoxModel extends AbstractListModel<Provider> implements ComboBoxModel<Provider> {
 
-    private Provider selectedItem;
-    private List<Provider> model;
+    private static final Logger LOG = Logger.getLogger(ProviderComboBoxModel.class.getName());
+    private static final long serialVersionUID = 1L;
 
-    public ProviderComboBoxModel( List<Provider> model) {
+    private Provider selectedItem;
+    private final List<Provider> model;
+
+    public ProviderComboBoxModel(List<Provider> model) {
         this.model = new ArrayList<>(model);
     }
-    
+
     @Override
     public void setSelectedItem(Object anItem) {
         Provider selectedProvider = (Provider) (anItem);
-        selectedItem = model.stream().filter(provider->provider.getName().equals(selectedProvider)).findFirst().orElse(null);
+        selectedItem = model.stream()
+                .filter(
+                        provider
+                        -> provider.getName()
+                                .equals(selectedProvider.getName())
+                )
+                .findFirst()
+                .orElse(null);
     }
 
     @Override

@@ -27,6 +27,7 @@ import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.logging.Level;
 
 /**
  *
@@ -66,12 +67,12 @@ public class ProviderItemEditor extends BasicComboBoxEditor {
 
     @Override
     public void setItem(Object item) {
-        log.info("Setting item:" + item);
+        log.log(Level.FINE, "Setting item:{0}", item);
         if (null == item) {
             return;
         }
-        Provider[] countryItem = (Provider[]) item;
-        selectedValue = countryItem[0];
+        
+        selectedValue = (Provider) item;
         labelItem.setText(selectedValue.getName());
     }
 
