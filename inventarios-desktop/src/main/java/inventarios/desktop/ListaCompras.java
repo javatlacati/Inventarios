@@ -18,6 +18,9 @@ package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.restclient.PurchaseService;
+import inventarios.to.OrderDetail;
+import inventarios.to.Product;
+import inventarios.to.Provider;
 import inventarios.to.Purchase;
 import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +44,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 /**
  *
@@ -49,6 +56,9 @@ import java.util.ResourceBundle;
  */
 @Component
 public class ListaCompras extends javax.swing.JFrame {
+
+    private static final long serialVersionUID = 1L;
+    private static final Logger LOG = Logger.getLogger(ListaCompras.class.getName());
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JTable shoppingTable;
@@ -91,14 +101,29 @@ public class ListaCompras extends javax.swing.JFrame {
 
     public void mostrarLosDatos() {
         List<Purchase> purchases = purchaseService.findAll();
+
+        LOG.log(Level.INFO, "retrieved purchases:{0}", purchases);
+
         Purchase c;
         for (int i = 0; i < purchases.size(); i++) {
-            c = (Purchase) purchases.get(i);
+            c = purchases.get(i);
             modelo.insertRow(con, new Object[]{});
             modelo.setValueAt(c.getDate(), con, 0);
-            modelo.setValueAt(c.getProvider().getName(), con, 1);
-            modelo.setValueAt(c.getProducto().get(0).getName(), con, 2);
-            modelo.setValueAt(c.getRequestingOrder().getId(), con, 3);
+            Optional<Provider> provider = Optional.ofNullable(c.getProvider());
+            modelo.setValueAt(
+                    provider
+                            .map(Provider::getName)
+                            .orElse("no provider set"),
+                    con, 1);
+            final Optional<List<Product>> producto = Optional.ofNullable(c.getProducto());
+            modelo.setValueAt(producto
+                    .map(List::stream)
+                    .flatMap(Stream::findFirst)
+                    .map(Product::getName)
+                    .orElse("no product set"),
+                    con, 2);
+            final Optional<OrderDetail> requestingOrder = Optional.ofNullable(c.getRequestingOrder());
+            modelo.setValueAt(requestingOrder.map(OrderDetail::getId).orElse(-1L), con, 3);
         }
     }
     //Método para confirmar el cierre deJFrame//
