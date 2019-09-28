@@ -1,12 +1,7 @@
 package inventarios.controller;
 
-import inventarios.service.BillingService;
-import inventarios.service.EmployeeService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import inventarios.service.LoginUsersService;
-import inventarios.service.OrderService;
-import inventarios.service.ProductService;
-import inventarios.service.ProviderService;
-import inventarios.service.PurchaseService;
 import inventarios.to.LoginUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,55 +9,55 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doReturn;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebMvcTest
+//@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
+@WebMvcTest(controllers = SimpleAuthenticationController.class)
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@AutoConfigureMockMvc
 public class SimpleAuthenticationControllerIT {
 
     @Autowired
     private MockMvc mvc;
 
-    @Autowired
-    WebApplicationContext webApplicationContext;
-
-    @MockBean
-    private EmployeeService employeeService;
-
-    @MockBean
-    private OrderService orderService;
-
-    @MockBean
-    private ProductService productService;
-
-    @MockBean
-    private ProviderService providerService;
-
-    @MockBean
-    private PurchaseService purchaseService;
-
     @MockBean
     private LoginUsersService loginUsersService;
 
-    @MockBean
-    private BillingService billingService;
+
+//
+//    @Before
+//    public void setup() {
+//
+//    }
 
     @Test
-    public void loginAttempt() throws Exception {
+    public void loginAttemptFailed() throws Exception {
         LoginUser invalidUser = new LoginUser("wrong", "wrong");
-        when(loginUsersService.login(invalidUser))
-                .thenReturn(false);
+
+        doReturn(Boolean.FALSE)
+                .when(loginUsersService)
+                .login(
+                        any(LoginUser.class)
+                );
+
         String uri = "/login";
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders
-                .post(uri, invalidUser)
+        MvcResult mvcResult = this.mvc.perform(MockMvcRequestBuilders
+                .post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(new ObjectMapper().writer().withDefaultPrettyPrinter().writeValueAsString(invalidUser))
                 .accept(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().isOk())
                 .andReturn();
         int status = mvcResult
                 .getResponse()
@@ -70,5 +65,32 @@ public class SimpleAuthenticationControllerIT {
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
         assertEquals("false", content);
+    }
+
+    @Test
+    public void loginAttempt() throws Exception {
+        LoginUser invalidUser = new LoginUser("wrong", "wrong");
+
+        doReturn(Boolean.TRUE)
+                .when(loginUsersService)
+                .login(
+                        any(LoginUser.class)
+                );
+
+        String uri = "/login";
+        MvcResult mvcResult = this.mvc.perform(MockMvcRequestBuilders
+                .post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(new ObjectMapper().writer().withDefaultPrettyPrinter().writeValueAsString(invalidUser))
+                .accept(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn();
+        int status = mvcResult
+                .getResponse()
+                .getStatus();
+        assertEquals(200, status);
+        String content = mvcResult.getResponse().getContentAsString();
+        assertEquals("true", content);
     }
 }
