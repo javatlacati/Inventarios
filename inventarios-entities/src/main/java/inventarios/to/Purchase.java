@@ -31,6 +31,7 @@ import javax.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import lombok.EqualsAndHashCode;
 
 /**
  *
@@ -42,6 +43,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class Purchase implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

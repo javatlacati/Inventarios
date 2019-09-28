@@ -32,6 +32,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author francisco
@@ -42,6 +43,7 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class Product implements Serializable {
 
     @Id

@@ -26,6 +26,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import lombok.EqualsAndHashCode;
 
 /**
  *
@@ -37,6 +38,7 @@ import javax.persistence.Id;
 @Entity
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class BillingDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -29,6 +29,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.List;
+import lombok.EqualsAndHashCode;
 
 @AllArgsConstructor
 @Setter
@@ -36,6 +37,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class Sale implements Serializable {
 
     @Id

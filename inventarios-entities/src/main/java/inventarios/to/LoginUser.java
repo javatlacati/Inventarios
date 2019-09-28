@@ -29,6 +29,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author EfraJiJim
@@ -39,6 +40,7 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class LoginUser implements Serializable {
 
     @Id

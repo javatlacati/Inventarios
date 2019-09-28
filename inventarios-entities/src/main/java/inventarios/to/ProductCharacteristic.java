@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @AllArgsConstructor
@@ -31,6 +32,7 @@ import lombok.ToString;
 @Entity
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class ProductCharacteristic implements Serializable {
 
     @Id

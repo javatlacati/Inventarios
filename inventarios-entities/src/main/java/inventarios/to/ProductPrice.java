@@ -30,6 +30,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.Date;
+import lombok.EqualsAndHashCode;
 
 /**
  *
@@ -41,6 +42,7 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class ProductPrice implements Serializable {
     @Id
     @Column

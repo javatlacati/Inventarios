@@ -36,6 +36,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class Provider {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
