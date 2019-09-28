@@ -36,7 +36,7 @@ public class PurchaseService {
 
     public void save(Purchase purchase) {
         log.info("Trying to save:"+purchase);
-        restTemplate.getForEntity("http://localhost:8080/purchases", Purchase.class, purchase);
+        restTemplate.postForEntity("http://localhost:8080/purchases", purchase, Purchase.class);
     }
 
     public List<Purchase> findAll() {
