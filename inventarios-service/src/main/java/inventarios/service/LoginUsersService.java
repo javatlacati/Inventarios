@@ -43,8 +43,8 @@ public class LoginUsersService {
 
     public final boolean login(LoginUser user) {
         log.log(Level.INFO, "authenticating user: {0}", user);
-        return usersRepository.
-                findOne(Example.of(user))
+        return usersRepository
+                .findOne(Example.of(user))
                 .map(LoginUser::isActive)
                 .orElse(Boolean.FALSE);
     }
