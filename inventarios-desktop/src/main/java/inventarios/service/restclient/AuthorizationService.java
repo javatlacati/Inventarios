@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,49 +17,42 @@
 package inventarios.service.restclient;
 
 import inventarios.to.LoginUser;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpServerErrorException;
-import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
+/**
+ *
+ * @author Ruslan López Carro <scherzo16 at gmail.com>
+ */
 @Service
-public class LoginUsersService {
+@Log
+public class AuthorizationService {
 
-    private static final Logger log = Logger.getLogger(LoginUsersService.class.getName());
+    private LoginUsersService loginUsersService;
     private RestTemplate restTemplate;
 
-    private LoginUser currentUser;
-
     @Autowired
-    public LoginUsersService(RestTemplate restTemplate) {
+    public AuthorizationService(LoginUsersService loginUsersService, RestTemplate restTemplate) {
+        this.loginUsersService = loginUsersService;
         this.restTemplate = restTemplate;
     }
 
-    public boolean authenticate(LoginUser user) throws HttpServerErrorException, ResourceAccessException {
-        log.log(Level.FINE, "Usuario: {0}", user);
+    public boolean userHasPermission(String PermissionName) {
+        log.log(Level.FINE, "Checking for permission: {0}", PermissionName);
+        LoginUser currentUser = loginUsersService.getCurrentUser();
+        log.log(Level.FINE, "Usuario: {0}", currentUser);
         try {
-            Boolean authenticated = restTemplate.postForObject("http://localhost:8080/login", user, Boolean.class);
-            log.log(Level.INFO, "Authenticated:{0}", authenticated);
-            if (authenticated) {
-                currentUser = user;
-            }
-            return authenticated;
+            Boolean hasPermission = restTemplate.postForObject("http://localhost:8080/authorize", new String[]{currentUser.getUserName(), PermissionName}, Boolean.class);
+            log.log(Level.INFO, "Has :{0}", hasPermission);
+            return hasPermission;
         } catch (NullPointerException e) {
             log.log(Level.FINER, "Null object received", e);
             return false;
         }
     }
 
-    public boolean saveNewLoginUser(LoginUser user) {
-        LoginUser saved = restTemplate.postForObject("http://localhost:8080/users", user, LoginUser.class);
-        return null == saved;
-    }
-
-    public LoginUser getCurrentUser() {
-        return currentUser;
-    }
 }

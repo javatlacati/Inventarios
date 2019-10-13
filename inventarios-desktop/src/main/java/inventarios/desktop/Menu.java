@@ -17,6 +17,8 @@
 package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
+import inventarios.service.restclient.AuthorizationService;
+import inventarios.service.restclient.LoginUsersService;
 import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -40,9 +42,11 @@ public class Menu extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    JButton btnAdmin;
     // End of variables declaration//GEN-END:variables
     private NavigationHandler navigationHandler;
     private ShutdownManager shutdownManager;
+    private AuthorizationService authorizationService;
 
     private final Stack<JFrame> previouses;
 
@@ -51,8 +55,10 @@ public class Menu extends javax.swing.JFrame {
      */
     @Autowired
     public Menu(@Qualifier("menuVisitor") NavigationHandler navigationHandler,
+            AuthorizationService authorizationService,
             ShutdownManager shutdownManager) {
         this.navigationHandler = navigationHandler;
+        this.authorizationService = authorizationService;
         this.shutdownManager = shutdownManager;
         initComponents();
         this.setLocationRelativeTo(null);
@@ -83,6 +89,14 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
+    @Override
+    public void setVisible(boolean visible) {
+        if(visible){
+            btnAdmin.setVisible(authorizationService.userHasPermission("AdminMenu"));
+        }
+        super.setVisible(visible);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -105,6 +119,8 @@ public class Menu extends javax.swing.JFrame {
         JButton btnAbout = new JButton();
         JButton btnEmployeeRecords = new JButton();
         JButton btnCredits = new JButton();
+        JButton btnProfile = new JButton();
+        btnAdmin = new JButton();
         JPanel imageAndNavigationPanel = new JPanel();
         JPanel imagePanel = new JPanel();
         JLabel lblImage = new JLabel();
@@ -140,7 +156,7 @@ public class Menu extends javax.swing.JFrame {
 
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.X_AXIS));
 
-        optionsPanel.setLayout(new GridLayout(4, 2));
+        optionsPanel.setLayout(new GridLayout(5, 2));
 
         btnInventory.setText(bundle.getString("Menu.btnInventory.text")); // NOI18N
         btnInventory.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
@@ -209,6 +225,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         optionsPanel.add(btnCredits);
+
+        ResourceBundle bundle1 = ResourceBundle.getBundle("inventarios/desktop/Bundle"); // NOI18N
+        btnProfile.setText(bundle1.getString("Menu.btnProfile.text")); // NOI18N
+        optionsPanel.add(btnProfile);
+
+        btnAdmin.setText(bundle1.getString("Menu.btnAdmin.text")); // NOI18N
+        optionsPanel.add(btnAdmin);
 
         contentPanel.add(optionsPanel);
 

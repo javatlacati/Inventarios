@@ -22,9 +22,11 @@ import inventarios.desktop.customcomponents.ProductListModel;
 import com.toedter.calendar.JDateChooser;
 import inventarios.desktop.customcomponents.ProviderItemEditor;
 import inventarios.desktop.navigation.NavigationHandler;
+import inventarios.service.restclient.LoginUsersService;
 import inventarios.service.restclient.ProductService;
 import inventarios.service.restclient.ProviderService;
 import inventarios.service.restclient.PurchaseService;
+import inventarios.to.OrderDetail;
 import inventarios.to.Product;
 import inventarios.to.Provider;
 import inventarios.to.Purchase;
@@ -86,6 +88,8 @@ public class ShoppingWindow extends javax.swing.JFrame {
 
     private ShutdownManager shutdownManager;
 
+    private LoginUsersService loginUsersService;
+
     /*
     Se Realiza el llamado del ArrayList
      */
@@ -99,12 +103,14 @@ public class ShoppingWindow extends javax.swing.JFrame {
             ProviderService providerService,
             ProductService productService,
             PurchaseService purchaseService,
+            LoginUsersService loginUsersService,
             ShutdownManager shutdownManager
     ) {
         this.navigationHandler = navigationHandler;
         this.providerService = providerService;
         this.productService = productService;
         this.purchaseService = purchaseService;
+        this.loginUsersService = loginUsersService;
         this.shutdownManager = shutdownManager;
         initComponents();
 
@@ -354,17 +360,20 @@ public class ShoppingWindow extends javax.swing.JFrame {
         String RFC = txtContributor.getText();
         String mail = txtEmail.getText();
         List<Product> product = txtProduct.getSelectedValuesList();
+        final OrderDetail orderDetail = new OrderDetail(null, "womenumber", //TODO where does this number comes from?
+                product, loginUsersService.getCurrentUser().getEmployeeDetail(), 
+                date); //TODO: current date perhaps
         /*
         Se hace la instancia para guardar los datos en el ArrayList
          */
-        Purchase clase = new Purchase(null, date, provider, product, null);
+        Purchase clase = new Purchase(null, date, provider, product, orderDetail);
         purchaseService.save(clase);
         clearFields();
         /*
        * Agregar el contendio al jTable
          */
     }
-    
+
     private void addOnEnterKey(KeyEvent evt) {
         char cTeclaPresionada = evt.getKeyChar();
         if (cTeclaPresionada == KeyEvent.VK_ENTER) {

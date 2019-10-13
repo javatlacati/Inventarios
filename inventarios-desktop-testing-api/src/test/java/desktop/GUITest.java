@@ -32,6 +32,7 @@ import inventarios.desktop.pageobjects.LoginWindowPageObject;
 import inventarios.desktop.pageobjects.MainMenuPageObject;
 import inventarios.desktop.pageobjects.OrderManagementPageObject;
 import inventarios.desktop.navigation.NavigationHandler;
+import inventarios.service.restclient.AuthorizationService;
 import inventarios.service.restclient.LoginUsersService;
 import inventarios.service.restclient.OrderService;
 import inventarios.service.restclient.ProductService;
@@ -98,6 +99,9 @@ public class GUITest {
     private OrderService orderService;
 
     @Mock
+    private AuthorizationService authorizationService;
+
+    @Mock
     private LocalValidatorFactoryBean validatorFactory;
 
     @Mock
@@ -125,7 +129,7 @@ public class GUITest {
         loginWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         loginWindow.setVisible(true);
         inventoryManagement = new InventoryManagement(navigationHandler, productService, validatorFactory, shutdownManager);
-        menu = new Menu(navigationHandler, shutdownManager);
+        menu = new Menu(navigationHandler, authorizationService, shutdownManager);
         orderManagement = new OrderManagement(navigationHandler, orderService, shutdownManager);
     }
 

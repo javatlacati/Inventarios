@@ -33,6 +33,7 @@ import inventarios.desktop.pageobjects.InventoryManagementPageObject;
 import inventarios.desktop.pageobjects.LoginWindowPageObject;
 import inventarios.desktop.pageobjects.MainMenuPageObject;
 import inventarios.desktop.pageobjects.OrderManagementPageObject;
+import inventarios.service.restclient.AuthorizationService;
 import inventarios.service.restclient.LoginUsersService;
 import inventarios.service.restclient.ProductService;
 import inventarios.to.LoginUser;
@@ -94,6 +95,9 @@ public class StepDefinition {
     private LoginUsersService usersService;
 
     @Mock
+    private AuthorizationService authorizationService;
+
+    @Mock
     private LocalValidatorFactoryBean validatorFactory;
 
     private Credits credits;
@@ -132,7 +136,7 @@ public class StepDefinition {
                 new Font("serif", Font.PLAIN, 24)
         );
         loginWindow = new LoginWindow(navigationHandler, usersService, fontFactory, shutdownManager);
-        menu = new Menu(navigationHandler, shutdownManager);
+        menu = new Menu(navigationHandler, authorizationService, shutdownManager);
         inventoryManagement = new InventoryManagement(navigationHandler, productService, validatorFactory, shutdownManager);
         billingManagement = new BillingManagement(navigationHandler, shutdownManager);
     }
