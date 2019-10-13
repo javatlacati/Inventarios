@@ -17,6 +17,7 @@
 package inventarios.to;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,7 +30,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import lombok.EqualsAndHashCode;
+
+import static javax.persistence.FetchType.LAZY;
 
 /**
  * @author EfraJiJim
@@ -53,10 +55,9 @@ public class LoginUser implements Serializable {
     private String userName;
     @NotEmpty(message = "{password.notempty}")
     private String password;
-    @OneToOne
+    @OneToOne(optional = true, fetch = LAZY)
     private EmployeeDetail employeeDetail;
     private boolean active;
-
 
     public LoginUser(String userName, String password) {
         this.userName = userName;
