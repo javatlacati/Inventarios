@@ -19,13 +19,7 @@ package inventarios.controller;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import inventarios.service.BillingService;
 import inventarios.service.EmployeeService;
-import inventarios.service.LoginUsersService;
-import inventarios.service.OrderService;
-import inventarios.service.ProductService;
-import inventarios.service.ProviderService;
-import inventarios.service.PurchaseService;
 import inventarios.to.EmployeeDetail;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,7 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -51,10 +45,8 @@ import static org.mockito.BDDMockito.given;
  *
  * @author Ruslan López Carro <scherzo16 at gmail.com>
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-//@SpringBootTest(classes = {EmployeeController.class})
-//@WebAppConfiguration
-@WebMvcTest
+@RunWith(SpringRunner.class)
+@WebMvcTest(controllers = EmployeeController.class)
 public class EmployeeControllerIT {
 
     @Autowired
@@ -65,28 +57,6 @@ public class EmployeeControllerIT {
 
     @MockBean
     private EmployeeService employeeService;
-
-    @MockBean
-    private OrderService orderService;
-
-    @MockBean
-    private ProductService productService;
-
-    @MockBean
-    private ProviderService providerService;
-
-    @MockBean
-    private PurchaseService purchaseService;
-
-    @MockBean
-    private LoginUsersService loginUsersService;
-    
-    @MockBean
-    private BillingService billingService;
-
-//    protected void setUp() {
-//        mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-//    }
 
     @Test
     public void getEmployeeList() throws Exception {
