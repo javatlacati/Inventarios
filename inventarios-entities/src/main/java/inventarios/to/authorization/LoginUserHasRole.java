@@ -14,6 +14,11 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.List;
 
 /**
@@ -28,6 +33,12 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 public class LoginUserHasRole {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @OneToOne
     private LoginUser user;
+    @OneToMany
     private List<UserRole> roles;
 }
