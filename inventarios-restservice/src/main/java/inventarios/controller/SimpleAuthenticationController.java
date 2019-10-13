@@ -23,10 +23,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @RestController
-//@Log
 public class SimpleAuthenticationController {
 
+    private static final Logger log = Logger.getLogger(SimpleAuthenticationController.class.getName());
     private LoginUsersService loginUsersService;
 
     @Autowired
@@ -36,7 +39,7 @@ public class SimpleAuthenticationController {
 
     @PostMapping("/login")
     public boolean hasAccess(@RequestBody LoginUser user) {
-//        log.info("User: "+user);
+        log.log(Level.FINE, "User: {0}", user);
         return loginUsersService.login(user);
     }
 }

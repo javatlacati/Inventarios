@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,6 +24,9 @@ import inventarios.repository.ProductRepository;
 import inventarios.repository.ProviderRepository;
 import inventarios.repository.PurchaseRepository;
 import inventarios.repository.StorageRepository;
+import inventarios.repository.authorization.PermissionRepository;
+import inventarios.repository.authorization.RoleRepository;
+import inventarios.repository.authorization.UserHasRoleRepository;
 import inventarios.to.EmployeeDetail;
 import inventarios.to.LoginUser;
 import inventarios.to.OrderDetail;
@@ -32,6 +35,9 @@ import inventarios.to.ProductCharacteristic;
 import inventarios.to.Provider;
 import inventarios.to.Purchase;
 import inventarios.to.StorageLocation;
+import inventarios.to.authorization.LoginUserHasRole;
+import inventarios.to.authorization.Permission;
+import inventarios.to.authorization.UserRole;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -41,6 +47,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -71,17 +78,38 @@ public class DataProvider implements CommandLineRunner {
 
     @Autowired
     private ProductDetailsRepository productDetailsRepository;
-    
+
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private PermissionRepository permissionRepository;
+
+    @Autowired
+    private UserHasRoleRepository userHasRoleRepository;
 
     @Override
     @Transactional
     public void run(String... args) {
-        usersRepository.save(new LoginUser("francisco", "francisco"));
+
+        Permission viewAdminMenu = permissionRepository.save(new Permission(null, "AdminMenu"));
+
+        UserRole employeeRole = roleRepository.save(new UserRole(null, "Employee", Collections.emptyList(), null));
+        UserRole adminRole = roleRepository.save(new UserRole(null, "Admin", Collections.singletonList(viewAdminMenu), null));
+
+        LoginUser francisco = usersRepository.save(new LoginUser("francisco", "francisco"));
+
+        LoginUserHasRole franciscoEmployee = userHasRoleRepository.save(new LoginUserHasRole(null, francisco, Collections.singletonList(employeeRole)));
+
+
         EmployeeDetail sean = new EmployeeDetail(null, "4165465465", "sean", "herbert", "collins", "some addrees #2324", "manager", LocalDateTime.now().toString(), LocalDateTime.now().plusHours(8).toString());
         employeeRepository.save(sean);
-        usersRepository.save(new LoginUser("oscar", "oscar"));
+        LoginUser oscar = usersRepository.save(new LoginUser("oscar", "oscar"));
+
+        userHasRoleRepository.save(new LoginUserHasRole(null, oscar, Collections.singletonList(adminRole)));
         usersRepository.save(new LoginUser("ignacio", "ignacio"));
         usersRepository.save(new LoginUser("marroquin", "marroquin"));
         usersRepository.save(new LoginUser("morales", "morales"));
