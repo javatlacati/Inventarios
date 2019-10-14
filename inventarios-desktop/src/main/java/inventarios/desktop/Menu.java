@@ -226,11 +226,10 @@ public class Menu extends javax.swing.JFrame {
         });
         optionsPanel.add(btnCredits);
 
-        ResourceBundle bundle1 = ResourceBundle.getBundle("inventarios/desktop/Bundle"); // NOI18N
-        btnProfile.setText(bundle1.getString("Menu.btnProfile.text")); // NOI18N
+        btnProfile.setText(bundle.getString("Menu.btnProfile.text")); // NOI18N
         optionsPanel.add(btnProfile);
 
-        btnAdmin.setText(bundle1.getString("Menu.btnAdmin.text")); // NOI18N
+        btnAdmin.setText(bundle.getString("Menu.btnAdmin.text")); // NOI18N
         optionsPanel.add(btnAdmin);
 
         contentPanel.add(optionsPanel);
