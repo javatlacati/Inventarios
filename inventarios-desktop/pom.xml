@@ -158,6 +158,13 @@
             <artifactId>itextpdf</artifactId>
             <version>5.5.13.1</version>
         </dependency>
+        <!-- boilerplate generation -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
