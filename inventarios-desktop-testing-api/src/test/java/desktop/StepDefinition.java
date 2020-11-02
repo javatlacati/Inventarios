@@ -55,6 +55,7 @@ import javax.swing.JFrame;
 import java.awt.Font;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
@@ -124,6 +125,7 @@ public class StepDefinition {
     @Before
     public void beforeScenario() {
         usersService = mock(LoginUsersService.class);
+        authorizationService = mock(AuthorizationService.class);
         navigationHandler = mock(NavigationHandler.class);
         shutdownManager = mock(ShutdownManager.class);
         fontFactory = mock(FontFactory.class);
@@ -178,6 +180,7 @@ public class StepDefinition {
         doReturn(Boolean.TRUE)
                 .when(usersService)
                 .authenticate(Matchers.any(LoginUser.class));
+        when(authorizationService.userHasPermission(anyString())).thenReturn(true);
         doAnswer(new Answer<Void>() {
             public Void answer(InvocationOnMock invocation) {
                 loginWindow.setVisible(false);
@@ -215,7 +218,7 @@ public class StepDefinition {
         menuPageObject.openInvenory();
         inventoryPageObject = new InventoryManagementPageObject();
     }
-    
+
     @And("^I click Billing option in the Menu Window$")
     public void iClickBillingOptionInTheMenuWindow() {
         doAnswer(new Answer<Void>() {
@@ -242,7 +245,7 @@ public class StepDefinition {
         }).when(navigationHandler).goToMenu(Matchers.any(InventoryManagement.class));
         inventoryPageObject.clickMenu();
     }
-    
+
     @And("^I click on menu button in the Billing Window$")
     public void iClickOnMenuButtonInTheInventoryWindow() {
         doAnswer(new Answer<Void>() {
@@ -254,7 +257,7 @@ public class StepDefinition {
         }).when(navigationHandler).goToMenu(Matchers.any(BillingManagement.class));
         billingManagementPageObject.clickMenu();
     }
-    
+
     @And("^error prompt message should be \'([A-Za-z\\s]+)\'$")
     public void errorPromptMessageShouldBeUsuarioWrongNoEncontrado(String expectedMessage) {
         assertEquals("error message in message dialog should be as expected", expectedMessage, loginWindowPageObject.getDialogMessageText());
