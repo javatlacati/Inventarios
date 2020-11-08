@@ -1,0 +1,192 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <properties>
+    <node.version>v13.7.0</node.version>
+    <npm.version>6.13.6</npm.version>
+    <frontend-maven-plugin.skipnodeinstall>false</frontend-maven-plugin.skipnodeinstall>
+    <angular.tests.skip>false</angular.tests.skip>
+  </properties>
+
+  <parent>
+    <groupId>com.github.javatlacati</groupId>
+    <artifactId>inventarios</artifactId>
+    <version>1.0</version>
+  </parent>
+
+  <artifactId>inventarios-angular</artifactId>
+  <version>1.0</version>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.7.6</version>
+        <configuration>
+          <workingDirectory>./</workingDirectory>
+          <nodeVersion>${node.version}</nodeVersion>
+          <npmVersion>${npm.version}</npmVersion>
+        </configuration>
+        <executions>
+          <execution>
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+            <configuration>
+              <skip>${frontend-maven-plugin.skipnodeinstall}</skip>
+            </configuration>
+          </execution>
+
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+          </execution>
+
+          <execution>
+            <id>angular-cli install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>install --no-optional -g angular-cli</arguments>
+            </configuration>
+          </execution>
+
+<!--          <execution>-->
+<!--            <id>npm run build</id>-->
+<!--            <goals>-->
+<!--              <goal>npm</goal>-->
+<!--            </goals>-->
+<!--            <configuration>-->
+<!--              <workingDirectory>${project.basedir}</workingDirectory>-->
+<!--              <arguments>run build</arguments>-->
+<!--            </configuration>-->
+<!--          </execution>-->
+
+
+
+<!--          <execution>-->
+<!--            <id>npm run-script mavenbuild</id>-->
+<!--            <phase>prepare-package</phase>-->
+<!--            <goals>-->
+<!--              <goal>npm</goal>-->
+<!--            </goals>-->
+<!--            <configuration>-->
+<!--              <arguments>run-script mavenbuild</arguments>-->
+<!--            </configuration>-->
+<!--          </execution>-->
+
+<!--          <execution>-->
+<!--            <id>javascript tests</id>-->
+<!--            <goals>-->
+<!--              <goal>npm</goal>-->
+<!--            </goals>-->
+<!--            <phase>test</phase>-->
+<!--            <configuration>-->
+<!--              <workingDirectory>${project.basedir}</workingDirectory>-->
+<!--              <arguments>run-script maventest</arguments>-->
+<!--            </configuration>-->
+<!--          </execution>-->
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <executions>
+          <execution>
+            <id>exec-npm-ng-build</id>
+            <phase>generate-sources</phase>
+            <configuration>
+              <workingDirectory>${project.basedir}</workingDirectory>
+              <executable>ng.cmd</executable>
+              <arguments>
+                <argument>build</argument>
+<!--                <argument>&#45;&#45;base-href=/ngfirst/ng/</argument>-->
+              </arguments>
+            </configuration>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+
+          <execution>
+            <id>exec-npm-ng-test</id>
+            <phase>test</phase>
+            <configuration>
+              <workingDirectory>${project.basedir}</workingDirectory>
+              <executable>ng.cmd</executable>
+              <arguments>
+                <argument>test</argument>
+                <!--                <argument>&#45;&#45;base-href=/ngfirst/ng/</argument>-->
+              </arguments>
+              <skip>${angular.tests.skip}</skip>
+            </configuration>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+
+<!--          <execution>-->
+<!--            <id>run</id>-->
+<!--            <phase>package</phase>-->
+<!--            <configuration>-->
+<!--              <workingDirectory>${project.basedir}</workingDirectory>-->
+<!--              <executable>ng.cmd</executable>-->
+<!--              <arguments>-->
+<!--                <argument>serve</argument>-->
+<!--              </arguments>-->
+<!--              <skip>${angular.tests.skip}</skip>-->
+<!--            </configuration>-->
+<!--            <goals>-->
+<!--              <goal>exec</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+        </executions>
+      </plugin>
+
+      <!--          <execution>-->
+      <!--            <id>exec-npm-ng-build</id>-->
+      <!--            <phase>generate-sources</phase>-->
+      <!--            <configuration>-->
+      <!--              <workingDirectory>${project.basedir}</workingDirectory>-->
+      <!--              <executable>ng</executable>-->
+      <!--              <arguments>-->
+      <!--                <argument>build</argument>-->
+      <!--                <argument>&#45;&#45;base-href=/ngfirst/ng/</argument>-->
+      <!--              </arguments>-->
+      <!--            </configuration>-->
+      <!--            <goals>-->
+      <!--              <goal>exec</goal>-->
+      <!--            </goals>-->
+      <!--          </execution>-->
+
+      <!-- clean node and node_modules  -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>${project.basedir}</directory>
+              <includes>
+                <include>**/node_modules/**</include>
+              </includes>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+            <fileset>
+              <directory>node</directory>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

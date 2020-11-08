@@ -59,7 +59,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     <repoToken>cwOQWQhtPnhwjn1pTDmopqqmaqxkhvfS8</repoToken>
                 </configuration>
             </plugin>
-            
+
             <!-- code coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -81,7 +81,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     </execution>
                 </executions>
                 <dependencies>
-        
+
                     <!-- jaxb -->
                     <dependency>
                         <groupId>javax.xml.bind</groupId>
@@ -122,6 +122,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <module>inventarios-restservice</module>
         <module>inventarios-desktop</module>
         <module>inventarios-desktop-testing-api</module>
+        <module>inventarios-angular</module>
     </modules>
 
 </project>
