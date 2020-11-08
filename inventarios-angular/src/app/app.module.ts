@@ -15,11 +15,7 @@ import {EmployeeRegistrationComponent} from './components/employee-registration/
 import {PrivatePageGuard} from "./private-page.guard";
 import {LoginUsersService} from "./services/LoginUsersService";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule} from "@angular/material/button";
-import {MatIconModule} from "@angular/material/icon";
-import {MatInputModule} from "@angular/material/input";
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatFormFieldModule} from "@angular/material/form-field";
+import {MaterialmodModule} from "./shared/materialmod.module";
 
 @NgModule({
   declarations: [
@@ -38,12 +34,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatInputModule,
-    MatGridListModule,
-    MatFormFieldModule
-
+    MaterialmodModule
   ],
   providers: [
     PrivatePageGuard,
