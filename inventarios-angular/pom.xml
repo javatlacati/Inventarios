@@ -106,7 +106,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <phase>generate-sources</phase>
             <configuration>
               <workingDirectory>${project.basedir}</workingDirectory>
-              <executable>ng.cmd</executable>
+              <executable>ng</executable>
               <arguments>
                 <argument>build</argument>
 <!--                <argument>&#45;&#45;base-href=/ngfirst/ng/</argument>-->
@@ -122,7 +122,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <phase>test</phase>
             <configuration>
               <workingDirectory>${project.basedir}</workingDirectory>
-              <executable>ng.cmd</executable>
+              <executable>ng</executable>
               <arguments>
                 <argument>test</argument>
                 <!--                <argument>&#45;&#45;base-href=/ngfirst/ng/</argument>-->
