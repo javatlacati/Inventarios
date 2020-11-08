@@ -99,15 +99,17 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>1.5.0</version>
+        <version>1.4.0</version>
         <executions>
           <execution>
             <id>exec-npm-ng-build</id>
             <phase>generate-sources</phase>
             <configuration>
               <workingDirectory>${project.basedir}</workingDirectory>
-              <executable>ng</executable>
+              <executable>npm</executable>
               <arguments>
+                <argument>run</argument>
+                <argument>ng</argument>
                 <argument>build</argument>
 <!--                <argument>&#45;&#45;base-href=/ngfirst/ng/</argument>-->
               </arguments>
@@ -122,8 +124,10 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <phase>test</phase>
             <configuration>
               <workingDirectory>${project.basedir}</workingDirectory>
-              <executable>ng</executable>
+              <executable>npm</executable>
               <arguments>
+                <argument>run</argument>
+                <argument>ng</argument>
                 <argument>test</argument>
                 <!--                <argument>&#45;&#45;base-href=/ngfirst/ng/</argument>-->
               </arguments>
