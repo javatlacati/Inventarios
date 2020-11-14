@@ -106,7 +106,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <executions>
           <execution>
             <id>exec-npm-ng-build</id>
-            <phase>generate-sources</phase>
+            <phase>install</phase>
             <configuration>
               <workingDirectory>${project.basedir}</workingDirectory>
               <executable>npm</executable>
