@@ -85,61 +85,61 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <!--            </configuration>-->
 <!--          </execution>-->
 
-<!--          <execution>-->
-<!--            <id>javascript tests</id>-->
-<!--            <goals>-->
-<!--              <goal>npm</goal>-->
-<!--            </goals>-->
-<!--            <phase>test</phase>-->
-<!--            <configuration>-->
-<!--              <workingDirectory>${project.basedir}</workingDirectory>-->
-<!--              <arguments>run-script maventest</arguments>-->
-<!--            </configuration>-->
-<!--          </execution>-->
+          <execution>
+            <id>javascript tests</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <workingDirectory>${project.basedir}</workingDirectory>
+              <arguments>run-script maventest</arguments>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
 
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.4.0</version>
-        <executions>
-          <execution>
-            <id>exec-npm-ng-build</id>
-            <phase>install</phase>
-            <configuration>
-              <workingDirectory>${project.basedir}</workingDirectory>
-              <executable>npm</executable>
-              <arguments>
-                <argument>run</argument>
-                <argument>ng</argument>
-                <argument>build</argument>
-<!--                <argument>&#45;&#45;base-href=/ngfirst/ng/</argument>-->
-              </arguments>
-            </configuration>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-          </execution>
+<!--      <plugin>-->
+<!--        <groupId>org.codehaus.mojo</groupId>-->
+<!--        <artifactId>exec-maven-plugin</artifactId>-->
+<!--        <version>1.6.0</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <id>exec-npm-ng-build</id>-->
+<!--            <phase>install</phase>-->
+<!--            <configuration>-->
+<!--              <workingDirectory>${project.basedir}</workingDirectory>-->
+<!--              <executable>npm</executable>-->
+<!--              <arguments>-->
+<!--                <argument>run</argument>-->
+<!--                <argument>${project.basedir}/node/ng</argument>-->
+<!--                <argument>build</argument>-->
+<!--&lt;!&ndash;                <argument>&#45;&#45;base-href=/ngfirst/ng/</argument>&ndash;&gt;-->
+<!--              </arguments>-->
+<!--            </configuration>-->
+<!--            <goals>-->
+<!--              <goal>exec</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
 
-          <execution>
-            <id>exec-npm-ng-test</id>
-            <phase>install</phase>
-            <configuration>
-              <workingDirectory>${project.basedir}</workingDirectory>
-              <executable>npm</executable>
-              <arguments>
-                <argument>run</argument>
-                <argument>ng</argument>
-                <argument>test</argument>
-                <!--                <argument>&#45;&#45;base-href=/ngfirst/ng/</argument>-->
-              </arguments>
-              <skip>${angular.tests.skip}</skip>
-            </configuration>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-          </execution>
+<!--          <execution>-->
+<!--            <id>exec-npm-ng-test</id>-->
+<!--            <phase>install</phase>-->
+<!--            <configuration>-->
+<!--              <workingDirectory>${project.basedir}</workingDirectory>-->
+<!--              <executable>npm</executable>-->
+<!--              <arguments>-->
+<!--                <argument>run</argument>-->
+<!--                <argument>${project.basedir}/node/ng</argument>-->
+<!--                <argument>test</argument>-->
+<!--                &lt;!&ndash;                <argument>&#45;&#45;base-href=/ngfirst/ng/</argument>&ndash;&gt;-->
+<!--              </arguments>-->
+<!--              <skip>${angular.tests.skip}</skip>-->
+<!--            </configuration>-->
+<!--            <goals>-->
+<!--              <goal>exec</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
 
 <!--          <execution>-->
 <!--            <id>run</id>-->
@@ -156,8 +156,8 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <!--              <goal>exec</goal>-->
 <!--            </goals>-->
 <!--          </execution>-->
-        </executions>
-      </plugin>
+<!--        </executions>-->
+<!--      </plugin>-->
 
       <!--          <execution>-->
       <!--            <id>exec-npm-ng-build</id>-->
