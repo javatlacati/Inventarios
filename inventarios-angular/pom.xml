@@ -57,7 +57,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>install --no-optional -g angular-cli</arguments>
+              <arguments>install --no-optional -g @angular/cli</arguments>
             </configuration>
           </execution>
 
