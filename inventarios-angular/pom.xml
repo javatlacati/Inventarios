@@ -33,6 +33,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <executions>
           <execution>
             <id>install node and npm</id>
+            <phase>pre-site</phase>
             <goals>
               <goal>install-node-and-npm</goal>
             </goals>
@@ -43,6 +44,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
           <execution>
             <id>npm install</id>
+            <phase>site</phase>
             <goals>
               <goal>npm</goal>
             </goals>
@@ -50,6 +52,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
           <execution>
             <id>angular-cli install</id>
+            <phase>site</phase>
             <goals>
               <goal>npm</goal>
             </goals>
