@@ -14,21 +14,23 @@ export class PrivatePageGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    // const redirectUrl = route['_routerState']['url'];
-    // if (this.loginService.isLogged()) {
+    const redirectUrl = route['_routerState']['url'];
+    let logged = this.loginService.isLogged();
+    console.log("is user logged?:" + logged);
+    if (logged) {
       return true;
-    // }
-    // this.router.navigateByUrl(
-    //   this.router.createUrlTree(
-    //     ['/login'], {
-    //       queryParams: {
-    //         redirectUrl
-    //       }
-    //     }
-    //   )
-    // );
-    // //this.loginService.logout();
-    // return false;
+    }
+    this.router.navigateByUrl(
+      this.router.createUrlTree(
+        ['/login'], {
+          queryParams: {
+            redirectUrl
+          }
+        }
+      )
+    );
+    //this.loginService.logout();
+    return false;
   }
 
 }

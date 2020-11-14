@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoginUser} from "../entities/LoginUser";
 import {Observable} from "rxjs";
 
@@ -14,7 +14,12 @@ export class LoginUsersService {
   }
 
   login(user: LoginUser): Observable<Boolean> {
-    let isUserLogged = this.http.post<Boolean>('http://localhost:8080/login', {user});
+    //console.log("sending user:" + JSON.stringify(user))
+    let isUserLogged = this.http.post<Boolean>(
+      'http://localhost:8080/login',
+      user
+    );
+    console.log(isUserLogged);
     if (isUserLogged) {
       localStorage.setItem(USER_KEY, user.userName);
     }
@@ -22,7 +27,7 @@ export class LoginUsersService {
   }
 
   isLogged() {
-    return localStorage.getItem(USER_KEY) != null;
+    return localStorage.getItem(USER_KEY) !== null;
   }
 
   logout() {

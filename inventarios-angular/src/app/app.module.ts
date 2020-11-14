@@ -16,6 +16,7 @@ import {PrivatePageGuard} from "./private-page.guard";
 import {LoginUsersService} from "./services/LoginUsersService";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialmodModule} from "./shared/materialmod.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MaterialmodModule} from "./shared/materialmod.module";
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialmodModule
+    MaterialmodModule,
+    HttpClientModule
   ],
   providers: [
     PrivatePageGuard,

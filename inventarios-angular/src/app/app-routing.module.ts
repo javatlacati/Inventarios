@@ -20,17 +20,17 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuComponent,
-    // canActivate: [PrivatePageGuard],
+    canActivate: [PrivatePageGuard],
   },
   {
     path: 'employee-registration',
     component: EmployeeRegistrationComponent,
-    // canActivate: [PrivatePageGuard],
+    canActivate: [PrivatePageGuard],
   },
   {
     path: 'order-management',
     component: OrderManagementComponent,
-    // canActivate: [PrivatePageGuard],
+    canActivate: [PrivatePageGuard],
   },
   {
     path: '**',

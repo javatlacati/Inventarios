@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,6 +19,7 @@ package inventarios.controller;
 import inventarios.service.LoginUsersService;
 import inventarios.to.LoginUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +38,7 @@ public class SimpleAuthenticationController {
         this.loginUsersService = loginUsersService;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/login")
     public boolean hasAccess(@RequestBody LoginUser user) {
         log.log(Level.FINE, "User: {0}", user);
