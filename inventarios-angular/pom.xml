@@ -124,7 +124,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
           <execution>
             <id>exec-npm-ng-test</id>
-            <phase>verify</phase>
+            <phase>install</phase>
             <configuration>
               <workingDirectory>${project.basedir}</workingDirectory>
               <executable>npm</executable>
