@@ -6,7 +6,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <properties>
     <node.version>v13.7.0</node.version>
     <npm.version>6.13.6</npm.version>
-    <frontend-maven-plugin.skipnodeinstall>false</frontend-maven-plugin.skipnodeinstall>
+    <skipnodeinstall>false</skipnodeinstall>
     <angular.tests.skip>false</angular.tests.skip>
   </properties>
 
@@ -33,18 +33,18 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <executions>
           <execution>
             <id>install node and npm</id>
-            <phase>pre-site</phase>
+            <phase>generate-resources</phase>
             <goals>
               <goal>install-node-and-npm</goal>
             </goals>
             <configuration>
-              <skip>${frontend-maven-plugin.skipnodeinstall}</skip>
+              <skip>${skipnodeinstall}</skip>
             </configuration>
           </execution>
 
           <execution>
             <id>npm install</id>
-            <phase>site</phase>
+            <phase>generate-resources</phase>
             <goals>
               <goal>npm</goal>
             </goals>
@@ -52,7 +52,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
           <execution>
             <id>angular-cli install</id>
-            <phase>site</phase>
+            <phase>generate-resources</phase>
             <goals>
               <goal>npm</goal>
             </goals>
