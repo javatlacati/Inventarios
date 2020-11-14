@@ -8,8 +8,8 @@
     "mavenbuild:windows": "cd node_modules/@angular/cli/bin && ng.cmd build --prod",
     "mavenbuild": "cd node_modules/@angular/cli/bin && ng build --prod",
     "testnormal": "ng test",
-    "maventest:windows": "cd node/node_modules/angular/cli/bin && ng.cmd test",
-    "maventest": "cd node/node_modules/angular/cli/bin && ng test",
+    "maventest:windows": "cd node/node_modules/@angular/cli/bin && ng.cmd test",
+    "maventest": "cd node/node_modules/@angular/cli/bin && ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
