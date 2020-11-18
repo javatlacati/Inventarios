@@ -17,6 +17,9 @@ import {LoginUsersService} from "./services/LoginUsersService";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialmodModule} from "./shared/materialmod.module";
 import {HttpClientModule} from "@angular/common/http";
+import { InventoryComponent } from './components/inventory/inventory.component';
+import { ShoppingComponent } from './components/shopping/shopping.component';
+import { ProviderManagementComponent } from './components/provider-management/provider-management.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {HttpClientModule} from "@angular/common/http";
     OrderManagementComponent,
     CreditsComponent,
     BillingManagementComponent,
-    EmployeeRegistrationComponent
+    EmployeeRegistrationComponent,
+    InventoryComponent,
+    ShoppingComponent,
+    ProviderManagementComponent
   ],
   imports: [
     CommonModule,

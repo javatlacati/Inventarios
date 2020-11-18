@@ -6,6 +6,10 @@ import {NotFoundComponent} from "./components/notfound/not-found.component";
 import {EmployeeRegistrationComponent} from "./components/employee-registration/employee-registration.component";
 import {PrivatePageGuard} from "./private-page.guard";
 import {OrderManagementComponent} from "./components/order-management/order-management.component";
+import { InventoryComponent } from './components/inventory/inventory.component';
+import { BillingManagementComponent } from './components/billing-management/billing-management.component';
+import { ShoppingComponent } from './components/shopping/shopping.component';
+import { ProviderManagementComponent } from './components/provider-management/provider-management.component';
 
 const routes: Routes = [
   {
@@ -28,8 +32,28 @@ const routes: Routes = [
     canActivate: [PrivatePageGuard],
   },
   {
+    path: 'billing-management',
+    component: BillingManagementComponent,
+    canActivate: [PrivatePageGuard],
+  },
+  {
+    path: 'inventory-management',
+    component: InventoryComponent,
+    canActivate: [PrivatePageGuard],
+  },
+  {
     path: 'order-management',
     component: OrderManagementComponent,
+    canActivate: [PrivatePageGuard],
+  },
+  {
+    path: 'provider-management',
+    component: ProviderManagementComponent,
+    canActivate: [PrivatePageGuard],
+  },
+  {
+    path: 'shopping',
+    component: ShoppingComponent,
     canActivate: [PrivatePageGuard],
   },
   {
