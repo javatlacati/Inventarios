@@ -105,7 +105,7 @@ public class DataProvider implements CommandLineRunner {
         LoginUserHasRole franciscoEmployee = userHasRoleRepository.save(new LoginUserHasRole(null, francisco, Collections.singletonList(employeeRole)));
 
 
-        EmployeeDetail sean = new EmployeeDetail(null, "4165465465", "sean", "herbert", "collins", "some addrees #2324", "manager", LocalDateTime.now().toString(), LocalDateTime.now().plusHours(8).toString());
+        EmployeeDetail sean = new EmployeeDetail(null, "4165465465", "sean", "herbert", "collins", "some addrees #2324", "manager", "08:45 AM", "5:45 PM");
         employeeRepository.save(sean);
         LoginUser oscar = usersRepository.save(new LoginUser("oscar", "oscar"));
 
