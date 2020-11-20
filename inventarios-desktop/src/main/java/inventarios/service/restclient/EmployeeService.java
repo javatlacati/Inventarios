@@ -25,9 +25,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 public class EmployeeService {
+
+    private static final Logger LOG = Logger.getLogger(EmployeeService.class.getName());
+
     private RestTemplate restTemplate;
 
     @Autowired
@@ -36,10 +40,11 @@ public class EmployeeService {
     }
 
     public void save(EmployeeDetail employee) {
-        restTemplate.getForEntity("http://localhost:8080/employees", EmployeeDetail.class, employee);
+        LOG.fine(employee.toString());
+        restTemplate.postForEntity("http://localhost:8080/employees", employee, EmployeeDetail.class);
     }
 
-    public List<EmployeeDetail> findAll() {        
+    public List<EmployeeDetail> findAll() {
         ResponseEntity<List<EmployeeDetail>> response = restTemplate.exchange(
                 "http://localhost:8080/employees/",
                 HttpMethod.GET,
