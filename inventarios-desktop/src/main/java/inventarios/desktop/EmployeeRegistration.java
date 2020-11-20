@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import com.toedter.calendar.JHourMinuteChooser;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.restclient.EmployeeService;
 import inventarios.to.EmployeeDetail;
@@ -51,11 +52,11 @@ import java.util.ResourceBundle;
 public class EmployeeRegistration extends JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JTextField txtAddress;
-    private JTextField txtArrivingTime;
+    private JHourMinuteChooser txtArrivingTime;
     private JTextField txtFirstLastName;
     private JTextField txtId;
     private JTextField txtLastLastName;
-    private JTextField txtLeavingTime;
+    private JHourMinuteChooser txtLeavingTime;
     private JTextField txtName;
     private JTextField txtPosition;
     // End of variables declaration//GEN-END:variables
@@ -88,8 +89,8 @@ public class EmployeeRegistration extends JFrame {
         txtLastLastName.setText(null);
         txtAddress.setText(null);
         txtPosition.setText(null);
-        txtArrivingTime.setText(null);
-        txtLeavingTime.setText(null);
+        txtArrivingTime.setCurrentTime();
+        txtLeavingTime.setCurrentTime();
     }
 
     /**
@@ -119,12 +120,12 @@ public class EmployeeRegistration extends JFrame {
         txtPosition = new JTextField();
         JPanel pnlHorary = new JPanel();
         JLabel lblArrivingTime = new JLabel();
-        txtArrivingTime = new JTextField();
+        txtArrivingTime = new JHourMinuteChooser();
         JLabel lblLeavingTime = new JLabel();
-        txtLeavingTime = new JTextField();
+        txtLeavingTime = new JHourMinuteChooser();
         JPanel pnlButtons = new JPanel();
         JButton btnSave = new JButton();
-        JButton jButton2 = new JButton();
+        JButton btnRegistro = new JButton();
         JButton btnMenu = new JButton();
         JButton btnClose = new JButton();
 
@@ -251,36 +252,29 @@ public class EmployeeRegistration extends JFrame {
         lblArrivingTime.setText(bundle.getString("EmployeeRegistration.lblArrivingTime.text")); // NOI18N
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 13;
-        gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(21, 10, 0, 0);
         pnlHorary.add(lblArrivingTime, gridBagConstraints);
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 205;
-        gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new Insets(18, 10, 65, 0);
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         pnlHorary.add(txtArrivingTime, gridBagConstraints);
 
         lblLeavingTime.setText(bundle.getString("EmployeeRegistration.lblLeavingTime.text")); // NOI18N
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 9;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 21;
-        gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new Insets(21, 8, 0, 0);
         pnlHorary.add(lblLeavingTime, gridBagConstraints);
         gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 10;
-        gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 79;
-        gridBagConstraints.anchor = GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new Insets(18, 4, 65, 55);
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         pnlHorary.add(txtLeavingTime, gridBagConstraints);
 
         gridBagConstraints = new GridBagConstraints();
@@ -302,14 +296,14 @@ public class EmployeeRegistration extends JFrame {
         });
         pnlButtons.add(btnSave);
 
-        jButton2.setFont(new Font("Verdana", 1, 18)); // NOI18N
-        jButton2.setText(bundle.getString("EmployeeRegistration.jButton2.text")); // NOI18N
-        jButton2.addActionListener(new ActionListener() {
+        btnRegistro.setFont(new Font("Verdana", 1, 18)); // NOI18N
+        btnRegistro.setText(bundle.getString("EmployeeRegistration.btnRegistro.text")); // NOI18N
+        btnRegistro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnRegistroActionPerformed(evt);
             }
         });
-        pnlButtons.add(jButton2);
+        pnlButtons.add(btnRegistro);
 
         btnMenu.setBackground(new Color(255, 255, 255));
         btnMenu.setFont(new Font("Tahoma", 1, 24)); // NOI18N
@@ -332,7 +326,7 @@ public class EmployeeRegistration extends JFrame {
 
         getContentPane().add(pnlButtons, BorderLayout.SOUTH);
 
-        setBounds(0, 0, 649, 611);
+        setBounds(0, 0, 705, 611);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -342,8 +336,8 @@ public class EmployeeRegistration extends JFrame {
         String lastName2 = txtLastLastName.getText();
         String domicilios = txtAddress.getText();
         String position = txtPosition.getText();
-        String timeIn = txtArrivingTime.getText();
-        String timeOut = txtLeavingTime.getText();
+        String timeIn = txtArrivingTime.getTime();
+        String timeOut = txtLeavingTime.getTime();
 
         EmployeeDetail b = new EmployeeDetail(null, registrationNumber, name, lastName1, lastName2, domicilios, position, timeIn, timeOut);
 
@@ -355,9 +349,9 @@ public class EmployeeRegistration extends JFrame {
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void jButton2ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnRegistroActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
         navigationHandler.goToFrame(this, ListaEmpleados.class);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnRegistroActionPerformed
 
     private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         navigationHandler.goToMenu(this);
