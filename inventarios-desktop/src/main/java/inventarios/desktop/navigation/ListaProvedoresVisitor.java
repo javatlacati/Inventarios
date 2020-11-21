@@ -16,6 +16,7 @@
  */
 package inventarios.desktop.navigation;
 
+import inventarios.desktop.Menu;
 import inventarios.desktop.ProviderManagement;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +29,14 @@ import javax.swing.JFrame;
 @Component
 public class ListaProvedoresVisitor extends NavigationHandler{
 
+    @Override
+    public void goToMenu(JFrame origin) {
+        Menu menu = context.getBean(Menu.class);
+        menu.setVisible(true);
+        menu.add(origin);
+        origin.setVisible(false);
+    }
+    
     @Override
     public void goToProviderManagement(JFrame origin) {
         ProviderManagement providerManagement = context.getBean(ProviderManagement.class);

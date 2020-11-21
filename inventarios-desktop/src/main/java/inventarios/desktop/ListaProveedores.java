@@ -61,7 +61,6 @@ public class ListaProveedores extends javax.swing.JFrame {
     private ShutdownManager shutdownManager;
 
     private DefaultTableModel modelo;
-    private int con = 0;
 
     /**
      * Creates new form ListaProveedores
@@ -91,17 +90,18 @@ public class ListaProveedores extends javax.swing.JFrame {
 
     public void mostrarLosDatos() {
         List<Provider> providers = providerService.findAll();
+        mostrarInterfaz();
         Provider P;
         for (int i = 0; i < providers.size(); i++) {
-            P = (Provider) providers.get(i);
-            modelo.insertRow(con, new Object[]{});
-            modelo.setValueAt(P.getName(), con, 0);
-            modelo.setValueAt(P.getLastName(), con, 1);
-            modelo.setValueAt(P.getAddress(), con, 2);
-            modelo.setValueAt(P.getTelephoneNumber(), con, 3);
-            modelo.setValueAt(P.getEmail(), con, 4);
-            modelo.setValueAt(P.getPoBox(), con, 5);
-            modelo.setValueAt(P.getNumber(), con, 6);
+            P = providers.get(i);
+            modelo.insertRow(i, new Object[]{});
+            modelo.setValueAt(P.getNumber(), i, 0);
+            modelo.setValueAt(P.getName(), i, 1);
+            modelo.setValueAt(P.getLastName(), i, 2);
+            modelo.setValueAt(P.getAddress(), i, 3);
+            modelo.setValueAt(P.getTelephoneNumber(), i, 4);
+            modelo.setValueAt(P.getEmail(), i, 5);
+            modelo.setValueAt(P.getPoBox(), i, 6);
 
         }
     }
