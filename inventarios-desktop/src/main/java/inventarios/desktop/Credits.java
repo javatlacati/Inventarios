@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.NavigationHandler;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -30,6 +31,8 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
  *
@@ -40,7 +43,10 @@ public class Credits extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
+    @Autowired
+    @Qualifier("creditsVisitor")
+    private NavigationHandler navigationHandler;
+    
     /**
      * Creates new form Creditos
      */
@@ -111,11 +117,11 @@ public class Credits extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
-        dispose();
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnGetBackActionPerformed
 
     private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        dispose();
+        navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnCloseActionPerformed
 
 }
