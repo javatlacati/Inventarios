@@ -133,7 +133,7 @@ public class DataProvider implements CommandLineRunner {
         usersRepository.save(new LoginUser("miguel", "miguel"));
         usersRepository.save(new LoginUser("lupita", "lupita"));
 
-        Provider provider1 = new Provider(null, "cervecería moctezuma", "puebla", "", "415646", "246522161", "moctezuma@moctezuma.com", "90153");
+        Provider provider1 = new Provider(null, "cervecería", "puebla", "moctezuma", "415646", "246522161", "moctezuma@moctezuma.com", "90153");
         providerRepository.save(provider1);
 
         StorageLocation warehouse1 = new StorageLocation(null, "my warehouse", "my state", "my city");
