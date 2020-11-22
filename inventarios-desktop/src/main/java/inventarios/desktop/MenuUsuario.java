@@ -39,12 +39,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle;
 import javax.swing.WindowConstants;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author oscar
  */
-public class ventana1 extends javax.swing.JFrame {
+@Component
+public class MenuUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton btnDelete;
@@ -59,15 +62,14 @@ public class ventana1 extends javax.swing.JFrame {
     /**
      * Creates new form ventana1
      */
-    public ventana1() {
-
+    @Autowired
+    public MenuUsuario() {
         initComponents();
     }
 
     @Override
     public java.awt.Image getIconImage() {
-        java.awt.Image retValue = Toolkit.getDefaultToolkit().
-                getImage(ClassLoader.getSystemResource("ImagenBloqueo/cheques.png"));
+        java.awt.Image retValue = new ImageIcon(getClass().getResource("/ImgFondos/Icono.png")).getImage(); //ImagenBloqueo/cheques.png
 
         return retValue;
     }
@@ -99,37 +101,33 @@ public class ventana1 extends javax.swing.JFrame {
         lblTitle.setForeground(new Color(153, 153, 153));
         lblTitle.setText("SISTEMA DE INVENTARIO");
 
-        btnNewRecord.setIcon(new ImageIcon(getClass().getResource("/incon/ingresar.gif"))); // NOI18N
         btnNewRecord.setText("NUEVO REGISTRO");
-        btnNewRecord.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnNewRecord.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         btnNewRecord.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnNewRecordActionPerformed(evt);
             }
         });
 
-        btnOpenRecors.setIcon(new ImageIcon(getClass().getResource("/incon/files_folder_256.png"))); // NOI18N
         btnOpenRecors.setText("VER TODOS LO REGISTROS");
-        btnOpenRecors.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnOpenRecors.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         btnOpenRecors.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnOpenRecorsActionPerformed(evt);
             }
         });
 
-        btnPrintRecords.setIcon(new ImageIcon(getClass().getResource("/incon/CARSON DELLOSA-9.jpg"))); // NOI18N
         btnPrintRecords.setText("IMPRIMIR TODOS LOS REGISTROS");
-        btnPrintRecords.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnPrintRecords.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         btnPrintRecords.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnPrintRecordsActionPerformed(evt);
             }
         });
 
-        jLabel2.setIcon(new ImageIcon(getClass().getResource("/incon/sistemas de inventario.jpg"))); // NOI18N
-        jLabel2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jLabel2.setIcon(new ImageIcon(getClass().getResource("/ImgFondos/isc.png"))); // NOI18N
+        jLabel2.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 
-        btnDelete.setIcon(new ImageIcon(getClass().getResource("/incon/eliminar.gif"))); // NOI18N
         btnDelete.setText("ELIMINAR ARTICULO");
         btnDelete.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -137,7 +135,6 @@ public class ventana1 extends javax.swing.JFrame {
             }
         });
 
-        btnSearch.setIcon(new ImageIcon(getClass().getResource("/ImagenBloqueo/icono_buscar.png"))); // NOI18N
         btnSearch.setText("BUSCAR ARTICULO");
         btnSearch.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -153,7 +150,7 @@ public class ventana1 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(btnNewRecord, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnOpenRecors)
                         .addGap(18, 18, 18)
                         .addComponent(btnPrintRecords))
@@ -178,7 +175,7 @@ public class ventana1 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                        .addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 260, Short.MAX_VALUE)
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(106, 106, 106)
@@ -319,15 +316,16 @@ public class ventana1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventana1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new ventana1().setVisible(true);
+            new MenuUsuario().setVisible(true);
         });
     }
 

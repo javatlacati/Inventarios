@@ -36,7 +36,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="btnNewRecord" min="-2" pref="207" max="-2" attributes="0"/>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnOpenRecors" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="btnPrintRecords" min="-2" max="-2" attributes="0"/>
@@ -106,12 +106,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnNewRecord">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/incon/ingresar.gif"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="NUEVO REGISTRO"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor de Mano"/>
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
       <Events>
@@ -120,12 +117,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnOpenRecors">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/incon/files_folder_256.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="VER TODOS LO REGISTROS"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor de Mano"/>
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
       <Events>
@@ -134,12 +128,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPrintRecords">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/incon/CARSON DELLOSA-9.jpg"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="IMPRIMIR TODOS LOS REGISTROS"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor de Mano"/>
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
       <Events>
@@ -149,18 +140,15 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/incon/sistemas de inventario.jpg"/>
+          <Image iconType="3" name="/ImgFondos/isc.png"/>
         </Property>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor de Mano"/>
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnDelete">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/incon/eliminar.gif"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="ELIMINAR ARTICULO"/>
       </Properties>
       <Events>
@@ -169,9 +157,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSearch">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ImagenBloqueo/icono_buscar.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="BUSCAR ARTICULO"/>
       </Properties>
       <Events>
