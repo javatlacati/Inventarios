@@ -9,7 +9,7 @@
     "mavenbuild": "cd node_modules/@angular/cli/bin && ng build --prod",
     "testnormal": "ng test",
     "maventest:nix": "cd node/node_modules/@angular/cli/bin && ng.cmd test",
-    "maventest": "cd lib/node_modules/@angular/cli/bin && ng.cmd test",
+    "maventest": "cd node_modules/@angular/cli/bin && ng.cmd test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
