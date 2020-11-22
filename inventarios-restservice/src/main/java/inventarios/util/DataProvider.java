@@ -23,6 +23,7 @@ import inventarios.repository.ProductDetailsRepository;
 import inventarios.repository.ProductRepository;
 import inventarios.repository.ProviderRepository;
 import inventarios.repository.PurchaseRepository;
+import inventarios.repository.StorageCostRepository;
 import inventarios.repository.StorageRepository;
 import inventarios.repository.authorization.PermissionRepository;
 import inventarios.repository.authorization.RoleRepository;
@@ -35,6 +36,7 @@ import inventarios.to.ProductCharacteristic;
 import inventarios.to.Provider;
 import inventarios.to.Purchase;
 import inventarios.to.StorageLocation;
+import inventarios.to.StorageLocationCost;
 import inventarios.to.authorization.LoginUserHasRole;
 import inventarios.to.authorization.Permission;
 import inventarios.to.authorization.UserRole;
@@ -45,7 +47,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -75,6 +76,9 @@ public class DataProvider implements CommandLineRunner {
 
     @Autowired
     private StorageRepository storageRepository;
+    
+    @Autowired
+    private StorageCostRepository storageCostRepository;
 
     @Autowired
     private ProductDetailsRepository productDetailsRepository;
@@ -96,14 +100,18 @@ public class DataProvider implements CommandLineRunner {
     public void run(String... args) {
 
         Permission viewAdminMenu = permissionRepository.save(new Permission(null, "AdminMenu"));
+        Permission addNewSystemUser = permissionRepository.save(new Permission(null, "AddUser"));
+        Permission approveNewSystemUser = permissionRepository.save(new Permission(null, "AproveUserCreation"));
+        Permission receiveMerchandise = permissionRepository.save(new Permission(null, "AcceptMerchandise"));
+        Permission acceptOrder = permissionRepository.save(new Permission(null, "ApproveRequisition"));
 
         UserRole employeeRole = roleRepository.save(new UserRole(null, "Employee", Collections.emptyList(), null));
-        UserRole adminRole = roleRepository.save(new UserRole(null, "Admin", Collections.singletonList(viewAdminMenu), null));
+        UserRole receptorDeMercanciaRole = roleRepository.save(new UserRole(null, "Recepcionista de mercancía", List.of(receiveMerchandise), null));
+        UserRole adminRole = roleRepository.save(new UserRole(null, "Admin", List.of(viewAdminMenu, acceptOrder, addNewSystemUser), null));
 
         LoginUser francisco = usersRepository.save(new LoginUser("francisco", "francisco"));
 
         LoginUserHasRole franciscoEmployee = userHasRoleRepository.save(new LoginUserHasRole(null, francisco, Collections.singletonList(employeeRole)));
-
 
         EmployeeDetail sean = new EmployeeDetail(null, "4165465465", "sean", "herbert", "collins", "some addrees #2324", "manager", "08:45 AM", "5:45 PM");
         employeeRepository.save(sean);
@@ -136,7 +144,9 @@ public class DataProvider implements CommandLineRunner {
         Provider provider1 = new Provider(null, "cervecería", "puebla", "moctezuma", "415646", "246522161", "moctezuma@moctezuma.com", "90153");
         providerRepository.save(provider1);
 
-        StorageLocation warehouse1 = new StorageLocation(null, "my warehouse", "my state", "my city");
+        StorageLocationCost gratis = new StorageLocationCost(null, 0.0);
+        storageCostRepository.save(gratis);
+        StorageLocation warehouse1 = new StorageLocation(null, "my warehouse", "my state", "my city", gratis);
         storageRepository.save(warehouse1);
         ProductCharacteristic tableCharacteristics = new ProductCharacteristic(null, sean, warehouse1, 45.23, "round", "black", "4 people", "good");
         productDetailsRepository.save(tableCharacteristics);
