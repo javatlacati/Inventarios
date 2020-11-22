@@ -17,6 +17,7 @@
 package inventarios.desktop.navigation;
 
 import inventarios.desktop.Menu;
+import inventarios.desktop.MenuUsuario;
 import org.springframework.stereotype.Component;
 
 import javax.swing.JFrame;
@@ -29,9 +30,17 @@ import javax.swing.JFrame;
 public class LoginVisitor extends NavigationHandler {
     @Override
     public void goToMenu(JFrame origin) {
+        MenuUsuario menu = context.getBean(MenuUsuario.class);
+        
+        menu.setVisible(true);
+        //menu.add(origin);
+        origin.setVisible(false);
+    }
+    
+    public void goToAdminMenu(JFrame origin){
         Menu menu = context.getBean(Menu.class);
         menu.setVisible(true);
-        menu.add(origin);
+        menu.addToNavigationHisory(origin);
         origin.setVisible(false);
     }
 

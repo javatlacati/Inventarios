@@ -18,7 +18,6 @@ package inventarios.desktop;
 
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.restclient.AuthorizationService;
-import inventarios.service.restclient.LoginUsersService;
 import inventarios.util.ShutdownManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -67,7 +66,7 @@ public class Menu extends javax.swing.JFrame {
         previouses = new Stack<>();
     }
 
-    public void add(JFrame e) {
+    public void addToNavigationHisory(JFrame e) {
         previouses.push(e);
     }
 

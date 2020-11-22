@@ -32,7 +32,7 @@ public class ShoppingVisitor extends NavigationHandler{
     @Override
     public void goToMenu(JFrame origin) {
         Menu menu = context.getBean(Menu.class);
-        menu.add(origin);
+        menu.addToNavigationHisory(origin);
         menu.setVisible(true);
         origin.dispose();
     }

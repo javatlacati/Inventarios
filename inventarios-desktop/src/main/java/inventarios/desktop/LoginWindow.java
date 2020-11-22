@@ -16,7 +16,9 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.navigation.LoginVisitor;
 import inventarios.desktop.navigation.NavigationHandler;
+import inventarios.service.restclient.AuthorizationService;
 import inventarios.service.restclient.LoginUsersService;
 import inventarios.to.LoginUser;
 import inventarios.util.FontFactory;
@@ -60,18 +62,20 @@ public class LoginWindow extends JFrame {
     // End of variables declaration//GEN-END:variables
 
     private LoginUsersService usersService;
+    private AuthorizationService authorizationService;
     private FontFactory fontFactory;
-    private NavigationHandler navigationHandler;
+    private LoginVisitor navigationHandler;
     private ShutdownManager shutdownManager;
-    
+
     private static final String USER_PLACEHOLDER = "Ingresa tu usuario";
 
     @Autowired
     public LoginWindow(
-            @Qualifier("loginVisitor") NavigationHandler navigationHandler,
-            LoginUsersService usersService, FontFactory fontFactory,
+            @Qualifier("loginVisitor") LoginVisitor navigationHandler,
+            LoginUsersService usersService, AuthorizationService authorizationService, FontFactory fontFactory,
             ShutdownManager shutdownManager) {
         this.usersService = usersService;
+        this.authorizationService = authorizationService;
         this.navigationHandler = navigationHandler;
         this.fontFactory = fontFactory;
         this.shutdownManager = shutdownManager;
@@ -282,15 +286,19 @@ public class LoginWindow extends JFrame {
 
             LoginUser loginUser = new LoginUser(user, password);
 
-            try{
+            try {
                 if (usersService.authenticate(loginUser)) {
-                    navigationHandler.goToMenu(this);
+                    if (authorizationService.userHasPermission("AdminMenu")) {
+                        navigationHandler.goToAdminMenu(this);
+                    } else {
+                        navigationHandler.goToMenu(this);
+                    }
                     clearFields();
                     return;
                 }
 
                 JOptionPane.showMessageDialog(null, "Usuario " + user + " no encontrado", "Credenciales incorrectas", JOptionPane.WARNING_MESSAGE);
-            } catch(HttpServerErrorException hsee){
+            } catch (HttpServerErrorException hsee) {
                 log.log(Level.SEVERE, "El servicio está experimentando problemas.", hsee);
                 JOptionPane.showMessageDialog(this, "El servicio está experimentando problemas, favor de reportar con la hora exacta", "Problema del servidor", JOptionPane.ERROR_MESSAGE);
             } catch (ResourceAccessException ex) {

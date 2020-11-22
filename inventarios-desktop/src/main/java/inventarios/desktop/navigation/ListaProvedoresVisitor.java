@@ -33,7 +33,7 @@ public class ListaProvedoresVisitor extends NavigationHandler{
     public void goToMenu(JFrame origin) {
         Menu menu = context.getBean(Menu.class);
         menu.setVisible(true);
-        menu.add(origin);
+        menu.addToNavigationHisory(origin);
         origin.setVisible(false);
     }
     

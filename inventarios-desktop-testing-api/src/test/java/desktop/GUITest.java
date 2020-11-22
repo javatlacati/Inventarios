@@ -27,6 +27,7 @@ import inventarios.desktop.Menu;
 import inventarios.desktop.OrderManagement;
 import inventarios.desktop.ProviderManagement;
 import inventarios.desktop.ShoppingWindow;
+import inventarios.desktop.navigation.LoginVisitor;
 import inventarios.desktop.pageobjects.InventoryManagementPageObject;
 import inventarios.desktop.pageobjects.LoginWindowPageObject;
 import inventarios.desktop.pageobjects.MainMenuPageObject;
@@ -94,7 +95,7 @@ public class GUITest {
 
     @Mock
     private LoginUsersService usersService;
-    
+
     @Mock
     private OrderService orderService;
 
@@ -111,7 +112,7 @@ public class GUITest {
     private FontFactory fontFactory;
 
     @Mock
-    private NavigationHandler navigationHandler;
+    private LoginVisitor navigationHandler;
 
     @Mock
     private ShutdownManager shutdownManager;
@@ -125,7 +126,7 @@ public class GUITest {
         ).thenReturn(
                 new Font("serif", Font.PLAIN, 24)
         );
-        loginWindow = new LoginWindow(navigationHandler, usersService, fontFactory, shutdownManager);
+        loginWindow = new LoginWindow(navigationHandler, usersService, authorizationService, fontFactory, shutdownManager);
         loginWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         loginWindow.setVisible(true);
         inventoryManagement = new InventoryManagement(navigationHandler, productService, validatorFactory, shutdownManager);

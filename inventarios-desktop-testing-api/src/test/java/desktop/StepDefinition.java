@@ -27,6 +27,7 @@ import inventarios.desktop.Menu;
 import inventarios.desktop.OrderManagement;
 import inventarios.desktop.ProviderManagement;
 import inventarios.desktop.ShoppingWindow;
+import inventarios.desktop.navigation.LoginVisitor;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.desktop.pageobjects.BillingManagementPageObject;
 import inventarios.desktop.pageobjects.InventoryManagementPageObject;
@@ -105,7 +106,7 @@ public class StepDefinition {
 
     private FontFactory fontFactory;
 
-    private NavigationHandler navigationHandler;
+    private LoginVisitor navigationHandler;
 
     private LoginWindow loginWindow;
 
@@ -126,7 +127,7 @@ public class StepDefinition {
     public void beforeScenario() {
         usersService = mock(LoginUsersService.class);
         authorizationService = mock(AuthorizationService.class);
-        navigationHandler = mock(NavigationHandler.class);
+        navigationHandler = mock(LoginVisitor.class);
         shutdownManager = mock(ShutdownManager.class);
         fontFactory = mock(FontFactory.class);
         when(
@@ -137,7 +138,7 @@ public class StepDefinition {
         ).thenReturn(
                 new Font("serif", Font.PLAIN, 24)
         );
-        loginWindow = new LoginWindow(navigationHandler, usersService, fontFactory, shutdownManager);
+        loginWindow = new LoginWindow(navigationHandler, usersService, authorizationService,fontFactory, shutdownManager);
         menu = new Menu(navigationHandler, authorizationService, shutdownManager);
         inventoryManagement = new InventoryManagement(navigationHandler, productService, validatorFactory, shutdownManager);
         billingManagement = new BillingManagement(navigationHandler, shutdownManager);
