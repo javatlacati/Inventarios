@@ -16,19 +16,21 @@
  */
 package inventarios.to;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import lombok.EqualsAndHashCode;
-
+/**
+ *
+ * @author RuslanLopez
+ */
 @AllArgsConstructor
 @Setter
 @Getter
@@ -36,15 +38,9 @@ import lombok.EqualsAndHashCode;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class StorageLocation {
+public class StorageLocationCost {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String locationName;
-    private String state;
-    private String city;
-//    String Municipio;
-//    String Pueblo;
-    @OneToOne
-    StorageLocationCost cost;
+    double montlyCost;
 }
