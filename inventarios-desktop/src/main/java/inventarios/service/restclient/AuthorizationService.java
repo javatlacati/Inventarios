@@ -41,12 +41,12 @@ public class AuthorizationService {
         this.restTemplate = restTemplate;
     }
 
-    public boolean userHasPermission(String PermissionName) {
-        log.log(Level.FINE, "Checking for permission: {0}", PermissionName);
+    public boolean userHasPermission(String permissionName) {
+        log.log(Level.FINE, "Checking for permission: {0}", permissionName);
         LoginUser currentUser = loginUsersService.getCurrentUser();
         log.log(Level.FINE, "Usuario: {0}", currentUser);
         try {
-            Boolean hasPermission = restTemplate.postForObject("http://localhost:8080/authorize", new String[]{currentUser.getUserName(), PermissionName}, Boolean.class);
+            Boolean hasPermission = restTemplate.postForObject("http://localhost:8080/authorize", new String[]{currentUser.getUserName(), permissionName}, Boolean.class);
             log.log(Level.INFO, "Has :{0}", hasPermission);
             return hasPermission;
         } catch (NullPointerException e) {

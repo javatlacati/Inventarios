@@ -76,7 +76,7 @@ public class DataProvider implements CommandLineRunner {
 
     @Autowired
     private StorageRepository storageRepository;
-    
+
     @Autowired
     private StorageCostRepository storageCostRepository;
 
@@ -106,8 +106,8 @@ public class DataProvider implements CommandLineRunner {
         Permission acceptOrder = permissionRepository.save(new Permission(null, "ApproveRequisition"));
 
         UserRole employeeRole = roleRepository.save(new UserRole(null, "Employee", Collections.emptyList(), null));
-        UserRole receptorDeMercanciaRole = roleRepository.save(new UserRole(null, "Recepcionista de mercancía", List.of(receiveMerchandise), null));
-        UserRole adminRole = roleRepository.save(new UserRole(null, "Admin", List.of(viewAdminMenu, acceptOrder, addNewSystemUser), null));
+        UserRole receptorDeMercanciaRole = roleRepository.save(new UserRole(null, "Recepcionista de mercancía", Arrays.asList(receiveMerchandise), null));
+        UserRole adminRole = roleRepository.save(new UserRole(null, "Admin", Arrays.asList(viewAdminMenu, acceptOrder, addNewSystemUser), null));
 
         LoginUser francisco = usersRepository.save(new LoginUser("francisco", "francisco"));
 

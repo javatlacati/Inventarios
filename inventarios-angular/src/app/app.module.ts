@@ -13,13 +13,16 @@ import {CreditsComponent} from './components/credits/credits.component';
 import {BillingManagementComponent} from './components/billing-management/billing-management.component';
 import {EmployeeRegistrationComponent} from './components/employee-registration/employee-registration.component';
 import {PrivatePageGuard} from "./private-page.guard";
-import {LoginUsersService} from "./services/LoginUsersService";
+import {LoginUsersService} from "./services/login-users.service";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialmodModule} from "./shared/materialmod.module";
 import {HttpClientModule} from "@angular/common/http";
-import { InventoryComponent } from './components/inventory/inventory.component';
-import { ShoppingComponent } from './components/shopping/shopping.component';
-import { ProviderManagementComponent } from './components/provider-management/provider-management.component';
+import {InventoryComponent} from './components/inventory/inventory.component';
+import {ShoppingComponent} from './components/shopping/shopping.component';
+import {ProviderManagementComponent} from './components/provider-management/provider-management.component';
+import {AdminMenuComponent} from './components/admin-menu/admin-menu.component';
+import {AdminPageGuard} from "./admin-page.guard";
+import {AuthorizationService} from "./services/authorization.service";
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { ProviderManagementComponent } from './components/provider-management/pr
     EmployeeRegistrationComponent,
     InventoryComponent,
     ShoppingComponent,
-    ProviderManagementComponent
+    ProviderManagementComponent,
+    AdminMenuComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +50,9 @@ import { ProviderManagementComponent } from './components/provider-management/pr
   ],
   providers: [
     PrivatePageGuard,
-    LoginUsersService
+    AdminPageGuard,
+    LoginUsersService,
+    AuthorizationService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {LoginUser} from "../entities/LoginUser";
 import {Observable} from "rxjs";
 
@@ -28,6 +28,10 @@ export class LoginUsersService {
 
   isLogged() {
     return localStorage.getItem(USER_KEY) !== null;
+  }
+
+  getCurrentUser() {
+    return localStorage.getItem(USER_KEY);
   }
 
   logout() {

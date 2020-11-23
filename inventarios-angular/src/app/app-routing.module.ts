@@ -6,10 +6,12 @@ import {NotFoundComponent} from "./components/notfound/not-found.component";
 import {EmployeeRegistrationComponent} from "./components/employee-registration/employee-registration.component";
 import {PrivatePageGuard} from "./private-page.guard";
 import {OrderManagementComponent} from "./components/order-management/order-management.component";
-import { InventoryComponent } from './components/inventory/inventory.component';
-import { BillingManagementComponent } from './components/billing-management/billing-management.component';
-import { ShoppingComponent } from './components/shopping/shopping.component';
-import { ProviderManagementComponent } from './components/provider-management/provider-management.component';
+import {InventoryComponent} from './components/inventory/inventory.component';
+import {BillingManagementComponent} from './components/billing-management/billing-management.component';
+import {ShoppingComponent} from './components/shopping/shopping.component';
+import {ProviderManagementComponent} from './components/provider-management/provider-management.component';
+import {AdminMenuComponent} from "./components/admin-menu/admin-menu.component";
+import {AdminPageGuard} from "./admin-page.guard";
 
 const routes: Routes = [
   {
@@ -25,6 +27,11 @@ const routes: Routes = [
     path: 'menu',
     component: MenuComponent,
     canActivate: [PrivatePageGuard],
+  },
+  {
+    path: 'admin-menu',
+    component: AdminMenuComponent,
+    canActivate: [AdminPageGuard],
   },
   {
     path: 'employee-registration',

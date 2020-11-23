@@ -1,7 +1,8 @@
 import {Component, Inject} from "@angular/core";
-import {LoginUsersService} from "../../services/LoginUsersService";
+import {LoginUsersService} from "../../services/login-users.service";
 import {Router} from "@angular/router";
 import {LoginUser} from "../../entities/LoginUser";
+import {AuthorizationService} from "../../services/authorization.service";
 
 // @Inject
 @Component({
@@ -14,14 +15,23 @@ export class LoginComponent {
   txtUser: string = "oscar";
   txtPswwd: string = "oscar";
 
-  constructor(private api: LoginUsersService, private router: Router) {
+  constructor(private usersService: LoginUsersService, private authorizationService: AuthorizationService, private router: Router) {
   }
 
   loginAttempt() {
-    this.api.login(new LoginUser(this.txtUser, this.txtPswwd)).subscribe(
+    this.usersService.login(new LoginUser(this.txtUser, this.txtPswwd)).subscribe(
       response => {
         if (response) {
-          this.router.navigateByUrl('/menu');
+          let isAdminObservable = this.authorizationService.userHasPermission('AdminMenu');
+          isAdminObservable.toPromise().then(
+            (isAdmin) => {
+              if (isAdmin) {
+                this.router.navigateByUrl('/admin-menu');
+              } else {
+                this.router.navigateByUrl('/menu');
+              }
+            }
+          );
         }
       }, response => {
         alert(response.error.error);

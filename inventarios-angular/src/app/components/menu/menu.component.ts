@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {LoginUsersService} from "../../services/LoginUsersService";
+import {LoginUsersService} from "../../services/login-users.service";
 import {Router} from "@angular/router";
 
 @Component({
