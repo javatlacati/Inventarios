@@ -32,7 +32,6 @@ import inventarios.desktop.pageobjects.InventoryManagementPageObject;
 import inventarios.desktop.pageobjects.LoginWindowPageObject;
 import inventarios.desktop.pageobjects.MainMenuPageObject;
 import inventarios.desktop.pageobjects.OrderManagementPageObject;
-import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.restclient.AuthorizationService;
 import inventarios.service.restclient.LoginUsersService;
 import inventarios.service.restclient.OrderService;

@@ -8,7 +8,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.5.RELEASE</version>
+        <version>2.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -154,7 +154,11 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <module>inventarios-restservice</module>
         <module>inventarios-desktop</module>
         <module>inventarios-desktop-testing-api</module>
-        <module>inventarios-angular</module>
+<!--        if you only know java decoment so maven can do most of the things for you-->
+<!--        downloading node and npm included-->
+<!--        <module>inventarios-angular</module>-->
+<!--        WIP-->
+<!--        <module>inventarios-graphqlservice</module>-->
     </modules>
 
 </project>
