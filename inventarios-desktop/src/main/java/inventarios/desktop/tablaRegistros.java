@@ -68,7 +68,7 @@ public class tablaRegistros extends javax.swing.JFrame {
      * @param c
      */
       
-       public void MostrarDatos(RegistroClase c){
+       public void mostrarDatos(RegistroClase c){
         modelo.insertRow(con, new Object[]{});
         
         modelo.setValueAt(c.getNombre(), con, 0);

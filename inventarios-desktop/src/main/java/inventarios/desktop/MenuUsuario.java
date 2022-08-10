@@ -16,8 +16,9 @@
  */
 package inventarios.desktop;
 
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
 
 import static inventarios.desktop.newRegistro.lista;
 import java.awt.Color;
@@ -25,7 +26,6 @@ import java.awt.Cursor;
 
 import java.awt.HeadlessException;
 import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -39,6 +39,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle;
 import javax.swing.WindowConstants;
+
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -207,8 +210,8 @@ public class MenuUsuario extends javax.swing.JFrame {
         RegistroClase c;
 
         for (int i = 0; i < lista.size(); i++) {
-            c = (RegistroClase) lista.get(i);
-            x.MostrarDatos(c);
+            c = lista.get(i);
+            x.mostrarDatos(c);
         }
 
 
