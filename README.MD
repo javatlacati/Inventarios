@@ -7,7 +7,7 @@
  [![Known Vulnerabilities](https://snyk.io/test/github/javatlacati/Inventarios/badge.svg)](https://snyk.io/test/github/javatlacati/Inventarios)
  [![DepShield Badge](https://depshield.sonatype.org/badges/javatlacati/Inventarios/depshield.svg)](https://depshield.github.io)
  
-  Linux Build [![Linux Build Status](https://travis-ci.org/javatlacati/Inventarios.svg?branch=master)](https://travis-ci.org/javatlacati/Inventarios)
+  Linux Build [![Linux Build Status](https://app.travis-ci.com/javatlacati/Inventarios.svg?branch=master)](https://app.travis-ci.com/javatlacati/Inventarios)
   
   Windows Build [![Windows Build status](https://ci.appveyor.com/api/projects/status/m8wf4stxoxl5k4nl?svg=true)](https://ci.appveyor.com/project/javatlacati/inventarios)
   

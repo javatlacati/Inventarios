@@ -148,6 +148,7 @@ public class DataProvider implements CommandLineRunner {
         storageCostRepository.save(gratis);
         StorageLocation warehouse1 = new StorageLocation(null, "my warehouse", "my state", "my city", gratis);
         storageRepository.save(warehouse1);
+
         ProductCharacteristic tableCharacteristics = new ProductCharacteristic(null, sean, warehouse1, 45.23, "round", "black", "4 people", "good");
         productDetailsRepository.save(tableCharacteristics);
         Product table = new Product("mesa", 2, "1242552", Date.from(Instant.now()), Date.from(Instant.now().plusMillis(2983)), tableCharacteristics);
@@ -157,69 +158,6 @@ public class DataProvider implements CommandLineRunner {
         OrderDetail requestingOrder = new OrderDetail(null, "0001", productList1, sean, Date.from(Instant.now().minusSeconds(2500)));
         orderRepository.save(requestingOrder);
         purchaseRepository.save(new Purchase(null, Date.from(Instant.now()), provider1, productList1, requestingOrder));
-    }
-
-    private static void fillInUserList(List<LoginUser> userList) {
-
-//        LoginUser fernando = new LoginUser(null, "fernando", "fernando");
-//        userList.add(fernando);
-//
-//        LoginUser jimenez = new LoginUser(null, "jimenez", "jimenez");
-//        userList.add(jimenez);
-//
-//        LoginUser yesica = new LoginUser(null, "yesica", "yesica");
-//        userList.add(yesica);
-//
-//        LoginUser irene = new LoginUser(null, "irene", "irene");
-//        userList.add(irene);
-//
-//        LoginUser guadalupe = new LoginUser(null, "guadalupe", "guadalupe");
-//        userList.add(guadalupe);
-//
-//        LoginUser felix = new LoginUser(null, "felix", "felix");
-//        userList.add(felix);
-//
-//        LoginUser hernandez = new LoginUser(null, "hernandez", "hernandez");
-//        userList.add(hernandez);
-//
-//        LoginUser carlos = new LoginUser("carlos", "carlos");
-//        userList.add(carlos);
-//
-//        LoginUser alberto = new LoginUser("alberto", "alberto");
-//        userList.add(alberto);
-//
-//        LoginUser tiburcio = new LoginUser("tiburcio", "tiburcio");
-//        userList.add(tiburcio);
-//
-//        LoginUser dominga = new LoginUser("dominga", "dominga");
-//        userList.add(dominga);
-//
-//        LoginUser torres = new LoginUser("torres", "torres");
-//        userList.add(torres);
-//
-//        LoginUser moreno = new LoginUser("negro", "blanco");
-//        userList.add(moreno);
-//
-//        LoginUser pedro = new LoginUser("paco", "chato");
-//        userList.add(pedro);
-//
-//        LoginUser sagrario = new LoginUser("sagrario", "sagrario");
-//        userList.add(sagrario);
-//
-//        LoginUser heber = new LoginUser("perry", "rojo");
-//        userList.add(heber);
-//
-//        LoginUser olivera = new LoginUser("phineas", "ferp");
-//        userList.add(olivera);
-//
-//        LoginUser javier = new LoginUser("javi", "javi");
-//        userList.add(javier);
-//
-//        LoginUser josua = new LoginUser("josua", "josua");
-//        userList.add(josua);
-//
-//        LoginUser luis = new LoginUser("luis", "luis");
-//        userList.add(luis);
     }
 
 }
