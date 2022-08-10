@@ -272,7 +272,7 @@
                 <!--</includes>-->
                 <!--</configuration>-->
                 <configuration>
-                    <argLine>${argLine} --illegal-access=permit</argLine>
+<!--                    <argLine>${argLine} &#45;&#45;illegal-access=permit</argLine>-->
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
@@ -283,9 +283,9 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.22.0</version>
                 <configuration>
-                    <argLine>
-                        --illegal-access=permit
-                    </argLine>
+<!--                    <argLine>-->
+<!--                        &#45;&#45;illegal-access=permit-->
+<!--                    </argLine>-->
                 </configuration>
             </plugin>
 
@@ -312,23 +312,16 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>1.18.8</version>
+                            <version>1.18.10</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.1</version>
-                <!--                <reportSets>-->
-                <!--                    <reportSet>-->
-                <!--                        <reports>-->
-                <!--                            <report>analyze-report</report>-->
-                <!--                        </reports>-->
-                <!--                    </reportSet>-->
-                <!--                </reportSets>-->
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-dependency-plugin</artifactId>-->
+<!--                <version>3.1.1</version>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 </project>

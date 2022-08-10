@@ -8,14 +8,13 @@
         <version>1.0</version>
     </parent>
 
-    <groupId>com.github.javatlacati</groupId>
     <artifactId>inventarios-desktop-testing-api</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>inventarios-desktop-testing-api</name>
     <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+<!--    <url>http://www.example.com</url>-->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -132,7 +131,7 @@
                 <!--</includes>-->
                 <!--</configuration>-->
                 <configuration>
-                    <argLine>${argLine} --illegal-access=permit</argLine>
+<!--                    <argLine>${argLine} &#45;&#45;illegal-access=permit</argLine>-->
                     <includes>
                         <include>**/*Test.java</include>
                         <include>**/Runner.java</include>

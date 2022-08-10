@@ -14,10 +14,11 @@
 
     <name>inventarios-entities</name>
     <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+<!--    <url>http://www.example.com</url>-->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lombokSource>${project.basedir}/src/main/java/inventarios/to</lombokSource>
     </properties>
 
     <dependencies>
@@ -41,20 +42,73 @@
 
     <build>
         <plugins>
+            <!-- compilation config-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-<!--                    <release>12</release>-->
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>1.18.10</version>
-                        </path>                         
-                    </annotationProcessorPaths>
+                    <source>1.8</source>
+                    <target>1.8</target>
+<!--                    <showWarnings>true</showWarnings>-->
+<!--                    <showDeprecation>true</showDeprecation>-->
+<!--                    <encoding>UTF-8</encoding>-->
+<!--                    <fork>true</fork>-->
+<!--                    <release>17</release>-->
+<!--                    <compilerArgs>-->
+<!--                                                <arg>&#45;&#45;enable-preview</arg>-->
+<!--                        <arg>-Xlint:all</arg>-->
+<!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>-->
+<!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>-->
+<!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>-->
+<!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>-->
+<!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>-->
+<!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>-->
+<!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>-->
+<!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>-->
+<!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>-->
+<!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED</arg>-->
+<!--                    </compilerArgs>-->
+                    <!--                    <release>12</release>-->
+<!--                    <annotationProcessorPaths>-->
+<!--                        <path>-->
+<!--                            <groupId>org.projectlombok</groupId>-->
+<!--                            <artifactId>lombok</artifactId>-->
+<!--                            <version>1.18.10</version>-->
+<!--                        </path>-->
+<!--                    </annotationProcessorPaths>-->
+                    <generatedSourcesDirectory>${project.build.directory}/generated-sources/delombok/</generatedSourcesDirectory>
+<!--                    <includes>-->
+<!--                        <include>${project.build.directory}/generated-sources/delombok/*.java</include>-->
+<!--                        <include>${project.build.directory}/generated-sources/delombok/authorization/*.java</include>-->
+<!--                    </includes>-->
+                    <excludes>
+                        <exclude>src/main/java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
+                <plugin>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok-maven-plugin</artifactId>
+                    <version>1.18.12.0</version>
+                    <executions>
+                        <execution>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>delombok</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <sourceDirectory>${lombokSource}</sourceDirectory>
+<!--                        <outputDirectory>${project.build.directory}/generated-sources/delombok/inventarios/to</outputDirectory>-->
+                        <verbose>true</verbose>
+                        <formatPreferences>
+                            <generateDelombokComment>skip</generateDelombokComment>
+                            <javaLangAsFQN>skip</javaLangAsFQN>
+                            <suppressWarnings>skip</suppressWarnings>
+                        </formatPreferences>
+                    </configuration>
+                </plugin>
         </plugins>
     </build>
 </project>

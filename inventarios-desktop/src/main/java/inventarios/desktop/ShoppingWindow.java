@@ -95,7 +95,7 @@ public class ShoppingWindow extends javax.swing.JFrame {
      */
     DefaultTableModel model = new DefaultTableModel();
 
-    TableRowSorter busqueda = new TableRowSorter(model);
+    TableRowSorter<DefaultTableModel> busqueda = new TableRowSorter<>(model);
 
     @Autowired
     public ShoppingWindow(

@@ -78,7 +78,7 @@ public class AuthorizationService {
                 );
 
 
-        return Optional.ofNullable(Stream.concat(userRoleStream.orElse(Stream.empty()), userSubRoles1stLevel.orElse(Stream.empty())))
+        return Optional.of(Stream.concat(userRoleStream.orElse(Stream.empty()), userSubRoles1stLevel.orElse(Stream.empty())))
                 .map(roleStream -> roleStream.flatMap(userRole -> userRole.getPermissions().stream()))
                 .map(permissionsStream -> permissionsStream.map(Permission::getName))
                 .map(permissionNameStream -> permissionNameStream

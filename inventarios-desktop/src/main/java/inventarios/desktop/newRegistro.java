@@ -23,6 +23,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
+import java.util.List;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -55,7 +56,7 @@ public class newRegistro extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 //declaro un lista dinamica para guardar los datos
 
-    public static LinkedList lista = new LinkedList();
+    public static List<RegistroClase> lista = new LinkedList<>();
 
     /**
      * Creates new form newRegistro
