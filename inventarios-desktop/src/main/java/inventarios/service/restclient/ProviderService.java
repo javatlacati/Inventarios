@@ -39,8 +39,7 @@ public class ProviderService {
                 null,
                 new ParameterizedTypeReference<List<Provider>>() {
                 });
-        List<Provider> employees = response.getBody();
-        return employees;
+        return response.getBody();
     }
 
     public void save(Provider provider) {

@@ -46,7 +46,6 @@ public class PurchaseService {
                 null,
                 new ParameterizedTypeReference<List<Purchase>>() {
                 });
-        List<Purchase> employees = response.getBody();
-        return employees;
+        return response.getBody();
     }
 }

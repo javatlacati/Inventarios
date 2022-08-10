@@ -51,8 +51,7 @@ public class ProductService {
                 null,
                 new ParameterizedTypeReference<List<Product>>() {
         });
-        List<Product> products = response.getBody();
-        return products;
+        return response.getBody();
     }
 
     public void delete(Product product) {

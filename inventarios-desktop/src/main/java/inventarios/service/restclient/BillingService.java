@@ -24,7 +24,6 @@ public class BillingService {
                 null,
                 new ParameterizedTypeReference<List<BillingDetails>>() {
         });
-        List<BillingDetails> employees = response.getBody();
-        return employees;
+        return response.getBody();
     }
 }

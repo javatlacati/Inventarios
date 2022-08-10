@@ -42,8 +42,7 @@ public class OrderService {
                 null,
                 new ParameterizedTypeReference<List<OrderDetail>>() {
         });
-        List<OrderDetail> employees = response.getBody();
-        return employees;
+        return response.getBody();
     }
     
     public void save(OrderDetail orderDetail) {

@@ -51,7 +51,6 @@ public class EmployeeService {
                 null,
                 new ParameterizedTypeReference<List<EmployeeDetail>>() {
         });
-        List<EmployeeDetail> employees = response.getBody();
-        return employees;
+        return response.getBody();
     }
 }
