@@ -16,6 +16,7 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.customcomponents.GradientButton;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.restclient.BillingService;
 import inventarios.to.BillingDetails;
@@ -36,6 +37,7 @@ import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -43,6 +45,8 @@ import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
 import lombok.extern.java.Log;
 import org.springframework.web.client.HttpServerErrorException;
 
@@ -55,10 +59,11 @@ import org.springframework.web.client.HttpServerErrorException;
 public class BillingList extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JButton btnDeleteAll;
-    private JButton btnDeleteRow;
-    private JButton btnGetBack;
-    private JButton btnMenu;
+    private GradientButton btnDeleteAll;
+    private GradientButton btnDeleteRow;
+    private GradientButton btnGetBack;
+    private GradientButton btnMenu;
+    private JPanel jPanel1;
     private JScrollPane jScrollPane1;
     private JTable jTable1;
     // End of variables declaration//GEN-END:variables
@@ -151,10 +156,11 @@ public class BillingList extends JFrame {
 
         jScrollPane1 = new JScrollPane();
         jTable1 = new JTable();
-        btnDeleteRow = new JButton();
-        btnDeleteAll = new JButton();
-        btnMenu = new JButton();
-        btnGetBack = new JButton();
+        jPanel1 = new JPanel();
+        btnDeleteRow = new GradientButton();
+        btnGetBack = new GradientButton();
+        btnMenu = new GradientButton();
+        btnDeleteAll = new GradientButton();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
@@ -164,76 +170,78 @@ public class BillingList extends JFrame {
 
         jScrollPane1.setViewportView(jTable1);
 
-        btnDeleteRow.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
-        btnDeleteRow.setBorder(null);
-        btnDeleteRow.setContentAreaFilled(false);
+        jPanel1.setLayout(new GridLayout(1, 0, 2, 0));
+
+        btnDeleteRow.setBackground(new Color(204, 72, 72));
+        btnDeleteRow.setText(bundle.getString("BillingList.btnDeleteRow.text")); // NOI18N
+        btnDeleteRow.setFont(new Font("Tahoma", 1, 18)); // NOI18N
         btnDeleteRow.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnDeleteRowActionPerformed(evt);
             }
         });
+        jPanel1.add(btnDeleteRow);
 
-        btnDeleteAll.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
-        btnDeleteAll.setBorder(null);
-        btnDeleteAll.setContentAreaFilled(false);
-        btnDeleteAll.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                btnDeleteAllActionPerformed(evt);
-            }
-        });
-
-        btnMenu.setBackground(new Color(255, 0, 51));
-        btnMenu.setFont(new Font("Tahoma", 1, 18)); // NOI18N
-        btnMenu.setText(bundle.getString("BillingList.btnMenu.text")); // NOI18N
-        btnMenu.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                btnMenuActionPerformed(evt);
-            }
-        });
-
+        btnGetBack.setBackground(new Color(204, 72, 72));
         btnGetBack.setText(bundle.getString("BillingList.btnGetBack.text")); // NOI18N
+        btnGetBack.setFont(new Font("Tahoma", 1, 18)); // NOI18N
         btnGetBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnGetBackActionPerformed(evt);
             }
         });
+        jPanel1.add(btnGetBack);
+
+        btnMenu.setBackground(new Color(204, 72, 72));
+        btnMenu.setText(bundle.getString("BillingList.btnMenu.text")); // NOI18N
+        btnMenu.setFont(new Font("Tahoma", 1, 18)); // NOI18N
+        btnMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMenu);
+
+        btnDeleteAll.setBackground(new Color(204, 72, 72));
+        btnDeleteAll.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        btnDeleteAll.setText(bundle.getString("BillingList.btnDeleteAll.text")); // NOI18N
+        btnDeleteAll.setBorderPainted(false);
+        btnDeleteAll.setFont(new Font("Tahoma", 1, 18)); // NOI18N
+        btnDeleteAll.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnDeleteAllActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDeleteAll);
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 785, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(btnDeleteRow)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGetBack)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126)
-                .addComponent(btnDeleteAll)
-                .addGap(53, 53, 53))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 785, GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 203, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnMenu, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnGetBack))
-                        .addComponent(btnDeleteRow, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnDeleteAll))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
+        navigationHandler.goToBillingManagement(this);
+    }//GEN-LAST:event_btnGetBackActionPerformed
 
     private void btnDeleteRowActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowActionPerformed
         try {
@@ -263,9 +271,5 @@ public class BillingList extends JFrame {
     private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
-
-    private void btnGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
-        navigationHandler.goToBillingManagement(this);
-    }//GEN-LAST:event_btnGetBackActionPerformed
 
 }
