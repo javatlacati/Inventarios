@@ -36,9 +36,14 @@ import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ResourceBundle;
+import javax.swing.JCheckBox;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -113,8 +118,10 @@ public class BillingManagement extends JFrame {
         txtCountry = new JTextField();
         JLabel lblEMail = new JLabel();
         txtEmail = new JTextField();
+        JCheckBox chkGral = new JCheckBox();
         JPanel pnlOptions = new JPanel();
         JButton btnMenu = new JButton();
+        JButton btnSell = new JButton();
         JButton btnClean = new JButton();
         JButton btnView = new JButton();
         JButton btnClose = new JButton();
@@ -128,7 +135,7 @@ public class BillingManagement extends JFrame {
         applicationContent.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         applicationContent.setLayout(new GridLayout(1, 0, 35, 0));
 
-        pnlFields.setLayout(new GridLayout(12, 2, 10, 15));
+        pnlFields.setLayout(new GridLayout(13, 2, 10, 15));
 
         lblRfc.setText(bundle.getString("BillingManagement.lblRfc.text")); // NOI18N
         pnlFields.add(lblRfc);
@@ -178,9 +185,17 @@ public class BillingManagement extends JFrame {
         pnlFields.add(lblEMail);
         pnlFields.add(txtEmail);
 
+        chkGral.setText(bundle.getString("BillingManagement.chkGral.text")); // NOI18N
+        chkGral.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent evt) {
+                chkGralItemStateChanged(evt);
+            }
+        });
+        pnlFields.add(chkGral);
+
         applicationContent.add(pnlFields);
 
-        pnlOptions.setLayout(new GridLayout(4, 1));
+        pnlOptions.setLayout(new GridLayout(5, 1));
 
         btnMenu.setBackground(new Color(255, 0, 255));
         btnMenu.setFont(new Font("Tahoma", 1, 14)); // NOI18N
@@ -192,6 +207,14 @@ public class BillingManagement extends JFrame {
             }
         });
         pnlOptions.add(btnMenu);
+
+        btnSell.setText(bundle.getString("BillingManagement.btnSell.text")); // NOI18N
+        btnSell.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnSellActionPerformed(evt);
+            }
+        });
+        pnlOptions.add(btnSell);
 
         btnClean.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/Limpiar_1.png"))); // NOI18N
         btnClean.setBorder(null);
@@ -264,10 +287,24 @@ public class BillingManagement extends JFrame {
     private void btnMenuActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         navigationHandler.goToMenu(this);
     }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void btnSellActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnSellActionPerformed
+        navigationHandler.goToSale(this);
+    }//GEN-LAST:event_btnSellActionPerformed
+
+    private void chkGralItemStateChanged(ItemEvent evt) {//GEN-FIRST:event_chkGralItemStateChanged
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            disableFields();
+        }else
+        {
+            enableFields();
+        }
+    }//GEN-LAST:event_chkGralItemStateChanged
     public void cerrar() {
         try {
             this.setDefaultCloseOperation(BillingManagement.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
+                @Override
                 public void windowClosing(WindowEvent e) {
                     shutdownManager.confirmExit();
                 }
@@ -275,5 +312,13 @@ public class BillingManagement extends JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void enableFields() {
+        txtRfc.setEnabled(true);
+    }
+
+    private void disableFields() {
+        txtRfc.setEnabled(false);
     }
 }

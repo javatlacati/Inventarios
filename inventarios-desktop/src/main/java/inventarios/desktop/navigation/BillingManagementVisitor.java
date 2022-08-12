@@ -17,6 +17,8 @@
 package inventarios.desktop.navigation;
 
 import inventarios.desktop.Menu;
+import inventarios.desktop.SalePoint;
+import inventarios.to.Sale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -36,6 +38,13 @@ public class BillingManagementVisitor extends NavigationHandler{
     public void goToMenu(JFrame origin) {
         Menu menu = context.getBean(Menu.class);
         menu.setVisible(true);
+        origin.dispose();
+    }
+
+    @Override
+    public void goToSale(JFrame origin) {
+        SalePoint sale = context.getBean(SalePoint.class);
+        sale.setVisible(true);
         origin.dispose();
     }
 }

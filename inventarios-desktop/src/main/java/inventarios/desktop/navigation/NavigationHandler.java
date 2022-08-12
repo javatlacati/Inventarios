@@ -87,4 +87,8 @@ public class NavigationHandler {
     public void goToShoppingList(JFrame origin) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    public void goToSale(JFrame origin) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
