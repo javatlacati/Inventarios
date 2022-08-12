@@ -71,7 +71,9 @@ public class Menu extends javax.swing.JFrame {
     }
 
     public void removeLast() {
-        previouses.pop();
+        if(!previouses.empty()) {
+            previouses.pop();
+        }
     }
 
     //Método para confirmar el cierre deJFrame//
@@ -353,8 +355,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProviderActionPerformed
 
     private void btnGetBackActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnGetBackActionPerformed
-        dispose();
-        previouses.pop().setVisible(true);
+        if(!previouses.empty()){
+            dispose();
+            previouses.pop().setVisible(true);
+        }
     }//GEN-LAST:event_btnGetBackActionPerformed
 
     private void btnBillingActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnBillingActionPerformed
