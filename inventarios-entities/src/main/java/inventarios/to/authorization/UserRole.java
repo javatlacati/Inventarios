@@ -18,6 +18,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -36,7 +37,7 @@ public class UserRole {
 //   @GraphQLQuery(name = "id", description = "El identificador de rol")
     private Long id;
     private String name;
-    @OneToMany
+    @ManyToMany
     private List<Permission> permissions;
     
     //recursive definition for hierarchichal quering

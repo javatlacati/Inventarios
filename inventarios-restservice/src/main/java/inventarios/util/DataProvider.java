@@ -20,9 +20,11 @@ import inventarios.repository.EmployeeRepository;
 import inventarios.repository.LoginUsersRepository;
 import inventarios.repository.OrderRepository;
 import inventarios.repository.ProductDetailsRepository;
+import inventarios.repository.ProductPriceRepository;
 import inventarios.repository.ProductRepository;
 import inventarios.repository.ProviderRepository;
 import inventarios.repository.PurchaseRepository;
+import inventarios.repository.SalesRepository;
 import inventarios.repository.StorageCostRepository;
 import inventarios.repository.StorageRepository;
 import inventarios.repository.authorization.PermissionRepository;
@@ -33,8 +35,10 @@ import inventarios.to.LoginUser;
 import inventarios.to.OrderDetail;
 import inventarios.to.Product;
 import inventarios.to.ProductCharacteristic;
+import inventarios.to.ProductPrice;
 import inventarios.to.Provider;
 import inventarios.to.Purchase;
+import inventarios.to.Sale;
 import inventarios.to.StorageLocation;
 import inventarios.to.StorageLocationCost;
 import inventarios.to.authorization.LoginUserHasRole;
@@ -47,6 +51,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -95,29 +100,52 @@ public class DataProvider implements CommandLineRunner {
     @Autowired
     private UserHasRoleRepository userHasRoleRepository;
 
+    @Autowired
+    private SalesRepository salesRepository;
+
+    @Autowired
+    private ProductPriceRepository productPriceRepository;
+    
     @Override
     @Transactional
     public void run(String... args) {
 
         Permission viewAdminMenu = permissionRepository.save(new Permission(null, "AdminMenu"));
+
         Permission addNewSystemUser = permissionRepository.save(new Permission(null, "AddUser"));
         Permission approveNewSystemUser = permissionRepository.save(new Permission(null, "AproveUserCreation"));
-        Permission receiveMerchandise = permissionRepository.save(new Permission(null, "AcceptMerchandise"));
-        Permission acceptOrder = permissionRepository.save(new Permission(null, "ApproveRequisition"));
+        Permission deactivateUser = permissionRepository.save(new Permission(null, "DeactivateUser"));
 
-        UserRole employeeRole = roleRepository.save(new UserRole(null, "Employee", Collections.emptyList(), null));
-        UserRole receptorDeMercanciaRole = roleRepository.save(new UserRole(null, "Recepcionista de mercancía", Arrays.asList(receiveMerchandise), null));
-        UserRole adminRole = roleRepository.save(new UserRole(null, "Admin", Arrays.asList(viewAdminMenu, acceptOrder, addNewSystemUser), null));
+        Permission receiveMerchandise = permissionRepository.save(new Permission(null, "AcceptMerchandise"));
+
+        Permission acceptOrder = permissionRepository.save(new Permission(null, "ApproveRequisition"));
+        Permission viewKietchenInventory = permissionRepository.save(new Permission(null, "ViewKitchenInventory"));
+
+        Permission viewMoney = permissionRepository.save(new Permission(null, "ViewMoney"));
+
+        Permission getStatistics = permissionRepository.save(new Permission(null, "GetStatistics"));
+
+        UserRole waiterRole = roleRepository.save(new UserRole(null, "Waiter", Collections.emptyList(), null));
+        UserRole cookerRole = roleRepository.save(new UserRole(null, "Cooker", Arrays.asList(viewKietchenInventory, receiveMerchandise), null));
+        UserRole accountant = roleRepository.save(new UserRole(null, "Accountant", Arrays.asList(viewMoney, viewKietchenInventory), null));
+        UserRole manager = roleRepository.save(new UserRole(null, "Manager", Arrays.asList(addNewSystemUser, deactivateUser), null));
+        UserRole adminRole = roleRepository.save(new UserRole(null, "Admin", Arrays.asList(viewAdminMenu, acceptOrder, addNewSystemUser, approveNewSystemUser, getStatistics, deactivateUser, receiveMerchandise), null));
 
         LoginUser francisco = usersRepository.save(new LoginUser("francisco", "francisco"));
 
-        LoginUserHasRole franciscoEmployee = userHasRoleRepository.save(new LoginUserHasRole(null, francisco, Collections.singletonList(employeeRole)));
+        userHasRoleRepository.save(new LoginUserHasRole(null, francisco, Collections.singletonList(waiterRole)));
 
-        EmployeeDetail sean = new EmployeeDetail(null, "4165465465", "sean", "herbert", "collins", "some addrees #2324", "manager", "08:45 AM", "5:45 PM");
-        employeeRepository.save(sean);
+        EmployeeDetail seanDetails = new EmployeeDetail(null, "4165465465", "sean", "herbert", "collins", "some addrees #2324", "manager", "08:45 AM", "5:45 PM");
+        employeeRepository.save(seanDetails);
+
+        LoginUser sean = usersRepository.save(new LoginUser(null, "sean", "sean", seanDetails, true));
+        
+        userHasRoleRepository.save(new LoginUserHasRole(null, sean, Collections.singletonList(manager)));
+
         LoginUser oscar = usersRepository.save(new LoginUser("oscar", "oscar"));
 
         userHasRoleRepository.save(new LoginUserHasRole(null, oscar, Collections.singletonList(adminRole)));
+
         usersRepository.save(new LoginUser("ignacio", "ignacio"));
         usersRepository.save(new LoginUser("marroquin", "marroquin"));
         usersRepository.save(new LoginUser("morales", "morales"));
@@ -143,21 +171,41 @@ public class DataProvider implements CommandLineRunner {
 
         Provider provider1 = new Provider(null, "cervecería", "puebla", "moctezuma", "415646", "246522161", "moctezuma@moctezuma.com", "90153");
         providerRepository.save(provider1);
+        Provider provider2 = new Provider(null, "vinos y licores", "tlaxcala ocotlan", "magadan", "124124", "37456", "magadan@magadan.com", "90100");
+        providerRepository.save(provider2);
 
         StorageLocationCost gratis = new StorageLocationCost(null, 0.0);
         storageCostRepository.save(gratis);
-        StorageLocation warehouse1 = new StorageLocation(null, "my warehouse", "my state", "my city", gratis);
+        StorageLocationCost rentAmount2019 = new StorageLocationCost(null, 8000.0); //monthly
+        storageCostRepository.save(rentAmount2019);
+        StorageLocation warehouse1 = new StorageLocation(null, "my warehouse", "my state", "my city", rentAmount2019);
         storageRepository.save(warehouse1);
+        StorageLocation kitchen = new StorageLocation(null, "my kitchen", "my state", "my city", rentAmount2019);
+        storageRepository.save(kitchen);
+        StorageLocation myHouse = new StorageLocation(null, "my kitchen", "my state", "my city", gratis);
+        storageRepository.save(myHouse);
 
-        ProductCharacteristic tableCharacteristics = new ProductCharacteristic(null, sean, warehouse1, 45.23, "round", "black", "4 people", "good");
-        productDetailsRepository.save(tableCharacteristics);
+        ProductCharacteristic tableCharacteristics = productDetailsRepository.save(new ProductCharacteristic(null, seanDetails, warehouse1, 45.23, "round", "black", "4 people", "good"));
         Product table = new Product("mesa", 2, "1242552", Date.from(Instant.now()), Date.from(Instant.now().plusMillis(2983)), tableCharacteristics);
         productRepository.save(table);
 
         List<Product> productList1 = Arrays.asList(table);
-        OrderDetail requestingOrder = new OrderDetail(null, "0001", productList1, sean, Date.from(Instant.now().minusSeconds(2500)));
-        orderRepository.save(requestingOrder);
-        purchaseRepository.save(new Purchase(null, Date.from(Instant.now()), provider1, productList1, requestingOrder));
+        OrderDetail initialStuff = new OrderDetail(null, "0001", productList1, seanDetails, Date.from(Instant.now().minusSeconds(2500)));
+        orderRepository.save(initialStuff);
+        purchaseRepository.save(new Purchase(null, Date.from(Instant.now()), provider1, productList1, initialStuff));
+        
+        ProductCharacteristic cervezaCharacteristics = productDetailsRepository.save(new ProductCharacteristic(null, seanDetails, warehouse1, 2500.5, "cartoon", "brown", "12", "good"));
+        Product cervezaSemana1 = productRepository.save(new Product("cerveza", 25, "1231", new Date(), new Date(), cervezaCharacteristics));
+        List<Product> productList2 = Arrays.asList(cervezaSemana1);
+        OrderDetail week1Beers = new OrderDetail(null, "0002", productList2, seanDetails, Date.from(Instant.now().minusSeconds(2500)));
+        orderRepository.save(week1Beers);
+        purchaseRepository.save(new Purchase(null, Date.from(Instant.now()), provider1, productList2, week1Beers));
+        
+        List<ProductPrice> productPrices = new ArrayList<>();
+        ProductPrice precioVentaCervezaSemana1 = productPriceRepository.save(new ProductPrice(null, cervezaSemana1, 25.2, new Date()));
+        
+        productPrices.add(precioVentaCervezaSemana1);
+        salesRepository.save(new Sale(null, productPrices));
     }
 
 }
