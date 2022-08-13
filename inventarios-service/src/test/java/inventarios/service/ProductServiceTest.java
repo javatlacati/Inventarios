@@ -53,7 +53,7 @@ public class ProductServiceTest {
     @Test
     public void findAll() {
         ProductCharacteristic characteristics = new ProductCharacteristic();
-        Product product = new Product(1L, new Date(),new Date(),"name",5,"serial", characteristics);
+        Product product = new Product(1L, new Date(),new Date(),"name",5, 5,"serial", characteristics);
         when(productRepository.findAll()).thenReturn(Collections.singletonList(product));
         assertEquals(Collections.singletonList(product), productService.findAll());
     }

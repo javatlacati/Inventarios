@@ -173,8 +173,9 @@ public class SalePoint extends javax.swing.JFrame {
                     .stream()
                     .map((row) -> {
                         Vector rowVector = (Vector) row;
-                        Product product = new Product((String) rowVector.get(0), Integer.valueOf((int) rowVector.get(1)), "serial", new Date(), new Date(), new ProductCharacteristic());
-                        return new ProductPrice(null, product, Double.NaN, new Date());
+                        Integer quantity = (int) rowVector.get(1);
+                        Product product = new Product((String) rowVector.get(0), quantity, "serial", new Date(), new Date(), new ProductCharacteristic());
+                        return new ProductPrice(null, product, quantity,Double.NaN, new Date());
                     });
             Sale sale = new Sale(null, productPrices);
             log.info("guardando" + sale);
@@ -191,7 +192,7 @@ public class SalePoint extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
         IntStream.of(table1.getSelectedRows())
                 .map(i -> -i).sorted().map(i -> -i)
-                .forEach(rowIdx -> model.removeRow(rowIdx));
+                .forEach(model::removeRow);
         table1.clearSelection();
     }//GEN-LAST:event_btnRemoveActionPerformed
 

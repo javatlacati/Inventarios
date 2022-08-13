@@ -63,6 +63,8 @@ public class Product implements Serializable {
 
     @NotNull
     private Integer quantity;
+    @NotNull
+    private Integer quantityAvailable;
 
     @NotEmpty(message = "{productserial.notempty}")
     private String serial;
@@ -70,9 +72,11 @@ public class Product implements Serializable {
     @OneToOne
     private ProductCharacteristic characteristics;
 
+    // this is for first time
     public Product(String name, Integer quantity, String serial, Date dateIn, Date dateOut, ProductCharacteristic characteristics) {
         this.name = name;
         this.quantity = quantity;
+        this.quantityAvailable = quantity;
         this.serial = serial;
         this.dateIn = dateIn;
         this.dateOut = dateOut;

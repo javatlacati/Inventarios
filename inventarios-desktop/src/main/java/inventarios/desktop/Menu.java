@@ -94,6 +94,7 @@ public class Menu extends javax.swing.JFrame {
     public void setVisible(boolean visible) {
         if(visible){
             btnAdmin.setVisible(authorizationService.userHasPermission("AdminMenu"));
+            
         }
         super.setVisible(visible);
     }

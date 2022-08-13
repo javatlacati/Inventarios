@@ -16,6 +16,7 @@
  */
 package inventarios.util;
 
+import inventarios.repository.BillingRepository;
 import inventarios.repository.EmployeeRepository;
 import inventarios.repository.LoginUsersRepository;
 import inventarios.repository.OrderRepository;
@@ -30,6 +31,7 @@ import inventarios.repository.StorageRepository;
 import inventarios.repository.authorization.PermissionRepository;
 import inventarios.repository.authorization.RoleRepository;
 import inventarios.repository.authorization.UserHasRoleRepository;
+import inventarios.to.BillingDetails;
 import inventarios.to.EmployeeDetail;
 import inventarios.to.LoginUser;
 import inventarios.to.OrderDetail;
@@ -105,7 +107,10 @@ public class DataProvider implements CommandLineRunner {
 
     @Autowired
     private ProductPriceRepository productPriceRepository;
-    
+
+    @Autowired
+    private BillingRepository billingRepository;
+
     @Override
     @Transactional
     public void run(String... args) {
@@ -139,7 +144,7 @@ public class DataProvider implements CommandLineRunner {
         employeeRepository.save(seanDetails);
 
         LoginUser sean = usersRepository.save(new LoginUser(null, "sean", "sean", seanDetails, true));
-        
+
         userHasRoleRepository.save(new LoginUserHasRole(null, sean, Collections.singletonList(manager)));
 
         LoginUser oscar = usersRepository.save(new LoginUser("oscar", "oscar"));
@@ -169,43 +174,39 @@ public class DataProvider implements CommandLineRunner {
         usersRepository.save(new LoginUser("miguel", "miguel"));
         usersRepository.save(new LoginUser("lupita", "lupita"));
 
-        Provider provider1 = new Provider(null, "cervecería", "puebla", "moctezuma", "415646", "246522161", "moctezuma@moctezuma.com", "90153");
-        providerRepository.save(provider1);
-        Provider provider2 = new Provider(null, "vinos y licores", "tlaxcala ocotlan", "magadan", "124124", "37456", "magadan@magadan.com", "90100");
-        providerRepository.save(provider2);
+        Provider provider1 = providerRepository.save(new Provider(null, "cervecería", "puebla", "moctezuma", "415646", "246522161", "moctezuma@moctezuma.com", "90153"));
+        Provider provider2 = providerRepository.save(new Provider(null, "vinos y licores", "tlaxcala ocotlan", "magadan", "124124", "37456", "magadan@magadan.com", "90100"));
 
-        StorageLocationCost gratis = new StorageLocationCost(null, 0.0);
-        storageCostRepository.save(gratis);
-        StorageLocationCost rentAmount2019 = new StorageLocationCost(null, 8000.0); //monthly
-        storageCostRepository.save(rentAmount2019);
-        StorageLocation warehouse1 = new StorageLocation(null, "my warehouse", "my state", "my city", rentAmount2019);
-        storageRepository.save(warehouse1);
-        StorageLocation kitchen = new StorageLocation(null, "my kitchen", "my state", "my city", rentAmount2019);
-        storageRepository.save(kitchen);
-        StorageLocation myHouse = new StorageLocation(null, "my kitchen", "my state", "my city", gratis);
-        storageRepository.save(myHouse);
+        StorageLocationCost gratis = storageCostRepository.save(new StorageLocationCost(null, 0.0));
+        StorageLocationCost rentAmount2019 = storageCostRepository.save(new StorageLocationCost(null, 8000.0));
+        StorageLocation warehouse1 = storageRepository.save(new StorageLocation(null, "my warehouse", "my state", "my city", rentAmount2019));
+        StorageLocation kitchen = storageRepository.save(new StorageLocation(null, "my kitchen", "my state", "my city", rentAmount2019));
+        StorageLocation myHouse = storageRepository.save(new StorageLocation(null, "my kitchen", "my state", "my city", gratis));
 
         ProductCharacteristic tableCharacteristics = productDetailsRepository.save(new ProductCharacteristic(null, seanDetails, warehouse1, 45.23, "round", "black", "4 people", "good"));
-        Product table = new Product("mesa", 2, "1242552", Date.from(Instant.now()), Date.from(Instant.now().plusMillis(2983)), tableCharacteristics);
-        productRepository.save(table);
+        Product table = productRepository.save(new Product("mesa", 2, "1242552", Date.from(Instant.now()), Date.from(Instant.now().plusMillis(2983)), tableCharacteristics));
 
         List<Product> productList1 = Arrays.asList(table);
         OrderDetail initialStuff = new OrderDetail(null, "0001", productList1, seanDetails, Date.from(Instant.now().minusSeconds(2500)));
         orderRepository.save(initialStuff);
         purchaseRepository.save(new Purchase(null, Date.from(Instant.now()), provider1, productList1, initialStuff));
-        
+
         ProductCharacteristic cervezaCharacteristics = productDetailsRepository.save(new ProductCharacteristic(null, seanDetails, warehouse1, 2500.5, "cartoon", "brown", "12", "good"));
         Product cervezaSemana1 = productRepository.save(new Product("cerveza", 25, "1231", new Date(), new Date(), cervezaCharacteristics));
         List<Product> productList2 = Arrays.asList(cervezaSemana1);
-        OrderDetail week1Beers = new OrderDetail(null, "0002", productList2, seanDetails, Date.from(Instant.now().minusSeconds(2500)));
-        orderRepository.save(week1Beers);
+        OrderDetail week1Beers = orderRepository.save(new OrderDetail(null, "0002", productList2, seanDetails, Date.from(Instant.now().minusSeconds(2500))));
         purchaseRepository.save(new Purchase(null, Date.from(Instant.now()), provider1, productList2, week1Beers));
-        
+
         List<ProductPrice> productPrices = new ArrayList<>();
-        ProductPrice precioVentaCervezaSemana1 = productPriceRepository.save(new ProductPrice(null, cervezaSemana1, 25.2, new Date()));
-        
+        ProductPrice precioVentaCervezaSemana1 = productPriceRepository.save(new ProductPrice(null, cervezaSemana1, 2, 25.2, new Date()));
+
         productPrices.add(precioVentaCervezaSemana1);
         salesRepository.save(new Sale(null, productPrices));
+
+        boolean sold = productRepository.removeNFromInventory(cervezaSemana1.getId(), precioVentaCervezaSemana1.getUnitsSold());
+        System.out.println("sold? " + sold);
+
+        billingRepository.save(new BillingDetails(null, "somerfc", "rs", "ignacio zaragoza", "24A", "int4", "colonia", "local", "dm", "state", "country", "19000", "user@user.com"));
     }
 
 }

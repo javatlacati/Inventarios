@@ -18,6 +18,7 @@ package inventarios.service;
 
 import inventarios.repository.ProviderRepository;
 import inventarios.to.Provider;
+import io.leangen.graphql.annotations.GraphQLQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,7 @@ public class ProviderService {
         this.providerRepository = providerRepository;
     }
 
+    @GraphQLQuery(name = "providers")
     public List<Provider> findAll() {
         return providerRepository.findAll();
     }

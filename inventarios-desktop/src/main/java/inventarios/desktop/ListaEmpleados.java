@@ -105,9 +105,8 @@ public class ListaEmpleados extends JFrame {
         cont = 0;
 
         List<EmployeeDetail> employeeDetails = employeeService.findAll();
-        for (int i = 0; i < employeeDetails.size(); i++) {
-            c = (EmployeeDetail) employeeDetails.get(i);
-            mostrardatos(c);
+        for (EmployeeDetail employeeDetail : employeeDetails) {
+            mostrardatos(employeeDetail);
         }
     }
 

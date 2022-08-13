@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,6 +19,19 @@ package inventarios.repository;
 import inventarios.to.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductRepository  extends JpaRepository<Product, Long> {
-    
+public interface ProductRepository extends JpaRepository<Product, Long> {
+
+    default boolean removeNFromInventory(Long id, int toRemove) {
+        return findById(id).map(product -> {
+            Integer quantityAvailable = product.getQuantityAvailable();
+            int stock = quantityAvailable - toRemove;
+            if (stock >= 0) {
+                product.setQuantityAvailable(stock);
+                save(product); // update
+                return true;
+            } else {
+                return false;
+            }
+        }).orElse(false);
+    }
 }

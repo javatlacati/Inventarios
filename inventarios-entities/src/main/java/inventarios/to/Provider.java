@@ -16,6 +16,7 @@
  */
 package inventarios.to;
 
+import io.leangen.graphql.annotations.GraphQLQuery;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -42,6 +43,7 @@ public class Provider {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotEmpty(message = "{providername.notempty}")
+    @GraphQLQuery(name = "name", description = "The provider name")
     private String name;
     private String address;
     private String lastName;
@@ -49,6 +51,7 @@ public class Provider {
     @Digits(integer = 10, fraction = 0, message = "{providerphone.pattern}")
     private String telephoneNumber;
     @Email
+    @GraphQLQuery(name = "email", description = "The provider email")
     private String email;
     @Digits(integer = 5, fraction = 0, message = "{providerpobox.pattern}")
     private String poBox;

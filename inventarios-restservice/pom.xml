@@ -94,6 +94,23 @@
             <artifactId>springfox-swagger2</artifactId>
             <version>3.0.0</version>
         </dependency>
+
+        <!--SPQR-->
+        <dependency>
+            <groupId>io.leangen.graphql</groupId>
+            <artifactId>spqr</artifactId>
+            <version>0.11.2</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.graphql-java</groupId>-->
+<!--            <artifactId>graphql-java</artifactId>-->
+<!--            <version>18.2</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.graphql-java</groupId>-->
+<!--            <artifactId>graphql-java-tools</artifactId>-->
+<!--            <version>4.3.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -119,6 +136,9 @@
                             <version>1.18.10</version>
                         </path>
                     </annotationProcessorPaths>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <!-- code coverage -->

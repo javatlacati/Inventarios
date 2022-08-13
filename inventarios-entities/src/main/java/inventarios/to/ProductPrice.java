@@ -51,6 +51,8 @@ public class ProductPrice implements Serializable {
     
     @OneToOne
     private Product product;
+
+    int unitsSold;
     
     private Double price;
     

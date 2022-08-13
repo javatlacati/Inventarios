@@ -36,7 +36,7 @@ public class ProviderController {
     }
 
     @PostMapping("/providers")
-    public <S extends Provider> S save(S s) {
-        return providerService.save(s);
+    public <S extends Provider> S save(S provider) {
+        return providerService.save(provider);
     }
 }
