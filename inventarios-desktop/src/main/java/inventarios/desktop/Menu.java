@@ -19,17 +19,31 @@ package inventarios.desktop;
 import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.restclient.AuthorizationService;
 import inventarios.util.ShutdownManager;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ResourceBundle;
 import java.util.Stack;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
@@ -37,11 +51,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * @author Oscar Marroquin
  */
 @Component
-public class Menu extends javax.swing.JFrame {
+public class Menu extends JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     JButton btnAdmin;
+    JButton btnEmployeeRecords;
+    JButton btnInventory;
+    JButton btnProvider;
     // End of variables declaration//GEN-END:variables
     private NavigationHandler navigationHandler;
     private ShutdownManager shutdownManager;
@@ -81,6 +98,7 @@ public class Menu extends javax.swing.JFrame {
         try {
             this.setDefaultCloseOperation(Menu.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
+                @Override
                 public void windowClosing(WindowEvent e) {
                     shutdownManager.confirmExit();
                 }
@@ -94,7 +112,9 @@ public class Menu extends javax.swing.JFrame {
     public void setVisible(boolean visible) {
         if(visible){
             btnAdmin.setVisible(authorizationService.userHasPermission("AdminMenu"));
-            
+            btnEmployeeRecords.setVisible(authorizationService.userHasPermission("AddUser"));
+            btnInventory.setVisible(authorizationService.userHasPermission("ViewKitchenInventory"));
+            btnProvider.setVisible(authorizationService.userHasPermission("AcceptMerchandise"));
         }
         super.setVisible(visible);
     }
@@ -113,13 +133,13 @@ public class Menu extends javax.swing.JFrame {
         JLabel lblTitle = new JLabel();
         JPanel contentPanel = new JPanel();
         JPanel optionsPanel = new JPanel();
-        JButton btnInventory = new JButton();
+        btnInventory = new JButton();
         JButton btnTransaction = new JButton();
         JButton btnOrders = new JButton();
         JButton btnBilling = new JButton();
-        JButton btnProvider = new JButton();
+        btnProvider = new JButton();
         JButton btnAbout = new JButton();
-        JButton btnEmployeeRecords = new JButton();
+        btnEmployeeRecords = new JButton();
         JButton btnCredits = new JButton();
         JButton btnProfile = new JButton();
         btnAdmin = new JButton();
@@ -232,6 +252,11 @@ public class Menu extends javax.swing.JFrame {
         optionsPanel.add(btnProfile);
 
         btnAdmin.setText(bundle.getString("Menu.btnAdmin.text")); // NOI18N
+        btnAdmin.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btnAdminActionPerformed(evt);
+            }
+        });
         optionsPanel.add(btnAdmin);
 
         contentPanel.add(optionsPanel);
@@ -409,5 +434,9 @@ public class Menu extends javax.swing.JFrame {
     private void btnCloseActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         shutdownManager.confirmExit();
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnAdminActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdminActionPerformed
 
 }

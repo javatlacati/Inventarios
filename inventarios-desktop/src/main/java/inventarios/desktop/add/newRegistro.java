@@ -14,8 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package inventarios.desktop;
+package inventarios.desktop.add;
 
+import inventarios.desktop.RegistroClase;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Point;
@@ -127,7 +128,7 @@ public class newRegistro extends javax.swing.JFrame {
 
         btnSave.setIcon(new ImageIcon(getClass().getResource("/incon/guardar.png"))); // NOI18N
         btnSave.setText("GUARDAR");
-        btnSave.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnSave.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         btnSave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnSaveActionPerformed(evt);

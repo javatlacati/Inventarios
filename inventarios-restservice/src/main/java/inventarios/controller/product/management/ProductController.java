@@ -14,32 +14,43 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package inventarios.controller;
+package inventarios.controller.product.management;
 
-import inventarios.service.SalesService;
-import inventarios.to.Sale;
-import java.util.List;
+import inventarios.service.ProductService;
+import inventarios.to.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author Ruslan López Carro
- */
+import java.util.List;
+import java.util.Optional;
+
 @RestController
-public class SaleController {
+public class ProductController {
     @Autowired
-    private SalesService service;
-    
-    @GetMapping("/sales")
-    public List<Sale> findAll() {
-        return service.findAll();
+    private ProductService productService;
+
+    @GetMapping("/products")
+    public List<Product> findAll() {
+        return productService.findAll();
     }
 
-    @PostMapping("/sales")
-    public <S extends Sale> S save(S s) {
-        return service.save(s);
+    @PostMapping("/products")
+    public <S extends Product> S save(S s) {
+        return productService.save(s);
+    }
+
+    @PostMapping("/product")
+    public <S extends Product> Optional<S> findOne(@RequestBody S product) {
+        return productService.findOne(Example.of(product));
+    }
+
+    @DeleteMapping("/products")
+    public void delete(@RequestBody Product product) {
+        productService.delete(product);
     }
 }

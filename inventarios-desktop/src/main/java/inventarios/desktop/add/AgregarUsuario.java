@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package inventarios.desktop;
+package inventarios.desktop.add;
 
 import inventarios.service.restclient.LoginUsersService;
 import inventarios.to.LoginUser;
@@ -36,7 +36,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AgregarUsuario extends javax.swing.JFrame {
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton btnAdd;
     private JLabel lblPassword;
     private JLabel lblTitle;

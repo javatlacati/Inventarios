@@ -20,6 +20,7 @@ import inventarios.desktop.navigation.NavigationHandler;
 import inventarios.service.restclient.ProviderService;
 import inventarios.to.Provider;
 import inventarios.util.ShutdownManager;
+import java.awt.BorderLayout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -42,6 +43,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.ResourceBundle;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -129,18 +132,22 @@ public class ListaProveedores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JButton btnDeleteRow = new JButton();
-        JButton btnDeleteAll = new JButton();
         JScrollPane providersScroll = new JScrollPane();
         providersTable = new JTable();
-        JLabel lblTitle = new JLabel();
+        JPanel pnlNavigation = new JPanel();
+        JButton btnDeleteRow = new JButton();
+        JButton btnDeleteAll = new JButton();
         JButton btnMenu = new JButton();
         JButton btnGetBack = new JButton();
+        JLabel lblTitle = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         ResourceBundle bundle = ResourceBundle.getBundle("inventarios/gui/desktop/Bundle"); // NOI18N
         setTitle(bundle.getString("ListaProveedores.title")); // NOI18N
-        setResizable(false);
+
+        providersScroll.setViewportView(providersTable);
+
+        getContentPane().add(providersScroll, BorderLayout.CENTER);
 
         btnDeleteRow.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/eliminar fila.png"))); // NOI18N
         btnDeleteRow.setBorder(null);
@@ -150,6 +157,7 @@ public class ListaProveedores extends javax.swing.JFrame {
                 btnDeleteRowActionPerformed(evt);
             }
         });
+        pnlNavigation.add(btnDeleteRow);
 
         btnDeleteAll.setIcon(new ImageIcon(getClass().getResource("/ImgLetras/eliminar todo.png"))); // NOI18N
         btnDeleteAll.setBorder(null);
@@ -159,11 +167,7 @@ public class ListaProveedores extends javax.swing.JFrame {
                 btnDeleteAllActionPerformed(evt);
             }
         });
-
-        providersScroll.setViewportView(providersTable);
-
-        lblTitle.setFont(new Font("Tahoma", 1, 18)); // NOI18N
-        lblTitle.setText(bundle.getString("ListaProveedores.lblTitle.text")); // NOI18N
+        pnlNavigation.add(btnDeleteAll);
 
         btnMenu.setBackground(new Color(255, 0, 51));
         btnMenu.setFont(new Font("Tahoma", 1, 18)); // NOI18N
@@ -173,6 +177,7 @@ public class ListaProveedores extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
+        pnlNavigation.add(btnMenu);
 
         btnGetBack.setText(bundle.getString("ListaProveedores.btnGetBack.text")); // NOI18N
         btnGetBack.addActionListener(new ActionListener() {
@@ -180,43 +185,14 @@ public class ListaProveedores extends javax.swing.JFrame {
                 btnGetBackActionPerformed(evt);
             }
         });
+        pnlNavigation.add(btnGetBack);
 
-        GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btnDeleteRow)
-                .addGap(34, 34, 34)
-                .addComponent(btnDeleteAll)
-                .addGap(52, 52, 52)
-                .addComponent(btnMenu, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(btnGetBack)
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(providersScroll, GroupLayout.PREFERRED_SIZE, 718, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(311, 311, 311)
-                .addComponent(lblTitle)
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lblTitle)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(providersScroll, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnDeleteRow)
-                    .addComponent(btnDeleteAll)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnMenu, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGetBack)))
-                .addContainerGap())
-        );
+        getContentPane().add(pnlNavigation, BorderLayout.SOUTH);
+
+        lblTitle.setFont(new Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        lblTitle.setText(bundle.getString("ListaProveedores.lblTitle.text")); // NOI18N
+        getContentPane().add(lblTitle, BorderLayout.NORTH);
 
         pack();
         setLocationRelativeTo(null);

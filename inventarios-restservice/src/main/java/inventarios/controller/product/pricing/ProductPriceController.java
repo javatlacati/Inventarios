@@ -1,4 +1,4 @@
-package inventarios.controller;
+package inventarios.controller.product.pricing;
 
 import inventarios.service.ProductPriceService;
 import inventarios.to.ProductPrice;

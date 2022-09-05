@@ -16,11 +16,13 @@
  */
 package inventarios.desktop;
 
+import inventarios.desktop.add.AgregarUsuario;
+import inventarios.desktop.add.newRegistro;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 
-import static inventarios.desktop.newRegistro.lista;
+import static inventarios.desktop.add.newRegistro.lista;
 import java.awt.Color;
 import java.awt.Cursor;
 

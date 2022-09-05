@@ -19,6 +19,7 @@ package inventarios.controller;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import inventarios.controller.workers.EmployeeController;
 import inventarios.service.EmployeeService;
 import inventarios.to.EmployeeDetail;
 import org.junit.Test;

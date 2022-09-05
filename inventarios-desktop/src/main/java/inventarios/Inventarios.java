@@ -11,7 +11,6 @@ import org.springframework.boot.WebApplicationType;
 
 @SpringBootApplication
 public class Inventarios {
-
     public static void main(String[] args) {
         ConfigurableApplicationContext context
                 = new SpringApplicationBuilder(Inventarios.class)
