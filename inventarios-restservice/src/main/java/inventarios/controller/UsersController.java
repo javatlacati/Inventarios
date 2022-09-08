@@ -18,6 +18,7 @@ package inventarios.controller;
 
 import inventarios.service.LoginUsersService;
 import inventarios.to.LoginUser;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,8 +41,8 @@ public class UsersController {
     public UsersController(LoginUsersService loginUsersService) {
         this.loginUsersService = loginUsersService;
     }
-    
-    
+
+    @ApiOperation(value = "adds a new user to the inventory system")
     @PostMapping("/users")
     public <S extends LoginUser> S save(@RequestBody S user) {
         log.log(Level.FINE, "User: {0}", user);

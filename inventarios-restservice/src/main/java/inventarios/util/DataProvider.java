@@ -31,6 +31,8 @@ import inventarios.repository.StorageRepository;
 import inventarios.repository.authorization.PermissionRepository;
 import inventarios.repository.authorization.RoleRepository;
 import inventarios.repository.authorization.UserHasRoleRepository;
+import inventarios.repository.competition.CompetitorProductRepository;
+import inventarios.repository.competition.CompetitorRepository;
 import inventarios.to.BillingDetails;
 import inventarios.to.EmployeeDetail;
 import inventarios.to.LoginUser;
@@ -46,6 +48,8 @@ import inventarios.to.StorageLocationCost;
 import inventarios.to.authorization.LoginUserHasRole;
 import inventarios.to.authorization.Permission;
 import inventarios.to.authorization.UserRole;
+import inventarios.to.competition.Competitor;
+import inventarios.to.competition.CompetitorProduct;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -110,6 +114,12 @@ public class DataProvider implements CommandLineRunner {
 
     @Autowired
     private BillingRepository billingRepository;
+
+    @Autowired
+    private CompetitorRepository competitorRepository;
+
+    @Autowired
+    private CompetitorProductRepository competitorProductRepository;
 
     @Override
     @Transactional
@@ -191,6 +201,7 @@ public class DataProvider implements CommandLineRunner {
         orderRepository.save(initialStuff);
         purchaseRepository.save(new Purchase(null, Date.from(Instant.now()), provider1, productList1, initialStuff));
 
+        //our products
         ProductCharacteristic cervezaCharacteristics = productDetailsRepository.save(new ProductCharacteristic(null, seanDetails, warehouse1, 2500.5, "cartoon", "brown", "12", "good"));
         Product cervezaSemana1 = productRepository.save(new Product("cerveza", 25, "1231", new Date(), new Date(), cervezaCharacteristics));
         List<Product> productList2 = Arrays.asList(cervezaSemana1);
@@ -202,6 +213,11 @@ public class DataProvider implements CommandLineRunner {
 
         productPrices.add(precioVentaCervezaSemana1);
         salesRepository.save(new Sale(null, productPrices));
+
+        // competitors
+        CompetitorProduct cervezaSemana1Competitor = competitorProductRepository.save(new CompetitorProduct(null, cervezaSemana1, 24.3d));
+        List<CompetitorProduct> competitorProducts = Collections.singletonList(cervezaSemana1Competitor);
+        competitorRepository.save(new Competitor(null, "competitor1", competitorProducts));
 
         boolean sold = productRepository.removeNFromInventory(cervezaSemana1.getId(), precioVentaCervezaSemana1.getUnitsSold());
         System.out.println("sold? " + sold);
