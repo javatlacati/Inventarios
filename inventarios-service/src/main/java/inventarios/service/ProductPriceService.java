@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2019 Ruslan López Carro
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,6 +17,8 @@
 package inventarios.service;
 
 import inventarios.repository.ProductPriceRepository;
+import inventarios.to.Product;
+import inventarios.to.ProductCharacteristic;
 import inventarios.to.ProductPrice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,7 +26,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
- *
  * @author Ruslan López Carro
  */
 @Service
@@ -39,5 +40,4 @@ public class ProductPriceService {
     public <S extends ProductPrice> S save(S entity) {
         return productPriceRepository.save(entity);
     }
-    
 }
