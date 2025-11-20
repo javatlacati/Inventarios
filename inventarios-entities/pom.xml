@@ -26,6 +26,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
         <!--orm-->
@@ -40,7 +41,7 @@
         <dependency>
             <groupId>io.leangen.graphql</groupId>
             <artifactId>spqr</artifactId>
-            <version>0.12.2</version>
+            <version>0.12.3</version>
         </dependency>
     </dependencies>
 
@@ -71,13 +72,14 @@
 <!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>-->
 <!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>-->
 <!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED</arg>-->
+<!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>-->
 <!--                    </compilerArgs>-->
                     <!--                    <release>12</release>-->
 <!--                    <annotationProcessorPaths>-->
 <!--                        <path>-->
 <!--                            <groupId>org.projectlombok</groupId>-->
 <!--                            <artifactId>lombok</artifactId>-->
-<!--                            <version>1.18.10</version>-->
+<!--                            <version>1.18.20</version>-->
 <!--                        </path>-->
 <!--                    </annotationProcessorPaths>-->
                     <generatedSourcesDirectory>${project.build.directory}/generated-sources/delombok/</generatedSourcesDirectory>

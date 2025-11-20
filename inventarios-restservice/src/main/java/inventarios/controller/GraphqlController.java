@@ -6,7 +6,7 @@ import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.SchemaPrinter;
 import inventarios.service.ProviderService;
-import io.leangen.graphql.GraphQLSchemaGenerator;
+//import io.leangen.graphql.GraphQLSchemaGenerator;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
