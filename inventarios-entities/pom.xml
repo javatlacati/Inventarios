@@ -26,7 +26,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
+            <version>1.18.46</version>
             <scope>provided</scope>
         </dependency>
         <!--orm-->
@@ -75,13 +75,13 @@
 <!--                        <arg>-J&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>-->
 <!--                    </compilerArgs>-->
                     <!--                    <release>12</release>-->
-<!--                    <annotationProcessorPaths>-->
-<!--                        <path>-->
-<!--                            <groupId>org.projectlombok</groupId>-->
-<!--                            <artifactId>lombok</artifactId>-->
-<!--                            <version>1.18.20</version>-->
-<!--                        </path>-->
-<!--                    </annotationProcessorPaths>-->
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.46</version>
+                        </path>
+                    </annotationProcessorPaths>
                     <generatedSourcesDirectory>${project.build.directory}/generated-sources/delombok/</generatedSourcesDirectory>
 <!--                    <includes>-->
 <!--                        <include>${project.build.directory}/generated-sources/delombok/*.java</include>-->
@@ -92,29 +92,28 @@
                     </excludes>
                 </configuration>
             </plugin>
-                <plugin>
-                    <groupId>org.projectlombok</groupId>
-                    <artifactId>lombok-maven-plugin</artifactId>
-                    <version>1.18.12.0</version>
-                    <executions>
-                        <execution>
-                            <phase>generate-sources</phase>
-                            <goals>
-                                <goal>delombok</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <sourceDirectory>${lombokSource}</sourceDirectory>
-<!--                        <outputDirectory>${project.build.directory}/generated-sources/delombok/inventarios/to</outputDirectory>-->
-                        <verbose>true</verbose>
-                        <formatPreferences>
-                            <generateDelombokComment>skip</generateDelombokComment>
-                            <javaLangAsFQN>skip</javaLangAsFQN>
-                            <suppressWarnings>skip</suppressWarnings>
-                        </formatPreferences>
-                    </configuration>
-                </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.projectlombok</groupId>-->
+<!--                <artifactId>lombok-maven-plugin</artifactId>-->
+<!--                <version>1.18.20.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>generate-sources</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>delombok</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    <sourceDirectory>${lombokSource}</sourceDirectory>-->
+<!--                    <verbose>true</verbose>-->
+<!--                    <formatPreferences>-->
+<!--                        <generateDelombokComment>skip</generateDelombokComment>-->
+<!--                        <javaLangAsFQN>skip</javaLangAsFQN>-->
+<!--                        <suppressWarnings>skip</suppressWarnings>-->
+<!--                    </formatPreferences>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 </project>
