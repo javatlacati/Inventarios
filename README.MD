@@ -5,7 +5,6 @@
  [![Open Source Helpers](https://www.codetriage.com/javatlacati/inventarios/badges/users.svg)](https://www.codetriage.com/javatlacati/inventarios)
  [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/javatlacati/Inventarios.svg)](http://isitmaintained.com/project/javatlacati/Inventarios "Average time to resolve an issue") [![Percentage of issues still open](http://isitmaintained.com/badge/open/javatlacati/Inventarios.svg)](http://isitmaintained.com/project/javatlacati/Inventarios "Percentage of issues still open")
  [![Known Vulnerabilities](https://snyk.io/test/github/javatlacati/Inventarios/badge.svg)](https://snyk.io/test/github/javatlacati/Inventarios)
- [![DepShield Badge](https://depshield.sonatype.org/badges/javatlacati/Inventarios/depshield.svg)](https://depshield.github.io)
  
   Linux Build [![Linux Build Status](https://app.travis-ci.com/javatlacati/Inventarios.svg?branch=master)](https://app.travis-ci.com/javatlacati/Inventarios)
   
